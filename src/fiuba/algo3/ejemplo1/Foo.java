@@ -7,6 +7,8 @@ public class Foo {
 	}
 
 	public String doBar() {
-		return "Bar";
+		String bar = "Bar";
+		return bar;
 	}
+	
 }
