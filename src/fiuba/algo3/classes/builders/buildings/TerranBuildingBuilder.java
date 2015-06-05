@@ -1,12 +1,12 @@
 package fiuba.algo3.classes.builders.buildings;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import fiuba.algo3.classes.builders.units.TerranUnitBuilder;
 import fiuba.algo3.classes.buildings.RaceBuilding;
-import fiuba.algo3.utils.Constants;
 
 public class TerranBuildingBuilder extends RaceBuildingBuilder {
 
@@ -20,7 +20,7 @@ public class TerranBuildingBuilder extends RaceBuildingBuilder {
 	
 	private Map<String,RaceBuilding> getTerranBuildingMap(){
 		Map<String,RaceBuilding> raceBuildingMap = new HashMap<String,RaceBuilding>();
-		List<RaceBuilding> raceBuildingList = xmlReader.getBuildings(Constants.TERRAN_BUILDING_XML);
+		List<RaceBuilding> raceBuildingList = new ArrayList<RaceBuilding>();
 		for(RaceBuilding raceBuilding : raceBuildingList){
 			raceBuildingMap.put(raceBuilding.getName(), raceBuilding);
 		}

@@ -1,4 +1,4 @@
-package fiuba.algo3.classes.game;
+package fiuba.algo3.classes.game.tests;
 
 import junit.framework.Assert;
 import org.junit.Test;
