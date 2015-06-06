@@ -3,6 +3,7 @@ package fiuba.algo3.classes.units;
 import fiuba.algo3.classes.stats.ConstructionTime;
 import fiuba.algo3.classes.stats.Health;
 import fiuba.algo3.classes.stats.ResourceCost;
+import fiuba.algo3.classes.stats.Shield;
 
 public class RaceUnit {
 
@@ -10,6 +11,19 @@ public class RaceUnit {
 	private ResourceCost cost;
 	private ConstructionTime constructionTime;
 	private Health health;
+	private Shield shield;
+	
+	public RaceUnit(){
+		
+	}
+	
+	public RaceUnit(String name, Integer mineralCost, Integer gasCost, Integer construtionTime, Integer maxHealth, Integer maxShield){
+		this.name = name;
+		this.cost = new ResourceCost(mineralCost,gasCost);
+		this.constructionTime = new ConstructionTime(construtionTime);
+		this.health = new Health(maxHealth);
+		this.setShield(new Shield(maxShield));
+	}
 	
 	public String getName() {
 		return name;
@@ -41,6 +55,14 @@ public class RaceUnit {
 	
 	public void setHealth(Health health) {
 		this.health = health;
+	}
+
+	public Shield getShield() {
+		return shield;
+	}
+
+	public void setShield(Shield shield) {
+		this.shield = shield;
 	}
 	
 }

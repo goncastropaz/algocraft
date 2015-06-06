@@ -2,20 +2,28 @@ package fiuba.algo3.classes.stats;
 
 public class ConstructionTime {
 
-	private Integer minutes;
-	private Integer seconds;
+	private Integer maxTurn;
+	private Integer currentTurn;
 	
-	public ConstructionTime(Integer totalSeconds){
-		minutes = totalSeconds/60;
-		seconds = totalSeconds%60;
+	public ConstructionTime(Integer maxTurn){
+		this.maxTurn = maxTurn;
+		this.currentTurn = maxTurn;
 	}
 
-	public Integer getMinutes() {
-		return minutes;
+	public Integer getMaxTurn() {
+		return maxTurn;
 	}
 
-	public Integer getSeconds() {
-		return seconds;
+	public void setMaxTurn(Integer maxTurn) {
+		this.maxTurn = maxTurn;
 	}
-	
+
+	public Integer getCurrentTurn() {
+		return currentTurn;
+	}
+
+	public void setCurrentTurn(Integer currentTurn) {
+		this.currentTurn = currentTurn;
+	}
+
 }

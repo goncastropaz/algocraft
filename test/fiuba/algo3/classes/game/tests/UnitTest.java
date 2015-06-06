@@ -12,13 +12,21 @@ public class UnitTest {
 	@Test
 	public void testCrearMarine(){
 		Marine marine = new Marine();
+		Integer maxHealth = 40;
+		
 		assertNotNull(marine);
+		assertEquals(marine.getHealth().getMaxHealth(), maxHealth);
 	}
 	
 	@Test
 	public void testCrearZealot(){
 		Zealot zealot = new Zealot();
+		Integer maxHealth = 100;
+		Integer maxShield = 60;
+		
 		assertNotNull(zealot);
+		assertEquals(zealot.getHealth().getMaxHealth(), maxHealth);
+		assertEquals(zealot.getHealth().getMaxHealth(), maxShield);
 	}
 	
 }
