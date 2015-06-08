@@ -11,7 +11,7 @@ public class UnitTest {
 
 	@Test
 	public void testCrearMarine(){
-		Marine marine = new Marine();
+		Marine marine = new Marine(1,2);
 		Integer maxHealth = 40;
 		
 		assertNotNull(marine);
@@ -20,7 +20,7 @@ public class UnitTest {
 	
 	@Test
 	public void testCrearZealot(){
-		Zealot zealot = new Zealot();
+		Zealot zealot = new Zealot(1,2);
 		Integer maxHealth = 100;
 		Integer maxShield = 60;
 		
