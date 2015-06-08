@@ -15,9 +15,9 @@ public class Zealot extends RaceUnit {
 	private static final Integer VISION = 7;
 	private static final Integer TRANSPORT = 2;
 	
-	public Zealot(){
+	public Zealot(Integer coordinateX, Integer coordinateY){
 		
-		super(NAME,MINERAL_COST,GAS_COST,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD);
+		super(NAME,MINERAL_COST,GAS_COST,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD,coordinateX,coordinateY);
 		
 	}
 	

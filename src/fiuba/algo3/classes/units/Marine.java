@@ -15,9 +15,9 @@ public class Marine extends RaceUnit{
 	private static final Integer VISION = 7;
 	private static final Integer TRANSPORT = 1;
 	
-	public Marine(){
+	public Marine(Integer coordinateX, Integer coordinateY){
 		
-		super(NAME,MINERAL_COST,GAS_COST,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD);
+		super(NAME,MINERAL_COST,GAS_COST,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD,coordinateX,coordinateY);
 		
 	}
 }
