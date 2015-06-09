@@ -45,12 +45,12 @@
 	</target>
 
 	<target name="compilar.aplicacion" depends="setup, resolve">
-		<javac srcdir="src" destdir="${build}" includeantruntime="false" debug="yes" target="1.7">
+		<javac srcdir="src" destdir="${build}" includeantruntime="false" debug="yes" target="1.6">
 		</javac>
 	</target>
 	
 	<target name="compilar.tests" depends="instrumentar.aplicacion">
-		<javac srcdir="test" destdir="${build}/tests" includeantruntime="false" debug="yes" target="1.7">
+		<javac srcdir="test" destdir="${build}/tests" includeantruntime="false" debug="yes" target="1.6">
 			<classpath refid="classpath" />
 		</javac>
 	</target>
@@ -66,6 +66,7 @@
 			<classpath refid="cobertura.classpath" />
 			<classpath refid="classpath" />
 			<formatter type="xml" />
+            <formatter type="plain" usefile="false"/>
 			<test name="${testcase}" todir="${reports.xml.dir}" if="testcase" />
 			<batchtest todir="${reports.xml.dir}" unless="testcase">
 				<fileset dir="${build}/tests" includes="**/*Test.class" />
