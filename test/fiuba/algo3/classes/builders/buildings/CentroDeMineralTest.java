@@ -14,7 +14,7 @@ public class CentroDeMineralTest {
 		Integer coordenadaY = 1;
 		
 		CentroDeMineral unCentroMineral = new CentroDeMineral(coordenadaX, coordenadaY);
-		Integer max_vida = 40;
+		Integer max_vida = 500;
 		
 		assertNotNull(unCentroMineral);
 		assertEquals(unCentroMineral.getHealth().getMaxHealth(), max_vida);

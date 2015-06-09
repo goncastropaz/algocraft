@@ -1,5 +1,6 @@
 package fiuba.algo3.classes.units;
 
+import fiuba.algo3.classes.game.Celda;
 import fiuba.algo3.classes.stats.ConstructionTime;
 import fiuba.algo3.classes.stats.Coordinates;
 import fiuba.algo3.classes.stats.Health;
@@ -14,6 +15,7 @@ public class RaceUnit {
 	private Health health;
 	private Shield shield;
 	private Coordinates coordinates;
+	private Celda ubicacion;
 	
 	public RaceUnit(){
 		
@@ -74,6 +76,17 @@ public class RaceUnit {
 
 	public void setCoordinates(Coordinates coordinates) {
 		this.coordinates = coordinates;
+	}
+
+	public Celda getUbicacion() {
+		
+		return this.ubicacion;
+	}
+
+	public void setNuevaUbicacion(Celda celda) {
+		this.ubicacion = celda;
+		celda.setUnidad(this);
+		
 	}
 	
 }
