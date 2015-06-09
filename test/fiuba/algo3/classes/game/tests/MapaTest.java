@@ -17,7 +17,6 @@ public class MapaTest {
 			Mapa mapaSecundario = Mapa.getInstance();
 			
 			assertEquals(mapaSecundario,mapaPrincipal);
-			
 		}
 		
 		@Test
