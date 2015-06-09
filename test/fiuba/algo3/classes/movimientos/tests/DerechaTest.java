@@ -53,5 +53,5 @@ public class DerechaTest {
 	//public void testmoverDerechaDeberiaLanzarErrorSiEstaEnElBordeDerechoDelMapa(){
 		
 	//}
-	
+	// hacer
 }
