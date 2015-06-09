@@ -1,5 +1,5 @@
 package fiuba.algo3.classes.exceptions;
 
-public class ColorYaExiste extends RuntimeException {
+public class ColorYaExiste extends Exception {
 
 }

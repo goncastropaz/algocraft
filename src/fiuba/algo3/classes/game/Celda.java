@@ -1,5 +1,7 @@
 package fiuba.algo3.classes.game;
 
+import fiuba.algo3.classes.exceptions.FueraDeMatriz;
+
 public class Celda {
 
 
@@ -8,7 +10,7 @@ public class Celda {
 	private boolean mineral;
 	private boolean gas;
 	
-	public Celda(int fila, int columna){
+	public Celda(int fila, int columna) throws FueraDeMatriz{
 		Posicion pos = new Posicion (fila,columna);
 		this.posicion = pos;
 		this.mineral=false;

@@ -25,7 +25,7 @@ public class JugadorTest {
 	}
 	
 	@Test
-	public void testSetNombreDebeGuardarElNombreDelJugador(){
+	public void testSetNombreDebeGuardarElNombreDelJugador() throws NombreConMenosDe4Caracteres{
 		Jugador jugador = new Jugador();
 		jugador.setNombre("Martin");
 		assertEquals("Martin",jugador.getNombre());
@@ -47,7 +47,7 @@ public class JugadorTest {
 	}
 	
 	@Test (expected = NombreConMenosDe4Caracteres.class)
-	public void testSetNombreDebeTirarErrorSiElNombreTieneMenosDe4Caracteres(){
+	public void testSetNombreDebeTirarErrorSiElNombreTieneMenosDe4Caracteres() throws NombreConMenosDe4Caracteres{
 		Jugador jugador = new Jugador();
 		jugador.setNombre("Luz");
 	}

@@ -1,12 +1,14 @@
 package fiuba.algo3.classes.game;
 
+import fiuba.algo3.classes.exceptions.FueraDeMatriz;
+
 public class Mapa {
 
 			
 			private static Mapa INSTANCE = null;
 			private Celda[][] matriz;
 						
-			private Mapa(){
+			private Mapa() throws FueraDeMatriz{
 				
 				Celda mat[][] = new Celda[20][20];
 				for(int f=0;f<20;f++){
@@ -23,12 +25,12 @@ public class Mapa {
 							
 			}
 			
-			private synchronized static void createInstance() {
+			private synchronized static void createInstance() throws FueraDeMatriz {
 				if (INSTANCE == null) { 
 			       INSTANCE = new Mapa();
 			    }
 			}
-			public static Mapa getInstance() {
+			public static Mapa getInstance() throws FueraDeMatriz {
 			    if (INSTANCE == null) 
 			    	createInstance();
 			    return INSTANCE;

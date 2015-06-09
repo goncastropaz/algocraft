@@ -2,16 +2,16 @@ package fiuba.algo3.classes.game.tests;
 
 import static org.junit.Assert.*;
 
-
 import org.junit.Test;
 
+import fiuba.algo3.classes.exceptions.FueraDeMatriz;
 import fiuba.algo3.classes.game.Celda;
 import fiuba.algo3.classes.game.Posicion;
 
 public class CeldaTest {
 
 		@Test
-		public void testCrearCeldaDebeGuardarLaPosicion(){
+		public void testCrearCeldaDebeGuardarLaPosicion() throws FueraDeMatriz{
 			
 			Celda unaCelda = new Celda(2,1);
 			int fil = unaCelda.getPosicion().getFila();
@@ -22,7 +22,7 @@ public class CeldaTest {
 		}
 		
 		@Test
-		public void testGetPosicionDebeDevolverLaPosicionDeLaCelda(){
+		public void testGetPosicionDebeDevolverLaPosicionDeLaCelda() throws FueraDeMatriz{
 			
 			Celda unaCelda = new Celda(2,1);
 			Posicion pos = unaCelda.getPosicion();

@@ -15,7 +15,7 @@ public class Jugador {
 	
 	}
 	
-	public void setNombre(String nombre){
+	public void setNombre(String nombre) throws NombreConMenosDe4Caracteres{
 		if(nombre.length() < 4) throw new NombreConMenosDe4Caracteres();
 		this.nombre = nombre;
 	}
