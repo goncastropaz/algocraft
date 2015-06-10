@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import fiuba.algo3.classes.exceptions.FueraDeMatriz;
+import fiuba.algo3.classes.exceptions.NombreConMenosDe4Caracteres;
 import fiuba.algo3.classes.game.Mapa;
 import fiuba.algo3.classes.movimientos.Derecha;
 import fiuba.algo3.classes.movimientos.Movimiento;
@@ -49,9 +50,13 @@ public class DerechaTest {
 		
 	}
 	
-	//@Test
-	//public void testmoverDerechaDeberiaLanzarErrorSiEstaEnElBordeDerechoDelMapa(){
-		
-	//}
-	// hacer
+	@Test (expected = FueraDeMatriz.class)
+	public void testmoverDerechaDeberiaLanzarErrorSiEstaEnElBordeDerechoDelMapa() throws FueraDeMatriz{
+		Movimiento derecha = new Derecha();
+		Mapa mapa = Mapa.getInstance();
+		RaceUnit unidad = new RaceUnit();
+		unidad.setNuevaUbicacion(mapa.getCelda(5, 19));
+		derecha.mover(unidad);
+	}
+	 
 }

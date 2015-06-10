@@ -1,5 +1,7 @@
 package fiuba.algo3.classes.buildings;
 
+import fiuba.algo3.classes.exceptions.FueraDeMatriz;
+
 public class CentroDeMineral extends RaceBuilding {
 
 	private static final String  NOMBRE = "CENTRO_DE_MINERAL";
@@ -10,7 +12,7 @@ public class CentroDeMineral extends RaceBuilding {
 	private static final Integer ESCUDO = 0;
 	private static final String  UNIDAD = "";
 
-	public CentroDeMineral(Integer coordenadaX, Integer coordenadaY) {
+	public CentroDeMineral(Integer coordenadaX, Integer coordenadaY) throws FueraDeMatriz {
 		super(NOMBRE, COSTO_MINERAL, COSTO_GAS, TIEMPO_CONSTRUCCION, MAX_VIDA,
 				ESCUDO, UNIDAD, coordenadaX, coordenadaY);
 	}

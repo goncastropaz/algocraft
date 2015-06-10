@@ -1,7 +1,8 @@
 package fiuba.algo3.classes.buildings;
 
+import fiuba.algo3.classes.exceptions.FueraDeMatriz;
 import fiuba.algo3.classes.stats.ConstructionTime;
-import fiuba.algo3.classes.stats.Coordinates;
+import fiuba.algo3.classes.stats.Posicion;
 import fiuba.algo3.classes.stats.Health;
 import fiuba.algo3.classes.stats.ResourceCost;
 import fiuba.algo3.classes.stats.Shield;
@@ -14,11 +15,11 @@ public abstract class RaceBuilding {
 	private Health health;
 	private Shield shield;
 	private RaceUnitBuilding unitBuilder;
-	private Coordinates coordenadas;
+	private Posicion coordenadas;
 
 	public RaceBuilding(String name, Integer mineralCost, Integer gasCost,
 			Integer construtionTime, Integer maxHealth, Integer maxShield,
-			String unit, Integer coordenadaX, Integer coordenadaY) {
+			String unit, Integer coordenadaX, Integer coordenadaY) throws FueraDeMatriz {
 
 		this.name = name;
 		this.cost = new ResourceCost(mineralCost, gasCost);
@@ -26,7 +27,7 @@ public abstract class RaceBuilding {
 		this.health = new Health(maxHealth);
 		this.shield = new Shield(maxShield);
 		this.unitBuilder = new RaceUnitBuilding();
-		this.coordenadas = new Coordinates(coordenadaX, coordenadaY);
+		this.coordenadas = new Posicion(coordenadaX, coordenadaY);
 
 	}
 
@@ -78,11 +79,11 @@ public abstract class RaceBuilding {
 		this.unitBuilder = unitBuilder;
 	}
 
-	public Coordinates getCoordenadas() {
+	public Posicion getCoordenadas() {
 		return coordenadas;
 	}
 
-	public void setCoordenadas(Coordinates coordenadas) {
+	public void setCoordenadas(Posicion coordenadas) {
 		this.coordenadas = coordenadas;
 	}
 

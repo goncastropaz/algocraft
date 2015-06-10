@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import fiuba.algo3.classes.exceptions.FueraDeMatriz;
-import fiuba.algo3.classes.game.Posicion;
+import fiuba.algo3.classes.stats.Posicion;
 
 public class PosicionTest {
 	

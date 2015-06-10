@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import fiuba.algo3.classes.exceptions.FueraDeMatriz;
 import fiuba.algo3.classes.game.Celda;
 import fiuba.algo3.classes.game.Mapa;
-import fiuba.algo3.classes.game.Posicion;
+import fiuba.algo3.classes.stats.Posicion;
 import fiuba.algo3.classes.units.RaceUnit;
 
 public class Abajo extends Movimiento {

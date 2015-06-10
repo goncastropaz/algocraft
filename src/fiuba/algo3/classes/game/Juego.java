@@ -13,6 +13,8 @@ public class Juego {
 	  private static Juego INSTANCE = null;
       private HashMap<Integer,Jugador> jugadores;
       private Mapa mapaJuego;
+      private Turno turno;
+
             
       private Juego() throws FueraDeMatriz{
     	 
@@ -61,6 +63,13 @@ public class Juego {
 			}
 			this.getJugador(jugador).setColor(color);
 			
+			
+		}
+		public Jugador cambiarTurno(){
+			return this.turno.cambiarTurno();
+		}
+		
+		public void ejecutarAccion(Jugador jugador){
 			
 		}
 		

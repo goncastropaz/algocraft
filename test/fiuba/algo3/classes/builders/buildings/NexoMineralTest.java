@@ -6,15 +6,16 @@ import static org.junit.Assert.assertNotNull;
 import org.junit.Test;
 
 import fiuba.algo3.classes.buildings.NexoMineral;
+import fiuba.algo3.classes.exceptions.FueraDeMatriz;
 
 public class NexoMineralTest {
 
 	@Test
-	public void testCrearMineralLink(){
-		Integer coordenadaX = 1;
-		Integer coordenadaY = 1;
+	public void testCrearMineralLink() throws FueraDeMatriz{
+		Integer fila = 1;
+		Integer columna = 1;
 		
-		NexoMineral unNexo = new NexoMineral(coordenadaX, coordenadaY);
+		NexoMineral unNexo = new NexoMineral(fila,columna);
 		Integer cost = 50;
 		
 		assertNotNull(unNexo);

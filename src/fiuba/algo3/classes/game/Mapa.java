@@ -1,6 +1,7 @@
 package fiuba.algo3.classes.game;
 
 import fiuba.algo3.classes.exceptions.FueraDeMatriz;
+import fiuba.algo3.classes.stats.Posicion;
 
 public class Mapa {
 

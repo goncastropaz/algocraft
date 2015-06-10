@@ -8,6 +8,7 @@ public class Jugador {
 	private String color;
 	private Raza raza;
 	
+	
 	public Jugador(){
 		this.nombre = ""; 
 		this.color = "";
@@ -36,4 +37,5 @@ public class Jugador {
 	public Raza getRaza(){
 		return this.raza;
 	}
+	
 }

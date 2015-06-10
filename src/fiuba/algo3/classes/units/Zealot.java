@@ -1,5 +1,8 @@
 package fiuba.algo3.classes.units;
 
+import fiuba.algo3.classes.exceptions.FueraDeMatriz;
+import fiuba.algo3.classes.stats.Posicion;
+
 public class Zealot extends RaceUnit {
 
 	private static final String NAME = "ZEALOT";
@@ -15,9 +18,9 @@ public class Zealot extends RaceUnit {
 	private static final Integer VISION = 7;
 	private static final Integer TRANSPORT = 2;
 	
-	public Zealot(Integer coordinateX, Integer coordinateY){
+	public Zealot(Posicion pos) throws FueraDeMatriz{
 		
-		super(NAME,MINERAL_COST,GAS_COST,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD,coordinateX,coordinateY);
+		super(NAME,MINERAL_COST,GAS_COST,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD, pos);
 		
 	}
 	
