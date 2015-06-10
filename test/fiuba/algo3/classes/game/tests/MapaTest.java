@@ -42,5 +42,20 @@ public class MapaTest {
 			assertTrue(mineral3.tieneMineral());
 			assertTrue(gas.tieneGas());
 		}
+		
+		@Test
+		public void testMapaDebeCrearseConUnaAreaEspacial() throws FueraDeMatriz{
+			
+			Mapa mapa = Mapa.getInstance();
+			Celda espacial = mapa.getCelda(14,8);
+			Celda espacial2 = mapa.getCelda(0,11);
+			Celda tierra = mapa.getCelda(15,8);
+			Celda tierra2 = mapa.getCelda(0,12);
+			
+			assertTrue(espacial.isEspacial());
+			assertTrue(espacial2.isEspacial());
+			assertFalse(tierra.isEspacial());
+			assertFalse(tierra2.isEspacial());
+		}
 	
 }

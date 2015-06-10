@@ -7,7 +7,7 @@ import fiuba.algo3.classes.units.RaceUnit;
 public class Celda {
 
 
-	private int tipo = 0; // tierra = 0
+	private boolean espacial; // default = false
 	private Posicion posicion;
 	private boolean mineral;
 	private boolean gas;
@@ -19,6 +19,7 @@ public class Celda {
 		this.mineral=false;
 		this.gas = false;
 		this.unidad = null;
+		this.espacial = false;
 	}
 	
 	public Posicion getPosicion(){
@@ -56,6 +57,16 @@ public class Celda {
 	public RaceUnit getUnidad() {
 		// TODO Auto-generated method stub
 		return this.unidad;
+	}
+
+	public boolean isEspacial() {
+		
+		return this.espacial;
+	}
+
+	public void setAsEspacial() {
+		// TODO Auto-generated method stub
+		this.espacial =true;
 	}
 
 	

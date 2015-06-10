@@ -18,11 +18,10 @@ public class Mapa {
 						mat[f][c] = unaCelda;
 					};
 				};
-				mat[4][4].setMineral();
-				mat[4][5].setMineral();
-				mat[5][4].setMineral();
-				mat[5][5].setGas();
+				
 				matriz= mat;
+				this.setRecursosEnMapa();
+				this.setAreasEspaciales();
 							
 			}
 			
@@ -31,6 +30,23 @@ public class Mapa {
 			       INSTANCE = new Mapa();
 			    }
 			}
+			
+			private void setRecursosEnMapa(){
+				matriz[4][4].setMineral();
+				matriz[4][5].setMineral();
+				matriz[5][4].setMineral();
+				matriz[5][5].setGas();
+			}
+			
+			private void setAreasEspaciales(){
+				for(int fil=0; fil<15; fil++){
+					for(int col= 8; col<12; col++){
+						matriz[fil][col].setAsEspacial();
+					}
+				}
+				
+			}
+			
 			public static Mapa getInstance() throws FueraDeMatriz {
 			    if (INSTANCE == null) 
 			    	createInstance();
