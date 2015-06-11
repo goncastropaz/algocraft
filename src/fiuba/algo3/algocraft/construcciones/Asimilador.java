@@ -1,19 +1,19 @@
-package fiuba.algo3.classes.buildings;
+package fiuba.algo3.algocraft.construcciones;
 
 import fiuba.algo3.classes.exceptions.FueraDeMatriz;
 import fiuba.algo3.classes.stats.Posicion;
 
-public class DepositoSuministros extends Construccion {
+public class Asimilador extends Construccion {
 
-	private static final String  NOMBRE = "DEPOSITO_SUMINISTROS";
+	private static final String  NOMBRE = "ASIMILADOR";
 	private static final Integer COSTO_MINERAL = 100;
 	private static final Integer COSTO_GAS = 0;
 	private static final Integer TIEMPO_CONSTRUCCION = 6;
-	private static final Integer MAX_VIDA = 500;
-	private static final Integer ESCUDO = 0;
+	private static final Integer MAX_VIDA = 450;
+	private static final Integer ESCUDO = 450;
 	private static final String  UNIDAD = "";
 	
-	public DepositoSuministros(Posicion posicion) throws FueraDeMatriz {
+	public Asimilador(Posicion posicion) throws FueraDeMatriz {
 		super(NOMBRE, COSTO_MINERAL, COSTO_GAS, TIEMPO_CONSTRUCCION, MAX_VIDA,
 				ESCUDO, UNIDAD, posicion);
 	}

@@ -1,15 +1,15 @@
-package fiuba.algo3.classes.builders.buildings;
+package fiuba.algo3.algocraft.construcciones;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 
-import fiuba.algo3.classes.buildings.Acceso;
-import fiuba.algo3.classes.buildings.ArchivoTemplario;
-import fiuba.algo3.classes.buildings.Asimilador;
-import fiuba.algo3.classes.buildings.NexoMineral;
-import fiuba.algo3.classes.buildings.Pilon;
+import fiuba.algo3.algocraft.construcciones.Acceso;
+import fiuba.algo3.algocraft.construcciones.ArchivoTemplario;
+import fiuba.algo3.algocraft.construcciones.Asimilador;
+import fiuba.algo3.algocraft.construcciones.NexoMineral;
+import fiuba.algo3.algocraft.construcciones.Pilon;
 import fiuba.algo3.classes.exceptions.FueraDeMatriz;
 import fiuba.algo3.classes.stats.Posicion;
 
@@ -19,10 +19,10 @@ public class ConstruccionesProtossTest {
 	public void testCrearNexoMineral() throws FueraDeMatriz{
 		Integer fila = 1;
 		Integer columna = 1;
-		Posicion posicion = new Posicion(fila, columna);
-		
-		NexoMineral unNexo = new NexoMineral(posicion);
 		Integer cost = 50;
+		
+		Posicion posicion = new Posicion(fila, columna);
+		NexoMineral unNexo = new NexoMineral(posicion);
 		
 		assertNotNull(unNexo);
 		assertEquals(unNexo.getCost().getCostoMineral(), cost);
@@ -32,10 +32,10 @@ public class ConstruccionesProtossTest {
 	public void testCrearPilon() throws FueraDeMatriz{
 		Integer fila = 1;
 		Integer columna = 1;
-		Posicion posicion = new Posicion(fila, columna);
-		
-		Pilon unPilon = new Pilon(posicion);
 		Integer escudo = 300;
+	
+		Posicion posicion = new Posicion(fila, columna);
+		Pilon unPilon = new Pilon(posicion);
 		
 		assertNotNull(unPilon);
 		assertEquals(unPilon.getShield().getEscudoTotal(), escudo);
@@ -45,10 +45,10 @@ public class ConstruccionesProtossTest {
 	public void testCrearAsimilador() throws FueraDeMatriz{
 		Integer fila = 1;
 		Integer columna = 1;
-		Posicion posicion = new Posicion(fila, columna);
-		
-		Asimilador unAsimilador = new Asimilador(posicion);
 		Integer tiempoConstruccion = 6;
+
+		Posicion posicion = new Posicion(fila, columna);
+		Asimilador unAsimilador = new Asimilador(posicion);
 		
 		assertNotNull(unAsimilador);
 		assertEquals(unAsimilador.getConstructionTime().getTurnosMaximos(), tiempoConstruccion);

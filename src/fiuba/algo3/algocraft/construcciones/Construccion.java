@@ -1,4 +1,4 @@
-package fiuba.algo3.classes.buildings;
+package fiuba.algo3.algocraft.construcciones;
 
 import fiuba.algo3.classes.exceptions.FueraDeMatriz;
 import fiuba.algo3.classes.stats.CostoDeRecursos;
