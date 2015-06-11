@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import fiuba.algo3.classes.builders.units.TerranUnitBuilder;
+import fiuba.algo3.classes.builders.units.ConstructorDeUnidadesTerran;
 import fiuba.algo3.classes.buildings.RaceBuilding;
 
 public class TerranBuildingBuilder extends RaceBuildingBuilder {
@@ -15,7 +15,7 @@ public class TerranBuildingBuilder extends RaceBuildingBuilder {
 	public TerranBuildingBuilder() {
 		super();
 		raceBuildingMap = getTerranBuildingMap();
-		raceUnitBuilder = new TerranUnitBuilder();
+		raceUnitBuilder = new ConstructorDeUnidadesTerran();
 	}
 	
 	private Map<String,RaceBuilding> getTerranBuildingMap(){

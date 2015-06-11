@@ -1,11 +1,11 @@
 package fiuba.algo3.classes.movimientos.tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
 
 import fiuba.algo3.classes.exceptions.FueraDeMatriz;
-import fiuba.algo3.classes.exceptions.NombreConMenosDe4Caracteres;
 import fiuba.algo3.classes.game.Mapa;
 import fiuba.algo3.classes.movimientos.Derecha;
 import fiuba.algo3.classes.movimientos.Movimiento;

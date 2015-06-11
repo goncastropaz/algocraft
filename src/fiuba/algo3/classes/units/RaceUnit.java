@@ -2,19 +2,19 @@ package fiuba.algo3.classes.units;
 
 import fiuba.algo3.classes.exceptions.FueraDeMatriz;
 import fiuba.algo3.classes.game.Celda;
-import fiuba.algo3.classes.stats.ConstructionTime;
+import fiuba.algo3.classes.stats.CostoDeRecursos;
+import fiuba.algo3.classes.stats.Escudo;
 import fiuba.algo3.classes.stats.Posicion;
-import fiuba.algo3.classes.stats.Health;
-import fiuba.algo3.classes.stats.ResourceCost;
-import fiuba.algo3.classes.stats.Shield;
+import fiuba.algo3.classes.stats.TiempoDeConstruccion;
+import fiuba.algo3.classes.stats.Vida;
 
 public class RaceUnit {
 
-	private String name;
-	private ResourceCost cost;
-	private ConstructionTime constructionTime;
-	private Health health;
-	private Shield shield;
+	private String nombre;
+	private CostoDeRecursos costoDeRecursos;
+	private TiempoDeConstruccion tiempoDeConstruccion;
+	private Vida vida;
+	private Escudo escudo;
 	private Posicion posicion;
 	private Celda ubicacion;
 	
@@ -22,56 +22,54 @@ public class RaceUnit {
 		
 	}
 	
-	public RaceUnit(String name, Integer mineralCost, Integer gasCost, Integer construtionTime, Integer maxHealth, Integer maxShield, Posicion pos) throws FueraDeMatriz{
-		this.name = name;
-		this.cost = new ResourceCost(mineralCost,gasCost);
-		this.constructionTime = new ConstructionTime(construtionTime);
-		this.health = new Health(maxHealth);
-		this.setShield(new Shield(maxShield));
+	public RaceUnit(String nombre, Integer costoMineral, Integer costoGas, Integer tiempoDeConstruccion, Integer vidaMaxima, Integer escudoMaximo, Posicion pos) throws FueraDeMatriz{
+		this.nombre = nombre;
+		this.costoDeRecursos = new CostoDeRecursos(costoMineral,costoGas);
+		this.tiempoDeConstruccion = new TiempoDeConstruccion(tiempoDeConstruccion);
+		this.vida = new Vida(vidaMaxima);
+		this.escudo = (new Escudo(escudoMaximo));
 		this.posicion = pos;
 	}
-	
-	public String getName() {
-		return name;
-	}
-	
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	public ResourceCost getCost() {
-		return cost;
-	}
-	
-	public void setCost(ResourceCost cost) {
-		this.cost = cost;
-	}
-	
-	public ConstructionTime getConstructionTime() {
-		return constructionTime;
-	}
-	
-	public void setConstructionTime(ConstructionTime constructionTime) {
-		this.constructionTime = constructionTime;
-	}
-	
-	public Health getHealth() {
-		return health;
-	}
-	
-	public void setHealth(Health health) {
-		this.health = health;
+
+	public String getNombre() {
+		return nombre;
 	}
 
-	public Shield getShield() {
-		return shield;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
-	public void setShield(Shield shield) {
-		this.shield = shield;
+	public CostoDeRecursos getCostoDeRecursos() {
+		return costoDeRecursos;
 	}
 
+	public void setCostoDeRecursos(CostoDeRecursos costoDeRecursos) {
+		this.costoDeRecursos = costoDeRecursos;
+	}
 
+	public TiempoDeConstruccion getTiempoDeConstruccion() {
+		return tiempoDeConstruccion;
+	}
+
+	public void setTiempoDeConstruccion(TiempoDeConstruccion tiempoDeConstruccion) {
+		this.tiempoDeConstruccion = tiempoDeConstruccion;
+	}
+
+	public Vida getVida() {
+		return vida;
+	}
+
+	public void setVida(Vida vida) {
+		this.vida = vida;
+	}
+
+	public Escudo getEscudo() {
+		return escudo;
+	}
+
+	public void setEscudo(Escudo escudo) {
+		this.escudo = escudo;
+	}
 
 	public Celda getUbicacion() {
 		

@@ -8,7 +8,6 @@ import org.junit.Test;
 import fiuba.algo3.classes.exceptions.FueraDeMatriz;
 import fiuba.algo3.classes.game.Mapa;
 import fiuba.algo3.classes.movimientos.Arriba;
-import fiuba.algo3.classes.movimientos.Izquierda;
 import fiuba.algo3.classes.movimientos.Movimiento;
 import fiuba.algo3.classes.units.RaceUnit;
 

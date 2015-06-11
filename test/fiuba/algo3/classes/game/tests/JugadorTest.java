@@ -1,11 +1,9 @@
 package fiuba.algo3.classes.game.tests;
 
-import static org.junit.Assert.*;
-import junit.framework.Assert;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import fiuba.algo3.classes.exceptions.FueraDeMatriz;
 import fiuba.algo3.classes.exceptions.NombreConMenosDe4Caracteres;
 import fiuba.algo3.classes.game.Jugador;
 import fiuba.algo3.classes.game.Raza;

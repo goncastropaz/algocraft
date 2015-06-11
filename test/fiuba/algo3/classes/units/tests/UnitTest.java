@@ -1,6 +1,7 @@
 package fiuba.algo3.classes.units.tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 
@@ -20,8 +21,8 @@ public class UnitTest {
 		Marine marine = new Marine(new Posicion(fila,columna));
 		
 		assertNotNull(marine);
-		assertEquals(marine.getHealth().getMaxHealth(), maxHealth);
-		assertEquals(marine.getShield().getMaxShield(), maxShield);
+		assertEquals(marine.getVida().getVidaMaxima(), maxHealth);
+		assertEquals(marine.getEscudo().getEscudoTotal(), maxShield);
 	}
 	
 	@Test
@@ -33,8 +34,8 @@ public class UnitTest {
 		Zealot zealot = new Zealot(new Posicion(fila,columna));
 		
 		assertNotNull(zealot);
-		assertEquals(zealot.getHealth().getMaxHealth(), maxHealth);
-		assertEquals(zealot.getShield().getMaxShield(), maxShield);
+		assertEquals(zealot.getVida().getVidaMaxima(), maxHealth);
+		assertEquals(zealot.getEscudo().getEscudoTotal(), maxShield);
 	}
 	
 	@Test

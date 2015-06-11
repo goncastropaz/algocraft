@@ -18,7 +18,7 @@ public class CentroDeMineralTest {
 		Integer max_vida = 500;
 		
 		assertNotNull(unCentroMineral);
-		assertEquals(unCentroMineral.getHealth().getMaxHealth(), max_vida);
+		assertEquals(unCentroMineral.getHealth().getVidaMaxima(), max_vida);
 	}
 
 }

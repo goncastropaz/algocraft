@@ -1,19 +1,19 @@
 package fiuba.algo3.classes.buildings;
 
 import fiuba.algo3.classes.exceptions.FueraDeMatriz;
-import fiuba.algo3.classes.stats.ConstructionTime;
+import fiuba.algo3.classes.stats.CostoDeRecursos;
+import fiuba.algo3.classes.stats.Escudo;
 import fiuba.algo3.classes.stats.Posicion;
-import fiuba.algo3.classes.stats.Health;
-import fiuba.algo3.classes.stats.ResourceCost;
-import fiuba.algo3.classes.stats.Shield;
+import fiuba.algo3.classes.stats.TiempoDeConstruccion;
+import fiuba.algo3.classes.stats.Vida;
 
 public abstract class RaceBuilding {
 
 	private String name;
-	private ResourceCost cost;
-	private ConstructionTime constructionTime;
-	private Health health;
-	private Shield shield;
+	private CostoDeRecursos cost;
+	private TiempoDeConstruccion constructionTime;
+	private Vida health;
+	private Escudo shield;
 	private RaceUnitBuilding unitBuilder;
 	private Posicion coordenadas;
 
@@ -22,10 +22,10 @@ public abstract class RaceBuilding {
 			String unit, Integer coordenadaX, Integer coordenadaY) throws FueraDeMatriz {
 
 		this.name = name;
-		this.cost = new ResourceCost(mineralCost, gasCost);
-		this.constructionTime = new ConstructionTime(construtionTime);
-		this.health = new Health(maxHealth);
-		this.shield = new Shield(maxShield);
+		this.cost = new CostoDeRecursos(mineralCost, gasCost);
+		this.constructionTime = new TiempoDeConstruccion(construtionTime);
+		this.health = new  Vida(maxHealth);
+		this.shield = new Escudo(maxShield);
 		this.unitBuilder = new RaceUnitBuilding();
 		this.coordenadas = new Posicion(coordenadaX, coordenadaY);
 
@@ -39,35 +39,35 @@ public abstract class RaceBuilding {
 		this.name = name;
 	}
 
-	public ResourceCost getCost() {
+	public CostoDeRecursos getCost() {
 		return cost;
 	}
 
-	public void setCost(ResourceCost cost) {
+	public void setCost(CostoDeRecursos cost) {
 		this.cost = cost;
 	}
 
-	public ConstructionTime getConstructionTime() {
+	public TiempoDeConstruccion getConstructionTime() {
 		return constructionTime;
 	}
 
-	public void setConstructionTime(ConstructionTime constructionTime) {
+	public void setConstructionTime(TiempoDeConstruccion constructionTime) {
 		this.constructionTime = constructionTime;
 	}
 
-	public Health getHealth() {
+	public Vida getHealth() {
 		return health;
 	}
 
-	public void setHealth(Health health) {
+	public void setHealth( Vida health) {
 		this.health = health;
 	}
 
-	public Shield getShield() {
+	public Escudo getShield() {
 		return shield;
 	}
 
-	public void setShield(Shield shield) {
+	public void setShield(Escudo shield) {
 		this.shield = shield;
 	}
 

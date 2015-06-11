@@ -5,11 +5,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import fiuba.algo3.classes.builders.units.ConstructorDeUnidadesDeRaza;
 import fiuba.algo3.classes.units.RaceUnit;
 
-public class TerranUnitBuilder extends RaceUnitBuilder {
+public class ConstructorDeUnidadesTerran extends ConstructorDeUnidadesDeRaza {
 
-	public TerranUnitBuilder() {
+	public ConstructorDeUnidadesTerran() {
 		super();
 		raceUnitMap = getTerranBuildingMap();
 	}
@@ -18,7 +19,7 @@ public class TerranUnitBuilder extends RaceUnitBuilder {
 		Map<String,RaceUnit> raceUnitMap = new HashMap<String,RaceUnit>();
 		List<RaceUnit> raceUnitList =  new ArrayList<RaceUnit>();
 		for(RaceUnit raceUnit : raceUnitList){
-			raceUnitMap.put(raceUnit.getName(), raceUnit);
+			raceUnitMap.put(raceUnit.getNombre(), raceUnit);
 		}
 		return raceUnitMap;
 	}

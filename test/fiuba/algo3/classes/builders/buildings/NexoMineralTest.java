@@ -19,7 +19,7 @@ public class NexoMineralTest {
 		Integer cost = 50;
 		
 		assertNotNull(unNexo);
-		assertEquals(unNexo.getCost().getMineralCost(), cost);
+		assertEquals(unNexo.getCost().getCostoMineral(), cost);
 	}
 
 	
