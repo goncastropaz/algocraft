@@ -1,8 +1,9 @@
 package fiuba.algo3.classes.buildings;
 
 import fiuba.algo3.classes.exceptions.FueraDeMatriz;
+import fiuba.algo3.classes.stats.Posicion;
 
-public class NexoMineral extends RaceBuilding {
+public class NexoMineral extends Construccion {
 
 	private static final String  NOMBRE = "NEXO_MINERAL";
 	private static final Integer COSTO_MINERAL = 50;
@@ -12,9 +13,9 @@ public class NexoMineral extends RaceBuilding {
 	private static final Integer ESCUDO = 250;
 	private static final String  UNIDAD = "";
 
-	public NexoMineral(Integer coordenadaX, Integer coordenadaY) throws FueraDeMatriz {
+	public NexoMineral(Posicion posicion) throws FueraDeMatriz {
 		super(NOMBRE, COSTO_MINERAL, COSTO_GAS, TIEMPO_CONSTRUCCION, MAX_VIDA,
-				ESCUDO, UNIDAD, coordenadaX, coordenadaY);
+				ESCUDO, UNIDAD, posicion);
 	}
 
 }

@@ -7,7 +7,7 @@ import fiuba.algo3.classes.stats.Posicion;
 import fiuba.algo3.classes.stats.TiempoDeConstruccion;
 import fiuba.algo3.classes.stats.Vida;
 
-public abstract class RaceBuilding {
+public abstract class Construccion {
 
 	private String name;
 	private CostoDeRecursos cost;
@@ -17,9 +17,9 @@ public abstract class RaceBuilding {
 	private RaceUnitBuilding unitBuilder;
 	private Posicion coordenadas;
 
-	public RaceBuilding(String name, Integer mineralCost, Integer gasCost,
+	public Construccion(String name, Integer mineralCost, Integer gasCost,
 			Integer construtionTime, Integer maxHealth, Integer maxShield,
-			String unit, Integer coordenadaX, Integer coordenadaY) throws FueraDeMatriz {
+			String unit, Posicion posicion) throws FueraDeMatriz {
 
 		this.name = name;
 		this.cost = new CostoDeRecursos(mineralCost, gasCost);
@@ -27,7 +27,7 @@ public abstract class RaceBuilding {
 		this.health = new  Vida(maxHealth);
 		this.shield = new Escudo(maxShield);
 		this.unitBuilder = new RaceUnitBuilding();
-		this.coordenadas = new Posicion(coordenadaX, coordenadaY);
+		this.coordenadas = posicion;
 
 	}
 

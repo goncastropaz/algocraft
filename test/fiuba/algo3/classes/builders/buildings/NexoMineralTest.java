@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import fiuba.algo3.classes.buildings.NexoMineral;
 import fiuba.algo3.classes.exceptions.FueraDeMatriz;
+import fiuba.algo3.classes.stats.Posicion;
 
 public class NexoMineralTest {
 
@@ -14,8 +15,9 @@ public class NexoMineralTest {
 	public void testCrearMineralLink() throws FueraDeMatriz{
 		Integer fila = 1;
 		Integer columna = 1;
+		Posicion posicion = new Posicion(fila, columna);
 		
-		NexoMineral unNexo = new NexoMineral(fila,columna);
+		NexoMineral unNexo = new NexoMineral(posicion);
 		Integer cost = 50;
 		
 		assertNotNull(unNexo);

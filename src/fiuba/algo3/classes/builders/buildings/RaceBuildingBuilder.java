@@ -3,12 +3,12 @@ package fiuba.algo3.classes.builders.buildings;
 import java.util.Map;
 
 import fiuba.algo3.classes.builders.units.ConstructorDeUnidadesDeRaza;
-import fiuba.algo3.classes.buildings.RaceBuilding;
+import fiuba.algo3.classes.buildings.Construccion;
 import fiuba.algo3.utils.Constants;
 
 public class RaceBuildingBuilder {
 
-	protected Map<String,RaceBuilding> raceBuildingMap;
+	protected Map<String,Construccion> raceBuildingMap;
 	protected ConstructorDeUnidadesDeRaza raceUnitBuilder;
 	
 	public static RaceBuildingBuilder getRaceBuildingBuilder(Integer raceId){
