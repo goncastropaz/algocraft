@@ -1,4 +1,4 @@
-package fiuba.algo3.algocraft.units.tests;
+package fiuba.algo3.algocraft.unidades;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

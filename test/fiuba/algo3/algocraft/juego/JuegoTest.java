@@ -1,4 +1,4 @@
-package fiuba.algo3.algocraft.game.tests;
+package fiuba.algo3.algocraft.juego;
 
 import static org.junit.Assert.assertEquals;
 

@@ -1,4 +1,4 @@
-package fiuba.algo3.algocraft.movimientos.tests;
+package fiuba.algo3.algocraft.movimientos;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
