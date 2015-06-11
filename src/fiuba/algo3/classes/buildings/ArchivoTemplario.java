@@ -3,7 +3,7 @@ package fiuba.algo3.classes.buildings;
 import fiuba.algo3.classes.exceptions.FueraDeMatriz;
 import fiuba.algo3.classes.stats.Posicion;
 
-public class ArchivoTemprario extends Construccion {
+public class ArchivoTemplario extends Construccion {
 
 	private static final String  NOMBRE = "ARCHIVO_TEMPLARIO";
 	private static final Integer COSTO_MINERAL = 150;
@@ -13,7 +13,7 @@ public class ArchivoTemprario extends Construccion {
 	private static final Integer ESCUDO = 500;
 	private static final String  UNIDAD = "";
 	
-	public ArchivoTemprario(Posicion posicion) throws FueraDeMatriz {
+	public ArchivoTemplario(Posicion posicion) throws FueraDeMatriz {
 		super(NOMBRE, COSTO_MINERAL, COSTO_GAS, TIEMPO_CONSTRUCCION, MAX_VIDA,
 				ESCUDO, UNIDAD, posicion);
 	}
