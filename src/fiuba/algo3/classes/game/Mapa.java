@@ -39,7 +39,7 @@ public class Mapa {
 			}
 			
 			private void setAreasEspaciales(){
-				for(int fil=0; fil<15; fil++){
+				for(int fil=1; fil<15; fil++){
 					for(int col= 8; col<12; col++){
 						matriz[fil][col].setAsEspacial();
 					}

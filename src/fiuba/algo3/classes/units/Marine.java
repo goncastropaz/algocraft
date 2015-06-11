@@ -3,7 +3,7 @@ package fiuba.algo3.classes.units;
 import fiuba.algo3.classes.exceptions.FueraDeMatriz;
 import fiuba.algo3.classes.stats.Posicion;
 
-public class Marine extends RaceUnit{
+public class Marine extends UnidadTerrestre{
 
 	private static final String NAME = "MARINE";
 	private static final Integer MINERAL_COST = 50;

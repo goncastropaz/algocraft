@@ -48,9 +48,9 @@ public class MapaTest {
 			
 			Mapa mapa = Mapa.getInstance();
 			Celda espacial = mapa.getCelda(14,8);
-			Celda espacial2 = mapa.getCelda(0,11);
+			Celda espacial2 = mapa.getCelda(1,11);
 			Celda tierra = mapa.getCelda(15,8);
-			Celda tierra2 = mapa.getCelda(0,12);
+			Celda tierra2 = mapa.getCelda(1,12);
 			
 			assertTrue(espacial.isEspacial());
 			assertTrue(espacial2.isEspacial());

@@ -6,6 +6,7 @@ import static org.junit.Assert.assertNull;
 import org.junit.Test;
 
 import fiuba.algo3.classes.exceptions.FueraDeMatriz;
+import fiuba.algo3.classes.exceptions.UnidadTerrestreEnAreaEspacial;
 import fiuba.algo3.classes.game.Mapa;
 import fiuba.algo3.classes.movimientos.Arriba;
 import fiuba.algo3.classes.movimientos.Movimiento;
@@ -14,7 +15,7 @@ import fiuba.algo3.classes.units.RaceUnit;
 public class ArribaTest {
 
 	@Test
-	public void testmoverArribaDeberiaMoverLaUnidadALaCeldaDeArriba() throws FueraDeMatriz{
+	public void testmoverArribaDeberiaMoverLaUnidadALaCeldaDeArriba() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial{
 		Movimiento arriba = new Arriba();
 		Mapa mapa = Mapa.getInstance();
 		RaceUnit unidad = new RaceUnit();
@@ -27,7 +28,7 @@ public class ArribaTest {
 	}
 	
 	@Test
-	public void testmoverArribaDeberiaRemoverLaUnidadDeLaViejaCelda() throws FueraDeMatriz{
+	public void testmoverArribaDeberiaRemoverLaUnidadDeLaViejaCelda() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial{
 		Movimiento arriba = new Arriba();
 		Mapa mapa = Mapa.getInstance();
 		RaceUnit unidad = new RaceUnit();
@@ -39,7 +40,7 @@ public class ArribaTest {
 	}
 	
 	@Test
-	public void testmoverArribaDeberiaAgregarLaUnidadALaNuevaCelda() throws FueraDeMatriz{
+	public void testmoverArribaDeberiaAgregarLaUnidadALaNuevaCelda() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial{
 		Movimiento arriba = new Arriba();
 		Mapa mapa = Mapa.getInstance();
 		RaceUnit unidad = new RaceUnit();
@@ -51,7 +52,7 @@ public class ArribaTest {
 	}
 	
 	@Test (expected = FueraDeMatriz.class)
-	public void testmoverArribaDeberiaLanzarErrorSiEstaEnElBordeSuperiorDelMapa() throws FueraDeMatriz{
+	public void testmoverArribaDeberiaLanzarErrorSiEstaEnElBordeSuperiorDelMapa() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial{
 		Movimiento arriba = new Arriba();
 		Mapa mapa = Mapa.getInstance();
 		RaceUnit unidad = new RaceUnit();

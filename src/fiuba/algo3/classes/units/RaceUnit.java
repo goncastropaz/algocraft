@@ -1,7 +1,9 @@
 package fiuba.algo3.classes.units;
 
 import fiuba.algo3.classes.exceptions.FueraDeMatriz;
+import fiuba.algo3.classes.exceptions.UnidadTerrestreEnAreaEspacial;
 import fiuba.algo3.classes.game.Celda;
+import fiuba.algo3.classes.game.Mapa;
 import fiuba.algo3.classes.stats.CostoDeRecursos;
 import fiuba.algo3.classes.stats.Escudo;
 import fiuba.algo3.classes.stats.Posicion;
@@ -15,10 +17,9 @@ public class RaceUnit {
 	private TiempoDeConstruccion tiempoDeConstruccion;
 	private Vida vida;
 	private Escudo escudo;
-	private Posicion posicion;
-	private Celda ubicacion;
+	public Celda ubicacion;
 	
-	public RaceUnit(){
+	public RaceUnit(){  //ESTO POR QUE LO CREARON?
 		
 	}
 	
@@ -28,7 +29,7 @@ public class RaceUnit {
 		this.tiempoDeConstruccion = new TiempoDeConstruccion(tiempoDeConstruccion);
 		this.vida = new Vida(vidaMaxima);
 		this.escudo = (new Escudo(escudoMaximo));
-		this.posicion = pos;
+		this.ubicacion = Mapa.getInstance().getCelda(pos.getFila(),pos.getColumna()); 
 	}
 
 	public String getNombre() {
@@ -76,7 +77,7 @@ public class RaceUnit {
 		return this.ubicacion;
 	}
 
-	public void setNuevaUbicacion(Celda celda) {
+	public void setNuevaUbicacion(Celda celda) throws UnidadTerrestreEnAreaEspacial {
 		this.ubicacion = celda;
 		celda.setUnidad(this);
 		
