@@ -14,7 +14,6 @@ public class Barraca extends Construccion {
 	private static final Integer ESCUDO = 0;
 	private static final String  UNIDAD = "";
 
-
 	public Barraca(Posicion posicion) throws FueraDeMatriz {
 		super(NOMBRE, COSTO_MINERAL, COSTO_GAS, TIEMPO_CONSTRUCCION, MAX_VIDA,
 				ESCUDO, UNIDAD, posicion);
