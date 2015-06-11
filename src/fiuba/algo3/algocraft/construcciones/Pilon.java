@@ -1,6 +1,6 @@
 package fiuba.algo3.algocraft.construcciones;
 
-import fiuba.algo3.classes.exceptions.FueraDeMatriz;
+import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
 import fiuba.algo3.classes.stats.Posicion;
 
 public class Pilon extends Construccion {

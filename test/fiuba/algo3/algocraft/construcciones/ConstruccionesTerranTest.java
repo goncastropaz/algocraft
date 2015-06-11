@@ -10,7 +10,7 @@ import fiuba.algo3.algocraft.construcciones.CentroDeMineral;
 import fiuba.algo3.algocraft.construcciones.DepositoSuministros;
 import fiuba.algo3.algocraft.construcciones.Fabrica;
 import fiuba.algo3.algocraft.construcciones.Refineria;
-import fiuba.algo3.classes.exceptions.FueraDeMatriz;
+import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
 import fiuba.algo3.classes.stats.Posicion;
 
 public class ConstruccionesTerranTest {

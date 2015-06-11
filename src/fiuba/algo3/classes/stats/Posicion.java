@@ -1,6 +1,6 @@
 package fiuba.algo3.classes.stats;
 
-import fiuba.algo3.classes.exceptions.FueraDeMatriz;
+import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
 
 public class Posicion {
 

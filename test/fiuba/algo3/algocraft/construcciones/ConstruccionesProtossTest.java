@@ -10,7 +10,7 @@ import fiuba.algo3.algocraft.construcciones.ArchivoTemplario;
 import fiuba.algo3.algocraft.construcciones.Asimilador;
 import fiuba.algo3.algocraft.construcciones.NexoMineral;
 import fiuba.algo3.algocraft.construcciones.Pilon;
-import fiuba.algo3.classes.exceptions.FueraDeMatriz;
+import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
 import fiuba.algo3.classes.stats.Posicion;
 
 public class ConstruccionesProtossTest {
