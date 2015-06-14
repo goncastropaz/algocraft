@@ -10,7 +10,9 @@ import fiuba.algo3.algocraft.excepciones.UnidadTerrestreEnAreaEspacial;
 import fiuba.algo3.algocraft.juego.Mapa;
 import fiuba.algo3.algocraft.movimientos.Derecha;
 import fiuba.algo3.algocraft.movimientos.Movimiento;
-import fiuba.algo3.algocraft.unidades.RaceUnit;
+import fiuba.algo3.algocraft.unidades.Marine;
+import fiuba.algo3.algocraft.unidades.Unidad;
+import fiuba.algo3.classes.stats.Posicion;
 
 public class DerechaTest {
 
@@ -18,8 +20,11 @@ public class DerechaTest {
 	public void testmoverDerechaDeberiaMoverLaUnidadALaCeldaDeLaDerecha() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial{
 		Movimiento derecha = new Derecha();
 		Mapa mapa = Mapa.getInstance();
-		RaceUnit unidad = new RaceUnit();
+//		Unidad unidad = new Unidad();
+		Marine unidad = new Marine(new Posicion(2,1));
+
 		unidad.setNuevaUbicacion(mapa.getCelda(1, 1));
+		
 		derecha.mover(unidad);
 		
 		assertEquals(unidad.getUbicacion().getPosicion().getFila(),1);
@@ -31,7 +36,9 @@ public class DerechaTest {
 	public void testmoverDerechaDeberiaRemoverLaUnidadDeLaViejaCelda() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial{
 		Movimiento derecha = new Derecha();
 		Mapa mapa = Mapa.getInstance();
-		RaceUnit unidad = new RaceUnit();
+//		Unidad unidad = new Unidad();
+		Marine unidad = new Marine(new Posicion(1,1));
+
 		unidad.setNuevaUbicacion(mapa.getCelda(1, 1));
 		derecha.mover(unidad);
 		
@@ -43,7 +50,9 @@ public class DerechaTest {
 	public void testmoverDerechaDeberiaAgregarLaUnidadALaNuevaCelda() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial{
 		Movimiento derecha = new Derecha();
 		Mapa mapa = Mapa.getInstance();
-		RaceUnit unidad = new RaceUnit();
+//		Unidad unidad = new Unidad();
+		Marine unidad = new Marine(new Posicion(1,1));
+
 		unidad.setNuevaUbicacion(mapa.getCelda(1, 1));
 		derecha.mover(unidad);
 		
@@ -55,7 +64,9 @@ public class DerechaTest {
 	public void testmoverDerechaDeberiaLanzarErrorSiEstaEnElBordeDerechoDelMapa() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial{
 		Movimiento derecha = new Derecha();
 		Mapa mapa = Mapa.getInstance();
-		RaceUnit unidad = new RaceUnit();
+//		Unidad unidad = new Unidad();
+		Marine unidad = new Marine(new Posicion(1,1));
+
 		unidad.setNuevaUbicacion(mapa.getCelda(5, 19));
 		derecha.mover(unidad);
 	}

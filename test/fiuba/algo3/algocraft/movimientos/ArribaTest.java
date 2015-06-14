@@ -10,7 +10,9 @@ import fiuba.algo3.algocraft.excepciones.UnidadTerrestreEnAreaEspacial;
 import fiuba.algo3.algocraft.juego.Mapa;
 import fiuba.algo3.algocraft.movimientos.Arriba;
 import fiuba.algo3.algocraft.movimientos.Movimiento;
-import fiuba.algo3.algocraft.unidades.RaceUnit;
+import fiuba.algo3.algocraft.unidades.Marine;
+import fiuba.algo3.algocraft.unidades.Unidad;
+import fiuba.algo3.classes.stats.Posicion;
 
 public class ArribaTest {
 
@@ -18,7 +20,9 @@ public class ArribaTest {
 	public void testmoverArribaDeberiaMoverLaUnidadALaCeldaDeArriba() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial{
 		Movimiento arriba = new Arriba();
 		Mapa mapa = Mapa.getInstance();
-		RaceUnit unidad = new RaceUnit();
+//		Unidad unidad = new Unidad();
+		Marine unidad = new Marine(new Posicion(1,1));
+
 		unidad.setNuevaUbicacion(mapa.getCelda(2, 2));
 		arriba.mover(unidad);
 		
@@ -31,7 +35,9 @@ public class ArribaTest {
 	public void testmoverArribaDeberiaRemoverLaUnidadDeLaViejaCelda() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial{
 		Movimiento arriba = new Arriba();
 		Mapa mapa = Mapa.getInstance();
-		RaceUnit unidad = new RaceUnit();
+//		Unidad unidad = new Unidad();
+		Marine unidad = new Marine(new Posicion(1,1));
+
 		unidad.setNuevaUbicacion(mapa.getCelda(2, 2));
 		arriba.mover(unidad);
 		
@@ -43,7 +49,9 @@ public class ArribaTest {
 	public void testmoverArribaDeberiaAgregarLaUnidadALaNuevaCelda() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial{
 		Movimiento arriba = new Arriba();
 		Mapa mapa = Mapa.getInstance();
-		RaceUnit unidad = new RaceUnit();
+//		Unidad unidad = new Unidad();
+		Marine unidad = new Marine(new Posicion(1,1));
+
 		unidad.setNuevaUbicacion(mapa.getCelda(2, 2));
 		arriba.mover(unidad);
 		
@@ -55,7 +63,9 @@ public class ArribaTest {
 	public void testmoverArribaDeberiaLanzarErrorSiEstaEnElBordeSuperiorDelMapa() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial{
 		Movimiento arriba = new Arriba();
 		Mapa mapa = Mapa.getInstance();
-		RaceUnit unidad = new RaceUnit();
+//		Unidad unidad = new Unidad();
+		Marine unidad = new Marine(new Posicion(1,1));
+
 		unidad.setNuevaUbicacion(mapa.getCelda(0, 2));
 		arriba.mover(unidad);
 	}

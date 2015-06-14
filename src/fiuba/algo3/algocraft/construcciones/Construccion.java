@@ -1,6 +1,7 @@
 package fiuba.algo3.algocraft.construcciones;
 
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
+import fiuba.algo3.algocraft.unidades.IUnidad;
 import fiuba.algo3.classes.stats.CostoDeRecursos;
 import fiuba.algo3.classes.stats.Escudo;
 import fiuba.algo3.classes.stats.Posicion;
@@ -85,6 +86,11 @@ public abstract class Construccion {
 
 	public void setCoordenadas(Posicion coordenadas) {
 		this.coordenadas = coordenadas;
+	}
+	
+	public IUnidad crearUnidad(FabricaDeUnidades fabrica) throws FueraDeMatriz{
+		//la unidad se crea en la misma posicion que el edificio
+		return fabrica.crearUnidad(this.getCoordenadas());
 	}
 
 }

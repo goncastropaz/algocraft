@@ -1,7 +1,7 @@
 package fiuba.algo3.algocraft.juego;
 
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
-import fiuba.algo3.algocraft.unidades.RaceUnit;
+import fiuba.algo3.algocraft.unidades.Unidad;
 import fiuba.algo3.classes.stats.Posicion;
 
 public class Celda {
@@ -11,7 +11,7 @@ public class Celda {
 	private Posicion posicion;
 	private boolean mineral;
 	private boolean gas;
-	private RaceUnit unidad;
+	private Unidad unidad;
 	
 	public Celda(int fila, int columna) throws FueraDeMatriz{
 		Posicion pos = new Posicion (fila,columna);
@@ -44,7 +44,7 @@ public class Celda {
 		this.gas = true;
 	}
 
-	public void setUnidad(RaceUnit raceUnit) {
+	public void setUnidad(Unidad raceUnit) {
 		this.unidad = raceUnit;
 		
 	}
@@ -54,7 +54,7 @@ public class Celda {
 		this.unidad = null;
 	}
 
-	public RaceUnit getUnidad() {
+	public Unidad getUnidad() {
 		// TODO Auto-generated method stub
 		return this.unidad;
 	}

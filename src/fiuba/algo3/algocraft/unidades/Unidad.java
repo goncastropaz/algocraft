@@ -10,7 +10,7 @@ import fiuba.algo3.classes.stats.Posicion;
 import fiuba.algo3.classes.stats.TiempoDeConstruccion;
 import fiuba.algo3.classes.stats.Vida;
 
-public class RaceUnit {
+public abstract class Unidad implements IUnidad{
 
 	private String nombre;
 	private CostoDeRecursos costoDeRecursos;
@@ -19,11 +19,7 @@ public class RaceUnit {
 	private Escudo escudo;
 	public Celda ubicacion;
 	
-	public RaceUnit(){  //ESTO POR QUE LO CREARON?
-		
-	}
-	
-	public RaceUnit(String nombre, Integer costoMineral, Integer costoGas, Integer tiempoDeConstruccion, Integer vidaMaxima, Integer escudoMaximo, Posicion pos) throws FueraDeMatriz{
+	public Unidad(String nombre, Integer costoMineral, Integer costoGas, Integer tiempoDeConstruccion, Integer vidaMaxima, Integer escudoMaximo, Posicion pos) throws FueraDeMatriz{
 		this.nombre = nombre;
 		this.costoDeRecursos = new CostoDeRecursos(costoMineral,costoGas);
 		this.tiempoDeConstruccion = new TiempoDeConstruccion(tiempoDeConstruccion);
