@@ -11,7 +11,8 @@ public class Marine extends UnidadTerrestre{
 	private static final Integer CONSTRUCTION_TIME = 3;
 	private static final Integer MAX_HEALTH = 40;
 	private static final Integer MAX_SHIELD = 0;
-	private static final Integer RANGE = 4;
+	private static final Integer LAND_RANGE = 4;
+	private static final Integer AIR_RANGE = 4;
 	private static final Integer LAND_DMG = 6;
 	private static final Integer AIR_DMG = 6;
 	private static final Integer SUPPLY_COST = 1;
