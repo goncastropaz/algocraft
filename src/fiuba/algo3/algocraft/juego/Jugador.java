@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fiuba.algo3.algocraft.construcciones.Construccion;
+import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
 import fiuba.algo3.algocraft.excepciones.NombreConMenosDe4Caracteres;
 import fiuba.algo3.algocraft.unidades.Unidad;
 
@@ -18,9 +19,10 @@ public class Jugador {
 	private int gasVespeno;
 	private int poblacion;
 	private int cuposDePoblacionOcupada;
+	private VisionJugador visionMapa;
 	
 	
-	public Jugador(){
+	public Jugador() throws FueraDeMatriz{
 		this.nombre = ""; 
 		this.color = "";
 		this.construccionesList = new ArrayList<Construccion>();
@@ -29,6 +31,7 @@ public class Jugador {
 		this.gasVespeno =0;
 		this.poblacion =0;
 		this.cuposDePoblacionOcupada =0;
+		this.visionMapa = new VisionJugador();
 	}
 	
 	public void setNombre(String nombre) throws NombreConMenosDe4Caracteres{

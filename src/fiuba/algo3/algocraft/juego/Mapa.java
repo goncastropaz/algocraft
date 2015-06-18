@@ -8,12 +8,13 @@ public class Mapa {
 			
 			private static Mapa INSTANCE = null;
 			private Celda[][] matriz;
+			private static int tamanio =20;
 						
 			private Mapa() throws FueraDeMatriz{
 				
-				Celda mat[][] = new Celda[20][20];
-				for(int f=0;f<20;f++){
-					for(int c=0;c<20;c++){
+				Celda mat[][] = new Celda[tamanio][tamanio];
+				for(int f=0;f<tamanio;f++){
+					for(int c=0;c<tamanio;c++){
 						Celda unaCelda = new Celda(f,c);
 						mat[f][c] = unaCelda;
 					};
@@ -64,7 +65,9 @@ public class Mapa {
 				// TODO Auto-generated method stub
 				return matriz[fil][col];
 			}
-			
+			public int getTamanio(){
+				return this.tamanio;
+			}
 					
 			   
 		
