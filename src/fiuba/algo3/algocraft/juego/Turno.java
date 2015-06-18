@@ -41,16 +41,7 @@ public class Turno {
 			this.cantidadDeAccionesDisponibles = this.cantidadDeAccionesDisponibles -1;
 			
 			if(this.cantidadDeAccionesDisponibles ==0){
-				Jugador aux = actualJugador;
-				this.actualJugador = proximoJugador;
-				this.proximoJugador = aux;
-				this.cantidadDeAccionesDisponibles =3;
-				this.actualizarConstruccionesTurno(this.actualJugador);
-				this.actualizarConstruccionesTurno(this.proximoJugador);
-				this.actualizarUnidadesTurno(this.actualJugador);
-				this.actualizarUnidadesTurno(this.proximoJugador);
-				this.actualizarRecursos(this.actualJugador);
-				this.actualizarRecursos(this.proximoJugador);
+				this.cambiarTurnoJugador();
 			}
 		}
 		
@@ -85,6 +76,19 @@ public class Turno {
 			for(int i = 0; i< construccionesList.size(); i++){
 				construccionesList.get(0).actualizarTurno(jugador);
 			}
+		}
+		
+		public void cambiarTurnoJugador(){
+			Jugador aux = actualJugador;
+			this.actualJugador = proximoJugador;
+			this.proximoJugador = aux;
+			this.cantidadDeAccionesDisponibles =3;
+			this.actualizarConstruccionesTurno(this.actualJugador);
+			this.actualizarConstruccionesTurno(this.proximoJugador);
+			this.actualizarUnidadesTurno(this.actualJugador);
+			this.actualizarUnidadesTurno(this.proximoJugador);
+			this.actualizarRecursos(this.actualJugador);
+			this.actualizarRecursos(this.proximoJugador);
 		}
 		
 }
