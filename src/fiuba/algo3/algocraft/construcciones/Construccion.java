@@ -1,6 +1,7 @@
 package fiuba.algo3.algocraft.construcciones;
 
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
+import fiuba.algo3.algocraft.juego.Jugador;
 import fiuba.algo3.algocraft.unidades.IUnidad;
 import fiuba.algo3.classes.stats.CostoDeRecursos;
 import fiuba.algo3.classes.stats.Escudo;
@@ -92,5 +93,8 @@ public abstract class Construccion {
 		//la unidad se crea en la misma posicion que el edificio
 		return fabrica.crearUnidad(this.getCoordenadas());
 	}
-
+	
+	public void actualizarTurno(Jugador jugador){
+		this.constructionTime.actualizarTiempo();
+	}
 }

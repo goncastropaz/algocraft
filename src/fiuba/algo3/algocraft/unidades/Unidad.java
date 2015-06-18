@@ -3,6 +3,7 @@ package fiuba.algo3.algocraft.unidades;
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
 import fiuba.algo3.algocraft.excepciones.UnidadTerrestreEnAreaEspacial;
 import fiuba.algo3.algocraft.juego.Celda;
+import fiuba.algo3.algocraft.juego.Jugador;
 import fiuba.algo3.algocraft.juego.Mapa;
 import fiuba.algo3.classes.stats.CostoDeRecursos;
 import fiuba.algo3.classes.stats.Escudo;
@@ -19,13 +20,14 @@ public abstract class Unidad implements IUnidad{
 	private Escudo escudo;
 	public Celda ubicacion;
 	
-	public Unidad(String nombre, Integer costoMineral, Integer costoGas, Integer tiempoDeConstruccion, Integer vidaMaxima, Integer escudoMaximo, Posicion pos) throws FueraDeMatriz{
+	public Unidad(String nombre, Integer costoMineral, Integer costoGas, Integer tiempoDeConstruccion, Integer vidaMaxima, Integer escudoMaximo,Posicion pos) throws FueraDeMatriz{
 		this.nombre = nombre;
 		this.costoDeRecursos = new CostoDeRecursos(costoMineral,costoGas);
 		this.tiempoDeConstruccion = new TiempoDeConstruccion(tiempoDeConstruccion);
 		this.vida = new Vida(vidaMaxima);
 		this.escudo = (new Escudo(escudoMaximo));
 		this.ubicacion = Mapa.getInstance().getCelda(pos.getFila(),pos.getColumna()); 
+		
 	}
 
 	public String getNombre() {
@@ -78,5 +80,11 @@ public abstract class Unidad implements IUnidad{
 		celda.setUnidad(this);
 		
 	}
+
+	public void actualizarTurno(Jugador jugador) {
+				
+	}
+
+
 	
 }

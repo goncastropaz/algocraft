@@ -15,6 +15,7 @@ public class CrearPilon implements Ejecutable{
 			Pilon construccion = new Pilon(celda.getPosicion());
 			Jugador jugador = Juego.getInstance().getActualJugador();
 			jugador.agregarConstruccion(construccion);
+			jugador.agregarPoblacion();
 			return true;
 		} catch (FueraDeMatriz e) {
 			return false;

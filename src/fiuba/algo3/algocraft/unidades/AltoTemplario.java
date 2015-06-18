@@ -1,6 +1,10 @@
 package fiuba.algo3.algocraft.unidades;
 
+import java.util.ArrayList;
+
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
+import fiuba.algo3.algocraft.juego.Jugador;
+import fiuba.algo3.algocraft.magias.Magia;
 import fiuba.algo3.classes.stats.Posicion;
 
 public class AltoTemplario extends UnidadTerrestre {
@@ -22,9 +26,22 @@ public class AltoTemplario extends UnidadTerrestre {
 	private static final Integer INITIAL_ENERGY = 50;
 	private static final Integer RECHARGED_ENERGY = 15;
 	
+	private int energia;
+	private ArrayList<Magia> magias;
+	
 	public AltoTemplario(Posicion pos) throws FueraDeMatriz{
 		
 		super(NAME,MINERAL_COST,GAS_COST,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD,pos);
 		
+		this.energia = INITIAL_ENERGY;
+		this.magias = new ArrayList<Magia>();
+		this.magias.add(new TormentaPsionica());
+		this.magias.add(new Alucinacion());
+		
+	}
+	
+	public void actualizarTurno(Jugador jugador){
+		this.energia = this.energia + RECHARGED_ENERGY;
+		if (this.energia> MAX_ENERGY) this.energia = MAX_ENERGY;
 	}
 }

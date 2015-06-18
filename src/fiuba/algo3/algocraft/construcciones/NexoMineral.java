@@ -1,6 +1,7 @@
 package fiuba.algo3.algocraft.construcciones;
 
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
+import fiuba.algo3.algocraft.juego.Jugador;
 import fiuba.algo3.classes.stats.Posicion;
 
 public class NexoMineral extends Construccion {
@@ -17,5 +18,11 @@ public class NexoMineral extends Construccion {
 		super(NOMBRE, COSTO_MINERAL, COSTO_GAS, TIEMPO_CONSTRUCCION, MAX_VIDA,
 				ESCUDO, UNIDAD, posicion);
 	}
+	
+	public void actualizarTurno(Jugador jugador){
+		if(this.getConstructionTime().getTurnosRestantes()==0)	jugador.actualizarMineral();
+		this.getConstructionTime().actualizarTiempo();
+}
+
 
 }

@@ -65,9 +65,7 @@ public class Juego {
 			
 			
 		}
-		public Jugador cambiarTurno(){
-			return this.turno.cambiarTurno();
-		}
+	
 
 		public Celda getActualCelda(){
 			return turno.getActualCelda();

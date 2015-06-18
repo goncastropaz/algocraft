@@ -14,6 +14,10 @@ public class Jugador {
 	private Raza raza;
 	private List<Construccion> construccionesList;
 	private List<Unidad> unidadesList;
+	private int mineral;
+	private int gasVespeno;
+	private int poblacion;
+	private int cuposDePoblacionOcupada;
 	
 	
 	public Jugador(){
@@ -21,7 +25,10 @@ public class Jugador {
 		this.color = "";
 		this.construccionesList = new ArrayList<Construccion>();
 		this.unidadesList = new ArrayList<Unidad>();
-	
+		this.mineral =0;
+		this.gasVespeno =0;
+		this.poblacion =0;
+		this.cuposDePoblacionOcupada =0;
 	}
 	
 	public void setNombre(String nombre) throws NombreConMenosDe4Caracteres{
@@ -57,5 +64,28 @@ public class Jugador {
 	public void agregarConstruccion(Construccion construccion){
 		this.construccionesList.add(construccion);
 	}
+	
+	public void agregarUnidad(Unidad unidad, int cupoDePoblacion){
+		this.unidadesList.add(unidad);
+		this.cuposDePoblacionOcupada= this.cuposDePoblacionOcupada +cupoDePoblacion;
+	}
+
+	public void actualizarMineral() {
+		this.mineral = this.mineral + 10;
+		
+	}
+	public void actualizarGasVespeno(){
+		this.gasVespeno = this.gasVespeno +10;
+	}
+
+	public void agregarPoblacion() {
+		this.poblacion = this.poblacion + 5;
+		if(this.poblacion>200) this.poblacion=200;
+		
+	}
+	public boolean tieneCupoDePoblacion(int cupo){
+		return ((this.poblacion-this.cuposDePoblacionOcupada)>= cupo);
+	}
+
 	
 }

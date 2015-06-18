@@ -18,4 +18,11 @@ public class TiempoDeConstruccion {
 		return turnosRestantes;
 	}
 
+	public void actualizarTiempo() {
+		if(this.turnosRestantes > 0 ){
+			this.turnosRestantes = this.turnosRestantes -1;
+		}
+		
+	}
+
 }

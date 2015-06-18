@@ -15,6 +15,7 @@ public class CrearDepositoSuministros implements Ejecutable{
 			DepositoSuministros construccion = new DepositoSuministros(celda.getPosicion());
 			Jugador jugador = Juego.getInstance().getActualJugador();
 			jugador.agregarConstruccion(construccion);
+			jugador.agregarPoblacion();
 			return true;
 		} catch (FueraDeMatriz e) {
 			return false;
