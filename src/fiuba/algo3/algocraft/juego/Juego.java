@@ -68,11 +68,13 @@ public class Juego {
 		public Jugador cambiarTurno(){
 			return this.turno.cambiarTurno();
 		}
-		
-		public void ejecutarAccion(Jugador jugador){
-			
+
+		public Celda getActualCelda(){
+			return turno.getActualCelda();
 		}
 		
+		public Jugador getActualJugador(){
+			return turno.getActualJugador();
+		}
 		
-
 	}
