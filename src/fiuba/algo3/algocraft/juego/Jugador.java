@@ -90,5 +90,13 @@ public class Jugador {
 		return ((this.poblacion-this.cuposDePoblacionOcupada)>= cupo);
 	}
 
+	public VisionJugador getVisionMapa() {
+		return visionMapa;
+	}
+
+	public void setVisionMapa(VisionJugador visionMapa) {
+		this.visionMapa = visionMapa;
+	}
+
 	
 }
