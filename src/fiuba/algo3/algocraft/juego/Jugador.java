@@ -7,6 +7,7 @@ import fiuba.algo3.algocraft.construcciones.Construccion;
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
 import fiuba.algo3.algocraft.excepciones.NombreConMenosDe4Caracteres;
 import fiuba.algo3.algocraft.unidades.Unidad;
+import fiuba.algo3.classes.stats.Posicion;
 
 public class Jugador {
 
@@ -22,16 +23,16 @@ public class Jugador {
 	private VisionJugador visionMapa;
 	
 	
-	public Jugador() throws FueraDeMatriz{
+	public Jugador(Posicion baseInicial) throws FueraDeMatriz{
 		this.nombre = ""; 
 		this.color = "";
 		this.construccionesList = new ArrayList<Construccion>();
 		this.unidadesList = new ArrayList<Unidad>();
-		this.mineral =0;
-		this.gasVespeno =0;
-		this.poblacion =0;
+		this.mineral = 0;
+		this.gasVespeno = 0;
+		this.poblacion = 0;
 		this.cuposDePoblacionOcupada =0;
-		this.visionMapa = new VisionJugador();
+		this.visionMapa = new VisionJugador(baseInicial);
 	}
 	
 	public void setNombre(String nombre) throws NombreConMenosDe4Caracteres{
@@ -90,12 +91,9 @@ public class Jugador {
 		return ((this.poblacion-this.cuposDePoblacionOcupada)>= cupo);
 	}
 
-	public VisionJugador getVisionMapa() {
-		return visionMapa;
-	}
-
-	public void setVisionMapa(VisionJugador visionMapa) {
-		this.visionMapa = visionMapa;
+	public void actualizarVision(Posicion pos, int radio) throws FueraDeMatriz {
+		this.visionMapa.setRadioDeVision(pos, radio);
+		
 	}
 
 	
