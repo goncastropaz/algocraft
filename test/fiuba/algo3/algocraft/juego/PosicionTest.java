@@ -35,7 +35,7 @@ public class PosicionTest {
 
 	@Test (expected = FueraDeMatriz.class)
 	 public void testCrearPosicionConUnValorMayorAlDelTamanioDeMatrizDeberiaDevolverError() throws FueraDeMatriz{
-		Posicion pos = new Posicion(1,23);
+		Posicion pos = new Posicion(1,103);
 		
 	}
 	

@@ -10,7 +10,7 @@ public class Posicion {
 	public Posicion(int fil, int col) throws FueraDeMatriz{
 		columna = col;
 		fila = fil;
-		if(columna>19 || fila > 19 || columna<0 || fila <0)	throw new FueraDeMatriz();
+		if(columna>99 || fila > 99 || columna<0 || fila <0)	throw new FueraDeMatriz();
 			
 	}
 	public int getColumna(){

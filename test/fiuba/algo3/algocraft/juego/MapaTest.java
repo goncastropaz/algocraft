@@ -47,10 +47,10 @@ public class MapaTest {
 		public void testMapaDebeCrearseConUnaAreaEspacial() throws FueraDeMatriz{
 			
 			Mapa mapa = Mapa.getInstance();
-			Celda espacial = mapa.getCelda(14,8);
-			Celda espacial2 = mapa.getCelda(1,11);
-			Celda tierra = mapa.getCelda(15,8);
-			Celda tierra2 = mapa.getCelda(1,12);
+			Celda espacial = mapa.getCelda(1,20);
+			Celda espacial2 = mapa.getCelda(80,30);
+			Celda tierra = mapa.getCelda(0,17);
+			Celda tierra2 = mapa.getCelda(81,31);
 			
 			assertTrue(espacial.isEspacial());
 			assertTrue(espacial2.isEspacial());

@@ -16,12 +16,12 @@ public class ControlMapa {
 	}
 
 	public boolean crearEdificio(Ejecutable ejecutable) {
-		// TODO: Ver qué le devuelvo a la vista
+		// TODO: Ver quï¿½ le devuelvo a la vista
 		return ejecutable.ejecutar();
 	}
 
 	public IUnidad crearUnidad(FabricaDeUnidades fabrica) throws FueraDeMatriz {
-		//Ahora devuelve la interfaz de la unidad, ver qué hacemos con esto.
+		//Ahora devuelve la interfaz de la unidad, ver quï¿½ hacemos con esto.
 		IUnidad unidad = fabrica.crearUnidad(Juego.getInstance()
 				.getActualCelda().getPosicion());
 		

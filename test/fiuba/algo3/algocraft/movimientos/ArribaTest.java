@@ -6,24 +6,23 @@ import static org.junit.Assert.assertNull;
 import org.junit.Test;
 
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
+import fiuba.algo3.algocraft.excepciones.JugadorInvalido;
 import fiuba.algo3.algocraft.excepciones.UnidadTerrestreEnAreaEspacial;
 import fiuba.algo3.algocraft.juego.Mapa;
 import fiuba.algo3.algocraft.movimientos.Arriba;
 import fiuba.algo3.algocraft.movimientos.Movimiento;
 import fiuba.algo3.algocraft.unidades.Marine;
+import fiuba.algo3.algocraft.unidades.NaveCiencia;
 import fiuba.algo3.algocraft.unidades.Unidad;
 import fiuba.algo3.classes.stats.Posicion;
 
 public class ArribaTest {
 
 	@Test
-	public void testmoverArribaDeberiaMoverLaUnidadALaCeldaDeArriba() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial{
+	public void testmoverArribaDeberiaMoverLaUnidadALaCeldaDeArriba() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido{
 		Movimiento arriba = new Arriba();
 		Mapa mapa = Mapa.getInstance();
-//		Unidad unidad = new Unidad();
-		Marine unidad = new Marine(new Posicion(1,1));
-
-		unidad.setNuevaUbicacion(mapa.getCelda(2, 2));
+		Marine unidad = new Marine(new Posicion(2,2));
 		arriba.mover(unidad);
 		
 		assertEquals(unidad.getUbicacion().getPosicion().getFila(),1);
@@ -32,13 +31,10 @@ public class ArribaTest {
 	}
 	
 	@Test
-	public void testmoverArribaDeberiaRemoverLaUnidadDeLaViejaCelda() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial{
+	public void testmoverArribaDeberiaRemoverLaUnidadDeLaViejaCelda() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido{
 		Movimiento arriba = new Arriba();
 		Mapa mapa = Mapa.getInstance();
-//		Unidad unidad = new Unidad();
-		Marine unidad = new Marine(new Posicion(1,1));
-
-		unidad.setNuevaUbicacion(mapa.getCelda(2, 2));
+		Marine unidad = new Marine(new Posicion(2,2));
 		arriba.mover(unidad);
 		
 		assertNull(mapa.getCelda(2,2).getUnidad());
@@ -46,13 +42,10 @@ public class ArribaTest {
 	}
 	
 	@Test
-	public void testmoverArribaDeberiaAgregarLaUnidadALaNuevaCelda() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial{
+	public void testmoverArribaDeberiaAgregarLaUnidadALaNuevaCelda() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido{
 		Movimiento arriba = new Arriba();
 		Mapa mapa = Mapa.getInstance();
-//		Unidad unidad = new Unidad();
-		Marine unidad = new Marine(new Posicion(1,1));
-
-		unidad.setNuevaUbicacion(mapa.getCelda(2, 2));
+		Marine unidad = new Marine(new Posicion(2,2));
 		arriba.mover(unidad);
 		
 		assertEquals(mapa.getCelda(1,2).getUnidad(),unidad);
@@ -60,14 +53,55 @@ public class ArribaTest {
 	}
 	
 	@Test (expected = FueraDeMatriz.class)
-	public void testmoverArribaDeberiaLanzarErrorSiEstaEnElBordeSuperiorDelMapa() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial{
+	public void testmoverArribaDeberiaLanzarErrorSiEstaEnElBordeSuperiorDelMapa() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido{
 		Movimiento arriba = new Arriba();
 		Mapa mapa = Mapa.getInstance();
-//		Unidad unidad = new Unidad();
-		Marine unidad = new Marine(new Posicion(1,1));
+		Marine unidad = new Marine(new Posicion(0,2));
 
-		unidad.setNuevaUbicacion(mapa.getCelda(0, 2));
 		arriba.mover(unidad);
 	}
-	 
+
+
+	@Test 
+	public void testmoverArribaUnaUnidadDeTierraEnAreaDeTierraDeberiaMoverLaUnidadUnaCeldaArriba() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido{
+		Movimiento arriba = new Arriba();
+		Mapa mapa = Mapa.getInstance();
+		Marine unidadDeTierra = new Marine(new Posicion(2,2));
+		arriba.mover(unidadDeTierra);
+		
+		assertEquals(unidadDeTierra.getUbicacion().getPosicion().getFila(),1);
+		assertEquals(unidadDeTierra.getUbicacion().getPosicion().getColumna(),2);
+	}
+	
+	@Test 
+	public void testmoverArribaUnaUnidadAereaEnAreaDeTierraDeberiaMoverLaUnidadUnaCeldaArriba() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido{
+		Movimiento arriba = new Arriba();
+		Mapa mapa = Mapa.getInstance();
+		Unidad unidadAerea = new NaveCiencia(new Posicion(81,20));
+		arriba.mover(unidadAerea);
+		
+		assertEquals(unidadAerea.getUbicacion().getPosicion().getFila(),80);
+		assertEquals(unidadAerea.getUbicacion().getPosicion().getColumna(),20);
+	}
+	
+	@Test 
+	public void testmoverArribaUnaUnidadAereaEnAreaAereaDeberiaMoverLaUnidadUnaCeldaArriba() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido{
+		Movimiento arriba = new Arriba();
+		Mapa mapa = Mapa.getInstance();
+		Unidad unidadAerea = new NaveCiencia(new Posicion(40,20));
+		arriba.mover(unidadAerea);
+		
+		assertEquals(unidadAerea.getUbicacion().getPosicion().getFila(),39);
+		assertEquals(unidadAerea.getUbicacion().getPosicion().getColumna(),20);
+	}
+	
+	@Test (expected = UnidadTerrestreEnAreaEspacial.class)
+	public void testmoverArribaUnaUnidadDeTierraEnAreaAereaDeberiaLanzarError() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido{
+		Movimiento arriba = new Arriba();
+		Mapa mapa = Mapa.getInstance();
+		Marine unidadDeTierra = new Marine(new Posicion(81,20)); // modificar posicion 
+		arriba.mover(unidadDeTierra);
+
+	}
+	
 }

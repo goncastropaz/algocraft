@@ -28,8 +28,8 @@ public class ControlJuego {
 		return this.juego.juegoTerminado();
 	}
 
-	public Turno getTurno() {
-		return juego.getTurno();
+	public Turno getTurno() throws JugadorInvalido, FueraDeMatriz {
+		return Turno.getInstance();
 	}
 
 	public VisionJugador pasarTurno() {
@@ -37,7 +37,8 @@ public class ControlJuego {
 		VisionJugador visionJugador = null; 
 		
 		if (pasarTurno.ejecutar()) {
-			visionJugador = this.juego.getActualJugador().getVisionMapa();
+			//visionJugador = this.juego.getActualJugador().getVisionMapa();
+			//HAY QUE HABLARLO XQ NO CONCUERDA CON LO QUE TENGO DE VISION
 		}
 		
 		return visionJugador;

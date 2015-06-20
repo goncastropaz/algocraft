@@ -7,8 +7,8 @@ import fiuba.algo3.classes.stats.Posicion;
 public abstract class UnidadAerea extends Unidad{
 
 	
-	public UnidadAerea(String name, Integer mineralCost, Integer gasCost, Integer construtionTime, Integer maxHealth, Integer maxShield, Posicion pos) throws FueraDeMatriz{
-		super(name,mineralCost,gasCost,construtionTime,maxHealth,maxShield,pos);
+	public UnidadAerea(String name, Integer mineralCost, Integer gasCost, Integer construtionTime, Integer maxHealth, Integer maxShield, Integer vision,Posicion pos) throws FueraDeMatriz{
+		super(name,mineralCost,gasCost,construtionTime,maxHealth,maxShield,vision,pos);
 	}
 	
 

@@ -9,7 +9,7 @@ import fiuba.algo3.algocraft.excepciones.NombreConMenosDe4Caracteres;
 import fiuba.algo3.algocraft.excepciones.NombreYaExiste;
 
 public class Juego {
-
+	
 	private static Juego INSTANCE = null;
     private HashMap<Integer,Jugador> jugadores;
     private Mapa mapaJuego;
@@ -72,6 +72,11 @@ public class Juego {
 		
 		public Jugador getActualJugador(){
 			return turno.getActualJugador();
+		}
+		
+		public boolean juegoTerminado(){
+			//Ver cuando seria la finalización del juego.
+			return false;
 		}
 		
 	}

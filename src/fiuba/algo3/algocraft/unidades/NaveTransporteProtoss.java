@@ -22,7 +22,7 @@ public class NaveTransporteProtoss extends UnidadAerea {
 	
 	public NaveTransporteProtoss(Posicion pos) throws FueraDeMatriz{
 		
-		super(NAME,MINERAL_COST,GAS_COST,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD,pos);
+		super(NAME,MINERAL_COST,GAS_COST,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD,VISION,pos);
 		
 	}
 }

@@ -18,16 +18,17 @@ public abstract class Unidad implements IUnidad{
 	private TiempoDeConstruccion tiempoDeConstruccion;
 	private Vida vida;
 	private Escudo escudo;
+	private int vision;
 	public Celda ubicacion;
 	
-	public Unidad(String nombre, Integer costoMineral, Integer costoGas, Integer tiempoDeConstruccion, Integer vidaMaxima, Integer escudoMaximo,Posicion pos) throws FueraDeMatriz{
+	public Unidad(String nombre, Integer costoMineral, Integer costoGas, Integer tiempoDeConstruccion, Integer vidaMaxima, Integer escudoMaximo,Integer vision,Posicion pos) throws FueraDeMatriz{
 		this.nombre = nombre;
 		this.costoDeRecursos = new CostoDeRecursos(costoMineral,costoGas);
 		this.tiempoDeConstruccion = new TiempoDeConstruccion(tiempoDeConstruccion);
 		this.vida = new Vida(vidaMaxima);
 		this.escudo = (new Escudo(escudoMaximo));
 		this.ubicacion = Mapa.getInstance().getCelda(pos.getFila(),pos.getColumna()); 
-		
+		this.vision =vision;
 	}
 
 	public String getNombre() {
@@ -83,6 +84,11 @@ public abstract class Unidad implements IUnidad{
 
 	public void actualizarTurno(Jugador jugador) {
 				
+	}
+
+	public int getVision() {
+		// TODO Auto-generated method stub
+		return this.vision;
 	}
 
 
