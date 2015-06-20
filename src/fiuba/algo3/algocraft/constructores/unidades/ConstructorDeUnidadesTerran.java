@@ -1,12 +1,12 @@
-package fiuba.algo3.classes.builders.units;
+package fiuba.algo3.algocraft.constructores.unidades;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import fiuba.algo3.algocraft.constructores.unidades.ConstructorDeUnidadesDeRaza;
 import fiuba.algo3.algocraft.unidades.Unidad;
-import fiuba.algo3.classes.builders.units.ConstructorDeUnidadesDeRaza;
 
 public class ConstructorDeUnidadesTerran extends ConstructorDeUnidadesDeRaza {
 

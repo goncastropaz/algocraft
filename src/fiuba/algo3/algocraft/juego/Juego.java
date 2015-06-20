@@ -49,7 +49,7 @@ public class Juego {
 			throws NombreYaExiste, JugadorInvalido, NombreConMenosDe4Caracteres {
 
 		for (Integer key : this.jugadores.keySet()) {
-			if (this.getJugador(key).getNombre() == nombre)
+			if (this.getJugador(key).getNombre().equalsIgnoreCase(nombre))
 				throw new NombreYaExiste();
 		}
 		this.getJugador(jugador).setNombre(nombre);

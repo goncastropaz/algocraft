@@ -1,10 +1,10 @@
-package fiuba.algo3.classes.builders.buildings;
+package fiuba.algo3.algocraft.constructores.construcciones;
 
 import java.util.Map;
 
 import fiuba.algo3.algocraft.construcciones.Construccion;
-import fiuba.algo3.classes.builders.units.ConstructorDeUnidadesDeRaza;
-import fiuba.algo3.utils.Constants;
+import fiuba.algo3.algocraft.constructores.unidades.ConstructorDeUnidadesDeRaza;
+import fiuba.algo3.algocraft.utils.Constants;
 
 public class RaceBuildingBuilder {
 

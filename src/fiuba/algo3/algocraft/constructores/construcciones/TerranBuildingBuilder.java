@@ -1,4 +1,4 @@
-package fiuba.algo3.classes.builders.buildings;
+package fiuba.algo3.algocraft.constructores.construcciones;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import fiuba.algo3.algocraft.construcciones.Construccion;
-import fiuba.algo3.classes.builders.units.ConstructorDeUnidadesTerran;
+import fiuba.algo3.algocraft.constructores.unidades.ConstructorDeUnidadesTerran;
 
 public class TerranBuildingBuilder extends RaceBuildingBuilder {
 

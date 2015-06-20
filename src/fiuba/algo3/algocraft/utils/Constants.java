@@ -1,4 +1,4 @@
-package fiuba.algo3.utils;
+package fiuba.algo3.algocraft.utils;
 
 public class Constants {
 
