@@ -78,8 +78,7 @@ public abstract class Unidad implements IUnidad{
 
 	public void setNuevaUbicacion(Celda celda) throws UnidadTerrestreEnAreaEspacial {
 		this.ubicacion = celda;
-		celda.setUnidad(this);
-		
+			
 	}
 
 	public void actualizarTurno(Jugador jugador) {

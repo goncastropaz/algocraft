@@ -14,6 +14,7 @@ public class Juego {
     private HashMap<Integer,Jugador> jugadores;
     private Mapa mapaJuego;
     private Turno turno;
+    private boolean juegoFinalizado;
 
     private Juego() throws FueraDeMatriz{
     	 
@@ -23,6 +24,7 @@ public class Juego {
         jugadores.put(1,jugador);
         jugador = new Jugador(Mapa.getInstance().getBaseJugador(2));
         jugadores.put(2,jugador);
+        this.juegoFinalizado =false;
     	  
     }
 
@@ -73,10 +75,12 @@ public class Juego {
 		public Jugador getActualJugador(){
 			return turno.getActualJugador();
 		}
+		public void darFinalizadoElJuego(){
+			this.juegoFinalizado =true;
+		}
 		
 		public boolean juegoTerminado(){
-			//Ver cuando seria la finalización del juego.
-			return false;
+			return this.juegoFinalizado;
 		}
 		
 	}

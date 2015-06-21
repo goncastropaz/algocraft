@@ -14,11 +14,13 @@ public class Izquierda extends Movimiento {
 	
 	public void mover(Unidad unidad) throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido {
 		Mapa mapa = Mapa.getInstance();
-		Celda celda = unidad.getUbicacion();
-		Posicion posActual = celda.getPosicion();
+		Celda celdaActual = unidad.getUbicacion();
+		Posicion posActual = celdaActual.getPosicion();
 		Posicion posNueva = new Posicion(posActual.getFila(),posActual.getColumna()-1);
-		unidad.setNuevaUbicacion(mapa.devolverCelda(posNueva));
-		celda.removeUnidad();
+		Celda celdaNueva = mapa.devolverCelda(posNueva);
+		unidad.setNuevaUbicacion(celdaNueva);
+		celdaActual.removeUnidad();
+		celdaNueva.setUnidad(unidad);
 		int visionUnidad = unidad.getVision();
 		Turno.getInstance().getActualJugador().actualizarVision(posNueva,visionUnidad);
 		}
