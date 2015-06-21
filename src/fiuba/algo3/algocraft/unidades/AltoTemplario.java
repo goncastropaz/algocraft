@@ -4,7 +4,9 @@ import java.util.ArrayList;
 
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
 import fiuba.algo3.algocraft.juego.Jugador;
+import fiuba.algo3.algocraft.magias.Alucinacion;
 import fiuba.algo3.algocraft.magias.Magia;
+import fiuba.algo3.algocraft.magias.TormentaPsionica;
 import fiuba.algo3.classes.stats.Posicion;
 
 public class AltoTemplario extends UnidadTerrestre {
