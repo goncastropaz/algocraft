@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import fiuba.algo3.algocraft.construcciones.Barraca;
 import fiuba.algo3.algocraft.construcciones.CentroDeMineral;
-import fiuba.algo3.algocraft.construcciones.DepositoSuministros;
+import fiuba.algo3.algocraft.construcciones.DepositoSuministro;
 import fiuba.algo3.algocraft.construcciones.Fabrica;
 import fiuba.algo3.algocraft.construcciones.Refineria;
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
@@ -47,7 +47,7 @@ public class ConstruccionesTerranTest {
 		Integer costoMineral = 100;
 
 		Posicion posicion = new Posicion(fila, columna);		
-		DepositoSuministros unaBarraca = new DepositoSuministros(posicion);
+		DepositoSuministro unaBarraca = new DepositoSuministro(posicion);
 		
 		assertNotNull(unaBarraca);
 		assertEquals(unaBarraca.getCost().getCostoMineral(), costoMineral);

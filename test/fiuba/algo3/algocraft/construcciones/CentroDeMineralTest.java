@@ -21,14 +21,14 @@ public class CentroDeMineralTest {
 	}
 	
 	@Test
-	public void testCrearUnidadAltoTemplarioDeberiaSetearCostoDeMineral50() throws FueraDeMatriz{
+	public void testCrearCentroDeMineralDeberiaSetearCostoDeMineral50() throws FueraDeMatriz{
 		CentroDeMineral unCentroDeMineral = new CentroDeMineral(new Posicion(2,2));
 		Integer costoMineral = 50;
 		assertEquals(unCentroDeMineral.getCost().getCostoMineral(),costoMineral);
 	}
 	
 	@Test
-	public void testCrearUnidadAltoTemplarioDeberiaSetearCostoDeGas0() throws FueraDeMatriz{
+	public void testCrearCentroDeMineralDeberiaSetearCostoDeGas0() throws FueraDeMatriz{
 		CentroDeMineral unCentroDeMineral = new CentroDeMineral(new Posicion(2,2));
 		Integer costoGas = 0;
 		assertEquals(unCentroDeMineral.getCost().getCostoGas(),costoGas);
@@ -42,21 +42,21 @@ public class CentroDeMineralTest {
 	}
 	
 	@Test
-	public void testCrearUnidadAltoTemplarioDeberiaSetearVida500() throws FueraDeMatriz{
+	public void testCrearCentroDeMineralDeberiaSetearVida500() throws FueraDeMatriz{
 		CentroDeMineral unCentroDeMineral = new CentroDeMineral(new Posicion(2,2));
 		Integer vida = 500;
 		assertEquals(unCentroDeMineral.getHealth().getVidaMaxima(),vida);
 	}
 	
 	@Test
-	public void testCrearUnidadAltoTemplarioDeberiaSetearEscudo0() throws FueraDeMatriz{
+	public void testCrearCentroDeMineralDeberiaSetearEscudo0() throws FueraDeMatriz{
 		CentroDeMineral unCentroDeMineral = new CentroDeMineral(new Posicion(2,2));
 		Integer escudo =0;
 		assertEquals(unCentroDeMineral.getShield().getEscudoTotal(),escudo);
 	}
 	
 	@Test
-	public void testCrearUnidadAltoTemplarioDeberiaGuardarLaCeldaDondeEstaUbicada() throws FueraDeMatriz{
+	public void testCrearCentroDeMineralDeberiaGuardarLaCeldaDondeEstaUbicada() throws FueraDeMatriz{
 		CentroDeMineral unCentroDeMineral = new CentroDeMineral(new Posicion(2,2));
 		Celda celda = Mapa.getInstance().getCelda(2, 2);
 		assertEquals(unCentroDeMineral.getUbicacion(),celda);

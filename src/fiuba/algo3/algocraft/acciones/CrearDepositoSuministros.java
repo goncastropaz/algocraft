@@ -1,6 +1,6 @@
 package fiuba.algo3.algocraft.acciones;
 
-import fiuba.algo3.algocraft.construcciones.DepositoSuministros;
+import fiuba.algo3.algocraft.construcciones.DepositoSuministro;
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
 import fiuba.algo3.algocraft.juego.Celda;
 import fiuba.algo3.algocraft.juego.Juego;
@@ -12,7 +12,7 @@ public class CrearDepositoSuministros implements Ejecutable{
 	public boolean ejecutar() {
 		try {
 			Celda celda = Juego.getInstance().getActualCelda();
-			DepositoSuministros construccion = new DepositoSuministros(celda.getPosicion());
+			DepositoSuministro construccion = new DepositoSuministro(celda.getPosicion());
 			Jugador jugador = Juego.getInstance().getActualJugador();
 			jugador.agregarConstruccion(construccion);
 			jugador.agregarPoblacion();
