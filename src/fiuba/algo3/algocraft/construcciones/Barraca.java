@@ -22,6 +22,6 @@ public class Barraca extends Construccion {
 	
 	public IUnidad crearUnidad(FabricaDeUnidades fabrica) throws FueraDeMatriz{
 		//la unidad se crea en la misma posicion que el edificio
-		return fabrica.crearUnidad(this.getCoordenadas());
+		return fabrica.crearUnidad(this.getUbicacion().getPosicion());
 	}
 }

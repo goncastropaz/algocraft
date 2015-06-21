@@ -1,7 +1,9 @@
 package fiuba.algo3.algocraft.construcciones;
 
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
+import fiuba.algo3.algocraft.juego.Celda;
 import fiuba.algo3.algocraft.juego.Jugador;
+import fiuba.algo3.algocraft.juego.Mapa;
 import fiuba.algo3.algocraft.unidades.IUnidad;
 import fiuba.algo3.classes.stats.CostoDeRecursos;
 import fiuba.algo3.classes.stats.Escudo;
@@ -17,7 +19,7 @@ public abstract class Construccion {
 	private Vida health;
 	private Escudo shield;
 	private RaceUnitBuilding unitBuilder;
-	private Posicion coordenadas;
+	private Celda ubicacion;
 
 	public Construccion(String name, Integer mineralCost, Integer gasCost,
 			Integer construtionTime, Integer maxHealth, Integer maxShield,
@@ -29,7 +31,7 @@ public abstract class Construccion {
 		this.health = new  Vida(maxHealth);
 		this.shield = new Escudo(maxShield);
 		this.unitBuilder = new RaceUnitBuilding();
-		this.coordenadas = posicion;
+		this.ubicacion= Mapa.getInstance().getCelda(posicion.getFila(),posicion.getColumna());
 
 	}
 
@@ -81,17 +83,14 @@ public abstract class Construccion {
 		this.unitBuilder = unitBuilder;
 	}
 
-	public Posicion getCoordenadas() {
-		return coordenadas;
+	public Celda getUbicacion() {
+		return this.ubicacion;
 	}
 
-	public void setCoordenadas(Posicion coordenadas) {
-		this.coordenadas = coordenadas;
-	}
-	
 	public IUnidad crearUnidad(FabricaDeUnidades fabrica) throws FueraDeMatriz{
 		//la unidad se crea en la misma posicion que el edificio
-		return fabrica.crearUnidad(this.getCoordenadas());
+		return fabrica.crearUnidad(this.getUbicacion().getPosicion());
+	
 	}
 	
 	public void actualizarTurno(Jugador jugador){
