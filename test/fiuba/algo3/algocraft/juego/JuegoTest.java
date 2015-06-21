@@ -34,8 +34,8 @@ public class JuegoTest {
 	public void testSetNombreJugadorDebeGuardarElNombreEnJugador() throws FueraDeMatriz, JugadorInvalido, NombreYaExiste, NombreConMenosDe4Caracteres{
 		Juego juego = Juego.getInstance();
 		Jugador jugador1 = juego.getJugador(1);
-		juego.setNombreJugador(1,"Martin");
-		assertEquals("Martin",jugador1.getNombre());
+		juego.setNombreJugador(1,"Lucas");
+		assertEquals("Lucas",jugador1.getNombre());
 	}
 	
 	@Test
