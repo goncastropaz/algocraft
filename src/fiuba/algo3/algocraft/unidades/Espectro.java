@@ -7,9 +7,9 @@ public class Espectro extends UnidadAerea {
 
 	private static final String NAME = "ESPECTRO";
 	private static final Integer MINERAL_COST = 150;
-	private static final Integer GAS_COST = 120;
+	private static final Integer GAS_COST = 100;
 	private static final Integer CONSTRUCTION_TIME = 8;
-	private static final Integer MAX_HEALTH = 125;
+	private static final Integer MAX_HEALTH = 120;
 	private static final Integer MAX_SHIELD = 0;
 	private static final Integer LAND_RANGE = 5;
 	private static final Integer AIR_RANGE = 5;

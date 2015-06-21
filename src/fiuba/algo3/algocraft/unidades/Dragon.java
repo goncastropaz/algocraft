@@ -16,7 +16,7 @@ public class Dragon extends UnidadTerrestre {
 	private static final Integer LAND_DMG = 20;
 	private static final Integer AIR_DMG = 20;
 	private static final Integer SUPPLY_COST = 2;
-	private static final Integer VISION = 7;
+	private static final Integer VISION = 8;
 	private static final Integer TRANSPORT = 2;
 	
 	public Dragon(Posicion pos) throws FueraDeMatriz{
