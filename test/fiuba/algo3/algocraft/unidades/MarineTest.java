@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 
+import fiuba.algo3.algocraft.excepciones.CeldaOcupada;
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
 import fiuba.algo3.algocraft.excepciones.UnidadTerrestreEnAreaEspacial;
 import fiuba.algo3.algocraft.juego.Celda;
@@ -71,7 +72,7 @@ public class MarineTest {
 	}
 	
 	@Test
-	public void testsetUbicacionMarineDeberiaCambiarLaCeldaDondeEstaUbicada() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial{
+	public void testsetUbicacionMarineDeberiaCambiarLaCeldaDondeEstaUbicada() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, CeldaOcupada{
 		Marine unMarine = new Marine(new Posicion(2,2));
 		unMarine.setNuevaUbicacion(Mapa.getInstance().getCelda(3, 3));
 		Celda celda = Mapa.getInstance().getCelda(3, 3);

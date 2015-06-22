@@ -1,5 +1,7 @@
 package fiuba.algo3.algocraft.juego;
 
+import fiuba.algo3.algocraft.construcciones.Construccion;
+import fiuba.algo3.algocraft.excepciones.CeldaOcupada;
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
 import fiuba.algo3.algocraft.unidades.Unidad;
 import fiuba.algo3.classes.stats.Posicion;
@@ -12,6 +14,7 @@ public class Celda {
 	private boolean mineral;
 	private boolean gas;
 	private Unidad unidad;
+	private Construccion edificio;
 	
 	public Celda(int fila, int columna) throws FueraDeMatriz{
 		Posicion pos = new Posicion (fila,columna);
@@ -19,6 +22,7 @@ public class Celda {
 		this.mineral=false;
 		this.gas = false;
 		this.unidad = null;
+		this.edificio = null;
 		this.espacial = false;
 	}
 	
@@ -44,9 +48,12 @@ public class Celda {
 		this.gas = true;
 	}
 
-	public void setUnidad(Unidad raceUnit) {
-		this.unidad = raceUnit;
-		
+	public void setUnidad(Unidad raceUnit) throws CeldaOcupada {
+		if(!(this.mineral) && !(this.gas) && (this.edificio ==null)){
+			this.unidad = raceUnit;
+		}else{
+			throw new CeldaOcupada();
+		}
 	}
 
 	public void removeUnidad() {
@@ -67,6 +74,14 @@ public class Celda {
 	public void setAsEspacial() {
 		// TODO Auto-generated method stub
 		this.espacial =true;
+	}
+	
+	public void setConstruccion(Construccion unaConstruccion) throws CeldaOcupada{
+		if(this.unidad ==null){
+			this.edificio = unaConstruccion;
+		}else{
+			throw new CeldaOcupada();
+		}
 	}
 
 	

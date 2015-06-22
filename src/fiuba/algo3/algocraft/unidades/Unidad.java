@@ -1,5 +1,6 @@
 package fiuba.algo3.algocraft.unidades;
 
+import fiuba.algo3.algocraft.excepciones.CeldaOcupada;
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
 import fiuba.algo3.algocraft.excepciones.UnidadTerrestreEnAreaEspacial;
 import fiuba.algo3.algocraft.juego.Celda;
@@ -84,7 +85,7 @@ public abstract class Unidad implements IUnidad{
 		return this.ubicacion;
 	}
 
-	public void setNuevaUbicacion(Celda celda) throws UnidadTerrestreEnAreaEspacial {
+	public void setNuevaUbicacion(Celda celda) throws UnidadTerrestreEnAreaEspacial, CeldaOcupada {
 		this.ubicacion = celda;
 			
 	}

@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import fiuba.algo3.algocraft.excepciones.CeldaOcupada;
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
 import fiuba.algo3.algocraft.excepciones.UnidadTerrestreEnAreaEspacial;
 import fiuba.algo3.algocraft.juego.Celda;
@@ -68,7 +69,7 @@ public class DragonTest {
 	}
 	
 	@Test
-	public void testsetUbicacionDragonDeberiaCambiarLaCeldaDondeEstaUbicada() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial{
+	public void testsetUbicacionDragonDeberiaCambiarLaCeldaDondeEstaUbicada() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, CeldaOcupada{
 		Dragon unDragon = new Dragon(new Posicion(2,2));
 		unDragon.setNuevaUbicacion(Mapa.getInstance().getCelda(3, 3));
 		Celda celda = Mapa.getInstance().getCelda(3, 3);

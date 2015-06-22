@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import fiuba.algo3.algocraft.excepciones.CeldaOcupada;
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
 import fiuba.algo3.algocraft.excepciones.JugadorInvalido;
 import fiuba.algo3.algocraft.excepciones.UnidadTerrestreEnAreaEspacial;
@@ -21,7 +22,7 @@ import fiuba.algo3.classes.stats.Posicion;
 public class AbajoTest {
 
 	@Test
-	public void testmoverAbajoDeberiaMoverLaUnidadALaCeldaDeAbajo() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido{
+	public void testmoverAbajoDeberiaMoverLaUnidadALaCeldaDeAbajo() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido, CeldaOcupada{
 		Movimiento abajo = new Abajo();
 		Mapa mapa = Mapa.getInstance();
 		Marine marine = new Marine(new Posicion(2,2));
@@ -33,7 +34,7 @@ public class AbajoTest {
 	}
 	
 	@Test
-	public void testmoverAbajoDeberiaRemoverLaUnidadDeLaViejaCelda() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido{
+	public void testmoverAbajoDeberiaRemoverLaUnidadDeLaViejaCelda() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido, CeldaOcupada{
 		Movimiento abajo = new Abajo();
 		Mapa mapa = Mapa.getInstance();
 		Marine unidad = new Marine(new Posicion(2,2));
@@ -44,7 +45,7 @@ public class AbajoTest {
 	}
 	
 	@Test
-	public void testmoverAbajoDeberiaAgregarLaUnidadALaNuevaCelda() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido{
+	public void testmoverAbajoDeberiaAgregarLaUnidadALaNuevaCelda() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido, CeldaOcupada{
 		Movimiento abajo = new Abajo();
 		Mapa mapa = Mapa.getInstance();
 		Marine unidad = new Marine(new Posicion(2,2));
@@ -55,7 +56,7 @@ public class AbajoTest {
 	}
 	
 	@Test (expected = FueraDeMatriz.class)
-	public void testmoverAbajoDeberiaLanzarErrorSiEstaEnElBordeInferiorDelMapa() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido{
+	public void testmoverAbajoDeberiaLanzarErrorSiEstaEnElBordeInferiorDelMapa() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido, CeldaOcupada{
 		Movimiento abajo = new Abajo();
 		Mapa mapa = Mapa.getInstance();
 		Marine unidad = new Marine(new Posicion(49,2));
@@ -63,7 +64,7 @@ public class AbajoTest {
 	}
 	
 	@Test 
-	public void testmoverAbajoUnaUnidadDeTierraEnAreaDeTierraDeberiaMoverLaUnidadUnaCeldaAbajo() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido{
+	public void testmoverAbajoUnaUnidadDeTierraEnAreaDeTierraDeberiaMoverLaUnidadUnaCeldaAbajo() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido, CeldaOcupada{
 		Movimiento abajo = new Abajo();
 		Mapa mapa = Mapa.getInstance();
 		Marine unidadDeTierra = new Marine(new Posicion(2,2));
@@ -74,7 +75,7 @@ public class AbajoTest {
 	}
 	
 	@Test 
-	public void testmoverAbajoUnaUnidadAereaEnAreaDeTierraDeberiaMoverLaUnidadUnaCeldaAbajo() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido{
+	public void testmoverAbajoUnaUnidadAereaEnAreaDeTierraDeberiaMoverLaUnidadUnaCeldaAbajo() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido, CeldaOcupada{
 		Movimiento abajo = new Abajo();
 		Mapa mapa = Mapa.getInstance();
 		Unidad unidadAerea = new NaveCiencia(new Posicion(2,2));
@@ -85,7 +86,7 @@ public class AbajoTest {
 	}
 	
 	@Test 
-	public void testmoverAbajoUnaUnidadAereaEnAreaAereaDeberiaMoverLaUnidadUnaCeldaAbajo() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido{
+	public void testmoverAbajoUnaUnidadAereaEnAreaAereaDeberiaMoverLaUnidadUnaCeldaAbajo() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido, CeldaOcupada{
 		Movimiento abajo = new Abajo();
 		Mapa mapa = Mapa.getInstance();
 		Unidad unidadAerea = new NaveCiencia(new Posicion(0,20));
@@ -96,7 +97,7 @@ public class AbajoTest {
 	}
 	
 	@Test (expected = UnidadTerrestreEnAreaEspacial.class)
-	public void testmoverAbajoUnaUnidadDeTierraEnAreaAereaDeberiaLanzarError() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido{
+	public void testmoverAbajoUnaUnidadDeTierraEnAreaAereaDeberiaLanzarError() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido, CeldaOcupada{
 		Movimiento abajo = new Abajo();
 		Mapa mapa = Mapa.getInstance();
 		Marine unidadDeTierra = new Marine(new Posicion(0,20));
@@ -105,7 +106,7 @@ public class AbajoTest {
 	}
 	
 	@Test
-	public void testmoverAbajoUnaUnidadDeberiaActualizarLaVisionDelJugadorDeAcuerdoConLaVisionDeLaUnidad() throws FueraDeMatriz, JugadorInvalido, UnidadTerrestreEnAreaEspacial{
+	public void testmoverAbajoUnaUnidadDeberiaActualizarLaVisionDelJugadorDeAcuerdoConLaVisionDeLaUnidad() throws FueraDeMatriz, JugadorInvalido, UnidadTerrestreEnAreaEspacial, CeldaOcupada{
 		Juego juego = Juego.getInstance();
 		Marine unMarine = new Marine(new Posicion(9,9));
 		Movimiento abajo = new Abajo();

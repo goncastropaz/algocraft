@@ -2,6 +2,7 @@ package fiuba.algo3.algocraft.acciones.creacionUnidades;
 
 import fiuba.algo3.algocraft.acciones.Ejecutable;
 import fiuba.algo3.algocraft.construcciones.Acceso;
+import fiuba.algo3.algocraft.excepciones.CeldaOcupada;
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
 import fiuba.algo3.algocraft.excepciones.JugadorInvalido;
 import fiuba.algo3.algocraft.juego.Celda;
@@ -19,8 +20,11 @@ public class CrearAltoTemplario implements Ejecutable{
 			AltoTemplario altoTemplario = new AltoTemplario(celda.getPosicion());
 			Jugador jugador = Juego.getInstance().getActualJugador();
 			jugador.agregarUnidad(altoTemplario);
+			celda.setUnidad(altoTemplario);
 			return true;
 		} catch (FueraDeMatriz e) {
+			return false;
+		}  catch (CeldaOcupada e) {
 			return false;
 		}
 	}

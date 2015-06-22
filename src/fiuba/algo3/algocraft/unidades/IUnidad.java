@@ -1,5 +1,6 @@
 package fiuba.algo3.algocraft.unidades;
 
+import fiuba.algo3.algocraft.excepciones.CeldaOcupada;
 import fiuba.algo3.algocraft.excepciones.UnidadTerrestreEnAreaEspacial;
 import fiuba.algo3.algocraft.juego.Celda;
 import fiuba.algo3.classes.stats.CostoDeRecursos;
@@ -31,6 +32,6 @@ public interface IUnidad {
 
 	public Celda getUbicacion();
 
-	public void setNuevaUbicacion(Celda celda) throws UnidadTerrestreEnAreaEspacial;
+	public void setNuevaUbicacion(Celda celda) throws UnidadTerrestreEnAreaEspacial, CeldaOcupada;
 	
 }

@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import fiuba.algo3.algocraft.excepciones.CeldaOcupada;
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
 import fiuba.algo3.algocraft.excepciones.UnidadTerrestreEnAreaEspacial;
 import fiuba.algo3.algocraft.juego.Celda;
@@ -68,7 +69,7 @@ public class ScoutTest {
 	}
 	
 	@Test
-	public void testsetUbicacionScoutDeberiaCambiarLaCeldaDondeEstaUbicada() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial{
+	public void testsetUbicacionScoutDeberiaCambiarLaCeldaDondeEstaUbicada() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, CeldaOcupada{
 		Scout unScout = new Scout(new Posicion(2,2));
 		unScout.setNuevaUbicacion(Mapa.getInstance().getCelda(3, 3));
 		Celda celda = Mapa.getInstance().getCelda(3, 3);

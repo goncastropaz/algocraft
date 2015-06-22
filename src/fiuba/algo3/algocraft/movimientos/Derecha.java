@@ -1,5 +1,6 @@
 package fiuba.algo3.algocraft.movimientos;
 
+import fiuba.algo3.algocraft.excepciones.CeldaOcupada;
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
 import fiuba.algo3.algocraft.excepciones.JugadorInvalido;
 import fiuba.algo3.algocraft.excepciones.UnidadTerrestreEnAreaEspacial;
@@ -12,7 +13,7 @@ import fiuba.algo3.classes.stats.Posicion;
 public class Derecha extends Movimiento {
 
 	public void mover(Unidad unidad) throws FueraDeMatriz,
-			UnidadTerrestreEnAreaEspacial, JugadorInvalido {
+			UnidadTerrestreEnAreaEspacial, JugadorInvalido, CeldaOcupada {
 		Mapa mapa = Mapa.getInstance();
 		Celda celdaActual = unidad.getUbicacion();
 		Posicion posActual = celdaActual.getPosicion();
