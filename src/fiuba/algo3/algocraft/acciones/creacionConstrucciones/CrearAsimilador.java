@@ -1,5 +1,6 @@
-package fiuba.algo3.algocraft.acciones;
+package fiuba.algo3.algocraft.acciones.creacionConstrucciones;
 
+import fiuba.algo3.algocraft.acciones.Ejecutable;
 import fiuba.algo3.algocraft.construcciones.Asimilador;
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
 import fiuba.algo3.algocraft.excepciones.JugadorInvalido;

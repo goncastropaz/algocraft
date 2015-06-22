@@ -8,6 +8,7 @@ import fiuba.algo3.algocraft.juego.Mapa;
 import fiuba.algo3.classes.stats.CostoDeRecursos;
 import fiuba.algo3.classes.stats.Escudo;
 import fiuba.algo3.classes.stats.Posicion;
+import fiuba.algo3.classes.stats.RangoDeAtaque;
 import fiuba.algo3.classes.stats.TiempoDeConstruccion;
 import fiuba.algo3.classes.stats.Vida;
 
@@ -20,15 +21,18 @@ public abstract class Unidad implements IUnidad{
 	private Escudo escudo;
 	private int vision;
 	public Celda ubicacion;
+	public RangoDeAtaque rango;
+	public Integer suministro;
 	
-	public Unidad(String nombre, Integer costoMineral, Integer costoGas, Integer tiempoDeConstruccion, Integer vidaMaxima, Integer escudoMaximo,Integer vision,Posicion pos) throws FueraDeMatriz{
+	public Unidad(String nombre, Integer tiempoDeConstruccion, Integer vidaMaxima, Integer escudoMaximo,Integer vision,Integer suministro,Posicion pos) throws FueraDeMatriz{
 		this.nombre = nombre;
-		this.costoDeRecursos = new CostoDeRecursos(costoMineral,costoGas);
 		this.tiempoDeConstruccion = new TiempoDeConstruccion(tiempoDeConstruccion);
 		this.vida = new Vida(vidaMaxima);
 		this.escudo = (new Escudo(escudoMaximo));
 		this.ubicacion = Mapa.getInstance().getCelda(pos.getFila(),pos.getColumna()); 
 		this.vision =vision;
+		this.suministro = suministro;
+		
 	}
 
 	public String getNombre() {
@@ -45,6 +49,10 @@ public abstract class Unidad implements IUnidad{
 
 	public void setCostoDeRecursos(CostoDeRecursos costoDeRecursos) {
 		this.costoDeRecursos = costoDeRecursos;
+	}
+	
+	public void setRangoDeAtaque(RangoDeAtaque rango){
+		this.rango = rango;
 	}
 
 	public TiempoDeConstruccion getTiempoDeConstruccion() {
@@ -88,6 +96,10 @@ public abstract class Unidad implements IUnidad{
 	public int getVision() {
 		// TODO Auto-generated method stub
 		return this.vision;
+	}
+	
+	public Integer getSuministro(){
+		return this.suministro;
 	}
 
 

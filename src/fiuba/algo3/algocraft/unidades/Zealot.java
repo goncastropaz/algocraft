@@ -1,7 +1,13 @@
 package fiuba.algo3.algocraft.unidades;
 
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
+import fiuba.algo3.algocraft.juego.Mapa;
+import fiuba.algo3.classes.stats.CostoDeRecursos;
+import fiuba.algo3.classes.stats.Escudo;
 import fiuba.algo3.classes.stats.Posicion;
+import fiuba.algo3.classes.stats.RangoDeAtaque;
+import fiuba.algo3.classes.stats.TiempoDeConstruccion;
+import fiuba.algo3.classes.stats.Vida;
 
 public class Zealot extends UnidadTerrestre {
 
@@ -18,11 +24,15 @@ public class Zealot extends UnidadTerrestre {
 	private static final Integer SUPPLY_COST = 2;
 	private static final Integer VISION = 7;
 	private static final Integer TRANSPORT = 2;
+	private static final Integer RANGO_ATAQUE_TERRESTRE = 1;
+	private static final Integer RANGO_ATAQUE_AEREO = 1;
 	
 	public Zealot(Posicion pos) throws FueraDeMatriz{
-		
-		super(NAME,MINERAL_COST,GAS_COST,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD,VISION, pos);
-		
+		super(NAME,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD,VISION,SUPPLY_COST,pos);
+		RangoDeAtaque rango = new RangoDeAtaque(RANGO_ATAQUE_TERRESTRE,RANGO_ATAQUE_AEREO);
+		CostoDeRecursos costoDeRecursos = new CostoDeRecursos(MINERAL_COST,GAS_COST);
+		this.setCostoDeRecursos(costoDeRecursos);
+		this.setRangoDeAtaque(rango);
 	}
 	
 }

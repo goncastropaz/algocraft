@@ -5,8 +5,8 @@ import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 
-import fiuba.algo3.algocraft.acciones.CrearBarraca;
 import fiuba.algo3.algocraft.acciones.Ejecutable;
+import fiuba.algo3.algocraft.acciones.creacionConstrucciones.CrearBarraca;
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
 import fiuba.algo3.algocraft.excepciones.JugadorInvalido;
 

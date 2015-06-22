@@ -1,7 +1,9 @@
 package fiuba.algo3.algocraft.unidades;
 
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
+import fiuba.algo3.classes.stats.CostoDeRecursos;
 import fiuba.algo3.classes.stats.Posicion;
+import fiuba.algo3.classes.stats.RangoDeAtaque;
 
 public class NaveTransporteProtoss extends UnidadAerea {
 
@@ -19,10 +21,14 @@ public class NaveTransporteProtoss extends UnidadAerea {
 	private static final Integer VISION = 8;
 	private static final Integer TRANSPORT = 0;
 	private static final Integer CAPACIDAD = 8;
+	private static final Integer RANGO_ATAQUE_TERRESTRE = 0;
+	private static final Integer RANGO_ATAQUE_AEREO = 0;
 	
 	public NaveTransporteProtoss(Posicion pos) throws FueraDeMatriz{
 		
-		super(NAME,MINERAL_COST,GAS_COST,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD,VISION,pos);
-		
+		super(NAME,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD,VISION,SUPPLY_COST,pos);
+		CostoDeRecursos costoDeRecursos = new CostoDeRecursos(MINERAL_COST,GAS_COST);
+		this.setCostoDeRecursos(costoDeRecursos);
+		this.setRangoDeAtaque(new RangoDeAtaque(RANGO_ATAQUE_TERRESTRE,RANGO_ATAQUE_AEREO));
 	}
 }

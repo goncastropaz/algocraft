@@ -7,7 +7,9 @@ import fiuba.algo3.algocraft.juego.Jugador;
 import fiuba.algo3.algocraft.magias.Alucinacion;
 import fiuba.algo3.algocraft.magias.Magia;
 import fiuba.algo3.algocraft.magias.TormentaPsionica;
+import fiuba.algo3.classes.stats.CostoDeRecursos;
 import fiuba.algo3.classes.stats.Posicion;
+import fiuba.algo3.classes.stats.RangoDeAtaque;
 
 public class AltoTemplario extends UnidadTerrestre {
 
@@ -27,13 +29,19 @@ public class AltoTemplario extends UnidadTerrestre {
 	private static final Integer MAX_ENERGY = 200;
 	private static final Integer INITIAL_ENERGY = 50;
 	private static final Integer RECHARGED_ENERGY = 15;
+	private static final Integer RANGO_ATAQUE_TERRESTRE = 0;
+	private static final Integer RANGO_ATAQUE_AEREO = 0;
 	
 	private int energia;
 	private ArrayList<Magia> magias;
 	
 	public AltoTemplario(Posicion pos) throws FueraDeMatriz{
 		
-		super(NAME,MINERAL_COST,GAS_COST,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD,VISION,pos);
+		super(NAME,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD,VISION,SUPPLY_COST,pos);
+		RangoDeAtaque rango = new RangoDeAtaque(RANGO_ATAQUE_TERRESTRE,RANGO_ATAQUE_AEREO);
+		CostoDeRecursos costoDeRecursos = new CostoDeRecursos(MINERAL_COST,GAS_COST);
+		this.setCostoDeRecursos(costoDeRecursos);
+		this.setRangoDeAtaque(rango);
 		
 		this.energia = INITIAL_ENERGY;
 		this.magias = new ArrayList<Magia>();

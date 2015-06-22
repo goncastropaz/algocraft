@@ -3,8 +3,8 @@ package fiuba.algo3.algocraft.control;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import fiuba.algo3.algocraft.acciones.CrearAcceso;
 import fiuba.algo3.algocraft.acciones.Ejecutable;
+import fiuba.algo3.algocraft.acciones.creacionConstrucciones.CrearAcceso;
 import fiuba.algo3.algocraft.juego.Celda;
 import fiuba.algo3.algocraft.juego.Juego;
 import fiuba.algo3.algocraft.juego.Mapa;

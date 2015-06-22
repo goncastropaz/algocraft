@@ -1,4 +1,6 @@
-package fiuba.algo3.algocraft.acciones;
+package fiuba.algo3.algocraft.acciones.creacionUnidades;
+
+import fiuba.algo3.algocraft.acciones.Ejecutable;
 
 public class CrearNaveTransporteProtoss implements Ejecutable{
 

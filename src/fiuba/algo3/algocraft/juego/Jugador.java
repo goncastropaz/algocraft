@@ -69,9 +69,9 @@ public class Jugador {
 		this.construccionesList.add(construccion);
 	}
 	
-	public void agregarUnidad(Unidad unidad, int cupoDePoblacion){
+	public void agregarUnidad(Unidad unidad){
 		this.unidadesList.add(unidad);
-		this.cuposDePoblacionOcupada= this.cuposDePoblacionOcupada +cupoDePoblacion;
+		this.cuposDePoblacionOcupada= this.cuposDePoblacionOcupada +unidad.getSuministro();
 	}
 
 	public void actualizarMineral() {

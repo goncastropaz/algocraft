@@ -1,7 +1,9 @@
 package fiuba.algo3.algocraft.unidades;
 
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
+import fiuba.algo3.classes.stats.CostoDeRecursos;
 import fiuba.algo3.classes.stats.Posicion;
+import fiuba.algo3.classes.stats.RangoDeAtaque;
 
 public class Golliat extends UnidadTerrestre{
 
@@ -18,11 +20,16 @@ public class Golliat extends UnidadTerrestre{
 	private static final Integer SUPPLY_COST = 2;
 	private static final Integer VISION = 8;
 	private static final Integer TRANSPORT = 2;
+	private static final Integer RANGO_ATAQUE_TERRESTRE = 6;
+	private static final Integer RANGO_ATAQUE_AEREO = 5;
 	
 	public Golliat(Posicion pos) throws FueraDeMatriz{
 		
-		super(NAME,MINERAL_COST,GAS_COST,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD,VISION,pos);
-		
+		super(NAME,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD,VISION,SUPPLY_COST,pos);
+		RangoDeAtaque rango = new RangoDeAtaque(RANGO_ATAQUE_TERRESTRE,RANGO_ATAQUE_AEREO);
+		CostoDeRecursos costoDeRecursos = new CostoDeRecursos(MINERAL_COST,GAS_COST);
+		this.setCostoDeRecursos(costoDeRecursos);
+		this.setRangoDeAtaque(rango);
 	}
 	
 }
