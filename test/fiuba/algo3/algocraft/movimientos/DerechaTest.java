@@ -15,6 +15,7 @@ import fiuba.algo3.algocraft.juego.Mapa;
 import fiuba.algo3.algocraft.movimientos.Derecha;
 import fiuba.algo3.algocraft.movimientos.Movimiento;
 import fiuba.algo3.algocraft.unidades.Marine;
+import fiuba.algo3.algocraft.unidades.NaveCiencia;
 import fiuba.algo3.algocraft.unidades.Unidad;
 import fiuba.algo3.classes.stats.Posicion;
 
@@ -67,10 +68,51 @@ public class DerechaTest {
 		Mapa mapa = Mapa.getInstance();
 		Marine unidad = new Marine(new Posicion(1,1));
 
-		unidad.setNuevaUbicacion(mapa.getCelda(5, 99));
+		unidad.setNuevaUbicacion(mapa.getCelda(5, 49));
 		derecha.mover(unidad);
 	}
-	 //agregar test areas espaciales y terrestres
+
+	@Test 
+	public void testmoverDerechaUnaUnidadDeTierraEnAreaDeTierraDeberiaMoverLaUnidadUnaCeldaALaDerecha() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido{
+		Movimiento derecha = new Derecha();
+		Mapa mapa = Mapa.getInstance();
+		Marine unidadDeTierra = new Marine(new Posicion(2,2));
+		derecha.mover(unidadDeTierra);
+		
+		assertEquals(unidadDeTierra.getUbicacion().getPosicion().getFila(),2);
+		assertEquals(unidadDeTierra.getUbicacion().getPosicion().getColumna(),3);
+	}
+	
+	@Test 
+	public void testmoverDerechaUnaUnidadAereaEnAreaDeTierraDeberiaMoverLaUnidadUnaCeldaALaDerecha() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido{
+		Movimiento derecha = new Derecha();
+		Mapa mapa = Mapa.getInstance();
+		Unidad unidadAerea = new NaveCiencia(new Posicion(2,2));
+		derecha.mover(unidadAerea);
+		
+		assertEquals(unidadAerea.getUbicacion().getPosicion().getFila(),2);
+		assertEquals(unidadAerea.getUbicacion().getPosicion().getColumna(),3);
+	}
+	
+	@Test 
+	public void testmoverDerechaUnaUnidadAereaEnAreaAereaDeberiaMoverLaUnidadUnaCeldaALaDerecha() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido{
+		Movimiento derecha = new Derecha();
+		Mapa mapa = Mapa.getInstance();
+		Unidad unidadAerea = new NaveCiencia(new Posicion(20,20));
+		derecha.mover(unidadAerea);
+		
+		assertEquals(unidadAerea.getUbicacion().getPosicion().getFila(),20);
+		assertEquals(unidadAerea.getUbicacion().getPosicion().getColumna(),21);
+	}
+	
+	@Test (expected = UnidadTerrestreEnAreaEspacial.class)
+	public void testmoverDerechaUnaUnidadDeTierraEnAreaAereaDeberiaLanzarError() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido{
+		Movimiento derecha = new Derecha();
+		Mapa mapa = Mapa.getInstance();
+		Marine unidadDeTierra = new Marine(new Posicion(20,17));
+		derecha.mover(unidadDeTierra);
+
+	}
 	
 	
 	@Test

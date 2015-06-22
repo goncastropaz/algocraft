@@ -43,7 +43,10 @@ public class AltoTemplario extends UnidadTerrestre {
 	}
 	
 	public void actualizarTurno(Jugador jugador){
-		this.energia = this.energia + RECHARGED_ENERGY;
-		if (this.energia> MAX_ENERGY) this.energia = MAX_ENERGY;
+		if(this.getTiempoDeConstruccion().getTurnosRestantes()==0){
+			this.energia = this.energia + RECHARGED_ENERGY;
+			if (this.energia> MAX_ENERGY) this.energia = MAX_ENERGY;
+		}
+		this.getTiempoDeConstruccion().actualizarTiempo();
 	}
 }

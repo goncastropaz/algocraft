@@ -81,4 +81,12 @@ public class JuegoTest {
 		juego.setColorJugador(2,"Azul");
 	
 	}
+	
+	@Test 
+	public void testEmpezarJuegoDeberiaCrearElTurno() throws JugadorInvalido, FueraDeMatriz{
+		Juego juego = Juego.getInstance();
+		juego.empezarJuego();
+		Turno unTurno = Turno.getInstance();
+		assertEquals(juego.getTurno(),unTurno);
+	}
 }

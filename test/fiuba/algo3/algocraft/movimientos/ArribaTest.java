@@ -80,10 +80,10 @@ public class ArribaTest {
 	public void testmoverArribaUnaUnidadAereaEnAreaDeTierraDeberiaMoverLaUnidadUnaCeldaArriba() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido{
 		Movimiento arriba = new Arriba();
 		Mapa mapa = Mapa.getInstance();
-		Unidad unidadAerea = new NaveCiencia(new Posicion(81,20));
+		Unidad unidadAerea = new NaveCiencia(new Posicion(41,20));
 		arriba.mover(unidadAerea);
 		
-		assertEquals(unidadAerea.getUbicacion().getPosicion().getFila(),80);
+		assertEquals(unidadAerea.getUbicacion().getPosicion().getFila(),40);
 		assertEquals(unidadAerea.getUbicacion().getPosicion().getColumna(),20);
 	}
 	
@@ -102,7 +102,7 @@ public class ArribaTest {
 	public void testmoverArribaUnaUnidadDeTierraEnAreaAereaDeberiaLanzarError() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido{
 		Movimiento arriba = new Arriba();
 		Mapa mapa = Mapa.getInstance();
-		Marine unidadDeTierra = new Marine(new Posicion(81,20)); // modificar posicion 
+		Marine unidadDeTierra = new Marine(new Posicion(41,20));
 		arriba.mover(unidadDeTierra);
 
 	}

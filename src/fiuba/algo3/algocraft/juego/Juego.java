@@ -85,4 +85,8 @@ public class Juego {
 		public void empezarJuego() throws JugadorInvalido, FueraDeMatriz{
 			this.turno = Turno.getInstance();
 		}
+		
+		public Turno getTurno(){
+			return this.turno;
+		}
 	}

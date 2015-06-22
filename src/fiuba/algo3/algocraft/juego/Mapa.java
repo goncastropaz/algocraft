@@ -10,9 +10,9 @@ public class Mapa {
 			
 			private static Mapa INSTANCE = null;
 			private Celda[][] matriz;
-			private static int tamanio =100;
+			private static int tamanio =50;
 			private static int baseSuperior =4;
-			private static int baseInferior = 65;
+			private static int baseInferior = 45;
 			private static HashMap<Integer,Posicion> baseJugadores;
 	
 						
@@ -53,7 +53,7 @@ public class Mapa {
 			}
 			
 			private void setAreasEspaciales(){
-				for(int fil=1; fil<81; fil++){
+				for(int fil=1; fil<41; fil++){
 					for(int col= 18; col<31; col++){
 						matriz[fil][col].setAsEspacial();
 					}

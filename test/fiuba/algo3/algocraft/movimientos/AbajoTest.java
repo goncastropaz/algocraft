@@ -58,7 +58,7 @@ public class AbajoTest {
 	public void testmoverAbajoDeberiaLanzarErrorSiEstaEnElBordeInferiorDelMapa() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido{
 		Movimiento abajo = new Abajo();
 		Mapa mapa = Mapa.getInstance();
-		Marine unidad = new Marine(new Posicion(99,2));
+		Marine unidad = new Marine(new Posicion(49,2));
 		abajo.mover(unidad);
 	}
 	

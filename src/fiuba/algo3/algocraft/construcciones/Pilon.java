@@ -17,5 +17,6 @@ public class Pilon extends Construccion {
 		super(NOMBRE, COSTO_MINERAL, COSTO_GAS, TIEMPO_CONSTRUCCION, MAX_VIDA,
 				ESCUDO, UNIDAD, posicion);
 	}
+	
 
 }

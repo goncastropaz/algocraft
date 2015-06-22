@@ -45,12 +45,7 @@ public class Turno {
 			}
 		}
 		
-		private void actualizarRecursos(Jugador jugador) {
-			jugador.actualizarMineral();
-			jugador.actualizarGasVespeno();
-			
-		}
-
+	
 		public Jugador getActualJugador(){
 			return this.actualJugador;
 		}
@@ -87,8 +82,7 @@ public class Turno {
 			this.actualizarConstruccionesTurno(this.proximoJugador);
 			this.actualizarUnidadesTurno(this.actualJugador);
 			this.actualizarUnidadesTurno(this.proximoJugador);
-			this.actualizarRecursos(this.actualJugador);
-			this.actualizarRecursos(this.proximoJugador);
+			
 		}
 		
 }

@@ -82,7 +82,7 @@ public abstract class Unidad implements IUnidad{
 	}
 
 	public void actualizarTurno(Jugador jugador) {
-				
+			this.tiempoDeConstruccion.actualizarTiempo();	
 	}
 
 	public int getVision() {
