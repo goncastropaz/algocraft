@@ -1,37 +1,116 @@
 package fiuba.algo3.algocraft.control;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import fiuba.algo3.algocraft.acciones.CrearAcceso;
 import fiuba.algo3.algocraft.acciones.Ejecutable;
-import fiuba.algo3.algocraft.construcciones.FabricaDeUnidades;
-import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
-import fiuba.algo3.algocraft.excepciones.JugadorInvalido;
+import fiuba.algo3.algocraft.juego.Celda;
 import fiuba.algo3.algocraft.juego.Juego;
 import fiuba.algo3.algocraft.juego.Mapa;
-import fiuba.algo3.algocraft.unidades.IUnidad;
+import fiuba.algo3.algocraft.movimientos.Movimiento;
 
 public class ControlMapa {
 
 	Mapa mapa;
+	Juego juego;
+	Movimiento movimiento;
 
-	public ControlMapa() throws FueraDeMatriz {
-		mapa = Mapa.getInstance();
+	// VistaMapa vista;
+	// public ControlMapa(VistaMapa vista){
+	// vista = vista;
+	// mapa = Mapa.getInstance();
+	// juego = Juego.getInstance();
+
+	// }
+
+	private class EscuchaBotonSeleccionarCelda implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+
+			// TODO este método solo se encarga de mostrar un menú en las
+			// celdas. 
+			Celda celdaSeleccionada = (Celda) e.getSource();
+
+			if (celdaSeleccionada == null) { 
+				// mostrar menú espacial
+			} else {
+
+				// mostrar menú
+			}
+
+		}
 	}
 
-	public boolean crearEdificio(Ejecutable ejecutable) throws JugadorInvalido {
-		// TODO: Ver qu� le devuelvo a la vista
-		return ejecutable.ejecutar();
+	public ActionListener getListenerBotonSeleccionarCelda() {
+		return new EscuchaBotonSeleccionarCelda();
 	}
 
-	public IUnidad crearUnidad(FabricaDeUnidades fabrica) throws FueraDeMatriz, JugadorInvalido {
-		//Ahora devuelve la interfaz de la unidad, ver qu� hacemos con esto.
-		IUnidad unidad = fabrica.crearUnidad(Juego.getInstance()
-				.getActualCelda().getPosicion());
-		
-		return unidad;
+	private class EscuchaBotonCrearEdificio implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+
+			// TODO: e debería traerme la interfaz de la accion
+			// correspondiente.
+			Ejecutable ejecutable = new CrearAcceso();
+			//
+			// if(ejecutable.ejecutar()){
+			// //actualizar vista
+			// }else{
+			// //Cartel de error al crear construccion
+			// }
+		}
 	}
-	
-	// seleccionar celda
-	// Atacar 
-	// mover unidad o edificio.
-	
+
+	public ActionListener getListenerBotonIniciarJuego() {
+		return new EscuchaBotonCrearEdificio();
+	}
+
+	private class EscuchaBotonCrearUnidad implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			// TODO: e debería traerme la interfaz de la fábrica
+			// correspondiente, y la posicion
+
+			// vista.actualizarVista(fabrica.crearUnidad(posicion));
+		}
+	}
+
+	public ActionListener getListenerBotonCrearUnidad() {
+		return new EscuchaBotonCrearUnidad();
+	}
+
+	private class EscuchaBotonAtacar implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			// TODO: e debería traerme la interfaz de ejecutable
+			// correspondiente,
+
+		}
+	}
+
+	public ActionListener getListenerBotonAtacar() {
+		return new EscuchaBotonAtacar();
+	}
+
+	private class EscuchaBotonSeleccionarUnidad implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+
+			// vistaMostrarMenuUnidad
+
+		}
+	}
+
+	public ActionListener getListenerBotonSeleccionarUnidad() {
+		return new EscuchaBotonSeleccionarUnidad();
+	}
+
+	private class EscuchaBotonMoverUnidad implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			// TODO: e me tiene q traer la unidad seleccionada.
+			// movimiento.mover(unidad);
+
+		}
+	}
+
+	public ActionListener getListenerBotonMoverUnidad() {
+		return new EscuchaBotonMoverUnidad();
+	}
 
 }

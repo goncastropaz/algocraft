@@ -1,56 +1,91 @@
 package fiuba.algo3.algocraft.control;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import fiuba.algo3.algocraft.acciones.PasarTurno;
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
-import fiuba.algo3.algocraft.excepciones.JugadorInvalido;
 import fiuba.algo3.algocraft.juego.Juego;
-import fiuba.algo3.algocraft.juego.Turno;
-import fiuba.algo3.algocraft.juego.VisionJugador;
 
 public class ControlJuego {
 	private Juego juego;
-	private boolean inicioJuego = false;
 
-	public ControlJuego() throws FueraDeMatriz, JugadorInvalido {
-		Juego nuevoJuego = Juego.getInstance();
-		juego = nuevoJuego;
+	// VistaJuego vista;
+
+	// public ControlJuego(VistaJuego vista) {
+	// vista = vista;
+	// }
+
+	public void iniciarVista() {
+
 	}
 
-	public boolean inicioJuego() {
-		return this.inicioJuego;
-	}
+	private class EscuchaBotonIniciarJuego implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			try {
+				juego = Juego.getInstance();
+			} catch (FueraDeMatriz e1) {
+				// TODO Por qué el juego tira FUERA DE LA MATRIZ?! :-/
+				e1.printStackTrace();
+			}
 
-	public void finalizarJuego() {
-		this.inicioJuego = false;
-	}
-
-	public boolean juegoEstaTerminado() {
-		return this.juego.juegoTerminado();
-	}
-
-	public Turno getTurno() throws FueraDeMatriz, JugadorInvalido {
-		return Turno.getInstance();
-	}
-
-	public VisionJugador pasarTurno() {
-		PasarTurno pasarTurno = new PasarTurno();
-		VisionJugador visionJugador = null; 
-		
-		if (pasarTurno.ejecutar()) {
-			//visionJugador = this.juego.getActualJugador().getVisionMapa();
-			//HAY QUE HABLARLO XQ NO CONCUERDA CON LO QUE TENGO DE VISION
 		}
-		
-		return visionJugador;
 	}
 
-	public void crearNuevoJuego()  {
-		try {
-			juego = Juego.getInstance();
-		} catch (FueraDeMatriz e) {
-			e.printStackTrace();
+	public ActionListener getListenerBotonIniciarJuego() {
+		return new EscuchaBotonIniciarJuego();
+	}
+
+	private class EscuchaBotonAgregarJugador implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			// TODO: necesito de la vista para obtener los valores de los
+			// atributos de los controles.
+
+			// juego.setNombreJugador(vista.getOrdenJugador(),
+			// vista.getNombre());
+			// juego.setColorJugador(vista.getOrdenJugador(), vista.getColor());
 		}
-		inicioJuego = true;
+	}
+
+	public ActionListener getListenerBotonAgregarJugador() {
+		return new EscuchaBotonAgregarJugador();
+	}
+
+	private class EscuchaBotonPasarTurno implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			// TODO: e tiene que traer la Interfaz Ejecutable del pasar turno.
+			PasarTurno pasarTurno = new PasarTurno();
+			pasarTurno.ejecutar();
+		}
+	}
+
+	public ActionListener getListenerBotonPasarTurno() {
+		return new EscuchaBotonPasarTurno();
+	}
+
+	private class EscuchaBotonFinalizarJuego implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			juego.darFinalizadoElJuego();
+		}
+	}
+
+	public ActionListener getListenerBotonFinalizarJuego() {
+		return new EscuchaBotonFinalizarJuego();
+	}
+
+	private class EscuchaBotonCrearNuevoJuego implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			try {
+				juego = Juego.getInstance();
+			} catch (FueraDeMatriz e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+	}
+
+	public ActionListener getListenerBotonCrearNuevoJuego() {
+		return new EscuchaBotonCrearNuevoJuego();
 	}
 
 }

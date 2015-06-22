@@ -7,8 +7,13 @@ import fiuba.algo3.algocraft.unidades.Unidad;
 
 
 
-public abstract class Movimiento {
+public abstract class Movimiento extends java.util.Observable{
 	
 	public abstract void mover(Unidad unidad) throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido;
+	
+	public void ActualizarObservadores() {
+		setChanged();
+		notifyObservers();
+	}
 	
 }
