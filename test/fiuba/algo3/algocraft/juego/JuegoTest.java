@@ -31,7 +31,7 @@ public class JuegoTest {
 	
 
 	@Test
-	public void testSetNombreJugadorDebeGuardarElNombreEnJugador() throws FueraDeMatriz, JugadorInvalido, NombreYaExiste, NombreConMenosDe4Caracteres{
+	public void testSetNombreJugadorDebeGuardarElNombreEnJugador() throws FueraDeMatriz, NombreYaExiste, NombreConMenosDe4Caracteres, JugadorInvalido{
 		Juego juego = Juego.getInstance();
 		Jugador jugador1 = juego.getJugador(1);
 		juego.setNombreJugador(1,"Lucas");
@@ -39,7 +39,7 @@ public class JuegoTest {
 	}
 	
 	@Test
-	public void testSetColorJugadorDebeGuardarElColorEnJugador() throws FueraDeMatriz, JugadorInvalido, ColorYaExiste{
+	public void testSetColorJugadorDebeGuardarElColorEnJugador() throws FueraDeMatriz, ColorYaExiste, JugadorInvalido{
 		Juego juego = Juego.getInstance();
 		Jugador jugador1 = juego.getJugador(1);
 		juego.setColorJugador(1,"Rojo");
@@ -47,7 +47,7 @@ public class JuegoTest {
 	}
 	
 	@Test (expected = NombreYaExiste.class)
-	public void testSetNombreJugador2DebeTirarErrorSiEsIgualAl1() throws FueraDeMatriz, NombreYaExiste, JugadorInvalido, NombreConMenosDe4Caracteres{
+	public void testSetNombreJugador2DebeTirarErrorSiEsIgualAl1() throws FueraDeMatriz, NombreYaExiste,NombreConMenosDe4Caracteres, JugadorInvalido{
 		Juego juego = Juego.getInstance();
 		
 		juego.setNombreJugador(1,"Martin");

@@ -34,12 +34,12 @@ public class VisionJugador {
 		int colInicial =0;
 		int colFinal =99;
 		if (!((pos.getFila() -radio) < 0)) filaInicial = (pos.getFila()-radio);
-		if (!((pos.getFila() +radio)>19)) filaFinal = (pos.getFila() +radio);
+		if (!((pos.getFila() +radio)>99)) filaFinal = (pos.getFila() +radio);
 		if(!((pos.getColumna() -radio) <0)) colInicial = (pos.getColumna() -radio);
-		if(!((pos.getColumna() + radio) >19)) colFinal = (pos.getColumna() +radio);
+		if(!((pos.getColumna() + radio) >99)) colFinal = (pos.getColumna() +radio);
 		for(int fil = filaInicial; fil< filaFinal+1;fil++){
 			for(int col = colInicial;col< colFinal+1;col++){
-				estaDescubierto(new Posicion(fil,col));
+				descubrirCeldas(new Posicion(fil,col));
 			}
 		}
 	}

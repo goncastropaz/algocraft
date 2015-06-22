@@ -1,13 +1,13 @@
 package fiuba.algo3.algocraft.movimientos;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
 import fiuba.algo3.algocraft.excepciones.JugadorInvalido;
 import fiuba.algo3.algocraft.excepciones.UnidadTerrestreEnAreaEspacial;
+import fiuba.algo3.algocraft.juego.Juego;
 import fiuba.algo3.algocraft.juego.Mapa;
 import fiuba.algo3.algocraft.movimientos.Abajo;
 import fiuba.algo3.algocraft.movimientos.Movimiento;
@@ -103,5 +103,18 @@ public class AbajoTest {
 		abajo.mover(unidadDeTierra);
 
 	}
+	
+	@Test
+	public void testmoverAbajoUnaUnidadDeberiaActualizarLaVisionDelJugadorDeAcuerdoConLaVisionDeLaUnidad() throws FueraDeMatriz, JugadorInvalido, UnidadTerrestreEnAreaEspacial{
+		Juego juego = Juego.getInstance();
+		Marine unMarine = new Marine(new Posicion(9,9));
+		Movimiento abajo = new Abajo();
+		abajo.mover(unMarine);
+		
+		assertTrue(juego.getJugador(1).getVision().estaDescubierto(new Posicion(16,16)));
+		assertTrue(juego.getJugador(1).getVision().estaDescubierto(new Posicion(16,2)));
+		
+	}
+
 	 
 }

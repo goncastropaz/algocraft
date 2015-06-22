@@ -95,6 +95,10 @@ public class Jugador {
 		this.visionMapa.setRadioDeVision(pos, radio);
 		
 	}
+	
+	public VisionJugador getVision(){
+		return this.visionMapa;
+	}
 
 	
 }

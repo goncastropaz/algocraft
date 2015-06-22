@@ -25,11 +25,11 @@ public class Juego {
         jugador = new Jugador(Mapa.getInstance().getBaseJugador(2));
         jugadores.put(2,jugador);
         this.juegoFinalizado =false;
-    	  
+           	  
     }
 
       
-      private synchronized static void createInstance() throws FueraDeMatriz {
+      private synchronized static void createInstance() throws FueraDeMatriz{
 			if (INSTANCE == null) { 
 		       INSTANCE = new Juego();
 		    }
@@ -82,5 +82,7 @@ public class Juego {
 		public boolean juegoTerminado(){
 			return this.juegoFinalizado;
 		}
-		
+		public void empezarJuego() throws JugadorInvalido, FueraDeMatriz{
+			this.turno = Turno.getInstance();
+		}
 	}

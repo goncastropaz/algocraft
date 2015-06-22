@@ -28,7 +28,7 @@ public class ControlJuego {
 		return this.juego.juegoTerminado();
 	}
 
-	public Turno getTurno() throws JugadorInvalido, FueraDeMatriz {
+	public Turno getTurno() throws FueraDeMatriz, JugadorInvalido {
 		return Turno.getInstance();
 	}
 
@@ -44,8 +44,12 @@ public class ControlJuego {
 		return visionJugador;
 	}
 
-	public void crearNuevoJuego() throws FueraDeMatriz {
-		juego = Juego.getInstance();
+	public void crearNuevoJuego()  {
+		try {
+			juego = Juego.getInstance();
+		} catch (FueraDeMatriz e) {
+			e.printStackTrace();
+		}
 		inicioJuego = true;
 	}
 
