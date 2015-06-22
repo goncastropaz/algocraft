@@ -25,7 +25,7 @@ public class ControlJuego {
 			try {
 				juego = Juego.getInstance();
 			} catch (FueraDeMatriz e1) {
-				// TODO Por qué el juego tira FUERA DE LA MATRIZ?! :-/
+				// TODO Por que el juego tira FUERA DE LA MATRIZ?! :-/
 				e1.printStackTrace();
 			}
 
