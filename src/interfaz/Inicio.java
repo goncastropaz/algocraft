@@ -6,9 +6,6 @@ import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
-
-import com.jgoodies.forms.factories.DefaultComponentFactory;
-
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
 
@@ -62,7 +59,7 @@ public class Inicio {
 		
 		//Datos Jugador 1
 		
-		JLabel NombreJugador1 = DefaultComponentFactory.getInstance().createTitle("Nombre Jugador 1");
+		JLabel NombreJugador1 = new JLabel("Nombre Jugador 1");
 		NombreJugador1.setBounds(199, 11, 204, 27);
 		frame.getContentPane().add(NombreJugador1);
 		
@@ -92,7 +89,7 @@ public class Inicio {
 		
 		//Datos Jugador 2
 		
-		JLabel NombreJugador2 = DefaultComponentFactory.getInstance().createTitle("Nombre Jugador 2");
+		JLabel NombreJugador2 = new JLabel("Nombre Jugador 2");
 		NombreJugador2.setBounds(199, 153, 204, 14);
 		frame.getContentPane().add(NombreJugador2);
 		
