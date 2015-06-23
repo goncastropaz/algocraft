@@ -21,7 +21,7 @@ public abstract class UnidadAerea extends Unidad{
 			this.getEscudo().setEscudoActual(escudoActual-danio);
 		}else{
 			this.getEscudo().setEscudoActual(0);
-			this.setVida(danio-escudoActual);
+			this.setVida(this.getVida().getVidaActual()-(danio-escudoActual));
 		}
 	}
 }

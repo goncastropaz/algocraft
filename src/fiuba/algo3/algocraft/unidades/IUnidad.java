@@ -36,4 +36,6 @@ public interface IUnidad {
 	
 	public void destruir();
 	
+	public void setCopia();
+	
 }

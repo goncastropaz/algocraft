@@ -114,7 +114,7 @@ public abstract class Construccion {
 			this.getShield().setEscudoActual(escudoActual-danio);
 		}else{
 			this.getShield().setEscudoActual(0);
-			this.setVida(danio-escudoActual);
+			this.setVida(this.getHealth().getVidaActual()-(danio-escudoActual));
 		}
 	}
 	

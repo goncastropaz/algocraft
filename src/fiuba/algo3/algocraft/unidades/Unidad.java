@@ -29,6 +29,7 @@ public abstract class Unidad implements IUnidad{
 	public Integer suministro;
 	public Integer danioAereo;
 	public Integer danioTerrestre;
+	public boolean copia;
 	
 	
 	public Unidad(String nombre, Integer tiempoDeConstruccion, Integer vidaMaxima, Integer escudoMaximo,Integer vision,Integer suministro,Posicion pos) throws FueraDeMatriz{
@@ -40,6 +41,7 @@ public abstract class Unidad implements IUnidad{
 		this.vision =vision;
 		this.suministro = suministro;
 		this.JugadorCreador = Juego.getInstance().getActualJugador();
+		this.copia = false;
 	}
 
 	public String getNombre() {
@@ -127,6 +129,12 @@ public abstract class Unidad implements IUnidad{
 		this.ubicacion.removeUnidad();
 		this.JugadorCreador.destruirUnidad(this);
 		
+	}
+	public void setCopia(){
+		this.copia = true;
+		this.danioAereo = 0;
+		this.danioTerrestre = 0;
+		this.vida.setVidaActual(0);
 	}
 	
 	
