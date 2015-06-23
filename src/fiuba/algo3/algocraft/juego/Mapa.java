@@ -1,5 +1,6 @@
 package fiuba.algo3.algocraft.juego;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
@@ -85,6 +86,25 @@ public class Mapa {
 			public Posicion getBaseJugador(int jugador) {
 				// TODO Auto-generated method stub
 				return this.baseJugadores.get(jugador);
+			}
+
+			public ArrayList<Celda> devolverCeldasRadio(Posicion pos, int radio) {
+				ArrayList<Celda> listaDeCeldas = new ArrayList<Celda>();
+				int filaInicial=0;
+				int filaFinal =tamanio-1;
+				int colInicial =0;
+				int colFinal =tamanio-1;
+				if (!((pos.getFila() -radio) < 0)) filaInicial = (pos.getFila()-radio);
+				if (!((pos.getFila() +radio)>(tamanio-1))) filaFinal = (pos.getFila() +radio);
+				if(!((pos.getColumna() -radio) <0)) colInicial = (pos.getColumna() -radio);
+				if(!((pos.getColumna() + radio) >(tamanio-1))) colFinal = (pos.getColumna() +radio);
+				for(int fil = filaInicial; fil< filaFinal+1;fil++){
+					for(int col = colInicial;col< colFinal+1;col++){
+						listaDeCeldas.add(this.getCelda(fil, col));
+					}
+				}
+				return listaDeCeldas;
+				
 			}
 					
 			   

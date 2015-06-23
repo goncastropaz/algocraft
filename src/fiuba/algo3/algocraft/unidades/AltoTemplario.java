@@ -5,9 +5,12 @@ import java.util.ArrayList;
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
 import fiuba.algo3.algocraft.juego.Jugador;
 import fiuba.algo3.algocraft.magias.Alucinacion;
+import fiuba.algo3.algocraft.magias.EMP;
 import fiuba.algo3.algocraft.magias.Magia;
+import fiuba.algo3.algocraft.magias.Radiacion;
 import fiuba.algo3.algocraft.magias.TormentaPsionica;
 import fiuba.algo3.classes.stats.CostoDeRecursos;
+import fiuba.algo3.classes.stats.Energia;
 import fiuba.algo3.classes.stats.Posicion;
 import fiuba.algo3.classes.stats.RangoDeAtaque;
 import fiuba.algo3.classes.stats.Vida;
@@ -33,8 +36,8 @@ public class AltoTemplario extends UnidadTerrestre {
 	private static final Integer RANGO_ATAQUE_TERRESTRE = 0;
 	private static final Integer RANGO_ATAQUE_AEREO = 0;
 	
-	private int energia;
-	private ArrayList<Magia> magias;
+	private Energia energia;
+	private ArrayList<TormentaPsionica> tormentasPsionicas;
 	
 	public AltoTemplario(Posicion pos) throws FueraDeMatriz{
 		
@@ -44,20 +47,34 @@ public class AltoTemplario extends UnidadTerrestre {
 		this.setCostoDeRecursos(costoDeRecursos);
 		this.setRangoDeAtaque(rango);
 		
-		this.energia = INITIAL_ENERGY;
-		this.magias = new ArrayList<Magia>();
-		this.magias.add(new TormentaPsionica());
-		this.magias.add(new Alucinacion());
+		this.energia = new Energia(MAX_ENERGY,INITIAL_ENERGY);
+		this.tormentasPsionicas = new ArrayList<TormentaPsionica>();
+		
 		
 	}
 	
 	public void actualizarTurno(Jugador jugador){
 		if(this.getTiempoDeConstruccion().getTurnosRestantes()==0){
-			this.energia = this.energia + RECHARGED_ENERGY;
-			if (this.energia> MAX_ENERGY) this.energia = MAX_ENERGY;
+			this.energia.recargarEnergia(RECHARGED_ENERGY);
+			for(int tormenta = 0; tormenta< this.tormentasPsionicas.size();tormenta--){
+				if(this.tormentasPsionicas.get(tormenta).getTurno() ==0 ){
+					this.tormentasPsionicas.remove(tormenta);
+				}
+			}
+			
 		}
 		this.getTiempoDeConstruccion().actualizarTiempo();
 	}
 
+	
+	
+	public ArrayList<Magia> getMagias(){
+		ArrayList<Magia> magias = new ArrayList<Magia>();
+		TormentaPsionica tormenta = new TormentaPsionica(this.energia);
+		this.tormentasPsionicas.add(tormenta);
+		magias.add(tormenta);
+		magias.add(new Alucinacion(this.energia));
+		return magias;
+	}
 	
 }

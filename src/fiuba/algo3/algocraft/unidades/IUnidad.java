@@ -38,4 +38,12 @@ public interface IUnidad {
 	
 	public void setCopia();
 	
+	public void ataque(Unidad unidadAtacante);
+	
+	public void ataqueEMP();
+	
+	public void radiacion(int danio);
+	
+	public void tormentaPsionica(int danio);
+	
 }

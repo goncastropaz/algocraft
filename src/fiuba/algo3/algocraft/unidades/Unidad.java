@@ -104,6 +104,7 @@ public abstract class Unidad implements IUnidad{
 
 	public void actualizarTurno(Jugador jugador) {
 			this.tiempoDeConstruccion.actualizarTiempo();	
+			//tormenta turnos
 	}
 
 	public int getVision() {
@@ -128,6 +129,7 @@ public abstract class Unidad implements IUnidad{
 	public void destruir(){
 		this.ubicacion.removeUnidad();
 		this.JugadorCreador.destruirUnidad(this);
+		//actualizar poblacion
 		
 	}
 	public void setCopia(){
@@ -137,5 +139,23 @@ public abstract class Unidad implements IUnidad{
 		this.vida.setVidaActual(0);
 	}
 	
+	public void ataqueEMP(){
+		this.getEscudo().setEscudoActual(0);
+	}
 	
+	public void radiacion(int danio){
+		this.setVida(this.getVida().getVidaActual()-(danio));
+		
+	}
+
+	public void tormentaPsionica(int danio) {
+		Integer escudoActual = this.getEscudo().getEscudoActual();
+		if(escudoActual> danio){
+			this.getEscudo().setEscudoActual(escudoActual-danio);
+		}else{
+			this.getEscudo().setEscudoActual(0);
+			this.setVida(this.getVida().getVidaActual()-(danio-escudoActual));
+		}
+		
+	}
 }

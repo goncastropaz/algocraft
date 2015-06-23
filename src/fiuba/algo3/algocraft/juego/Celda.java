@@ -87,6 +87,10 @@ public class Celda {
 	public void removerConstruccion() {
 		this.edificio = null;		
 	}
+	
+	public Construccion getConstruccion(){
+		return this.edificio;
+	}
 
 	
 }
