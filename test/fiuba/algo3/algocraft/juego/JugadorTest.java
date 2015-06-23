@@ -7,7 +7,9 @@ import org.junit.Test;
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
 import fiuba.algo3.algocraft.excepciones.NombreConMenosDe4Caracteres;
 import fiuba.algo3.algocraft.juego.Jugador;
-import fiuba.algo3.algocraft.juego.Raza;
+import fiuba.algo3.algocraft.razas.Protoss;
+import fiuba.algo3.algocraft.razas.Raza;
+import fiuba.algo3.algocraft.razas.Terran;
 import fiuba.algo3.classes.stats.Posicion;
 
 public class JugadorTest {
@@ -41,7 +43,7 @@ public class JugadorTest {
 	@Test
 	public void testSetRazaDebeGuardarLaRazaDelJugador() throws FueraDeMatriz{
 		Jugador jugador = new Jugador(new Posicion(2,2));
-		Raza raza = new Raza();
+		Raza raza = new Protoss();
 		jugador.setRaza(raza);
 		assertEquals(raza,jugador.getRaza());
 	}

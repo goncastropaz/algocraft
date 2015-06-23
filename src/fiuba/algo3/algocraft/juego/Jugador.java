@@ -6,6 +6,7 @@ import java.util.List;
 import fiuba.algo3.algocraft.construcciones.Construccion;
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
 import fiuba.algo3.algocraft.excepciones.NombreConMenosDe4Caracteres;
+import fiuba.algo3.algocraft.razas.Raza;
 import fiuba.algo3.algocraft.unidades.Unidad;
 import fiuba.algo3.classes.stats.Posicion;
 
