@@ -40,9 +40,9 @@ public class ControlJuego {
 				} catch (NombreYaExiste e1) {
 					vistaInicio.mostrarError("Los nombres no pueden ser iguales");
 				} catch (JugadorInvalido e1) {
-					vistaInicio.mostrarError("Jugador inválido");
+					vistaInicio.mostrarError("Jugador invalido");
 				} catch (NombreConMenosDe4Caracteres e1) {
-					vistaInicio.mostrarError("El nombre debe tener más de 4 caracteres.");
+					vistaInicio.mostrarError("El nombre debe tener mas de 4 caracteres.");
 				}catch (ColorYaExiste e1) {
 					vistaInicio.mostrarError("El color ya existe");
 				}
