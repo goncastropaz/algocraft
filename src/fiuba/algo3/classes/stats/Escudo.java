@@ -18,5 +18,9 @@ public class Escudo {
 	public Integer getEscudoActual() {
 		return escudoActual;
 	}
+	
+	public void setEscudoActual(Integer escudoActual){
+		this.escudoActual = escudoActual;
+	}
 
 }

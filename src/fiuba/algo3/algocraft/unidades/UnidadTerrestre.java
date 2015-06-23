@@ -20,4 +20,15 @@ public abstract class UnidadTerrestre extends Unidad{
 		celda.setUnidad(this);
 		
 	}
+	
+	public void ataque(Unidad unidadAtacante){
+		int danio = unidadAtacante.getDanioTerrestre();
+		Integer escudoActual = this.getEscudo().getEscudoActual();
+		if(escudoActual> danio){
+			this.getEscudo().setEscudoActual(escudoActual-danio);
+		}else{
+			this.getEscudo().setEscudoActual(0);
+			this.setVida(danio-escudoActual);
+		}
+	}
 }

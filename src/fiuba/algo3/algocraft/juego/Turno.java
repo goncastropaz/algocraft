@@ -85,4 +85,8 @@ public class Turno {
 			
 		}
 		
+		public Jugador getProximoJugador(){
+			return this.proximoJugador;
+		}
+		
 }

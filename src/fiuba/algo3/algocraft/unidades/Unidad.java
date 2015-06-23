@@ -4,8 +4,10 @@ import fiuba.algo3.algocraft.excepciones.CeldaOcupada;
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
 import fiuba.algo3.algocraft.excepciones.UnidadTerrestreEnAreaEspacial;
 import fiuba.algo3.algocraft.juego.Celda;
+import fiuba.algo3.algocraft.juego.Juego;
 import fiuba.algo3.algocraft.juego.Jugador;
 import fiuba.algo3.algocraft.juego.Mapa;
+import fiuba.algo3.algocraft.juego.Turno;
 import fiuba.algo3.classes.stats.CostoDeRecursos;
 import fiuba.algo3.classes.stats.Escudo;
 import fiuba.algo3.classes.stats.Posicion;
@@ -15,6 +17,7 @@ import fiuba.algo3.classes.stats.Vida;
 
 public abstract class Unidad implements IUnidad{
 
+	Jugador JugadorCreador;
 	private String nombre;
 	private CostoDeRecursos costoDeRecursos;
 	private TiempoDeConstruccion tiempoDeConstruccion;
@@ -24,6 +27,9 @@ public abstract class Unidad implements IUnidad{
 	public Celda ubicacion;
 	public RangoDeAtaque rango;
 	public Integer suministro;
+	public Integer danioAereo;
+	public Integer danioTerrestre;
+	
 	
 	public Unidad(String nombre, Integer tiempoDeConstruccion, Integer vidaMaxima, Integer escudoMaximo,Integer vision,Integer suministro,Posicion pos) throws FueraDeMatriz{
 		this.nombre = nombre;
@@ -33,7 +39,7 @@ public abstract class Unidad implements IUnidad{
 		this.ubicacion = Mapa.getInstance().getCelda(pos.getFila(),pos.getColumna()); 
 		this.vision =vision;
 		this.suministro = suministro;
-		
+		this.JugadorCreador = Juego.getInstance().getActualJugador();
 	}
 
 	public String getNombre() {
@@ -68,8 +74,12 @@ public abstract class Unidad implements IUnidad{
 		return vida;
 	}
 
-	public void setVida(Vida vida) {
-		this.vida = vida;
+	public void setVida(Integer vida) {
+		if(vida<=0){
+			this.destruir();
+		}else{
+			this.vida.setVidaActual(vida);
+		}
 	}
 
 	public Escudo getEscudo() {
@@ -102,7 +112,22 @@ public abstract class Unidad implements IUnidad{
 	public Integer getSuministro(){
 		return this.suministro;
 	}
-
-
+	public void setDanios(Integer danioAereo,Integer danioTerrestre){
+		this.danioTerrestre = danioTerrestre;
+		this.danioAereo = danioAereo;
+	}
+	public Integer getDanioAereo(){
+		return this.danioAereo;
+	}
+	public Integer getDanioTerrestre(){
+		return this.danioTerrestre;
+	}
+	
+	public void destruir(){
+		this.ubicacion.removeUnidad();
+		this.JugadorCreador.destruirUnidad(this);
+		
+	}
+	
 	
 }

@@ -19,9 +19,5 @@ public class Barraca extends Construccion {
 		super(NOMBRE, COSTO_MINERAL, COSTO_GAS, TIEMPO_CONSTRUCCION, MAX_VIDA,
 				ESCUDO, UNIDAD, posicion);
 	}
-	
-	public IUnidad crearUnidad(FabricaDeUnidades fabrica) throws FueraDeMatriz{
-		//la unidad se crea en la misma posicion que el edificio
-		return fabrica.crearUnidad(this.getUbicacion().getPosicion());
-	}
+
 }

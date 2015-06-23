@@ -24,7 +24,7 @@ public interface IUnidad {
 
 	public Vida getVida();
 
-	public void setVida(Vida vida);
+	public void setVida(Integer vida);
 	
 	public Escudo getEscudo();
 
@@ -33,5 +33,7 @@ public interface IUnidad {
 	public Celda getUbicacion();
 
 	public void setNuevaUbicacion(Celda celda) throws UnidadTerrestreEnAreaEspacial, CeldaOcupada;
+	
+	public void destruir();
 	
 }

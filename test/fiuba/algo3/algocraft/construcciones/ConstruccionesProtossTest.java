@@ -11,12 +11,16 @@ import fiuba.algo3.algocraft.construcciones.Asimilador;
 import fiuba.algo3.algocraft.construcciones.NexoMineral;
 import fiuba.algo3.algocraft.construcciones.Pilon;
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
+import fiuba.algo3.algocraft.excepciones.JugadorInvalido;
+import fiuba.algo3.algocraft.juego.Juego;
 import fiuba.algo3.classes.stats.Posicion;
 
 public class ConstruccionesProtossTest {
 
 	@Test
-	public void testCrearNexoMineral() throws FueraDeMatriz{
+	public void testCrearNexoMineral() throws FueraDeMatriz, JugadorInvalido{
+		Juego nuevoJuego = Juego.getInstance();
+		nuevoJuego.empezarJuego();
 		Integer fila = 1;
 		Integer columna = 1;
 		Integer cost = 50;
@@ -29,7 +33,9 @@ public class ConstruccionesProtossTest {
 	}
 
 	@Test
-	public void testCrearPilon() throws FueraDeMatriz{
+	public void testCrearPilon() throws FueraDeMatriz, JugadorInvalido{
+		Juego nuevoJuego = Juego.getInstance();
+		nuevoJuego.empezarJuego();
 		Integer fila = 1;
 		Integer columna = 1;
 		Integer escudo = 300;
@@ -42,7 +48,9 @@ public class ConstruccionesProtossTest {
 	}
 	
 	@Test
-	public void testCrearAsimilador() throws FueraDeMatriz{
+	public void testCrearAsimilador() throws FueraDeMatriz, JugadorInvalido{
+		Juego nuevoJuego = Juego.getInstance();
+		nuevoJuego.empezarJuego();
 		Integer fila = 1;
 		Integer columna = 1;
 		Integer tiempoConstruccion = 6;
@@ -55,7 +63,9 @@ public class ConstruccionesProtossTest {
 	}
 	
 	@Test
-	public void testCrearAcceso() throws FueraDeMatriz{
+	public void testCrearAcceso() throws FueraDeMatriz, JugadorInvalido{
+		Juego nuevoJuego = Juego.getInstance();
+		nuevoJuego.empezarJuego();
 		Integer fila = 1;
 		Integer columna = 1;
 		Integer tiempoConstruccion = 8;
@@ -68,7 +78,9 @@ public class ConstruccionesProtossTest {
 	}
 	
 	@Test
-	public void testCrearArchivoTemplario() throws FueraDeMatriz{
+	public void testCrearArchivoTemplario() throws FueraDeMatriz, JugadorInvalido{
+		Juego nuevoJuego = Juego.getInstance();
+		nuevoJuego.empezarJuego();
 		Integer fila = 1;
 		Integer columna = 1;
 		Integer tiempoConstruccion = 9;

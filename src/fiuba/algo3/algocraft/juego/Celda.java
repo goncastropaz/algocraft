@@ -84,5 +84,9 @@ public class Celda {
 		}
 	}
 
+	public void removerConstruccion() {
+		this.edificio = null;		
+	}
+
 	
 }

@@ -71,6 +71,9 @@ public class Juego {
 		public Celda getActualCelda(){
 			return turno.getActualCelda();
 		}
+		public Celda getObjetivoCelda(){
+			return turno.getObjetivoCelda();
+		}
 		
 		public Jugador getActualJugador(){
 			return turno.getActualJugador();
