@@ -18,4 +18,7 @@ public class Vida {
 		return vidaActual;
 	}
 	
+	public void setVidaActual(Integer vida){
+		this.vidaActual = vida;
+	}
 }

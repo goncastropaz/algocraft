@@ -11,11 +11,15 @@ import fiuba.algo3.algocraft.construcciones.DepositoSuministro;
 import fiuba.algo3.algocraft.construcciones.Fabrica;
 import fiuba.algo3.algocraft.construcciones.Refineria;
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
+import fiuba.algo3.algocraft.excepciones.JugadorInvalido;
+import fiuba.algo3.algocraft.juego.Juego;
 import fiuba.algo3.classes.stats.Posicion;
 
 public class ConstruccionesTerranTest {
 	@Test
-	public void testCrearCentroMineral() throws FueraDeMatriz{
+	public void testCrearCentroMineral() throws FueraDeMatriz, JugadorInvalido{
+		Juego nuevoJuego = Juego.getInstance();
+		nuevoJuego.empezarJuego();
 		Integer fila = 1;
 		Integer columna = 1;
 		Integer max_vida = 500;
@@ -28,7 +32,9 @@ public class ConstruccionesTerranTest {
 	}
 	
 	@Test
-	public void testCrearBarraca() throws FueraDeMatriz{
+	public void testCrearBarraca() throws FueraDeMatriz, JugadorInvalido{
+		Juego nuevoJuego = Juego.getInstance();
+		nuevoJuego.empezarJuego();
 		Integer fila = 1;
 		Integer columna = 1;
 		Integer costoMineral = 150;
@@ -41,7 +47,9 @@ public class ConstruccionesTerranTest {
 	}
 	
 	@Test
-	public void testCrearDepositoSuminitros() throws FueraDeMatriz{
+	public void testCrearDepositoSuminitros() throws FueraDeMatriz, JugadorInvalido{
+		Juego nuevoJuego = Juego.getInstance();
+		nuevoJuego.empezarJuego();
 		Integer fila = 1;
 		Integer columna = 1;
 		Integer costoMineral = 100;
@@ -54,7 +62,9 @@ public class ConstruccionesTerranTest {
 	}
 	
 	@Test
-	public void testCrearRefineria() throws FueraDeMatriz{
+	public void testCrearRefineria() throws FueraDeMatriz, JugadorInvalido{
+		Juego nuevoJuego = Juego.getInstance();
+		nuevoJuego.empezarJuego();
 		Integer fila = 1;
 		Integer columna = 1;
 		Integer tiempoConstruccion = 6;
@@ -67,7 +77,9 @@ public class ConstruccionesTerranTest {
 	}
 	
 	@Test
-	public void testCrearFabrica() throws FueraDeMatriz{
+	public void testCrearFabrica() throws FueraDeMatriz, JugadorInvalido{
+		Juego nuevoJuego = Juego.getInstance();
+		nuevoJuego.empezarJuego();
 		Integer fila = 1;
 		Integer columna = 1;
 		Integer costoGas = 100;

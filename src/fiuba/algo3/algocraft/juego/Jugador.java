@@ -100,5 +100,15 @@ public class Jugador {
 		return this.visionMapa;
 	}
 
+	public void destruirUnidad(Unidad unidad) {
+		this.unidadesList.remove(unidad);
+		
+	}
+
+	public void destruirConstruccion(Construccion construccion) {
+		this.construccionesList.remove(construccion);
+		
+	}
+
 	
 }

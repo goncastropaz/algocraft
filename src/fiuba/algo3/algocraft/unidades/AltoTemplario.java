@@ -10,6 +10,7 @@ import fiuba.algo3.algocraft.magias.TormentaPsionica;
 import fiuba.algo3.classes.stats.CostoDeRecursos;
 import fiuba.algo3.classes.stats.Posicion;
 import fiuba.algo3.classes.stats.RangoDeAtaque;
+import fiuba.algo3.classes.stats.Vida;
 
 public class AltoTemplario extends UnidadTerrestre {
 
@@ -57,4 +58,6 @@ public class AltoTemplario extends UnidadTerrestre {
 		}
 		this.getTiempoDeConstruccion().actualizarTiempo();
 	}
+
+	
 }

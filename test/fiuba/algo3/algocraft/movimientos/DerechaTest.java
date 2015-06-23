@@ -24,6 +24,9 @@ public class DerechaTest {
 
 	@Test
 	public void testmoverDerechaDeberiaMoverLaUnidadALaCeldaDeLaDerecha() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido, CeldaOcupada{
+		Juego nuevoJuego = Juego.getInstance();
+		nuevoJuego.empezarJuego();
+
 		Movimiento derecha = new Derecha();
 		Mapa mapa = Mapa.getInstance();
 		Marine unidad = new Marine(new Posicion(2,1));
@@ -39,6 +42,9 @@ public class DerechaTest {
 	
 	@Test
 	public void testmoverDerechaDeberiaRemoverLaUnidadDeLaViejaCelda() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido, CeldaOcupada{
+		Juego nuevoJuego = Juego.getInstance();
+		nuevoJuego.empezarJuego();
+
 		Movimiento derecha = new Derecha();
 		Mapa mapa = Mapa.getInstance();
 		Marine unidad = new Marine(new Posicion(1,1));
@@ -52,6 +58,8 @@ public class DerechaTest {
 	
 	@Test
 	public void testmoverDerechaDeberiaAgregarLaUnidadALaNuevaCelda() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido, CeldaOcupada{
+		Juego nuevoJuego = Juego.getInstance();
+		nuevoJuego.empezarJuego();
 		Movimiento derecha = new Derecha();
 		Mapa mapa = Mapa.getInstance();
 		Marine unidad = new Marine(new Posicion(1,1));
@@ -65,6 +73,9 @@ public class DerechaTest {
 	
 	@Test (expected = FueraDeMatriz.class)
 	public void testmoverDerechaDeberiaLanzarErrorSiEstaEnElBordeDerechoDelMapa() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido, CeldaOcupada{
+		Juego nuevoJuego = Juego.getInstance();
+		nuevoJuego.empezarJuego();
+
 		Movimiento derecha = new Derecha();
 		Mapa mapa = Mapa.getInstance();
 		Marine unidad = new Marine(new Posicion(1,1));
@@ -75,6 +86,8 @@ public class DerechaTest {
 
 	@Test 
 	public void testmoverDerechaUnaUnidadDeTierraEnAreaDeTierraDeberiaMoverLaUnidadUnaCeldaALaDerecha() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido, CeldaOcupada{
+		Juego nuevoJuego = Juego.getInstance();
+		nuevoJuego.empezarJuego();
 		Movimiento derecha = new Derecha();
 		Mapa mapa = Mapa.getInstance();
 		Marine unidadDeTierra = new Marine(new Posicion(2,2));
@@ -86,6 +99,8 @@ public class DerechaTest {
 	
 	@Test 
 	public void testmoverDerechaUnaUnidadAereaEnAreaDeTierraDeberiaMoverLaUnidadUnaCeldaALaDerecha() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido, CeldaOcupada{
+		Juego nuevoJuego = Juego.getInstance();
+		nuevoJuego.empezarJuego();
 		Movimiento derecha = new Derecha();
 		Mapa mapa = Mapa.getInstance();
 		Unidad unidadAerea = new NaveCiencia(new Posicion(2,2));
@@ -97,7 +112,9 @@ public class DerechaTest {
 	
 	@Test 
 	public void testmoverDerechaUnaUnidadAereaEnAreaAereaDeberiaMoverLaUnidadUnaCeldaALaDerecha() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido, CeldaOcupada{
-		Movimiento derecha = new Derecha();
+		Juego nuevoJuego = Juego.getInstance();
+		nuevoJuego.empezarJuego();
+			Movimiento derecha = new Derecha();
 		Mapa mapa = Mapa.getInstance();
 		Unidad unidadAerea = new NaveCiencia(new Posicion(20,20));
 		derecha.mover(unidadAerea);
@@ -108,6 +125,8 @@ public class DerechaTest {
 	
 	@Test (expected = UnidadTerrestreEnAreaEspacial.class)
 	public void testmoverDerechaUnaUnidadDeTierraEnAreaAereaDeberiaLanzarError() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido, CeldaOcupada{
+		Juego nuevoJuego = Juego.getInstance();
+		nuevoJuego.empezarJuego();
 		Movimiento derecha = new Derecha();
 		Mapa mapa = Mapa.getInstance();
 		Marine unidadDeTierra = new Marine(new Posicion(20,17));
@@ -118,6 +137,8 @@ public class DerechaTest {
 	
 	@Test
 	public void testmoverDerechaUnaUnidadDeberiaActualizarLaVisionDelJugadorDeAcuerdoConLaVisionDeLaUnidad() throws FueraDeMatriz, JugadorInvalido, UnidadTerrestreEnAreaEspacial, CeldaOcupada{
+		Juego nuevoJuego = Juego.getInstance();
+		nuevoJuego.empezarJuego();
 		Juego juego = Juego.getInstance();
 		Marine unMarine = new Marine(new Posicion(9,9));
 		Movimiento derecha = new Derecha();

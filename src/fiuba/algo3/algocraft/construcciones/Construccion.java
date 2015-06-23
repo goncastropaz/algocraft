@@ -2,9 +2,11 @@ package fiuba.algo3.algocraft.construcciones;
 
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
 import fiuba.algo3.algocraft.juego.Celda;
+import fiuba.algo3.algocraft.juego.Juego;
 import fiuba.algo3.algocraft.juego.Jugador;
 import fiuba.algo3.algocraft.juego.Mapa;
 import fiuba.algo3.algocraft.unidades.IUnidad;
+import fiuba.algo3.algocraft.unidades.Unidad;
 import fiuba.algo3.classes.stats.CostoDeRecursos;
 import fiuba.algo3.classes.stats.Escudo;
 import fiuba.algo3.classes.stats.Posicion;
@@ -20,6 +22,7 @@ public abstract class Construccion {
 	private Escudo shield;
 	private RaceUnitBuilding unitBuilder;
 	private Celda ubicacion;
+	private Jugador jugadorCreador;
 
 	public Construccion(String name, Integer mineralCost, Integer gasCost,
 			Integer construtionTime, Integer maxHealth, Integer maxShield,
@@ -32,7 +35,7 @@ public abstract class Construccion {
 		this.shield = new Escudo(maxShield);
 		this.unitBuilder = new RaceUnitBuilding();
 		this.ubicacion= Mapa.getInstance().getCelda(posicion.getFila(),posicion.getColumna());
-
+		this.jugadorCreador = Juego.getInstance().getActualJugador();
 	}
 
 	public String getName() {
@@ -63,8 +66,12 @@ public abstract class Construccion {
 		return health;
 	}
 
-	public void setHealth( Vida health) {
-		this.health = health;
+	public void setVida( Integer vida) {
+		if(vida<=0){
+			this.destruir();
+		}else{
+			this.health.setVidaActual(vida);
+		}
 	}
 
 	public Escudo getShield() {
@@ -87,13 +94,28 @@ public abstract class Construccion {
 		return this.ubicacion;
 	}
 
-	public IUnidad crearUnidad(FabricaDeUnidades fabrica) throws FueraDeMatriz{
-		//la unidad se crea en la misma posicion que el edificio
-		return fabrica.crearUnidad(this.getUbicacion().getPosicion());
-	
-	}
 	
 	public void actualizarTurno(Jugador jugador){
 		this.constructionTime.actualizarTiempo();
 	}
+	
+	private void destruir() {
+		this.ubicacion.removerConstruccion();
+			this.jugadorCreador.destruirConstruccion(this);
+			
+		
+		
+	}
+	
+	public void ataque(Unidad unidadAtacante){
+		int danio = unidadAtacante.getDanioTerrestre();
+		Integer escudoActual = this.getShield().getEscudoActual();
+		if(escudoActual> danio){
+			this.getShield().setEscudoActual(escudoActual-danio);
+		}else{
+			this.getShield().setEscudoActual(0);
+			this.setVida(this.getHealth().getVidaActual()-(danio-escudoActual));
+		}
+	}
+	
 }
