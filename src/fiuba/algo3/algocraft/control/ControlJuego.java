@@ -32,7 +32,7 @@ public class ControlJuego {
 	private class EscuchaBotonIniciarJuego implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			try {
-	
+				Boolean  error = false;
 				juego = Juego.getInstance();
 				try {
 					juego.setNombreJugador(1,vistaInicio.getTextField().getText());
@@ -55,19 +55,25 @@ public class ControlJuego {
 					juego.setColorJugador(2, vistaInicio.getColorSeleccionadoJG2());
 					 
 				} catch (CompletarDatosException e1){
+					error = true;
 					vistaInicio.mostrarError("Debe completar todos los campos");
 				} catch (NombreYaExiste e1) {
+					error = true;
 					vistaInicio.mostrarError("Los nombres no pueden ser iguales");
 				} catch (JugadorInvalido e1) {
+					error = true;
 					vistaInicio.mostrarError("Jugador invalido");
 				} catch (NombreConMenosDe4Caracteres e1) {
+					error = true;
 					vistaInicio.mostrarError("El nombre debe tener mas de 4 caracteres.");
 				}catch (ColorYaExiste e1) {
+					error = true;
 					vistaInicio.mostrarError("El color ya existe");
 				}
-				
-				vistaMapa = new VistaMapa(vistaInicio.getFrame());
-				controlMapa = new ControlMapa(vistaMapa);
+				if(!error){
+					vistaMapa = new VistaMapa(vistaInicio.getFrame());
+					controlMapa = new ControlMapa(vistaMapa);
+				}
 
 			} catch (FueraDeMatriz e1) {
 				e1.printStackTrace();
