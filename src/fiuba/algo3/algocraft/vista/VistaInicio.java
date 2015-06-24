@@ -1,5 +1,6 @@
 package fiuba.algo3.algocraft.vista;
 
+import java.awt.ComponentOrientation;
 import java.awt.EventQueue;
 
 import javax.swing.ButtonGroup;
@@ -17,6 +18,7 @@ import fiuba.algo3.algocraft.utils.Constants;
 public class VistaInicio {
 
 	private JFrame frame;
+
 	private JTextField textField;
 	private JTextField textField_1;
 	private ControlJuego control;
@@ -139,6 +141,7 @@ public class VistaInicio {
 		btnComenzarPartida.setBounds(197, 332, 172, 23);
 		btnComenzarPartida.addActionListener(control
 				.getListenerBotonIniciarJuego());
+		frame.getContentPane().setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
 		frame.getContentPane().add(btnComenzarPartida);
 
 	}
@@ -204,5 +207,16 @@ public class VistaInicio {
 		this.textField_1 = textField_1;
 	}	
 	
+	public void cerrarVentanaInicio(){
+		frame.setVisible(false);
+	}
 	
+	public JFrame getFrame() {
+		return frame;
+	}
+
+	public void setFrame(JFrame frame) {
+		this.frame = frame;
+	}
+
 }

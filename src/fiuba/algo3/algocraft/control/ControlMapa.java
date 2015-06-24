@@ -5,33 +5,41 @@ import java.awt.event.ActionListener;
 
 import fiuba.algo3.algocraft.acciones.Ejecutable;
 import fiuba.algo3.algocraft.acciones.creacionConstrucciones.CrearAcceso;
+import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
 import fiuba.algo3.algocraft.juego.Celda;
 import fiuba.algo3.algocraft.juego.Juego;
 import fiuba.algo3.algocraft.juego.Mapa;
 import fiuba.algo3.algocraft.movimientos.Movimiento;
+import fiuba.algo3.algocraft.vista.VistaMapa;
 
 public class ControlMapa {
 
-	Mapa mapa;
-	Juego juego;
-	Movimiento movimiento;
+	private Mapa mapa;
+	private Juego juego;
+	private Movimiento movimiento;
 
-	// VistaMapa vista;
-	// public ControlMapa(VistaMapa vista){
-	// vista = vista;
-	// mapa = Mapa.getInstance();
-	// juego = Juego.getInstance();
+	private VistaMapa vistaMapa;
 
-	// }
+	public ControlMapa(VistaMapa vista) {
+		vistaMapa = vista;
+		try {
+			juego = Juego.getInstance();
+			mapa = Mapa.getInstance();
+		} catch (FueraDeMatriz e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 
 	private class EscuchaBotonSeleccionarCelda implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 
 			// TODO este método solo se encarga de mostrar un menú en las
-			// celdas. 
+			// celdas.
 			Celda celdaSeleccionada = (Celda) e.getSource();
 
-			if (celdaSeleccionada == null) { 
+			if (celdaSeleccionada == null) {
 				// mostrar menú espacial
 			} else {
 

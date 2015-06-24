@@ -16,11 +16,13 @@ import fiuba.algo3.algocraft.razas.Raza;
 import fiuba.algo3.algocraft.razas.Terran;
 import fiuba.algo3.algocraft.utils.Constants;
 import fiuba.algo3.algocraft.vista.VistaInicio;
+import fiuba.algo3.algocraft.vista.VistaMapa;
 
 public class ControlJuego {
 	private Juego juego;
 	private ControlMapa controlMapa;
 	private VistaInicio vistaInicio;
+	private VistaMapa vistaMapa;
 	
 
 	public ControlJuego(VistaInicio vista) {
@@ -64,10 +66,10 @@ public class ControlJuego {
 					vistaInicio.mostrarError("El color ya existe");
 				}
 				
-				controlMapa = new ControlMapa();
+				vistaMapa = new VistaMapa(vistaInicio.getFrame());
+				controlMapa = new ControlMapa(vistaMapa);
 
 			} catch (FueraDeMatriz e1) {
-				// TODO Por que el juego tira FUERA DE LA MATRIZ?! :-/
 				e1.printStackTrace();
 			}
 
