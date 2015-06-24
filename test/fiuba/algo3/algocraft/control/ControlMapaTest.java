@@ -11,6 +11,7 @@ import fiuba.algo3.algocraft.acciones.Ejecutable;
 import fiuba.algo3.algocraft.acciones.creacionConstrucciones.CrearBarraca;
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
 import fiuba.algo3.algocraft.excepciones.JugadorInvalido;
+import fiuba.algo3.algocraft.juego.Juego;
 import fiuba.algo3.algocraft.vista.VistaMapa;
 
 public class ControlMapaTest {
@@ -25,12 +26,11 @@ public class ControlMapaTest {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-		JFrame jFrame  = new JFrame();
-		VistaMapa vistaMapa = new VistaMapa(jFrame);
-		ControlMapa control = new ControlMapa(vistaMapa); 
-		Ejecutable ejecutar = new CrearBarraca();
-		assertNotNull(control);
-//		assertEquals(control.crearEdificio(ejecutar), true);
+	
+		Juego juegoPrincipal = Juego.getInstance();
+		Juego juegoSecundario = Juego.getInstance();
+		
+		 assertEquals(juegoPrincipal,juegoSecundario);	
 		
 	}
 	
