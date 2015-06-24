@@ -3,15 +3,18 @@ package fiuba.algo3.algocraft.control;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JTextField;
-
 import fiuba.algo3.algocraft.acciones.PasarTurno;
 import fiuba.algo3.algocraft.excepciones.ColorYaExiste;
+import fiuba.algo3.algocraft.excepciones.CompletarDatosException;
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
 import fiuba.algo3.algocraft.excepciones.JugadorInvalido;
 import fiuba.algo3.algocraft.excepciones.NombreConMenosDe4Caracteres;
 import fiuba.algo3.algocraft.excepciones.NombreYaExiste;
 import fiuba.algo3.algocraft.juego.Juego;
+import fiuba.algo3.algocraft.razas.Protoss;
+import fiuba.algo3.algocraft.razas.Raza;
+import fiuba.algo3.algocraft.razas.Terran;
+import fiuba.algo3.algocraft.utils.Constants;
 import fiuba.algo3.algocraft.vista.VistaInicio;
 
 public class ControlJuego {
@@ -32,11 +35,25 @@ public class ControlJuego {
 				try {
 					juego.setNombreJugador(1,vistaInicio.getTextField().getText());
 					juego.setNombreJugador(2,vistaInicio.getTextField_1().getText());
-					//juego.getJugador(1).setRaza()
+					Raza raza1;
+					if(vistaInicio.getRazaSeleccionadaJG1().equalsIgnoreCase(Constants.TERRAN)){
+						raza1 = new Terran();
+					} else{
+						raza1 = new Protoss();
+					}
+					juego.setRazaJugador(1,raza1);
+					Raza raza2;
+					if(vistaInicio.getRazaSeleccionadaJG2().equalsIgnoreCase(Constants.TERRAN)){
+						raza2 = new Terran();
+					} else{
+						raza2 = new Protoss();
+					}
+					juego.setRazaJugador(2,raza2);
 					juego.setColorJugador(1, vistaInicio.getColorSeleccionadoJG1());
 					juego.setColorJugador(2, vistaInicio.getColorSeleccionadoJG2());
 					 
-					
+				} catch (CompletarDatosException e1){
+					vistaInicio.mostrarError("Debe completar todos los campos");
 				} catch (NombreYaExiste e1) {
 					vistaInicio.mostrarError("Los nombres no pueden ser iguales");
 				} catch (JugadorInvalido e1) {

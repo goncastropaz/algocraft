@@ -3,10 +3,12 @@ package fiuba.algo3.algocraft.juego;
 import java.util.HashMap;
 
 import fiuba.algo3.algocraft.excepciones.ColorYaExiste;
+import fiuba.algo3.algocraft.excepciones.CompletarDatosException;
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
 import fiuba.algo3.algocraft.excepciones.JugadorInvalido;
 import fiuba.algo3.algocraft.excepciones.NombreConMenosDe4Caracteres;
 import fiuba.algo3.algocraft.excepciones.NombreYaExiste;
+import fiuba.algo3.algocraft.razas.Raza;
 
 public class Juego {
 
@@ -48,8 +50,11 @@ public class Juego {
 	}
 
 	public void setNombreJugador(int jugador, String nombre)
-			throws NombreYaExiste, JugadorInvalido, NombreConMenosDe4Caracteres {
+			throws NombreYaExiste, JugadorInvalido, NombreConMenosDe4Caracteres, CompletarDatosException {
 
+		if(nombre.isEmpty()){
+			throw new CompletarDatosException();
+		}
 		for (Integer key : this.jugadores.keySet()) {
 			if (this.getJugador(key).getNombre() == nombre)
 				throw new NombreYaExiste();
@@ -57,9 +62,18 @@ public class Juego {
 		this.getJugador(jugador).setNombre(nombre);
 
 	}
+	
+	public void setRazaJugador(int jugador, Raza raza)
+			throws JugadorInvalido {
+		this.getJugador(jugador).setRaza(raza);
+	}
 
 	public void setColorJugador(int jugador, String color)
-			throws JugadorInvalido, ColorYaExiste {
+			throws JugadorInvalido, ColorYaExiste, CompletarDatosException {
+		
+		if(color.isEmpty()){
+			throw new CompletarDatosException();
+		}
 		for (Integer key : this.jugadores.keySet()) {
 			if (this.getJugador(key).getColor().equalsIgnoreCase(color))
 				throw new ColorYaExiste();

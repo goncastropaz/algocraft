@@ -2,8 +2,11 @@ package fiuba.algo3.algocraft.utils;
 
 public class Constants {
 
-	//RACES ID
-	public static final Integer TERRAN_ID = 1;
-	public static final Integer PROTOSS_ID = 2;
-	
+	//razas
+	public static final String PROTOSS = "Protoss";
+	public static final String TERRAN = "Terran";
+		
+	//colores
+	public static final String AZUL = "Azul";
+	public static final String ROJO = "Rojo";
 }
