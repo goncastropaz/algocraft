@@ -56,7 +56,7 @@ public class ControlMapa {
 	        final JPopupMenu popup = new JPopupMenu();
 	        // New project menu item
 	        
-	        for(String key : acciones.keySet()){
+	        for(final String key : acciones.keySet()){
 	        	JButton btn = new JButton(key);
 	    		btn.addActionListener(new ActionListener() {
 		            public void actionPerformed(ActionEvent e) {
