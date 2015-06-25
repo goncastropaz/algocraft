@@ -42,7 +42,7 @@ public class VistaMapa {
 	private void initialize() throws IOException {
 		
 		controlMapa = new ControlMapa(this);
-		this.frame.getContentPane().removeAll();
+//		this.frame.getContentPane().removeAll();
 //		this.frame.getContentPane().repaint();
 
 		
@@ -62,21 +62,19 @@ public class VistaMapa {
 		JButtonID[][] mapaBotones = new JButtonID[10][10];
 		llenarArrayConLabels(mapaBotones);
 		agregarLabels(mapaBotones);
-
-
 		frame.getContentPane().add(panelMapa);
-
-		JPanel panelSeleccion = new JPanel();
-		panelSeleccion.setBounds(10, 480, 100, 74);
-		frame.getContentPane().add(panelSeleccion);
-
-		JPanel panelOpciones = new JPanel();
-
-		panelOpciones.setBounds(120, 480, 669, 74);
-		frame.getContentPane().add(panelOpciones);
-
-		this.frame.getContentPane().revalidate();
-		this.frame.getContentPane().repaint();
+//
+//		JPanel panelSeleccion = new JPanel();
+//		panelSeleccion.setBounds(10, 480, 100, 74);
+//		frame.getContentPane().add(panelSeleccion);
+//
+//		JPanel panelOpciones = new JPanel();
+//
+//		panelOpciones.setBounds(120, 480, 669, 74);
+//		frame.getContentPane().add(panelOpciones);
+//
+//		this.frame.getContentPane().revalidate();
+//		this.frame.getContentPane().repaint();
 	}
 	
 	

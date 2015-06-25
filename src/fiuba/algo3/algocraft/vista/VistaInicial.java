@@ -11,17 +11,17 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
 
-import fiuba.algo3.algocraft.control.ControlJuego;
+import fiuba.algo3.algocraft.control.ControlInicial;
 import fiuba.algo3.algocraft.excepciones.CompletarDatosException;
 import fiuba.algo3.algocraft.utils.Constants;
 
-public class VistaInicio {
+public class VistaInicial {
 
 	private JFrame frame;
+	private ControlInicial control;
 
 	private JTextField textField;
 	private JTextField textField_1;
-	private ControlJuego control;
 	private JRadioButton raza1JG1;
 	private JRadioButton raza2JG1;
 	private JRadioButton raza1JG2;
@@ -39,7 +39,7 @@ public class VistaInicio {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VistaInicio window = new VistaInicio();
+					VistaInicial window = new VistaInicial();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -51,7 +51,7 @@ public class VistaInicio {
 	/**
 	 * Create the application.
 	 */
-	public VistaInicio() {
+	public VistaInicial() {
 		initialize();
 	}
 
@@ -60,7 +60,7 @@ public class VistaInicio {
 	 */
 	private void initialize() {
 
-		control = new ControlJuego(this);
+		control = new ControlInicial(this);
 
 		frame = new JFrame();
 		frame.setBounds(100, 100, 605, 400);
@@ -140,11 +140,12 @@ public class VistaInicio {
 		JButton btnComenzarPartida = new JButton("Comenzar Partida");
 		btnComenzarPartida.setBounds(197, 332, 172, 23);
 		btnComenzarPartida.addActionListener(control
-				.getListenerBotonIniciarJuego());
+				.getListenerBotonGuardarJugadores());
 		frame.getContentPane().setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
 		frame.getContentPane().add(btnComenzarPartida);
 
 	}
+
 
 	public void mostrarError(String string) {
 
@@ -218,5 +219,7 @@ public class VistaInicio {
 	public void setFrame(JFrame frame) {
 		this.frame = frame;
 	}
+	
+	
 
 }

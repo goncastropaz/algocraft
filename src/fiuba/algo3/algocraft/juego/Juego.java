@@ -56,7 +56,7 @@ public class Juego {
 			throw new CompletarDatosException();
 		}
 		for (Integer key : this.jugadores.keySet()) {
-			if (this.getJugador(key).getNombre() == nombre)
+			if (this.getJugador(key).getNombre().equalsIgnoreCase(nombre) && !key.equals(jugador))
 				throw new NombreYaExiste();
 		}
 		this.getJugador(jugador).setNombre(nombre);
@@ -75,7 +75,7 @@ public class Juego {
 			throw new CompletarDatosException();
 		}
 		for (Integer key : this.jugadores.keySet()) {
-			if (this.getJugador(key).getColor().equalsIgnoreCase(color))
+			if (this.getJugador(key).getColor().equalsIgnoreCase(color) && !key.equals(jugador))
 				throw new ColorYaExiste();
 		}
 		this.getJugador(jugador).setColor(color);
