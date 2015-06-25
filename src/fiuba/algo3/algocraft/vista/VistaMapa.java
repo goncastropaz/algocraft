@@ -11,10 +11,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import fiuba.algo3.algocraft.control.ControlMapa;
+
 public class VistaMapa {
 
 	private JFrame frame;
 	private JPanel panelMapa;
+	private ControlMapa controlMapa;
 
 
 	/**
@@ -37,6 +40,8 @@ public class VistaMapa {
 	 * @throws IOException 
 	 */
 	private void initialize() throws IOException {
+		
+		controlMapa = new ControlMapa(this);
 		this.frame.getContentPane().removeAll();
 //		this.frame.getContentPane().repaint();
 
@@ -80,6 +85,7 @@ public class VistaMapa {
 			for (int j=0 ; j<10 ; j++){	
 				final JButtonID boton = new JButtonID(i,j);
 				boton.setBackground(Color.black);
+				boton.addActionListener(controlMapa.getListenerBotonSeleccionarCelda());
 				tablero[i][j] = boton;
 				
 			}

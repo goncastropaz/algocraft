@@ -1,15 +1,26 @@
 package fiuba.algo3.algocraft.control;
 
+import java.awt.ComponentOrientation;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
 
 import fiuba.algo3.algocraft.acciones.Ejecutable;
+import fiuba.algo3.algocraft.acciones.Seleccionar;
 import fiuba.algo3.algocraft.acciones.creacionConstrucciones.CrearAcceso;
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
-import fiuba.algo3.algocraft.juego.Celda;
 import fiuba.algo3.algocraft.juego.Juego;
 import fiuba.algo3.algocraft.juego.Mapa;
 import fiuba.algo3.algocraft.movimientos.Movimiento;
+import fiuba.algo3.algocraft.vista.JButtonID;
 import fiuba.algo3.algocraft.vista.VistaMapa;
 
 public class ControlMapa {
@@ -35,22 +46,75 @@ public class ControlMapa {
 	private class EscuchaBotonSeleccionarCelda implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 
-			// TODO este método solo se encarga de mostrar un menú en las
-			// celdas.
-			Celda celdaSeleccionada = (Celda) e.getSource();
-
-			if (celdaSeleccionada == null) {
-				// mostrar menú espacial
-			} else {
-
-				// mostrar menú
-			}
-
+			JButtonID celdaSeleccionada = (JButtonID) e.getSource();
+			Map<String,Ejecutable> acciones = getAccionesDisponibles(celdaSeleccionada.getFila(),celdaSeleccionada.getColumna());
+			
+			//--
+			final JFrame frame = new JFrame("Acciones");
+			 
+	        // build poup menu
+	        final JPopupMenu popup = new JPopupMenu();
+	        // New project menu item
+	        
+	        for(String key : acciones.keySet()){
+	        	JButton btn = new JButton(key);
+	    		btn.addActionListener(new ActionListener() {
+		            public void actionPerformed(ActionEvent e) {
+		            	try {
+							acciones.get(key).ejecutar();
+							frame.dispose();
+						} catch (Exception e1) {
+							JOptionPane.showMessageDialog(frame, e1.getMessage());
+						}
+		            }
+	    		});
+	    		frame.getContentPane().add(btn);
+//		        JMenuItem menuItem = new JMenuItem(key);
+//		        menuItem.setMnemonic(KeyEvent.VK_P);
+//		        menuItem.getAccessibleContext().setAccessibleDescription(key);
+//		        menuItem.addActionListener(new ActionListener() {
+//		            public void actionPerformed(ActionEvent e) {
+//		            	try {
+//							acciones.get(key).ejecutar();
+//						} catch (Exception e1) {
+//							JOptionPane.showMessageDialog(frame, e1.getMessage());
+//						}
+//		            }
+//		        });
+//		        popup.add(menuItem);
+	        }
+	        frame.addMouseListener(new MouseAdapter() {
+	            @Override
+	            public void mousePressed(MouseEvent e) {
+	                showPopup(e);
+	            }
+	            @Override
+	            public void mouseReleased(MouseEvent e) {
+	                showPopup(e);
+	            }
+	            private void showPopup(MouseEvent e) {
+	                if (e.isPopupTrigger()) {
+	                    popup.show(e.getComponent(),
+	                            e.getX(), e.getY());
+	                }
+	            }
+	        });
+	        frame.getContentPane().setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+	        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+	        frame.setSize(200*acciones.size(), 100*acciones.size());
+	        frame.setVisible(true);
 		}
 	}
 
 	public ActionListener getListenerBotonSeleccionarCelda() {
 		return new EscuchaBotonSeleccionarCelda();
+	}
+
+	public Map<String, Ejecutable> getAccionesDisponibles(int fila, int columna) {
+//		return mapa.getCelda(fila, columna).getAcciones();
+		Map<String, Ejecutable> map = new HashMap<String, Ejecutable>();
+		map.put("ASD", new Seleccionar());
+		return map;
 	}
 
 	private class EscuchaBotonCrearEdificio implements ActionListener {
