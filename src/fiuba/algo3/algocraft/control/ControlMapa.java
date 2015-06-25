@@ -47,7 +47,7 @@ public class ControlMapa {
 		public void actionPerformed(ActionEvent e) {
 
 			JButtonID celdaSeleccionada = (JButtonID) e.getSource();
-			Map<String,Ejecutable> acciones = getAccionesDisponibles(celdaSeleccionada.getFila(),celdaSeleccionada.getColumna());
+			final Map<String,Ejecutable> acciones = getAccionesDisponibles(celdaSeleccionada.getFila(),celdaSeleccionada.getColumna());
 			
 			//--
 			final JFrame frame = new JFrame("Acciones");
