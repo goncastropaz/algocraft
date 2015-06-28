@@ -7,18 +7,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import fiuba.algo3.algocraft.excepciones.CeldaOcupada;
-import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
-import fiuba.algo3.algocraft.excepciones.JugadorInvalido;
-import fiuba.algo3.algocraft.excepciones.UnidadTerrestreEnAreaEspacial;
-import fiuba.algo3.algocraft.juego.Juego;
-import fiuba.algo3.algocraft.juego.Mapa;
-import fiuba.algo3.algocraft.movimientos.Derecha;
-import fiuba.algo3.algocraft.movimientos.Movimiento;
-import fiuba.algo3.algocraft.unidades.Marine;
-import fiuba.algo3.algocraft.unidades.NaveCiencia;
-import fiuba.algo3.algocraft.unidades.Unidad;
-import fiuba.algo3.classes.stats.Posicion;
+import fiuba.algo3.modelo.complementos.Posicion;
 /*
 public class DerechaTest {
 
@@ -148,4 +137,15 @@ public class DerechaTest {
 		assertTrue(juego.getJugador(1).getVision().estaDescubierto(new Posicion(16,3)));
 		
 	}
-}*/
+}*/import fiuba.algo3.modelo.excepciones.CeldaOcupada;
+import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
+import fiuba.algo3.modelo.excepciones.JugadorInvalido;
+import fiuba.algo3.modelo.excepciones.UnidadTerrestreEnAreaEspacial;
+import fiuba.algo3.modelo.juego.Juego;
+import fiuba.algo3.modelo.juego.Mapa;
+import fiuba.algo3.modelo.movimientos.Derecha;
+import fiuba.algo3.modelo.movimientos.Movimiento;
+import fiuba.algo3.modelo.unidades.Marine;
+import fiuba.algo3.modelo.unidades.NaveCiencia;
+import fiuba.algo3.modelo.unidades.Unidad;
+

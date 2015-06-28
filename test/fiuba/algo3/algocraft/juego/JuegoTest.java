@@ -4,13 +4,15 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import fiuba.algo3.algocraft.excepciones.ColorYaExiste;
-import fiuba.algo3.algocraft.excepciones.CompletarDatosException;
-import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
-import fiuba.algo3.algocraft.excepciones.JugadorInvalido;
-import fiuba.algo3.algocraft.excepciones.NombreConMenosDe4Caracteres;
-import fiuba.algo3.algocraft.excepciones.NombreYaExiste;
-import fiuba.algo3.algocraft.utils.Constants;
+import fiuba.algo3.modelo.excepciones.ColorYaExiste;
+import fiuba.algo3.modelo.excepciones.CompletarDatosException;
+import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
+import fiuba.algo3.modelo.excepciones.JugadorInvalido;
+import fiuba.algo3.modelo.excepciones.NombreConMenosDe4Caracteres;
+import fiuba.algo3.modelo.excepciones.NombreYaExiste;
+import fiuba.algo3.modelo.juego.Juego;
+import fiuba.algo3.modelo.juego.Jugador;
+import fiuba.algo3.modelo.utiles.Constants;
 
 public class JuegoTest {
 

@@ -4,13 +4,14 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
-import fiuba.algo3.algocraft.excepciones.NombreConMenosDe4Caracteres;
-import fiuba.algo3.algocraft.juego.Jugador;
-import fiuba.algo3.algocraft.razas.Protoss;
-import fiuba.algo3.algocraft.razas.Raza;
-import fiuba.algo3.algocraft.razas.Terran;
-import fiuba.algo3.classes.stats.Posicion;
+import fiuba.algo3.modelo.complementos.Posicion;
+import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
+import fiuba.algo3.modelo.excepciones.NombreConMenosDe4Caracteres;
+import fiuba.algo3.modelo.juego.Juego;
+import fiuba.algo3.modelo.juego.Jugador;
+import fiuba.algo3.modelo.razas.Protoss;
+import fiuba.algo3.modelo.razas.Raza;
+import fiuba.algo3.modelo.razas.Terran;
 
 public class JugadorTest {
 	

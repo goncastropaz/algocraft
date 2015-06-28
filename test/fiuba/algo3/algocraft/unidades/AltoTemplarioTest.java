@@ -4,14 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import fiuba.algo3.algocraft.excepciones.CeldaOcupada;
-import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
-import fiuba.algo3.algocraft.excepciones.JugadorInvalido;
-import fiuba.algo3.algocraft.excepciones.UnidadTerrestreEnAreaEspacial;
-import fiuba.algo3.algocraft.juego.Celda;
-import fiuba.algo3.algocraft.juego.Juego;
-import fiuba.algo3.algocraft.juego.Mapa;
-import fiuba.algo3.classes.stats.Posicion;
+import fiuba.algo3.modelo.complementos.Posicion;
 /*
 public class AltoTemplarioTest {
 	@Test
@@ -95,4 +88,11 @@ public class AltoTemplarioTest {
 		Celda celda = Mapa.getInstance().getCelda(3, 3);
 		assertEquals(unAltoTemplario.getUbicacion(),celda);
 	}
-}*/
+}*/import fiuba.algo3.modelo.excepciones.CeldaOcupada;
+import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
+import fiuba.algo3.modelo.excepciones.JugadorInvalido;
+import fiuba.algo3.modelo.excepciones.UnidadTerrestreEnAreaEspacial;
+import fiuba.algo3.modelo.juego.Celda;
+import fiuba.algo3.modelo.juego.Juego;
+import fiuba.algo3.modelo.juego.Mapa;
+

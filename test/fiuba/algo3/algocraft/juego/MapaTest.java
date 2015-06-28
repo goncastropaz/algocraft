@@ -4,10 +4,10 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
-import fiuba.algo3.algocraft.juego.Celda;
-import fiuba.algo3.algocraft.juego.Mapa;
-import fiuba.algo3.classes.stats.Posicion;
+import fiuba.algo3.modelo.complementos.Posicion;
+import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
+import fiuba.algo3.modelo.juego.Celda;
+import fiuba.algo3.modelo.juego.Mapa;
 
 public class MapaTest {
 	
