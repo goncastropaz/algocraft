@@ -13,7 +13,7 @@ import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
 import fiuba.algo3.algocraft.excepciones.JugadorInvalido;
 import fiuba.algo3.algocraft.juego.Juego;
 import fiuba.algo3.algocraft.vista.VistaMapa;
-
+/*
 public class ControlMapaTest {
 	
 	
@@ -35,4 +35,4 @@ public class ControlMapaTest {
 	}
 	
 
-}
+}*/

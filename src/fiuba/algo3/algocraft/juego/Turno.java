@@ -1,5 +1,6 @@
 package fiuba.algo3.algocraft.juego;
 
+import java.util.HashMap;
 import java.util.List;
 
 import fiuba.algo3.algocraft.construcciones.Construccion;
@@ -10,29 +11,14 @@ import fiuba.algo3.algocraft.unidades.Unidad;
 
 public class Turno {
 	
-	 	private static Turno INSTANCE = null;
 		private Jugador actualJugador;
 		private Jugador proximoJugador;
-		private Celda actualCelda;
-		private Celda objetivoCelda;
 		private int cantidadDeAccionesDisponibles;
 		
 		
-		private synchronized static void createInstance() throws JugadorInvalido, FueraDeMatriz{
-			if (INSTANCE == null) { 
-				INSTANCE = new Turno();
-			}
-		}
-		
-	    public static Turno getInstance() throws JugadorInvalido, FueraDeMatriz{
-	    	if (INSTANCE == null) 
-	    		createInstance();
-	    	return INSTANCE;
-		}
-		
-		private Turno() throws JugadorInvalido, FueraDeMatriz{
-			this.actualJugador = Juego.getInstance().getJugador(1);
-			this.proximoJugador = Juego.getInstance().getJugador(2);
+		public Turno(HashMap<Integer,Jugador> jugadores) throws JugadorInvalido, FueraDeMatriz{
+			this.actualJugador = jugadores.get(1);
+			this.proximoJugador = jugadores.get(2);
 			this.cantidadDeAccionesDisponibles =3;
 		}
 				
@@ -51,15 +37,6 @@ public class Turno {
 		}
 
 
-		public Celda getActualCelda() {
-			return actualCelda;
-		}
-
-
-		public Celda getObjetivoCelda() {
-			return objetivoCelda;
-		}
-		
 		public void actualizarUnidadesTurno(Jugador jugador){
 			List<Unidad> unidadesList = jugador.getUnidadesList();
 			for(int i = 0; i< unidadesList.size(); i++){

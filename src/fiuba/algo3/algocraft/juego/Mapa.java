@@ -3,13 +3,16 @@ package fiuba.algo3.algocraft.juego;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import fiuba.algo3.algocraft.construcciones.Construccion;
+import fiuba.algo3.algocraft.excepciones.CeldaOcupada;
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
+import fiuba.algo3.algocraft.excepciones.celdaSinRecurso;
+import fiuba.algo3.algocraft.unidades.Unidad;
 import fiuba.algo3.classes.stats.Posicion;
 
 public class Mapa {
 
 			
-			private static Mapa INSTANCE = null;
 			private Celda[][] matriz;
 			private static int tamanio =50;
 			private static int baseSuperior =4;
@@ -17,29 +20,34 @@ public class Mapa {
 			private static HashMap<Integer,Posicion> baseJugadores;
 	
 						
-			private Mapa() throws FueraDeMatriz{
+			public Mapa() {
 				
 				Celda mat[][] = new Celda[tamanio][tamanio];
 				for(int f=0;f<tamanio;f++){
 					for(int c=0;c<tamanio;c++){
-						Celda unaCelda = new Celda(f,c);
-						mat[f][c] = unaCelda;
+						Celda unaCelda;
+						try {
+							unaCelda = new Celda(new Posicion(f,c));
+							mat[f][c] = unaCelda;
+						} catch (FueraDeMatriz e) {
+							e.printStackTrace();
+						}
 					};
 				};
 				
 				matriz= mat;
 				baseJugadores = new HashMap<Integer,Posicion>();
-				baseJugadores.put(1, new Posicion(baseSuperior,baseSuperior));
-				baseJugadores.put(2, new Posicion(baseInferior,baseInferior));
+				try {
+					baseJugadores.put(1, new Posicion(baseSuperior,baseSuperior));
+					baseJugadores.put(2, new Posicion(baseInferior,baseInferior));
+				} catch (FueraDeMatriz e) {
+				
+					e.printStackTrace();
+				}
+				
 				this.setRecursosEnMapa();
 				this.setAreasEspaciales();
 							
-			}
-			
-			private synchronized static void createInstance() throws FueraDeMatriz {
-				if (INSTANCE == null) { 
-			       INSTANCE = new Mapa();
-			    }
 			}
 			
 			private void setRecursosEnMapa(){
@@ -62,29 +70,18 @@ public class Mapa {
 				
 			}
 			
-			public static Mapa getInstance() throws FueraDeMatriz {
-			    if (INSTANCE == null) 
-			    	createInstance();
-			    return INSTANCE;
-			}
-			
-					
 			public Celda devolverCelda(Posicion pos) {
 				int fila = pos.getFila();
 				int columna = pos.getColumna();
 				return matriz[fila][columna];
 			}
 
-			public Celda getCelda(int fil, int col) {
-				// TODO Auto-generated method stub
-				return matriz[fil][col];
-			}
+			
 			public int getTamanio(){
 				return this.tamanio;
 			}
 
 			public Posicion getBaseJugador(int jugador) {
-				// TODO Auto-generated method stub
 				return this.baseJugadores.get(jugador);
 			}
 
@@ -100,10 +97,24 @@ public class Mapa {
 				if(!((pos.getColumna() + radio) >(tamanio-1))) colFinal = (pos.getColumna() +radio);
 				for(int fil = filaInicial; fil< filaFinal+1;fil++){
 					for(int col = colInicial;col< colFinal+1;col++){
-						listaDeCeldas.add(this.getCelda(fil, col));
+						try {
+							listaDeCeldas.add(this.devolverCelda(new Posicion(fil,col)));
+						} catch (FueraDeMatriz e) {
+							e.printStackTrace();
+						}
 					}
 				}
 				return listaDeCeldas;
+				
+			}
+
+			public void agregarUnidad(Unidad unidad,Posicion pos) throws CeldaOcupada {
+				this.matriz[pos.getFila()][pos.getColumna()].setUnidad(unidad);
+				
+			}
+
+			public void agregarConstruccion(Construccion construccion,Posicion pos) throws CeldaOcupada, celdaSinRecurso {
+				this.matriz[pos.getFila()][pos.getColumna()].setConstruccion(construccion);
 				
 			}
 					

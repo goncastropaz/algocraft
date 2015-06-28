@@ -15,13 +15,14 @@ public class Radiacion extends Magia {
 	private static int danio =10;
 	private Energia energiaDeNave;
 
-	public Radiacion(Energia energiaDeNave){
+	public Radiacion(Energia energiaDeNave, Mapa mapa){
+		super(mapa);
 		this.energiaDeNave = energiaDeNave;
 	}
 	
 	public void emitirRadiacion(Celda celdaImpacto) throws FueraDeMatriz{
 		if(celdaImpacto.getUnidad() != null) celdaImpacto.getUnidad().destruir();
-		ArrayList<Celda> listaDeCeldas = Mapa.getInstance().devolverCeldasRadio(celdaImpacto.getPosicion(),radio);
+		ArrayList<Celda> listaDeCeldas = this.mapa.devolverCeldasRadio(celdaImpacto.getPosicion(),radio);
 		for(int i = 0; i<listaDeCeldas.size(); i++){
 			if(listaDeCeldas.get(i).getUnidad() != null) listaDeCeldas.get(i).getUnidad().radiacion(danio);
 			

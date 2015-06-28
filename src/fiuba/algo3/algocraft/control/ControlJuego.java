@@ -15,23 +15,17 @@ public class ControlJuego {
 	private VistaMapa vistaMapa;
 	private VistaJuego vistaJuego;
 
-	public ControlJuego(VistaJuego vista) {
+	public ControlJuego(Juego juego,VistaJuego vista) {
 		vistaJuego = vista;
-		try {
-			juego = Juego.getInstance();
-			juego.empezarJuego();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		this.juego = juego;
 	}
 
 	private class EscuchaBotonPasarTurno implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			PasarTurno pasarTurno = new PasarTurno();
-			if(pasarTurno.ejecutar()){
-				vistaJuego.cambiarVistaJugador();
-			}
+			//PasarTurno pasarTurno = new PasarTurno();
+		//	if(pasarTurno.ejecutar()){
+		//		vistaJuego.cambiarVistaJugador();
+			//}
 			
 		}
 	}
@@ -42,8 +36,8 @@ public class ControlJuego {
 
 	private class EscuchaBotonFinalizarJuego implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			PasarTurno pasarTurno = new PasarTurno();
-			pasarTurno.ejecutar();
+			//PasarTurno pasarTurno = new PasarTurno();
+			//pasarTurno.ejecutar();
 			juego.darFinalizadoElJuego();
 			vistaJuego.mostarFinalizarJuego();
 		}
@@ -55,12 +49,8 @@ public class ControlJuego {
 
 	private class EscuchaBotonCrearNuevoJuego implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			try {
-				juego = Juego.getInstance();
-			} catch (FueraDeMatriz e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+			juego = new Juego();
+			
 		}
 	}
 

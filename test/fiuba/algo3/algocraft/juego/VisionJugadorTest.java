@@ -9,13 +9,6 @@ import fiuba.algo3.classes.stats.Posicion;
 
 public class VisionJugadorTest {
 
-	@Test
-	public void testVisionJugadorDeberiaCrearseConUnaMatrizIgualAlTamanioDelMapa() throws FueraDeMatriz{
-		VisionJugador visionJ = new VisionJugador(new Posicion(4,4));
-		int tamanioMapa = Mapa.getInstance().getTamanio();
-		
-		assertEquals(visionJ.getTamanio(),tamanioMapa);
-	}
 	
 	@Test
 	public void testVisionJugadorDeberiaCrearseConUnRangoDe5VisiblesDesdeLaBase() throws FueraDeMatriz{

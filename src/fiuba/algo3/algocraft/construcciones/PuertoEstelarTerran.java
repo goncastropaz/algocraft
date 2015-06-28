@@ -14,9 +14,9 @@ public class PuertoEstelarTerran  extends Construccion{
 	private static final String  UNIDAD = "";
 	
 	
-	public PuertoEstelarTerran(Posicion posicion) throws FueraDeMatriz {
+	public PuertoEstelarTerran() {
 		super(NOMBRE, COSTO_MINERAL, COSTO_GAS, TIEMPO_CONSTRUCCION, MAX_VIDA,
-				ESCUDO, UNIDAD, posicion);
+				ESCUDO, UNIDAD);
 	}
 
 }

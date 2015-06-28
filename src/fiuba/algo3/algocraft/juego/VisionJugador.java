@@ -7,10 +7,9 @@ public class VisionJugador {
 	
 	private int mat[][];
 	private Posicion baseInicial;
-	private int tamanio;
+	private final int tamanio =50;
 	
 	public VisionJugador(Posicion baseInicial) throws FueraDeMatriz{
-		this.tamanio = Mapa.getInstance().getTamanio();
 		mat = new int[tamanio][tamanio];
 		for(int f=0;f<tamanio;f++){
 			for(int c=0;c<tamanio;c++){

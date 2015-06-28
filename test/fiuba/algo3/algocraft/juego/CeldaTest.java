@@ -9,6 +9,7 @@ import fiuba.algo3.algocraft.construcciones.Construccion;
 import fiuba.algo3.algocraft.excepciones.CeldaOcupada;
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
 import fiuba.algo3.algocraft.excepciones.JugadorInvalido;
+import fiuba.algo3.algocraft.excepciones.celdaSinRecurso;
 import fiuba.algo3.algocraft.juego.Celda;
 import fiuba.algo3.algocraft.unidades.Marine;
 import fiuba.algo3.algocraft.unidades.Unidad;
@@ -19,7 +20,7 @@ public class CeldaTest {
 		@Test
 		public void testCrearCeldaDebeGuardarLaPosicion() throws FueraDeMatriz{
 			
-			Celda unaCelda = new Celda(2,1);
+			Celda unaCelda = new Celda(new Posicion(2,1));
 			int fil = unaCelda.getPosicion().getFila();
 			int col = unaCelda.getPosicion().getColumna();
 			
@@ -30,7 +31,7 @@ public class CeldaTest {
 		@Test
 		public void testGetPosicionDebeDevolverLaPosicionDeLaCelda() throws FueraDeMatriz{
 			
-			Celda unaCelda = new Celda(2,1);
+			Celda unaCelda = new Celda(new Posicion(2,1));
 			Posicion pos = unaCelda.getPosicion();
 						
 			assertEquals(2,pos.getFila());
@@ -38,27 +39,25 @@ public class CeldaTest {
 		}
 		
 		@Test (expected = CeldaOcupada.class)
-		public void testAgregarContruccionSiHayUnaUnidadDeberiaLanzarError() throws CeldaOcupada, FueraDeMatriz, JugadorInvalido{
-			Juego juego = Juego.getInstance();
-			juego.empezarJuego();
-			
-			Celda unaCelda = new Celda(2,1);
-			Unidad marine = new Marine(unaCelda.getPosicion());
+		public void testAgregarContruccionSiHayUnaUnidadDeberiaLanzarError() throws CeldaOcupada, celdaSinRecurso, FueraDeMatriz{
+			Juego juego = new Juego();
+						
+			Celda unaCelda = new Celda(new Posicion(2,1));
+			Unidad marine = new Marine();
 			unaCelda.setUnidad(marine);
-			Construccion barraca = new Barraca(unaCelda.getPosicion());
+			Construccion barraca = new Barraca();
 			unaCelda.setConstruccion(barraca);
 		}
 		
 		@Test(expected = CeldaOcupada.class)
-		public void testAgregarUnidadSiHayUnaConstruccionDeberiaLanzarError() throws CeldaOcupada, FueraDeMatriz, JugadorInvalido{
-			Juego juego = Juego.getInstance();
-			juego.empezarJuego();
+		public void testAgregarUnidadSiHayUnaConstruccionDeberiaLanzarError() throws CeldaOcupada, FueraDeMatriz, JugadorInvalido, celdaSinRecurso{
+			Juego juego = new Juego();
 			
-			Celda unaCelda = new Celda(2,1);
-			Construccion barraca = new Barraca(unaCelda.getPosicion());
+			Celda unaCelda = new Celda(new Posicion(2,1));
+			Construccion barraca = new Barraca();
 			unaCelda.setConstruccion(barraca);
 			
-			Unidad marine = new Marine(unaCelda.getPosicion());
+			Unidad marine = new Marine();
 			unaCelda.setUnidad(marine);
 			
 		}

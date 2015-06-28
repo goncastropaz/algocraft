@@ -43,7 +43,8 @@ public class JugadorTest {
 	@Test
 	public void testSetRazaDebeGuardarLaRazaDelJugador() throws FueraDeMatriz{
 		Jugador jugador = new Jugador(new Posicion(2,2));
-		Raza raza = new Protoss();
+		Juego juego = new Juego();
+		Raza raza = new Protoss(juego);
 		jugador.setRaza(raza);
 		assertEquals(raza,jugador.getRaza());
 	}

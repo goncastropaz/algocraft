@@ -14,27 +14,28 @@ import fiuba.algo3.algocraft.acciones.creacionUnidades.CrearGolliat;
 import fiuba.algo3.algocraft.acciones.creacionUnidades.CrearMarine;
 import fiuba.algo3.algocraft.acciones.creacionUnidades.CrearNaveCiencia;
 import fiuba.algo3.algocraft.acciones.creacionUnidades.CrearNaveTransporteTerran;
+import fiuba.algo3.algocraft.juego.Juego;
 
 public class Terran extends Raza {
 
 	
-	public Terran(){
+	public Terran(Juego juego){
 		
 		this.listaDeCreacionUnidades = new HashMap<Integer,Ejecutable>();
 		this.listaDeCreacionConstrucciones = new HashMap<Integer,Ejecutable>();
 		
-		this.listaDeCreacionUnidades.put(1, new CrearMarine());
-		this.listaDeCreacionUnidades.put(2, new CrearGolliat());
-		this.listaDeCreacionUnidades.put(3, new CrearEspectro());
-		this.listaDeCreacionUnidades.put(4, new CrearNaveCiencia());
-		this.listaDeCreacionUnidades.put(5, new CrearNaveTransporteTerran());
+		this.listaDeCreacionUnidades.put(1, new CrearMarine(juego));
+		this.listaDeCreacionUnidades.put(2, new CrearGolliat(juego));
+		this.listaDeCreacionUnidades.put(3, new CrearEspectro(juego));
+		this.listaDeCreacionUnidades.put(4, new CrearNaveCiencia(juego));
+		this.listaDeCreacionUnidades.put(5, new CrearNaveTransporteTerran(juego));
 		
-		this.listaDeCreacionConstrucciones.put(1, new CrearCentroDeMineral());
-		this.listaDeCreacionConstrucciones.put(2, new CrearBarraca());
-		this.listaDeCreacionConstrucciones.put(3, new CrearDepositoSuministros());
-		this.listaDeCreacionConstrucciones.put(4, new CrearRefineria());
-		this.listaDeCreacionConstrucciones.put(5, new CrearFabrica());
-		this.listaDeCreacionConstrucciones.put(6, new CrearPuertoEstelarTerran());
+		this.listaDeCreacionConstrucciones.put(1, new CrearCentroDeMineral(juego));
+		this.listaDeCreacionConstrucciones.put(2, new CrearBarraca(juego));
+		this.listaDeCreacionConstrucciones.put(3, new CrearDepositoSuministros(juego));
+		this.listaDeCreacionConstrucciones.put(4, new CrearRefineria(juego));
+		this.listaDeCreacionConstrucciones.put(5, new CrearFabrica(juego));
+		this.listaDeCreacionConstrucciones.put(6, new CrearPuertoEstelarTerran(juego));
 		
 	}
 }

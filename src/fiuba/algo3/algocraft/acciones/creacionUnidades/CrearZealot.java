@@ -8,24 +8,22 @@ import fiuba.algo3.algocraft.juego.Celda;
 import fiuba.algo3.algocraft.juego.Juego;
 import fiuba.algo3.algocraft.juego.Jugador;
 import fiuba.algo3.algocraft.juego.Turno;
+import fiuba.algo3.algocraft.unidades.Scout;
 import fiuba.algo3.algocraft.unidades.Zealot;
+import fiuba.algo3.classes.stats.Posicion;
 
-public class CrearZealot implements Ejecutable{
+public class CrearZealot extends Ejecutable{
 
-	@Override
-	public boolean ejecutar() throws JugadorInvalido {
-		try {
-			Celda celda = Turno.getInstance().getObjetivoCelda();
-			Zealot zealot = new Zealot(celda.getPosicion());
-			Jugador jugador = Juego.getInstance().getActualJugador();
-			jugador.agregarUnidad(zealot);
-			celda.setUnidad(zealot);
-			return true;
-		} catch (FueraDeMatriz e) {
-			return false;
-		}  catch (CeldaOcupada e) {
-			return false;
-		}
+
+	public CrearZealot(Juego juego){
+		super(juego);
 	}
+	
+	@Override
+	public void ejecutar(Posicion pos) throws CeldaOcupada{
+		Zealot zealot = new Zealot();
+		this.juego.agregarUnidad(zealot, pos);
 
+	}
+	
 }

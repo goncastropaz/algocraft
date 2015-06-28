@@ -1,6 +1,7 @@
 package fiuba.algo3.algocraft.construcciones;
 
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
+import fiuba.algo3.algocraft.juego.Jugador;
 import fiuba.algo3.classes.stats.Posicion;
 
 public class DepositoSuministro extends Construccion {
@@ -13,9 +14,13 @@ public class DepositoSuministro extends Construccion {
 	private static final Integer ESCUDO = 0;
 	private static final String  UNIDAD = "";
 	
-	public DepositoSuministro(Posicion posicion) throws FueraDeMatriz {
+	public DepositoSuministro() {
 		super(NOMBRE, COSTO_MINERAL, COSTO_GAS, TIEMPO_CONSTRUCCION, MAX_VIDA,
-				ESCUDO, UNIDAD, posicion);
+				ESCUDO, UNIDAD);
 	}
-
+	
+	public void actualizarPoblacion(Jugador jugador) {
+		jugador.agregarPoblacion();
+		
+	}
 }

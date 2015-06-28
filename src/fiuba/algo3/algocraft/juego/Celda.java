@@ -3,6 +3,7 @@ package fiuba.algo3.algocraft.juego;
 import fiuba.algo3.algocraft.construcciones.Construccion;
 import fiuba.algo3.algocraft.excepciones.CeldaOcupada;
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
+import fiuba.algo3.algocraft.excepciones.celdaSinRecurso;
 import fiuba.algo3.algocraft.unidades.Unidad;
 import fiuba.algo3.classes.stats.Posicion;
 
@@ -16,8 +17,7 @@ public class Celda {
 	private Unidad unidad;
 	private Construccion edificio;
 	
-	public Celda(int fila, int columna) throws FueraDeMatriz{
-		Posicion pos = new Posicion (fila,columna);
+	public Celda(Posicion pos) {
 		this.posicion = pos;
 		this.mineral=false;
 		this.gas = false;
@@ -31,12 +31,10 @@ public class Celda {
 	}
 
 	public boolean tieneMineral() {
-		// TODO Auto-generated method stub
 		return this.mineral;
 	}
 
 	public boolean tieneGas() {
-		// TODO Auto-generated method stub
 		return this.gas;
 	}
 	
@@ -72,17 +70,19 @@ public class Celda {
 	}
 
 	public void setAsEspacial() {
-		// TODO Auto-generated method stub
 		this.espacial =true;
 	}
 	
-	public void setConstruccion(Construccion unaConstruccion) throws CeldaOcupada{
-		if(this.unidad ==null){
+	public void setConstruccion(Construccion unaConstruccion) throws CeldaOcupada, celdaSinRecurso{
+		if((unaConstruccion.esProductorMineral() && !this.mineral)||(unaConstruccion.esProductorGas() && !this.gas)) throw new celdaSinRecurso();
+		
+		if(this.unidad ==null ){
 			this.edificio = unaConstruccion;
 		}else{
 			throw new CeldaOcupada();
 		}
 	}
+
 
 	public void removerConstruccion() {
 		this.edificio = null;		

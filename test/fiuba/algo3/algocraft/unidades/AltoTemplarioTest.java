@@ -12,7 +12,7 @@ import fiuba.algo3.algocraft.juego.Celda;
 import fiuba.algo3.algocraft.juego.Juego;
 import fiuba.algo3.algocraft.juego.Mapa;
 import fiuba.algo3.classes.stats.Posicion;
-
+/*
 public class AltoTemplarioTest {
 	@Test
 	public void testCrearUnidadAltoTemplarioDeberiaSetearElNombreunAltoTemplario() throws FueraDeMatriz, JugadorInvalido{
@@ -95,4 +95,4 @@ public class AltoTemplarioTest {
 		Celda celda = Mapa.getInstance().getCelda(3, 3);
 		assertEquals(unAltoTemplario.getUbicacion(),celda);
 	}
-}
+}*/

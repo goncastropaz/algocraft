@@ -8,25 +8,23 @@ import fiuba.algo3.algocraft.juego.Celda;
 import fiuba.algo3.algocraft.juego.Juego;
 import fiuba.algo3.algocraft.juego.Jugador;
 import fiuba.algo3.algocraft.juego.Turno;
+import fiuba.algo3.algocraft.unidades.Golliat;
 import fiuba.algo3.algocraft.unidades.Marine;
+import fiuba.algo3.classes.stats.Posicion;
 
 
-public class CrearMarine implements Ejecutable{
+public class CrearMarine extends Ejecutable{
 
-	@Override
-	public boolean ejecutar() throws JugadorInvalido {
-		try {
-			Celda celda = Turno.getInstance().getObjetivoCelda();
-			Marine marine = new Marine(celda.getPosicion());
-			Jugador jugador = Juego.getInstance().getActualJugador();
-			jugador.agregarUnidad(marine);
-			celda.setUnidad(marine);
-			return true;
-		} catch (FueraDeMatriz e) {
-			return false;
-		}  catch (CeldaOcupada e) {
-			return false;
-		}
+	public CrearMarine(Juego juego){
+		super(juego);
 	}
+	
+	@Override
+	public void ejecutar(Posicion pos) throws CeldaOcupada{
+		Marine marine = new Marine();
+		this.juego.agregarUnidad(marine, pos);
+
+	}
+	
 
 }

@@ -14,7 +14,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 
 import fiuba.algo3.algocraft.acciones.Ejecutable;
-import fiuba.algo3.algocraft.acciones.Seleccionar;
 import fiuba.algo3.algocraft.acciones.creacionConstrucciones.CrearAcceso;
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
 import fiuba.algo3.algocraft.juego.Juego;
@@ -22,6 +21,7 @@ import fiuba.algo3.algocraft.juego.Mapa;
 import fiuba.algo3.algocraft.movimientos.Movimiento;
 import fiuba.algo3.algocraft.vista.JButtonID;
 import fiuba.algo3.algocraft.vista.VistaMapa;
+import fiuba.algo3.classes.stats.Posicion;
 
 public class ControlMapa {
 
@@ -33,20 +33,16 @@ public class ControlMapa {
 
 	public ControlMapa(VistaMapa vista) {
 		vistaMapa = vista;
-		try {
-			juego = Juego.getInstance();
-			mapa = Mapa.getInstance();
-		} catch (FueraDeMatriz e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		juego = new Juego();
+		mapa = juego.getMapaDeJuego();
+		
 		
 	}
 
 	private class EscuchaBotonSeleccionarCelda implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 
-			JButtonID celdaSeleccionada = (JButtonID) e.getSource();
+			final JButtonID celdaSeleccionada = (JButtonID) e.getSource();
 			final Map<String,Ejecutable> acciones = getAccionesDisponibles(celdaSeleccionada.getFila(),celdaSeleccionada.getColumna());
 			
 			//--
@@ -61,7 +57,7 @@ public class ControlMapa {
 	    		btn.addActionListener(new ActionListener() {
 		            public void actionPerformed(ActionEvent e) {
 		            	try {
-							acciones.get(key).ejecutar();
+							acciones.get(key).ejecutar(new Posicion(celdaSeleccionada.getFila(),celdaSeleccionada.getColumna()));
 							frame.dispose();
 						} catch (Exception e1) {
 							JOptionPane.showMessageDialog(frame, e1.getMessage());
@@ -113,7 +109,7 @@ public class ControlMapa {
 	public Map<String, Ejecutable> getAccionesDisponibles(int fila, int columna) {
 //		return mapa.getCelda(fila, columna).getAcciones();
 		Map<String, Ejecutable> map = new HashMap<String, Ejecutable>();
-		map.put("ASD", new Seleccionar());
+		//map.put("ASD", new Seleccionar());
 		return map;
 	}
 
@@ -122,7 +118,7 @@ public class ControlMapa {
 
 			// TODO: e debería traerme la interfaz de la accion
 			// correspondiente.
-			Ejecutable ejecutable = new CrearAcceso();
+			//Ejecutable ejecutable = new CrearAcceso();
 			//
 			// if(ejecutable.ejecutar()){
 			// //actualizar vista

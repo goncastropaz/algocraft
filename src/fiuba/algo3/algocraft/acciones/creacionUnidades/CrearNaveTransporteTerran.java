@@ -8,24 +8,21 @@ import fiuba.algo3.algocraft.juego.Celda;
 import fiuba.algo3.algocraft.juego.Juego;
 import fiuba.algo3.algocraft.juego.Jugador;
 import fiuba.algo3.algocraft.juego.Turno;
+import fiuba.algo3.algocraft.unidades.NaveTransporteProtoss;
 import fiuba.algo3.algocraft.unidades.NaveTransporteTerran;
+import fiuba.algo3.classes.stats.Posicion;
 
-public class CrearNaveTransporteTerran implements Ejecutable{
+public class CrearNaveTransporteTerran extends Ejecutable{
 
-	@Override
-	public boolean ejecutar() throws JugadorInvalido {
-		try {
-			Celda celda = Turno.getInstance().getObjetivoCelda();
-			NaveTransporteTerran naveTransporteTerran = new NaveTransporteTerran(celda.getPosicion());
-			Jugador jugador = Juego.getInstance().getActualJugador();
-			jugador.agregarUnidad(naveTransporteTerran);
-			celda.setUnidad(naveTransporteTerran);
-			return true;
-		} catch (FueraDeMatriz e) {
-			return false;
-		}  catch (CeldaOcupada e) {
-			return false;
-		}
+	public CrearNaveTransporteTerran(Juego juego){
+		super(juego);
 	}
+	
+	@Override
+	public void ejecutar(Posicion pos) throws CeldaOcupada{
+		NaveTransporteTerran naveTransporteTerran = new NaveTransporteTerran();
+		this.juego.agregarUnidad(naveTransporteTerran, pos);
 
+	}
+	
 }

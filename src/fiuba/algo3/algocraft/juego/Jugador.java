@@ -37,8 +37,8 @@ public class Jugador {
 	}
 	
 	public void setNombre(String nombre) throws NombreConMenosDe4Caracteres{
-		if(nombre.length() < 4) throw new NombreConMenosDe4Caracteres();
-		this.nombre = nombre;
+		if((nombre.length() < 4) || (nombre.isEmpty())) throw new NombreConMenosDe4Caracteres();
+		this.nombre = nombre;	
 	}
 	
 	public void setColor(String color){
@@ -68,6 +68,7 @@ public class Jugador {
 	
 	public void agregarConstruccion(Construccion construccion){
 		this.construccionesList.add(construccion);
+		construccion.actualizarPoblacion(this);
 	}
 	
 	public void agregarUnidad(Unidad unidad){

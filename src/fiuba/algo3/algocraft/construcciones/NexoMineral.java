@@ -14,15 +14,19 @@ public class NexoMineral extends Construccion {
 	private static final Integer ESCUDO = 250;
 	private static final String  UNIDAD = "";
 
-	public NexoMineral(Posicion posicion) throws FueraDeMatriz {
+	public NexoMineral() {
 		super(NOMBRE, COSTO_MINERAL, COSTO_GAS, TIEMPO_CONSTRUCCION, MAX_VIDA,
-				ESCUDO, UNIDAD, posicion);
+				ESCUDO, UNIDAD);
 	}
 	
 	public void actualizarTurno(Jugador jugador){
 		if(this.getConstructionTime().getTurnosRestantes()==0)	jugador.actualizarMineral();
 		this.getConstructionTime().actualizarTiempo();
-}
+	}
+
+	public boolean esProductorMineral() {
+		return true;
+	}
 
 
 }

@@ -2,25 +2,25 @@ package fiuba.algo3.algocraft.acciones.creacionConstrucciones;
 
 import fiuba.algo3.algocraft.acciones.Ejecutable;
 import fiuba.algo3.algocraft.construcciones.Barraca;
+import fiuba.algo3.algocraft.excepciones.CeldaOcupada;
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
 import fiuba.algo3.algocraft.excepciones.JugadorInvalido;
+import fiuba.algo3.algocraft.excepciones.celdaSinRecurso;
 import fiuba.algo3.algocraft.juego.Celda;
 import fiuba.algo3.algocraft.juego.Juego;
 import fiuba.algo3.algocraft.juego.Jugador;
+import fiuba.algo3.classes.stats.Posicion;
 
-public class CrearBarraca implements Ejecutable{
+public class CrearBarraca extends Ejecutable{
 
+	public CrearBarraca(Juego juego){
+		super(juego);
+	}
 	@Override
-	public boolean ejecutar() throws JugadorInvalido {
-		try {
-			Celda celda = Juego.getInstance().getActualCelda();
-			Barraca acceso = new Barraca(celda.getPosicion());
-			Jugador jugador = Juego.getInstance().getActualJugador();
-			jugador.agregarConstruccion(acceso);
-			return true;
-		} catch (FueraDeMatriz e) {
-			return false;
-		}
+	public void ejecutar(Posicion pos) throws CeldaOcupada, celdaSinRecurso {
+		Barraca acceso = new Barraca();
+		this.juego.agregarConstruccion(acceso, pos);
+
 	}
 
 }

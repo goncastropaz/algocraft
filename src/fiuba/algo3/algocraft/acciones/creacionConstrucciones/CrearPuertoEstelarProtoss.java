@@ -2,25 +2,26 @@ package fiuba.algo3.algocraft.acciones.creacionConstrucciones;
 
 import fiuba.algo3.algocraft.acciones.Ejecutable;
 import fiuba.algo3.algocraft.construcciones.PuertoEstelarProtoss;
+import fiuba.algo3.algocraft.excepciones.CeldaOcupada;
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
 import fiuba.algo3.algocraft.excepciones.JugadorInvalido;
+import fiuba.algo3.algocraft.excepciones.celdaSinRecurso;
 import fiuba.algo3.algocraft.juego.Celda;
 import fiuba.algo3.algocraft.juego.Juego;
 import fiuba.algo3.algocraft.juego.Jugador;
+import fiuba.algo3.classes.stats.Posicion;
 
-public class CrearPuertoEstelarProtoss implements Ejecutable{
+public class CrearPuertoEstelarProtoss extends Ejecutable{
 
+	public CrearPuertoEstelarProtoss(Juego juego){
+		super(juego);
+	}
+		
 	@Override
-	public boolean ejecutar() throws JugadorInvalido {
-		try {
-			Celda celda = Juego.getInstance().getActualCelda();
-			PuertoEstelarProtoss construccion = new PuertoEstelarProtoss(celda.getPosicion());
-			Jugador jugador = Juego.getInstance().getActualJugador();
-			jugador.agregarConstruccion(construccion);
-			return true;
-		} catch (FueraDeMatriz e) {
-			return false;
-		}
+	public void ejecutar(Posicion pos) throws CeldaOcupada, celdaSinRecurso{
+		PuertoEstelarProtoss construccion = new PuertoEstelarProtoss();
+		this.juego.agregarConstruccion(construccion,pos);
+
 	}
 
 }

@@ -1,11 +1,7 @@
 package fiuba.algo3.algocraft.construcciones;
 
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
-import fiuba.algo3.algocraft.juego.Celda;
-import fiuba.algo3.algocraft.juego.Juego;
 import fiuba.algo3.algocraft.juego.Jugador;
-import fiuba.algo3.algocraft.juego.Mapa;
-import fiuba.algo3.algocraft.unidades.IUnidad;
 import fiuba.algo3.algocraft.unidades.Unidad;
 import fiuba.algo3.classes.stats.CostoDeRecursos;
 import fiuba.algo3.classes.stats.Escudo;
@@ -20,22 +16,18 @@ public abstract class Construccion {
 	private TiempoDeConstruccion constructionTime;
 	private Vida health;
 	private Escudo shield;
-	private RaceUnitBuilding unitBuilder;
-	private Celda ubicacion;
-	private Jugador jugadorCreador;
+
 
 	public Construccion(String name, Integer mineralCost, Integer gasCost,
 			Integer construtionTime, Integer maxHealth, Integer maxShield,
-			String unit, Posicion posicion) throws FueraDeMatriz {
+			String unit){
 
 		this.name = name;
 		this.cost = new CostoDeRecursos(mineralCost, gasCost);
 		this.constructionTime = new TiempoDeConstruccion(construtionTime);
 		this.health = new  Vida(maxHealth);
 		this.shield = new Escudo(maxShield);
-		this.unitBuilder = new RaceUnitBuilding();
-		this.ubicacion= Mapa.getInstance().getCelda(posicion.getFila(),posicion.getColumna());
-		this.jugadorCreador = Juego.getInstance().getActualJugador();
+
 	}
 
 	public String getName() {
@@ -81,30 +73,13 @@ public abstract class Construccion {
 	public void setShield(Escudo shield) {
 		this.shield = shield;
 	}
-
-	public RaceUnitBuilding getUnitBuilder() {
-		return unitBuilder;
-	}
-
-	public void setUnitBuilder(RaceUnitBuilding unitBuilder) {
-		this.unitBuilder = unitBuilder;
-	}
-
-	public Celda getUbicacion() {
-		return this.ubicacion;
-	}
-
 	
 	public void actualizarTurno(Jugador jugador){
 		this.constructionTime.actualizarTiempo();
 	}
 	
 	private void destruir() {
-		this.ubicacion.removerConstruccion();
-			this.jugadorCreador.destruirConstruccion(this);
-			
-		
-		
+// hablarlo porque no puedo tener ubicacion ni jugador
 	}
 	
 	public void ataque(Unidad unidadAtacante){
@@ -116,6 +91,19 @@ public abstract class Construccion {
 			this.getShield().setEscudoActual(0);
 			this.setVida(this.getHealth().getVidaActual()-(danio-escudoActual));
 		}
+	}
+
+	public boolean esProductorMineral() {
+		return false;
+	}
+
+	public boolean esProductorGas() {
+		return false;
+	}
+
+	public void actualizarPoblacion(Jugador jugador) {
+	
+		
 	}
 	
 	

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
 import fiuba.algo3.algocraft.juego.Jugador;
+import fiuba.algo3.algocraft.juego.Mapa;
 import fiuba.algo3.algocraft.magias.Alucinacion;
 import fiuba.algo3.algocraft.magias.EMP;
 import fiuba.algo3.algocraft.magias.Magia;
@@ -36,12 +37,13 @@ public class AltoTemplario extends UnidadTerrestre {
 	private static final Integer RANGO_ATAQUE_TERRESTRE = 0;
 	private static final Integer RANGO_ATAQUE_AEREO = 0;
 	
+	private Mapa mapa;
 	private Energia energia;
 	private ArrayList<TormentaPsionica> tormentasPsionicas;
 	
-	public AltoTemplario(Posicion pos) throws FueraDeMatriz{
+	public AltoTemplario(Mapa mapa){
 		
-		super(NAME,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD,VISION,SUPPLY_COST,pos);
+		super(NAME,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD,VISION,SUPPLY_COST);
 		RangoDeAtaque rango = new RangoDeAtaque(RANGO_ATAQUE_TERRESTRE,RANGO_ATAQUE_AEREO);
 		CostoDeRecursos costoDeRecursos = new CostoDeRecursos(MINERAL_COST,GAS_COST);
 		this.setCostoDeRecursos(costoDeRecursos);
@@ -49,7 +51,7 @@ public class AltoTemplario extends UnidadTerrestre {
 		
 		this.energia = new Energia(MAX_ENERGY,INITIAL_ENERGY);
 		this.tormentasPsionicas = new ArrayList<TormentaPsionica>();
-		
+		this.mapa = mapa;
 		
 	}
 	
@@ -70,10 +72,10 @@ public class AltoTemplario extends UnidadTerrestre {
 	
 	public ArrayList<Magia> getMagias(){
 		ArrayList<Magia> magias = new ArrayList<Magia>();
-		TormentaPsionica tormenta = new TormentaPsionica(this.energia);
+		TormentaPsionica tormenta = new TormentaPsionica(this.energia,this.mapa);
 		this.tormentasPsionicas.add(tormenta);
 		magias.add(tormenta);
-		magias.add(new Alucinacion(this.energia));
+		magias.add(new Alucinacion(this.energia,this.mapa));
 		return magias;
 	}
 	

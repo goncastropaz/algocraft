@@ -1,9 +1,5 @@
 package fiuba.algo3.algocraft.construcciones;
 
-import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
-import fiuba.algo3.algocraft.unidades.IUnidad;
-import fiuba.algo3.classes.stats.Posicion;
-
 
 public class Barraca extends Construccion {
 	
@@ -15,9 +11,9 @@ public class Barraca extends Construccion {
 	private static final Integer ESCUDO = 0;
 	private static final String  UNIDAD = "Marine" ;
 
-	public Barraca(Posicion posicion) throws FueraDeMatriz {
+	public Barraca()  {
 		super(NOMBRE, COSTO_MINERAL, COSTO_GAS, TIEMPO_CONSTRUCCION, MAX_VIDA,
-				ESCUDO, UNIDAD, posicion);
+				ESCUDO, UNIDAD);
 	}
 
 }

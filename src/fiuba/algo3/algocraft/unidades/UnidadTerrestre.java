@@ -10,8 +10,8 @@ import fiuba.algo3.classes.stats.RangoDeAtaque;
 
 public abstract class UnidadTerrestre extends Unidad{
 
-	public UnidadTerrestre(String name, Integer construtionTime, Integer maxHealth, Integer maxShield,Integer vision,Integer suministro, Posicion pos) throws FueraDeMatriz{
-		super(name,construtionTime,maxHealth,maxShield,vision,suministro,pos);
+	public UnidadTerrestre(String name, Integer construtionTime, Integer maxHealth, Integer maxShield,Integer vision,Integer suministro) {
+		super(name,construtionTime,maxHealth,maxShield,vision,suministro);
 	}
 	
 	public void setNuevaUbicacion(Celda celda) throws UnidadTerrestreEnAreaEspacial, CeldaOcupada {

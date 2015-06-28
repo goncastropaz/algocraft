@@ -23,9 +23,9 @@ public class Espectro extends UnidadAerea {
 	private static final Integer RANGO_ATAQUE_TERRESTRE = 5;
 	private static final Integer RANGO_ATAQUE_AEREO = 5;
 	
-	public Espectro(Posicion pos) throws FueraDeMatriz{
+	public Espectro(){
 		
-		super(NAME,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD,VISION,SUPPLY_COST,pos);
+		super(NAME,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD,VISION,SUPPLY_COST);
 		RangoDeAtaque rango = new RangoDeAtaque(RANGO_ATAQUE_TERRESTRE,RANGO_ATAQUE_AEREO);
 		CostoDeRecursos costoDeRecursos = new CostoDeRecursos(MINERAL_COST,GAS_COST);
 		this.setCostoDeRecursos(costoDeRecursos);

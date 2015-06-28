@@ -8,24 +8,22 @@ import fiuba.algo3.algocraft.juego.Celda;
 import fiuba.algo3.algocraft.juego.Juego;
 import fiuba.algo3.algocraft.juego.Jugador;
 import fiuba.algo3.algocraft.juego.Turno;
+import fiuba.algo3.algocraft.unidades.Espectro;
 import fiuba.algo3.algocraft.unidades.Golliat;
+import fiuba.algo3.classes.stats.Posicion;
 
-public class CrearGolliat implements Ejecutable{
+public class CrearGolliat extends Ejecutable{
 
-	@Override
-	public boolean ejecutar() throws JugadorInvalido {
-		try {
-			Celda celda = Turno.getInstance().getObjetivoCelda();
-			Golliat golliat = new Golliat(celda.getPosicion());
-			Jugador jugador = Juego.getInstance().getActualJugador();
-			jugador.agregarUnidad(golliat);
-			celda.setUnidad(golliat);
-			return true;
-		} catch (FueraDeMatriz e) {
-			return false;
-		}  catch (CeldaOcupada e) {
-			return false;
-		}
+	public CrearGolliat(Juego juego){
+		super(juego);
 	}
+	
+	@Override
+	public void ejecutar(Posicion pos) throws CeldaOcupada{
+		Golliat golliat = new Golliat();
+		this.juego.agregarUnidad(golliat, pos);
+
+	}
+	
 
 }

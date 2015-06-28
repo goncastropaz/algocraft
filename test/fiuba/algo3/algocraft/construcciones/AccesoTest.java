@@ -10,7 +10,7 @@ import fiuba.algo3.algocraft.juego.Celda;
 import fiuba.algo3.algocraft.juego.Juego;
 import fiuba.algo3.algocraft.juego.Mapa;
 import fiuba.algo3.classes.stats.Posicion;
-
+/*
 public class AccesoTest {
 	
 	@Test
@@ -76,3 +76,4 @@ public class AccesoTest {
 		assertEquals(unAcceso.getUbicacion(),celda);
 	}
 }
+*/

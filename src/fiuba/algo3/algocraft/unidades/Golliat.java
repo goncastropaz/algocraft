@@ -23,9 +23,9 @@ public class Golliat extends UnidadTerrestre{
 	private static final Integer RANGO_ATAQUE_TERRESTRE = 6;
 	private static final Integer RANGO_ATAQUE_AEREO = 5;
 	
-	public Golliat(Posicion pos) throws FueraDeMatriz{
+	public Golliat(){
 		
-		super(NAME,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD,VISION,SUPPLY_COST,pos);
+		super(NAME,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD,VISION,SUPPLY_COST);
 		RangoDeAtaque rango = new RangoDeAtaque(RANGO_ATAQUE_TERRESTRE,RANGO_ATAQUE_AEREO);
 		CostoDeRecursos costoDeRecursos = new CostoDeRecursos(MINERAL_COST,GAS_COST);
 		this.setCostoDeRecursos(costoDeRecursos);

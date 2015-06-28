@@ -14,9 +14,9 @@ public class Asimilador extends Construccion {
 	private static final Integer ESCUDO = 450;
 	private static final String  UNIDAD = "";
 	
-	public Asimilador(Posicion posicion) throws FueraDeMatriz {
+	public Asimilador(){
 		super(NOMBRE, COSTO_MINERAL, COSTO_GAS, TIEMPO_CONSTRUCCION, MAX_VIDA,
-				ESCUDO, UNIDAD, posicion);
+				ESCUDO, UNIDAD);
 	}
 	
 	public void actualizarTurno(Jugador jugador){
@@ -24,4 +24,7 @@ public class Asimilador extends Construccion {
 		this.getConstructionTime().actualizarTiempo();
 	}
 
+	public boolean esProductorGas() {
+		return true;
+	}
 }

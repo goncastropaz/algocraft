@@ -32,15 +32,13 @@ public abstract class Unidad implements IUnidad{
 	public boolean copia;
 	
 	
-	public Unidad(String nombre, Integer tiempoDeConstruccion, Integer vidaMaxima, Integer escudoMaximo,Integer vision,Integer suministro,Posicion pos) throws FueraDeMatriz{
+	public Unidad(String nombre, Integer tiempoDeConstruccion, Integer vidaMaxima, Integer escudoMaximo,Integer vision,Integer suministro) {
 		this.nombre = nombre;
 		this.tiempoDeConstruccion = new TiempoDeConstruccion(tiempoDeConstruccion);
 		this.vida = new Vida(vidaMaxima);
 		this.escudo = (new Escudo(escudoMaximo));
-		this.ubicacion = Mapa.getInstance().getCelda(pos.getFila(),pos.getColumna()); 
-		this.vision =vision;
+			this.vision =vision;
 		this.suministro = suministro;
-		this.JugadorCreador = Juego.getInstance().getActualJugador();
 		this.copia = false;
 	}
 

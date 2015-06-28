@@ -1,22 +1,20 @@
 package fiuba.algo3.algocraft.acciones;
 
-import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
-import fiuba.algo3.algocraft.excepciones.JugadorInvalido;
-import fiuba.algo3.algocraft.juego.Turno;
+import fiuba.algo3.algocraft.excepciones.CeldaOcupada;
+import fiuba.algo3.algocraft.excepciones.celdaSinRecurso;
+import fiuba.algo3.algocraft.juego.Juego;
+import fiuba.algo3.classes.stats.Posicion;
 
-public class PasarTurno implements Ejecutable{
+public class PasarTurno extends Ejecutable{
+	
+	public PasarTurno(Juego juego){
+		super(juego);
+	}
 
 	@Override
-	public boolean ejecutar() {
-		try{
-			Turno.getInstance().cambiarTurnoJugador();
-			return true;
-		} catch (FueraDeMatriz e) {
-			e.printStackTrace();
-				return false;
-		}catch (JugadorInvalido e) {
-			return false;
-		}
+	public void ejecutar(Posicion pos) throws CeldaOcupada, celdaSinRecurso{
+			this.juego.cambiarTurnoJugador();
+
 	}	
 	
 	

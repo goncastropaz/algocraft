@@ -14,9 +14,9 @@ public class Refineria extends Construccion {
 	private static final Integer ESCUDO = 0;
 	private static final String  UNIDAD = "";
 	
-	public Refineria(Posicion posicion) throws FueraDeMatriz {
+	public Refineria()  {
 		super(NOMBRE, COSTO_MINERAL, COSTO_GAS, TIEMPO_CONSTRUCCION, MAX_VIDA,
-				ESCUDO, UNIDAD, posicion);
+				ESCUDO, UNIDAD);
 	}
 	
 	public void actualizarTurno(Jugador jugador){
@@ -24,5 +24,8 @@ public class Refineria extends Construccion {
 		this.getConstructionTime().actualizarTiempo();
 	}
 
+	public boolean esProductorGas() {
+		return true;
+	}
 
 }

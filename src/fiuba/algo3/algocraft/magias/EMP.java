@@ -18,12 +18,14 @@ public class EMP extends Magia {
 	private static Integer energiaRequerida =100;
 	private Energia energiaDeNave;
 	
-	public EMP(Energia energiaDeNave){
+	public EMP(Energia energiaDeNave,Mapa mapa){
+		super(mapa);
 		this.energiaDeNave = energiaDeNave;
+		
 	}
 	
 	public void tirarMagia(NaveCiencia nave, Celda celdaImpacto) throws FueraDeMatriz{
-		ArrayList<Celda> listaDeCeldas = Mapa.getInstance().devolverCeldasRadio(celdaImpacto.getPosicion(),this.radio);
+		ArrayList<Celda> listaDeCeldas = this.mapa.devolverCeldasRadio(celdaImpacto.getPosicion(),this.radio);
 		for(int i = 0; i<listaDeCeldas.size(); i++){
 			if(listaDeCeldas.get(i).getUnidad() != null) listaDeCeldas.get(i).getUnidad().ataqueEMP();
 			

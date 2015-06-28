@@ -19,7 +19,7 @@ import fiuba.algo3.algocraft.unidades.Marine;
 import fiuba.algo3.algocraft.unidades.NaveCiencia;
 import fiuba.algo3.algocraft.unidades.Unidad;
 import fiuba.algo3.classes.stats.Posicion;
-
+/*
 public class IzquierdaTest {
 	
 	
@@ -145,4 +145,4 @@ public class IzquierdaTest {
 	}
 	 
 }
-
+*/

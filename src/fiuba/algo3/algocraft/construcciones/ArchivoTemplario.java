@@ -13,9 +13,9 @@ public class ArchivoTemplario extends Construccion {
 	private static final Integer ESCUDO = 500;
 	private static final String  UNIDAD = "";
 	
-	public ArchivoTemplario(Posicion posicion) throws FueraDeMatriz {
+	public ArchivoTemplario() {
 		super(NOMBRE, COSTO_MINERAL, COSTO_GAS, TIEMPO_CONSTRUCCION, MAX_VIDA,
-				ESCUDO, UNIDAD, posicion);
+				ESCUDO, UNIDAD);
 	}
 
 }

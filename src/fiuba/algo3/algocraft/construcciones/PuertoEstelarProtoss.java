@@ -13,9 +13,9 @@ public class PuertoEstelarProtoss extends Construccion {
 	private static final Integer ESCUDO = 600;
 	private static final String  UNIDAD = "";
 		
-	public PuertoEstelarProtoss(Posicion posicion) throws FueraDeMatriz {
+	public PuertoEstelarProtoss(){
 		super(NOMBRE, COSTO_MINERAL, COSTO_GAS, TIEMPO_CONSTRUCCION, MAX_VIDA,
-				ESCUDO, UNIDAD, posicion);
+				ESCUDO, UNIDAD);
 	}
 
 }

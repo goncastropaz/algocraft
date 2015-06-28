@@ -1,5 +1,12 @@
 package fiuba.algo3.algocraft.magias;
 
-public class Magia {
+import fiuba.algo3.algocraft.juego.Mapa;
 
+public abstract class Magia {
+	
+		protected Mapa mapa;
+		
+		public Magia(Mapa mapa){
+			this.mapa = mapa;
+		}
 }

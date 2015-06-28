@@ -24,11 +24,8 @@ public class ControlInicial {
 
 	public ControlInicial(VistaInicial vista) {
 		vistaInicial = vista;
-		try {
-			juego = Juego.getInstance();
-		} catch (FueraDeMatriz e) {
-			e.printStackTrace();
-		}
+		//juego = Juego.getInstance();
+	
 	}
 	
 	private class EscuchaBotonGuardarJugadores implements ActionListener {
@@ -41,19 +38,19 @@ public class ControlInicial {
 				Raza raza1;
 				if (vistaInicial.getRazaSeleccionadaJG1().equalsIgnoreCase(
 						Constants.TERRAN)) {
-					raza1 = new Terran();
+					//raza1 = new Terran();
 				} else {
-					raza1 = new Protoss();
+					//raza1 = new Protoss();
 				}
-				juego.setRazaJugador(1, raza1);
+				//juego.setRazaJugador(1, raza1);
 				Raza raza2;
 				if (vistaInicial.getRazaSeleccionadaJG2().equalsIgnoreCase(
 						Constants.TERRAN)) {
-					raza2 = new Terran();
+				//	raza2 = new Terran();
 				} else {
-					raza2 = new Protoss();
+					//raza2 = new Protoss();
 				}
-				juego.setRazaJugador(2, raza2);
+				//juego.setRazaJugador(2, raza2);
 				juego.setColorJugador(1, vistaInicial.getColorSeleccionadoJG1());
 				juego.setColorJugador(2, vistaInicial.getColorSeleccionadoJG2());
 

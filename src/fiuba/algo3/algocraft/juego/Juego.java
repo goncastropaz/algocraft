@@ -2,45 +2,46 @@ package fiuba.algo3.algocraft.juego;
 
 import java.util.HashMap;
 
+import fiuba.algo3.algocraft.construcciones.Construccion;
+import fiuba.algo3.algocraft.excepciones.CeldaOcupada;
 import fiuba.algo3.algocraft.excepciones.ColorYaExiste;
 import fiuba.algo3.algocraft.excepciones.CompletarDatosException;
 import fiuba.algo3.algocraft.excepciones.FueraDeMatriz;
 import fiuba.algo3.algocraft.excepciones.JugadorInvalido;
 import fiuba.algo3.algocraft.excepciones.NombreConMenosDe4Caracteres;
 import fiuba.algo3.algocraft.excepciones.NombreYaExiste;
+import fiuba.algo3.algocraft.excepciones.celdaSinRecurso;
 import fiuba.algo3.algocraft.razas.Raza;
+import fiuba.algo3.algocraft.unidades.Unidad;
+import fiuba.algo3.classes.stats.Posicion;
 
 public class Juego {
 
-	private static Juego INSTANCE = null;
 	private HashMap<Integer, Jugador> jugadores;
 	private Mapa mapaJuego;
 	private Turno turno;
 	private boolean juegoFinalizado;
 
-	private Juego() throws FueraDeMatriz {
+	public Juego() {
 
-		this.mapaJuego = Mapa.getInstance();
+		this.mapaJuego = new Mapa();
 		this.jugadores = new HashMap<Integer, Jugador>();
-		Jugador jugador = new Jugador(Mapa.getInstance().getBaseJugador(1));
-		jugadores.put(1, jugador);
-		jugador = new Jugador(Mapa.getInstance().getBaseJugador(2));
-		jugadores.put(2, jugador);
+		
+		try {
+			this.turno = new Turno(this.jugadores);
+			Jugador jugador = new Jugador(mapaJuego.getBaseJugador(1));
+			jugadores.put(1, jugador);
+			jugador = new Jugador(mapaJuego.getBaseJugador(2));
+			jugadores.put(2, jugador);
+		} catch (JugadorInvalido e) {
+			e.printStackTrace();
+		} catch (FueraDeMatriz e) {
+			e.printStackTrace();
+		}
 		this.juegoFinalizado = false;
 
 	}
 
-	private synchronized static void createInstance() throws FueraDeMatriz {
-		if (INSTANCE == null) {
-			INSTANCE = new Juego();
-		}
-	}
-
-	public static Juego getInstance() throws FueraDeMatriz {
-		if (INSTANCE == null)
-			createInstance();
-		return INSTANCE;
-	}
 
 	public Jugador getJugador(int jugador) throws JugadorInvalido {
 
@@ -50,11 +51,9 @@ public class Juego {
 	}
 
 	public void setNombreJugador(int jugador, String nombre)
-			throws NombreYaExiste, JugadorInvalido, NombreConMenosDe4Caracteres, CompletarDatosException {
+			throws NombreYaExiste, JugadorInvalido, NombreConMenosDe4Caracteres{
 
-		if(nombre.isEmpty()){
-			throw new CompletarDatosException();
-		}
+		
 		for (Integer key : this.jugadores.keySet()) {
 			if (this.getJugador(key).getNombre().equalsIgnoreCase(nombre) && !key.equals(jugador))
 				throw new NombreYaExiste();
@@ -63,13 +62,11 @@ public class Juego {
 
 	}
 	
-	public void setRazaJugador(int jugador, Raza raza)
-			throws JugadorInvalido {
+	public void setRazaJugador(int jugador, Raza raza) throws JugadorInvalido {
 		this.getJugador(jugador).setRaza(raza);
 	}
 
-	public void setColorJugador(int jugador, String color)
-			throws JugadorInvalido, ColorYaExiste, CompletarDatosException {
+	public void setColorJugador(int jugador, String color) throws JugadorInvalido, ColorYaExiste, CompletarDatosException {
 		
 		if(color.isEmpty()){
 			throw new CompletarDatosException();
@@ -82,17 +79,6 @@ public class Juego {
 
 	}
 
-	public Celda getActualCelda() {
-		return turno.getActualCelda();
-	}
-
-	public Celda getObjetivoCelda() {
-		return turno.getObjetivoCelda();
-	}
-
-	public Jugador getActualJugador() {
-		return turno.getActualJugador();
-	}
 
 	public void darFinalizadoElJuego() {
 		this.juegoFinalizado = true;
@@ -102,11 +88,29 @@ public class Juego {
 		return this.juegoFinalizado;
 	}
 
-	public void empezarJuego() throws JugadorInvalido, FueraDeMatriz {
-		this.turno = Turno.getInstance();
+	public void agregarUnidad(Unidad unidad, Posicion pos) throws CeldaOcupada{
+		this.turno.getActualJugador().agregarUnidad(unidad);
+		this.mapaJuego.agregarUnidad(unidad,pos);
+		
+	}
+	public void agregarConstruccion(Construccion construccion, Posicion pos) throws CeldaOcupada, celdaSinRecurso{
+		this.turno.getActualJugador().agregarConstruccion(construccion);
+		this.mapaJuego.agregarConstruccion(construccion,pos);
+		
 	}
 
-	public Turno getTurno() {
-		return this.turno;
+
+	public void cambiarTurnoJugador() {
+		this.turno.cambiarTurnoJugador();
+		
+	}
+
+	public Jugador getActualJugador() {
+		return this.turno.getActualJugador();
+	}
+
+
+	public Mapa getMapaDeJuego() {
+		return this.mapaJuego;
 	}
 }

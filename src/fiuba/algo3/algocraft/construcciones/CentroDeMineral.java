@@ -14,14 +14,18 @@ public class CentroDeMineral extends Construccion {
 	private static final Integer ESCUDO = 0;
 	private static final String  UNIDAD = "";
 
-	public CentroDeMineral(Posicion posicion) throws FueraDeMatriz {
+	public CentroDeMineral(){
 		super(NOMBRE, COSTO_MINERAL, COSTO_GAS, TIEMPO_CONSTRUCCION, MAX_VIDA,
-				ESCUDO, UNIDAD, posicion);
+				ESCUDO, UNIDAD);
 	}
 	
 	public void actualizarTurno(Jugador jugador){
 		if(this.getConstructionTime().getTurnosRestantes()==0)	jugador.actualizarMineral();
 		this.getConstructionTime().actualizarTiempo();
+	}
+	
+	public boolean esProductorMineral() {
+		return true;
 	}
 
 }

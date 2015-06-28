@@ -15,7 +15,7 @@ public class VistaJuego {
 
 	public VistaJuego() {
 		frame = new JFrame();
-		controlJuego = new ControlJuego(this);
+		//controlJuego = new ControlJuego(this);
 		initialize();
 	}
 
@@ -54,7 +54,7 @@ public class VistaJuego {
 	public void cambiarVistaJugador() {
 		this.frame.getContentPane().removeAll();
 		initialize();
-		this.frame.getContentPane().revalidate();
+		//this.frame.getContentPane().revalidate();
 		this.frame.getContentPane().repaint();
 	}
 
@@ -63,7 +63,7 @@ public class VistaJuego {
 		JLabel lNombreJugador = new JLabel("El juego ha sido finalizado, el ganador es: " + controlJuego.getNombreJugadorActual());
 		lNombreJugador.setBounds(10, 20, 500, 27);
 		frame.getContentPane().add(lNombreJugador);
-		this.frame.getContentPane().revalidate();
+		//this.frame.getContentPane().revalidate();
 		this.frame.getContentPane().repaint();
 	}
 
