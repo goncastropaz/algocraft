@@ -3,6 +3,7 @@ package fiuba.algo3.modelo.acciones.creacionConstrucciones;
 import fiuba.algo3.modelo.acciones.Ejecutable;
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.construcciones.Asimilador;
+import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.CeldaSinRecurso;
 import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
@@ -17,7 +18,7 @@ public class CrearAsimilador extends Ejecutable{
 		super(juego);
 	}
 	@Override
-	public void ejecutar(Posicion pos) throws CeldaOcupada, CeldaSinRecurso {
+	public void ejecutar(Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial {
 		Asimilador construccion = new Asimilador();
 		this.juego.agregarConstruccion(construccion,pos);
 	}

@@ -2,9 +2,9 @@ package fiuba.algo3.modelo.juego;
 
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.construcciones.Construccion;
+import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.CeldaSinRecurso;
-import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
 import fiuba.algo3.modelo.unidades.Unidad;
 
 public class Celda {
@@ -47,20 +47,17 @@ public class Celda {
 	}
 
 	public void setUnidad(Unidad raceUnit) throws CeldaOcupada {
-		if(!(this.mineral) && !(this.gas) && (this.edificio ==null)){
-			this.unidad = raceUnit;
-		}else{
-			throw new CeldaOcupada();
-		}
+		//TODO validar aerea y espacio aereo
+		if(this.mineral || this.gas || this.edificio != null || this.unidad != null) throw new CeldaOcupada();
+		
+		this.unidad = raceUnit;
 	}
 
 	public void removeUnidad() {
-		// TODO Auto-generated method stub
 		this.unidad = null;
 	}
 
 	public Unidad getUnidad() {
-		// TODO Auto-generated method stub
 		return this.unidad;
 	}
 
@@ -73,14 +70,14 @@ public class Celda {
 		this.espacial =true;
 	}
 	
-	public void setConstruccion(Construccion unaConstruccion) throws CeldaOcupada, CeldaSinRecurso{
+	public void setConstruccion(Construccion unaConstruccion) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial{
+		if(this.espacial) throw new CeldaEspacial();
+		
+		if(this.edificio != null || this.unidad != null) throw new CeldaOcupada();
+		
 		if((unaConstruccion.esProductorMineral() && !this.mineral)||(unaConstruccion.esProductorGas() && !this.gas)) throw new CeldaSinRecurso();
 		
-		if(this.unidad ==null ){
-			this.edificio = unaConstruccion;
-		}else{
-			throw new CeldaOcupada();
-		}
+		this.edificio = unaConstruccion;
 	}
 
 

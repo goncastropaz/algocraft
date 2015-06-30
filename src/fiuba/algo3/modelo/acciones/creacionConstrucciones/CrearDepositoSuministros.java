@@ -3,6 +3,7 @@ package fiuba.algo3.modelo.acciones.creacionConstrucciones;
 import fiuba.algo3.modelo.acciones.Ejecutable;
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.construcciones.DepositoSuministro;
+import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.CeldaSinRecurso;
 import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
@@ -18,7 +19,7 @@ public class CrearDepositoSuministros extends Ejecutable{
 	}
 	
 	@Override
-	public void ejecutar(Posicion pos) throws CeldaOcupada, CeldaSinRecurso  {
+	public void ejecutar(Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial  {
 
 		DepositoSuministro construccion = new DepositoSuministro();
 		this.juego.agregarConstruccion(construccion,pos);

@@ -7,6 +7,7 @@ import org.junit.Test;
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.construcciones.Barraca;
 import fiuba.algo3.modelo.construcciones.Construccion;
+import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.CeldaSinRecurso;
 import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
@@ -41,7 +42,7 @@ public class CeldaTest {
 
 	@Test(expected = CeldaOcupada.class)
 	public void testAgregarContruccionSiHayUnaUnidadDeberiaLanzarError()
-			throws CeldaOcupada, CeldaSinRecurso, FueraDeMatriz {
+			throws CeldaOcupada, CeldaSinRecurso, FueraDeMatriz, CeldaEspacial {
 		Celda unaCelda = new Celda(new Posicion(2, 1));
 		Unidad marine = new Marine();
 		unaCelda.setUnidad(marine);
@@ -52,7 +53,7 @@ public class CeldaTest {
 	@Test(expected = CeldaOcupada.class)
 	public void testAgregarUnidadSiHayUnaConstruccionDeberiaLanzarError()
 			throws CeldaOcupada, FueraDeMatriz, JugadorInvalido,
-			CeldaSinRecurso {
+			CeldaSinRecurso, CeldaEspacial {
 		Celda unaCelda = new Celda(new Posicion(2, 1));
 		Construccion barraca = new Barraca();
 		unaCelda.setConstruccion(barraca);

@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.construcciones.Construccion;
+import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.CeldaSinRecurso;
 import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
@@ -115,7 +116,7 @@ public class Mapa {
 	}
 
 	public void agregarConstruccion(Construccion construccion, Posicion pos)
-			throws CeldaOcupada, CeldaSinRecurso {
+			throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial {
 		this.matriz[pos.getFila()][pos.getColumna()]
 				.setConstruccion(construccion);
 

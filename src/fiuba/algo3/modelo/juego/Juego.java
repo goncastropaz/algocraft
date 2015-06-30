@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.construcciones.Construccion;
+import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.CeldaSinRecurso;
 import fiuba.algo3.modelo.excepciones.ColorYaExiste;
@@ -28,11 +29,11 @@ public class Juego {
 		this.jugadores = new HashMap<Integer, Jugador>();
 		
 		try {
+			Jugador jugador1 = new Jugador(mapaJuego.getBaseJugador(1));
+			jugadores.put(1, jugador1);
+			Jugador jugador2 = new Jugador(mapaJuego.getBaseJugador(2));
+			jugadores.put(2, jugador2);
 			this.turno = new Turno(this.jugadores);
-			Jugador jugador = new Jugador(mapaJuego.getBaseJugador(1));
-			jugadores.put(1, jugador);
-			jugador = new Jugador(mapaJuego.getBaseJugador(2));
-			jugadores.put(2, jugador);
 		} catch (JugadorInvalido e) {
 			e.printStackTrace();
 		} catch (FueraDeMatriz e) {
@@ -93,7 +94,7 @@ public class Juego {
 		this.mapaJuego.agregarUnidad(unidad,pos);
 		
 	}
-	public void agregarConstruccion(Construccion construccion, Posicion pos) throws CeldaOcupada, CeldaSinRecurso{
+	public void agregarConstruccion(Construccion construccion, Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial{
 		this.turno.getActualJugador().agregarConstruccion(construccion);
 		this.mapaJuego.agregarConstruccion(construccion,pos);
 		

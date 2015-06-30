@@ -1,6 +1,7 @@
 package fiuba.algo3.modelo.acciones;
 
 import fiuba.algo3.modelo.complementos.Posicion;
+import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.CeldaSinRecurso;
 import fiuba.algo3.modelo.juego.Juego;
@@ -12,6 +13,6 @@ public abstract class Ejecutable {
 	public Ejecutable(Juego juego){
 		this.juego = juego;
 	}
-	public abstract void ejecutar(Posicion pos) throws CeldaOcupada, CeldaSinRecurso;
+	public abstract void ejecutar(Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial;
 	
 }
