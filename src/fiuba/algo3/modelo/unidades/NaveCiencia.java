@@ -34,18 +34,17 @@ public class NaveCiencia extends UnidadAerea{
 	private static final Integer RANGO_ATAQUE_TERRESTRE = 0;
 	private static final Integer RANGO_ATAQUE_AEREO = 0;
 	
-	private Mapa mapa;
 	private Energia energia;
 	
-	public NaveCiencia(Mapa mapa) {
+	public NaveCiencia(Posicion pos) {
 		
-		super(NAME,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD,VISION,SUPPLY_COST);
+		super(NAME,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD,VISION,SUPPLY_COST,pos);
 		RangoDeAtaque rango = new RangoDeAtaque(RANGO_ATAQUE_TERRESTRE,RANGO_ATAQUE_AEREO);
 		CostoDeRecursos costoDeRecursos = new CostoDeRecursos(MINERAL_COST,GAS_COST);
 		this.setCostoDeRecursos(costoDeRecursos);
 		this.setRangoDeAtaque(rango);
 		this.energia = new Energia(MAX_ENERGY,INITIAL_ENERGY);
-		this.mapa = mapa;
+
 	}
 	
 	public void actualizarTurno(Jugador jugador){
@@ -58,8 +57,8 @@ public class NaveCiencia extends UnidadAerea{
 
 	public ArrayList<Magia> getMagias(){
 		ArrayList<Magia> magias = new ArrayList<Magia>();
-		magias.add(new EMP(this.energia,this.mapa));
-		magias.add(new Radiacion(this.energia,this.mapa));
+		magias.add(new EMP(this.energia));
+		magias.add(new Radiacion(this.energia));
 		return magias;
 	}
 }	

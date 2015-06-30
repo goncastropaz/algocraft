@@ -1,6 +1,5 @@
 package fiuba.algo3.modelo.acciones.creacionConstrucciones;
 
-import fiuba.algo3.modelo.acciones.Ejecutable;
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.construcciones.NexoMineral;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
@@ -12,14 +11,14 @@ import fiuba.algo3.modelo.juego.Celda;
 import fiuba.algo3.modelo.juego.Juego;
 import fiuba.algo3.modelo.juego.Jugador;
 
-public class CrearNexoMineral extends Ejecutable{
+public class CrearNexoMineral extends CrearConstruccion{
 
 	public CrearNexoMineral(Juego juego){
 		super(juego);
 	}
 	
 	@Override
-	public void ejecutar(Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial {
+	public void crearConstruccion(Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial  {
 		NexoMineral construccion = new NexoMineral();
 		this.juego.agregarConstruccion(construccion,pos);
 

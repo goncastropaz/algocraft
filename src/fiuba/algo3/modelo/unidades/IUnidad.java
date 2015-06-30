@@ -24,17 +24,11 @@ public interface IUnidad {
 
 	public Vida getVida();
 
-	public void setVida(Integer vida);
-	
 	public Escudo getEscudo();
 
 	public void setEscudo(Escudo escudo);
 
-	public Celda getUbicacion();
-
-	public void setNuevaUbicacion(Celda celda) throws UnidadTerrestreEnAreaEspacial, CeldaOcupada;
-	
-	public void destruir();
+	public boolean destruir();
 	
 	public void setCopia();
 	
@@ -45,5 +39,7 @@ public interface IUnidad {
 	public void radiacion(int danio);
 	
 	public void tormentaPsionica(int danio);
+	
+	public boolean permitidaEnArea(Celda celda);
 	
 }

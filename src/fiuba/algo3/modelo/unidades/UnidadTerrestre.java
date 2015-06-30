@@ -10,15 +10,14 @@ import fiuba.algo3.modelo.juego.Celda;
 
 public abstract class UnidadTerrestre extends Unidad{
 
-	public UnidadTerrestre(String name, Integer construtionTime, Integer maxHealth, Integer maxShield,Integer vision,Integer suministro) {
-		super(name,construtionTime,maxHealth,maxShield,vision,suministro);
+	public UnidadTerrestre(String name, Integer construtionTime, Integer maxHealth, Integer maxShield,Integer vision,Integer suministro,Posicion pos) {
+		super(name,construtionTime,maxHealth,maxShield,vision,suministro,pos);
 	}
 	
-	public void setNuevaUbicacion(Celda celda) throws UnidadTerrestreEnAreaEspacial, CeldaOcupada {
-		if( celda.isEspacial()) throw new UnidadTerrestreEnAreaEspacial();
-		this.ubicacion = celda;
-		celda.setUnidad(this);
-		
+	
+	public boolean permitidaEnArea(Celda celda){
+		if( celda.isEspacial()) return false;
+		return true;
 	}
 	
 	public void ataque(Unidad unidadAtacante){
@@ -28,7 +27,7 @@ public abstract class UnidadTerrestre extends Unidad{
 			this.getEscudo().setEscudoActual(escudoActual-danio);
 		}else{
 			this.getEscudo().setEscudoActual(0);
-			this.setVida(this.getVida().getVidaActual()-(danio-escudoActual));
+			this.vida.setVidaActual(this.getVida().getVidaActual()-(danio-escudoActual));
 		}
 	}
 }

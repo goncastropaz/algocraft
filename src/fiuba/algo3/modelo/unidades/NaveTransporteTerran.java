@@ -24,9 +24,9 @@ public class NaveTransporteTerran extends UnidadAerea {
 	private static final Integer RANGO_ATAQUE_TERRESTRE = 0;
 	private static final Integer RANGO_ATAQUE_AEREO = 0;
 	
-	public NaveTransporteTerran() {
+	public NaveTransporteTerran(Posicion pos) {
 		
-		super(NAME,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD,VISION,SUPPLY_COST);
+		super(NAME,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD,VISION,SUPPLY_COST,pos);
 		RangoDeAtaque rango = new RangoDeAtaque(RANGO_ATAQUE_TERRESTRE,RANGO_ATAQUE_AEREO);
 		CostoDeRecursos costoDeRecursos = new CostoDeRecursos(MINERAL_COST,GAS_COST);
 		this.setCostoDeRecursos(costoDeRecursos);

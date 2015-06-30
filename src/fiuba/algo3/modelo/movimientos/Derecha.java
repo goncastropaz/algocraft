@@ -19,13 +19,14 @@ public class Derecha extends Movimiento {
 	
 	
 	public void mover(Unidad unidad) throws FueraDeMatriz,UnidadTerrestreEnAreaEspacial, JugadorInvalido, CeldaOcupada {
-		Mapa mapa = this.juego.getMapaDeJuego();
-		Celda celdaActual = unidad.getUbicacion();
-		Posicion posActual = celdaActual.getPosicion();
-		Posicion posNueva = new Posicion(posActual.getFila(),posActual.getColumna() + 1);
+		Mapa mapa =  this.juego.getMapaDeJuego();
+		Posicion posActual = unidad.getUbicacion();
+		Celda celdaActual = mapa.devolverCelda(posActual);
+		Posicion posNueva = posActual.getPosicionDerecha();
 		Celda celdaNueva = mapa.devolverCelda(posNueva);
 		celdaActual.removeUnidad();
 		celdaNueva.setUnidad(unidad);
+		unidad.cambiarUbicacion(posNueva);
 		int visionUnidad = unidad.getVision();
 		this.juego.getActualJugador().actualizarVision(posNueva, visionUnidad);
 		ActualizarObservadores();

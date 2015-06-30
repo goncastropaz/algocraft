@@ -10,8 +10,8 @@ import fiuba.algo3.modelo.juego.Celda;
 public abstract class UnidadAerea extends Unidad{
 
 	
-	public UnidadAerea(String name, Integer construtionTime, Integer maxHealth, Integer maxShield, Integer vision,Integer suministro){
-		super(name,construtionTime,maxHealth,maxShield,vision,suministro);
+	public UnidadAerea(String name, Integer construtionTime, Integer maxHealth, Integer maxShield, Integer vision,Integer suministro,Posicion pos){
+		super(name,construtionTime,maxHealth,maxShield,vision,suministro,pos);
 	}
 	
 	public void ataque(Unidad unidadAtacante){
@@ -21,7 +21,8 @@ public abstract class UnidadAerea extends Unidad{
 			this.getEscudo().setEscudoActual(escudoActual-danio);
 		}else{
 			this.getEscudo().setEscudoActual(0);
-			this.setVida(this.getVida().getVidaActual()-(danio-escudoActual));
+			this.vida.setVidaActual(this.getVida().getVidaActual()-(danio-escudoActual));
 		}
+		//actualizar poblacion y destruir
 	}
 }

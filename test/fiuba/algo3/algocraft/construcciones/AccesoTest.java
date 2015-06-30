@@ -52,8 +52,8 @@ public class AccesoTest {
 	public void testJugadorNoCreaAccesoEnCeldaOcupadaConUnidad(){
 		try{
 			Juego juego = new Juego();
-			Zealot zealot = new Zealot();
 			Posicion posicion = new Posicion(1, 1);
+			Zealot zealot = new Zealot(posicion);
 			juego.agregarUnidad(zealot, posicion);
 			Acceso acceso = new Acceso();
 			juego.agregarConstruccion(acceso, posicion);

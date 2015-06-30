@@ -23,8 +23,8 @@ public class Scout extends UnidadAerea {
 	private static final Integer RANGO_ATAQUE_TERRESTRE = 4;
 	private static final Integer RANGO_ATAQUE_AEREO = 4;
 	
-	public Scout(){
-		super(NAME,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD,VISION,SUPPLY_COST);
+	public Scout(Posicion pos){
+		super(NAME,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD,VISION,SUPPLY_COST,pos);
 		CostoDeRecursos costoDeRecursos = new CostoDeRecursos(MINERAL_COST,GAS_COST);
 		this.setCostoDeRecursos(costoDeRecursos);
 		this.setRangoDeAtaque(new RangoDeAtaque(RANGO_ATAQUE_TERRESTRE,RANGO_ATAQUE_AEREO));

@@ -23,9 +23,9 @@ public class Dragon extends UnidadTerrestre {
 	private static final Integer RANGO_ATAQUE_TERRESTRE = 4;
 	private static final Integer RANGO_ATAQUE_AEREO = 4;
 	
-	public Dragon(){
+	public Dragon(Posicion pos){
 		
-		super(NAME,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD,VISION,SUPPLY_COST);
+		super(NAME,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD,VISION,SUPPLY_COST,pos);
 		RangoDeAtaque rango = new RangoDeAtaque(RANGO_ATAQUE_TERRESTRE,RANGO_ATAQUE_AEREO);
 		CostoDeRecursos costoDeRecursos = new CostoDeRecursos(MINERAL_COST,GAS_COST);
 		this.setCostoDeRecursos(costoDeRecursos);

@@ -47,7 +47,7 @@ public class Celda {
 	}
 
 	public void setUnidad(Unidad raceUnit) throws CeldaOcupada {
-		//TODO validar aerea y espacio aereo
+	
 		if(this.mineral || this.gas || this.edificio != null || this.unidad != null) throw new CeldaOcupada();
 		
 		this.unidad = raceUnit;
@@ -78,6 +78,7 @@ public class Celda {
 		if((unaConstruccion.esProductorMineral() && !this.mineral)||(unaConstruccion.esProductorGas() && !this.gas)) throw new CeldaSinRecurso();
 		
 		this.edificio = unaConstruccion;
+		
 	}
 
 

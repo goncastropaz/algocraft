@@ -20,12 +20,13 @@ public class Abajo extends Movimiento {
 	public void mover(Unidad unidad) throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido, CeldaOcupada {
 	
 		Mapa mapa =  this.juego.getMapaDeJuego();
-		Celda celdaActual = unidad.getUbicacion();
-		Posicion posActual = celdaActual.getPosicion();
-		Posicion posNueva = new Posicion(posActual.getFila() + 1,posActual.getColumna());
+		Posicion posActual = unidad.getUbicacion();
+		Celda celdaActual = mapa.devolverCelda(posActual);
+		Posicion posNueva = posActual.getPosicionAbajo();
 		Celda celdaNueva = mapa.devolverCelda(posNueva);
 		celdaActual.removeUnidad();
 		celdaNueva.setUnidad(unidad);
+		unidad.cambiarUbicacion(posNueva);
 		int visionUnidad = unidad.getVision();
 		this.juego.getActualJugador().actualizarVision(posNueva, visionUnidad);
 		ActualizarObservadores();

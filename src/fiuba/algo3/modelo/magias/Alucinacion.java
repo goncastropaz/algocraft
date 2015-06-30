@@ -9,8 +9,7 @@ public class Alucinacion extends Magia {
 	
 	private Energia energiaDeNave;
 	
-	public Alucinacion(Energia energiaDeUnidad,Mapa mapa){
-		super(mapa);
+	public Alucinacion(Energia energiaDeUnidad){
 		this.energiaDeNave = energiaDeNave;
 	}
 

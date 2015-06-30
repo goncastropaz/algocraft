@@ -20,6 +20,18 @@ public class Posicion {
 		return fila;
 	}
 
+	public Posicion getPosicionArriba() throws FueraDeMatriz{
+		return new Posicion(this.fila+1,this.columna);
+	}
+	public Posicion getPosicionAbajo() throws FueraDeMatriz{
+		return new Posicion(this.fila-1,this.columna);
+	}
+	public Posicion getPosicionDerecha() throws FueraDeMatriz{
+		return new Posicion(this.fila,this.columna+1);
+	}
+	public Posicion getPosicionIzquierda() throws FueraDeMatriz{
+		return new Posicion(this.fila,this.columna-1);
+	}
 	
 	
 }

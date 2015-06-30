@@ -7,6 +7,7 @@ import fiuba.algo3.modelo.complementos.RangoDeAtaque;
 import fiuba.algo3.modelo.complementos.TiempoDeConstruccion;
 import fiuba.algo3.modelo.complementos.Vida;
 import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
+import fiuba.algo3.modelo.juego.Celda;
 import fiuba.algo3.modelo.juego.Mapa;
 
 public class Zealot extends UnidadTerrestre {
@@ -27,12 +28,14 @@ public class Zealot extends UnidadTerrestre {
 	private static final Integer RANGO_ATAQUE_TERRESTRE = 1;
 	private static final Integer RANGO_ATAQUE_AEREO = 1;
 	
-	public Zealot(){
-		super(NAME,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD,VISION,SUPPLY_COST);
+	public Zealot(Posicion pos){
+		super(NAME,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD,VISION,SUPPLY_COST,pos);
 		RangoDeAtaque rango = new RangoDeAtaque(RANGO_ATAQUE_TERRESTRE,RANGO_ATAQUE_AEREO);
 		CostoDeRecursos costoDeRecursos = new CostoDeRecursos(MINERAL_COST,GAS_COST);
 		this.setCostoDeRecursos(costoDeRecursos);
 		this.setRangoDeAtaque(rango);
 	}
+
+	
 	
 }

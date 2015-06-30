@@ -17,16 +17,15 @@ public class TormentaPsionica extends Magia {
 	private int turno;
 	private ArrayList<Celda> listaDeCeldasImpactadas;
 
-	public TormentaPsionica(Energia energiaDeNave, Mapa mapa){
-		super(mapa);
+	public TormentaPsionica(Energia energiaDeNave){
 		this.energiaDeNave = energiaDeNave;
 		this.turno =0;
 	}
 	
-	public void provocarTormenta(Celda celdaImpacto) throws FueraDeMatriz{
+	public void provocarTormenta(Celda celdaImpacto,Mapa mapa) throws FueraDeMatriz{
 		
 		if(celdaImpacto.getUnidad() != null) celdaImpacto.getUnidad().destruir();
-		ArrayList<Celda> listaDeCeldas = this.mapa.devolverCeldasRadio(celdaImpacto.getPosicion(),radio);
+		ArrayList<Celda> listaDeCeldas = mapa.devolverCeldasRadio(celdaImpacto.getPosicion(),radio);
 		for(int i = 0; i<listaDeCeldas.size(); i++){
 			if(listaDeCeldas.get(i).getUnidad() != null) listaDeCeldas.get(i).getUnidad().tormentaPsionica(danio);
 			

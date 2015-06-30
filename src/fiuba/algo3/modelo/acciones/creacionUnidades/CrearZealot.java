@@ -1,7 +1,7 @@
 package fiuba.algo3.modelo.acciones.creacionUnidades;
 
-import fiuba.algo3.modelo.acciones.Ejecutable;
 import fiuba.algo3.modelo.complementos.Posicion;
+import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
 import fiuba.algo3.modelo.excepciones.JugadorInvalido;
@@ -12,7 +12,7 @@ import fiuba.algo3.modelo.juego.Turno;
 import fiuba.algo3.modelo.unidades.Scout;
 import fiuba.algo3.modelo.unidades.Zealot;
 
-public class CrearZealot extends Ejecutable{
+public class CrearZealot extends CrearUnidad{
 
 
 	public CrearZealot(Juego juego){
@@ -20,8 +20,8 @@ public class CrearZealot extends Ejecutable{
 	}
 	
 	@Override
-	public void ejecutar(Posicion pos) throws CeldaOcupada{
-		Zealot zealot = new Zealot();
+	public void crearUnidad(Posicion pos) throws CeldaOcupada, CeldaEspacial{
+		Zealot zealot = new Zealot(pos);
 		this.juego.agregarUnidad(zealot, pos);
 
 	}

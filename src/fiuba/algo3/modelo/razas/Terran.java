@@ -2,9 +2,9 @@ package fiuba.algo3.modelo.razas;
 
 import java.util.HashMap;
 
-import fiuba.algo3.modelo.acciones.Ejecutable;
 import fiuba.algo3.modelo.acciones.creacionConstrucciones.CrearBarraca;
 import fiuba.algo3.modelo.acciones.creacionConstrucciones.CrearCentroDeMineral;
+import fiuba.algo3.modelo.acciones.creacionConstrucciones.CrearConstruccion;
 import fiuba.algo3.modelo.acciones.creacionConstrucciones.CrearDepositoSuministros;
 import fiuba.algo3.modelo.acciones.creacionConstrucciones.CrearFabrica;
 import fiuba.algo3.modelo.acciones.creacionConstrucciones.CrearPuertoEstelarTerran;
@@ -14,6 +14,7 @@ import fiuba.algo3.modelo.acciones.creacionUnidades.CrearGolliat;
 import fiuba.algo3.modelo.acciones.creacionUnidades.CrearMarine;
 import fiuba.algo3.modelo.acciones.creacionUnidades.CrearNaveCiencia;
 import fiuba.algo3.modelo.acciones.creacionUnidades.CrearNaveTransporteTerran;
+import fiuba.algo3.modelo.acciones.creacionUnidades.CrearUnidad;
 import fiuba.algo3.modelo.juego.Juego;
 
 public class Terran extends Raza {
@@ -21,8 +22,8 @@ public class Terran extends Raza {
 	
 	public Terran(Juego juego){
 		
-		this.listaDeCreacionUnidades = new HashMap<Integer,Ejecutable>();
-		this.listaDeCreacionConstrucciones = new HashMap<Integer,Ejecutable>();
+		this.listaDeCreacionUnidades = new HashMap<Integer,CrearUnidad>();
+		this.listaDeCreacionConstrucciones = new HashMap<Integer,CrearConstruccion>();
 		
 		this.listaDeCreacionUnidades.put(1, new CrearMarine(juego));
 		this.listaDeCreacionUnidades.put(2, new CrearGolliat(juego));

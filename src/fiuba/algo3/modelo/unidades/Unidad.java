@@ -17,29 +17,29 @@ import fiuba.algo3.modelo.juego.Turno;
 
 public abstract class Unidad implements IUnidad{
 
-	Jugador JugadorCreador;
 	private String nombre;
 	private CostoDeRecursos costoDeRecursos;
 	private TiempoDeConstruccion tiempoDeConstruccion;
-	private Vida vida;
+	protected Vida vida;
 	private Escudo escudo;
 	private int vision;
-	public Celda ubicacion;
 	public RangoDeAtaque rango;
 	public Integer suministro;
 	public Integer danioAereo;
 	public Integer danioTerrestre;
 	public boolean copia;
+	public Posicion ubicacion;
 	
 	
-	public Unidad(String nombre, Integer tiempoDeConstruccion, Integer vidaMaxima, Integer escudoMaximo,Integer vision,Integer suministro) {
+	public Unidad(String nombre, Integer tiempoDeConstruccion, Integer vidaMaxima, Integer escudoMaximo,Integer vision,Integer suministro,Posicion pos) {
 		this.nombre = nombre;
 		this.tiempoDeConstruccion = new TiempoDeConstruccion(tiempoDeConstruccion);
 		this.vida = new Vida(vidaMaxima);
 		this.escudo = (new Escudo(escudoMaximo));
-			this.vision =vision;
+		this.vision =vision;
 		this.suministro = suministro;
 		this.copia = false;
+		this.ubicacion = pos;
 	}
 
 	public String getNombre() {
@@ -74,13 +74,6 @@ public abstract class Unidad implements IUnidad{
 		return vida;
 	}
 
-	public void setVida(Integer vida) {
-		if(vida<=0){
-			this.destruir();
-		}else{
-			this.vida.setVidaActual(vida);
-		}
-	}
 
 	public Escudo getEscudo() {
 		return escudo;
@@ -90,15 +83,6 @@ public abstract class Unidad implements IUnidad{
 		this.escudo = escudo;
 	}
 
-	public Celda getUbicacion() {
-		
-		return this.ubicacion;
-	}
-
-	public void setNuevaUbicacion(Celda celda) throws UnidadTerrestreEnAreaEspacial, CeldaOcupada {
-		this.ubicacion = celda;
-			
-	}
 
 	public void actualizarTurno(Jugador jugador) {
 			this.tiempoDeConstruccion.actualizarTiempo();	
@@ -124,10 +108,8 @@ public abstract class Unidad implements IUnidad{
 		return this.danioTerrestre;
 	}
 	
-	public void destruir(){
-		this.ubicacion.removeUnidad();
-		this.JugadorCreador.destruirUnidad(this);
-		//actualizar poblacion
+	public boolean destruir(){
+		return (!this.vida.tieneVida());
 		
 	}
 	public void setCopia(){
@@ -142,7 +124,7 @@ public abstract class Unidad implements IUnidad{
 	}
 	
 	public void radiacion(int danio){
-		this.setVida(this.getVida().getVidaActual()-(danio));
+		this.vida.setVidaActual(this.getVida().getVidaActual()-(danio));
 		
 	}
 
@@ -152,8 +134,21 @@ public abstract class Unidad implements IUnidad{
 			this.getEscudo().setEscudoActual(escudoActual-danio);
 		}else{
 			this.getEscudo().setEscudoActual(0);
-			this.setVida(this.getVida().getVidaActual()-(danio-escudoActual));
+			this.vida.setVidaActual(this.getVida().getVidaActual()-(danio-escudoActual));
 		}
 		
 	}
+
+	public boolean permitidaEnArea(Celda celda){
+		return true;
+	}
+	
+	public void cambiarUbicacion(Posicion pos){
+		this.ubicacion = pos;
+	}
+
+	public Posicion getUbicacion() {
+		return this.ubicacion;
+	}
+	
 }

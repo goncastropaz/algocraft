@@ -89,7 +89,7 @@ public class Juego {
 		return this.juegoFinalizado;
 	}
 
-	public void agregarUnidad(Unidad unidad, Posicion pos) throws CeldaOcupada{
+	public void agregarUnidad(Unidad unidad, Posicion pos) throws CeldaOcupada, CeldaEspacial{
 		this.turno.getActualJugador().agregarUnidad(unidad);
 		this.mapaJuego.agregarUnidad(unidad,pos);
 		

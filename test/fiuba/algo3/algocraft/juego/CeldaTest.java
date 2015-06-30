@@ -43,8 +43,9 @@ public class CeldaTest {
 	@Test(expected = CeldaOcupada.class)
 	public void testAgregarContruccionSiHayUnaUnidadDeberiaLanzarError()
 			throws CeldaOcupada, CeldaSinRecurso, FueraDeMatriz, CeldaEspacial {
-		Celda unaCelda = new Celda(new Posicion(2, 1));
-		Unidad marine = new Marine();
+		Posicion pos = new Posicion(2, 1);
+		Celda unaCelda = new Celda(pos);
+		Unidad marine = new Marine(pos);
 		unaCelda.setUnidad(marine);
 		Construccion barraca = new Barraca();
 		unaCelda.setConstruccion(barraca);
@@ -54,11 +55,12 @@ public class CeldaTest {
 	public void testAgregarUnidadSiHayUnaConstruccionDeberiaLanzarError()
 			throws CeldaOcupada, FueraDeMatriz, JugadorInvalido,
 			CeldaSinRecurso, CeldaEspacial {
-		Celda unaCelda = new Celda(new Posicion(2, 1));
+		Posicion pos = new Posicion(2, 1);
+		Celda unaCelda = new Celda(pos);
 		Construccion barraca = new Barraca();
 		unaCelda.setConstruccion(barraca);
 
-		Unidad marine = new Marine();
+		Unidad marine = new Marine(pos);
 		unaCelda.setUnidad(marine);
 
 	}

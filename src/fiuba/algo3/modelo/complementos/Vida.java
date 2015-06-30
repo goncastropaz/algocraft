@@ -21,4 +21,8 @@ public class Vida {
 	public void setVidaActual(Integer vida){
 		this.vidaActual = vida;
 	}
+
+	public boolean tieneVida() {
+		return (this.vidaActual>0);
+	}
 }

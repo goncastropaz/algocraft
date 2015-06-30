@@ -1,6 +1,5 @@
 package fiuba.algo3.modelo.acciones.creacionConstrucciones;
 
-import fiuba.algo3.modelo.acciones.Ejecutable;
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.construcciones.PuertoEstelarTerran;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
@@ -12,14 +11,14 @@ import fiuba.algo3.modelo.juego.Celda;
 import fiuba.algo3.modelo.juego.Juego;
 import fiuba.algo3.modelo.juego.Jugador;
 
-public class CrearPuertoEstelarTerran extends Ejecutable{
+public class CrearPuertoEstelarTerran extends CrearConstruccion{
 
 	public CrearPuertoEstelarTerran(Juego juego){
 		super(juego);
 	}
 	
 	@Override
-	public void ejecutar(Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial  {
+	public void crearConstruccion(Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial  {
 		PuertoEstelarTerran construccion = new PuertoEstelarTerran();
 		this.juego.agregarConstruccion(construccion,pos);
 	

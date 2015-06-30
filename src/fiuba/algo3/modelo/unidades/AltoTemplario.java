@@ -37,13 +37,13 @@ public class AltoTemplario extends UnidadTerrestre {
 	private static final Integer RANGO_ATAQUE_TERRESTRE = 0;
 	private static final Integer RANGO_ATAQUE_AEREO = 0;
 	
-	private Mapa mapa;
+
 	private Energia energia;
 	private ArrayList<TormentaPsionica> tormentasPsionicas;
 	
-	public AltoTemplario(Mapa mapa){
+	public AltoTemplario(Posicion pos){
 		
-		super(NAME,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD,VISION,SUPPLY_COST);
+		super(NAME,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD,VISION,SUPPLY_COST,pos);
 		RangoDeAtaque rango = new RangoDeAtaque(RANGO_ATAQUE_TERRESTRE,RANGO_ATAQUE_AEREO);
 		CostoDeRecursos costoDeRecursos = new CostoDeRecursos(MINERAL_COST,GAS_COST);
 		this.setCostoDeRecursos(costoDeRecursos);
@@ -51,7 +51,6 @@ public class AltoTemplario extends UnidadTerrestre {
 		
 		this.energia = new Energia(MAX_ENERGY,INITIAL_ENERGY);
 		this.tormentasPsionicas = new ArrayList<TormentaPsionica>();
-		this.mapa = mapa;
 		
 	}
 	
@@ -72,10 +71,10 @@ public class AltoTemplario extends UnidadTerrestre {
 	
 	public ArrayList<Magia> getMagias(){
 		ArrayList<Magia> magias = new ArrayList<Magia>();
-		TormentaPsionica tormenta = new TormentaPsionica(this.energia,this.mapa);
+		TormentaPsionica tormenta = new TormentaPsionica(this.energia);
 		this.tormentasPsionicas.add(tormenta);
 		magias.add(tormenta);
-		magias.add(new Alucinacion(this.energia,this.mapa));
+		magias.add(new Alucinacion(this.energia));
 		return magias;
 	}
 	

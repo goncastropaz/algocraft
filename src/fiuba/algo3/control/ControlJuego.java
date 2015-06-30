@@ -3,7 +3,6 @@ package fiuba.algo3.control;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import fiuba.algo3.modelo.acciones.PasarTurno;
 import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
 import fiuba.algo3.modelo.juego.Juego;
 import fiuba.algo3.vista.VistaJuego;

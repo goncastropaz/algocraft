@@ -110,16 +110,17 @@ public class Mapa {
 
 	}
 
-	public void agregarUnidad(Unidad unidad, Posicion pos) throws CeldaOcupada {
-		this.matriz[pos.getFila()][pos.getColumna()].setUnidad(unidad);
+	public void agregarUnidad(Unidad unidad, Posicion pos) throws CeldaOcupada, CeldaEspacial {
+		Celda celda = this.matriz[pos.getFila()][pos.getColumna()];
+		if(!unidad.permitidaEnArea(celda)) throw new CeldaEspacial();
+		celda.setUnidad(unidad);
 
 	}
 
-	public void agregarConstruccion(Construccion construccion, Posicion pos)
-			throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial {
+	public void agregarConstruccion(Construccion construccion, Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial {
 		this.matriz[pos.getFila()][pos.getColumna()]
 				.setConstruccion(construccion);
-
 	}
+
 
 }
