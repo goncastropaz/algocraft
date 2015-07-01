@@ -1,5 +1,6 @@
 package fiuba.algo3.modelo.construcciones;
 
+import fiuba.algo3.modelo.complementos.Danio;
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
@@ -18,14 +19,19 @@ public class Barraca extends Construccion {
 	private static final String  UNIDAD = "Marine" ;
 
 	public Barraca(Posicion pos)  {
-		super(NOMBRE, COSTO_MINERAL, COSTO_GAS, TIEMPO_CONSTRUCCION, MAX_VIDA,
-				ESCUDO, UNIDAD,pos);
+		super(NOMBRE, COSTO_MINERAL, COSTO_GAS, TIEMPO_CONSTRUCCION, MAX_VIDA,ESCUDO, UNIDAD,pos);
 	}
 	
 	public void crearMarine(Juego juego) throws CeldaOcupada, CeldaEspacial{
 			
 		Marine marine = new Marine();
 		juego.agregarUnidad(marine, this.ubicacion);
+	}
+
+	@Override
+	public void recibirAtaque(Danio danio) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

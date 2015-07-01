@@ -26,6 +26,7 @@ public class TormentaPsionica extends Magia {
 			energiaDeNave.reducirEnergia(energiaRequerida);
 			this.turno =0;
 		}
+		this.turno = 2;
 	}
 	
 	public void provocarTormenta(){
@@ -35,14 +36,13 @@ public class TormentaPsionica extends Magia {
 			
 		}
 		
-		if(this.turno == 0 )this.turno = 1; //si es 0 es que es la primera vez que lo ejecuta.
-		if(this.turno ==1) this.turno =0; //si es 1 es que ya lo ejecuto.
+		this.turno -= 1;
 
 		
 	}
 	
-	public int getTurno(){
-		return this.turno;
+	public boolean sigueActiva(){
+		return (this.turno>0);
 	}
 	
 	

@@ -1,6 +1,8 @@
 package fiuba.algo3.modelo.construcciones;
 
 import fiuba.algo3.modelo.complementos.CostoDeRecursos;
+import fiuba.algo3.modelo.complementos.Daniable;
+import fiuba.algo3.modelo.complementos.Danio;
 import fiuba.algo3.modelo.complementos.Escudo;
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.complementos.TiempoDeConstruccion;
@@ -9,7 +11,7 @@ import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
 import fiuba.algo3.modelo.juego.Jugador;
 import fiuba.algo3.modelo.unidades.Unidad;
 
-public abstract class Construccion {
+public abstract class Construccion implements Daniable{
 
 	private String name;
 	private CostoDeRecursos cost;
@@ -83,15 +85,15 @@ public abstract class Construccion {
 // hablarlo porque no puedo tener ubicacion ni jugador
 	}
 	
-	public void ataque(Unidad unidadAtacante){
-		int danio = unidadAtacante.getDanioTerrestre();
+	public void recibirAtaque(Danio danio){
+		/*Integer danioTerrestre = danio
 		Integer escudoActual = this.getShield().getEscudoActual();
 		if(escudoActual> danio){
 			this.getShield().setEscudoActual(escudoActual-danio);
 		}else{
 			this.getShield().setEscudoActual(0);
 			this.setVida(this.getHealth().getVidaActual()-(danio-escudoActual));
-		}
+		}*/
 	}
 
 	public boolean esProductorMineral() {

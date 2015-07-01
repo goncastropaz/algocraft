@@ -3,6 +3,7 @@ package fiuba.algo3.modelo.unidades;
 import java.util.ArrayList;
 
 import fiuba.algo3.modelo.complementos.CostoDeRecursos;
+import fiuba.algo3.modelo.complementos.Danio;
 import fiuba.algo3.modelo.complementos.Energia;
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.complementos.RangoDeAtaque;
@@ -76,5 +77,17 @@ public class NaveCiencia extends UnidadAerea{
 
 	public void ataqueEMP(){
 		this.energia.setEnergiaActual(0);
+	}
+
+	@Override
+	public void recibirAtaque(Danio danio) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void atacarUnidad(Unidad unidad) {
+		// TODO Auto-generated method stub
+		
 	}
 }	

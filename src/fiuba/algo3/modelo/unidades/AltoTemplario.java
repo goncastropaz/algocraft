@@ -3,6 +3,7 @@ package fiuba.algo3.modelo.unidades;
 import java.util.ArrayList;
 
 import fiuba.algo3.modelo.complementos.CostoDeRecursos;
+import fiuba.algo3.modelo.complementos.Danio;
 import fiuba.algo3.modelo.complementos.Energia;
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.complementos.RangoDeAtaque;
@@ -62,12 +63,15 @@ public class AltoTemplario extends UnidadTerrestre {
 	public void actualizarTurno(Jugador jugador){
 		if(this.getTiempoDeConstruccion().getTurnosRestantes()==0){
 			this.energia.recargarEnergia(RECHARGED_ENERGY);
-			for(int tormenta = 0; tormenta< this.tormentasPsionicas.size();tormenta--){
-				if(this.tormentasPsionicas.get(tormenta).getTurno() ==0 ){
-					this.tormentasPsionicas.remove(tormenta);
+			ArrayList<TormentaPsionica> tormentasActualizadas = new ArrayList<TormentaPsionica>();
+			for(int tormenta = 0; tormenta< this.tormentasPsionicas.size();tormenta++){
+				if(this.tormentasPsionicas.get(tormenta).sigueActiva()){
+					this.tormentasPsionicas.get(tormenta).provocarTormenta();
+					tormentasActualizadas.add(this.tormentasPsionicas.get(tormenta));
 				}
 			}
-			
+			this.tormentasPsionicas = tormentasActualizadas;
+	
 		}
 		this.getTiempoDeConstruccion().actualizarTiempo();
 	}
@@ -96,6 +100,18 @@ public class AltoTemplario extends UnidadTerrestre {
 	public void ataqueEMP(){
 		this.energia.setEnergiaActual(0);
 		this.getEscudo().setEscudoActual(0);
+	}
+
+	@Override
+	public void recibirAtaque(Danio danio) {
+		
+		
+	}
+
+	@Override
+	public void atacarUnidad(Unidad unidad) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

@@ -92,6 +92,7 @@ public class Juego {
 
 	public void agregarUnidad(Unidad unidad, Posicion posConstruccion) throws CeldaOcupada, CeldaEspacial{
 		
+		//this.turno.getActualJugador().puedeCrearUnidad();
 		Posicion posUnidad = this.mapaJuego.agregarUnidad(unidad,posConstruccion);
 		this.turno.getActualJugador().agregarUnidad(unidad);
 		unidad.setUbicacion(posUnidad);

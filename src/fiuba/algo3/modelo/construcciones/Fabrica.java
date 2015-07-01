@@ -1,5 +1,6 @@
 package fiuba.algo3.modelo.construcciones;
 
+import fiuba.algo3.modelo.complementos.Danio;
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
@@ -27,6 +28,12 @@ public class Fabrica extends Construccion {
 		
 		Golliat golliat = new Golliat();
 		juego.agregarUnidad(golliat, this.ubicacion);
+	}
+
+	@Override
+	public void recibirAtaque(Danio danio) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

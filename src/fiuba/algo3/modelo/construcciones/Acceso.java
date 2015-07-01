@@ -1,5 +1,6 @@
 package fiuba.algo3.modelo.construcciones;
 
+import fiuba.algo3.modelo.complementos.Danio;
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
@@ -35,6 +36,12 @@ public class Acceso extends Construccion {
 	
 		Dragon unidad = new Dragon();
 		juego.agregarUnidad(unidad, this.ubicacion);
+	}
+
+	@Override
+	public void recibirAtaque(Danio danio) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

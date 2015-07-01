@@ -72,6 +72,7 @@ public class Jugador {
 	}
 	
 	public void agregarUnidad(Unidad unidad){
+		//validar si tiene poblacion/ mineral/gas para generar unidad;
 		this.unidadesList.add(unidad);
 		this.cuposDePoblacionOcupada= this.cuposDePoblacionOcupada +unidad.getSuministro();
 	}
@@ -109,6 +110,10 @@ public class Jugador {
 
 	public void destruirConstruccion(Construccion construccion) {
 		this.construccionesList.remove(construccion);
+		
+	}
+
+	public void puedeCrearUnidad(Unidad unidad ) {
 		
 	}
 

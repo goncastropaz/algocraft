@@ -1,6 +1,7 @@
 package fiuba.algo3.modelo.unidades;
 
 import fiuba.algo3.modelo.complementos.CostoDeRecursos;
+import fiuba.algo3.modelo.complementos.Danio;
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.complementos.RangoDeAtaque;
 import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
@@ -35,6 +36,18 @@ public class Scout extends UnidadAerea {
 		Unidad copia = new Scout();
 		copia.setCopia();
 		return copia;
+	}
+
+	@Override
+	public void recibirAtaque(Danio danio) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void atacarUnidad(Unidad unidad) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

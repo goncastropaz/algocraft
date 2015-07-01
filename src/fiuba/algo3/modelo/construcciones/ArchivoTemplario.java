@@ -1,5 +1,6 @@
 package fiuba.algo3.modelo.construcciones;
 
+import fiuba.algo3.modelo.complementos.Danio;
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
@@ -27,5 +28,11 @@ public class ArchivoTemplario extends Construccion {
 		
 		AltoTemplario unidad = new AltoTemplario();
 		juego.agregarUnidad(unidad, this.ubicacion);
+	}
+
+	@Override
+	public void recibirAtaque(Danio danio) {
+		// TODO Auto-generated method stub
+		
 	}
 }
