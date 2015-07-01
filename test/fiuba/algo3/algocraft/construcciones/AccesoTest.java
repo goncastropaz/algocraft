@@ -23,9 +23,9 @@ public class AccesoTest {
 	@Test
 	public void testJugadorCreaAccesoEnCeldaVacia(){
 		try{
-			Juego juego = new Juego();
-			Acceso acceso = new Acceso();
 			Posicion posicion = new Posicion(1, 1);
+			Juego juego = new Juego();
+			Acceso acceso = new Acceso(posicion);
 			juego.agregarConstruccion(acceso, posicion);
 			
 			assertEquals(1, juego.getActualJugador().getConstruccionesList().size());
@@ -38,9 +38,9 @@ public class AccesoTest {
 	@Test
 	public void testJugadorNoCreaAccesoEnCeldaOcupadaConEdificio(){
 		try{
-			Juego juego = new Juego();
-			Acceso acceso = new Acceso();
 			Posicion posicion = new Posicion(1, 1);
+			Juego juego = new Juego();
+			Acceso acceso = new Acceso(posicion);
 			juego.agregarConstruccion(acceso, posicion);
 			juego.agregarConstruccion(acceso, posicion);
 		} catch(Exception e){
@@ -53,9 +53,9 @@ public class AccesoTest {
 		try{
 			Juego juego = new Juego();
 			Posicion posicion = new Posicion(1, 1);
-			Zealot zealot = new Zealot(posicion);
+			Zealot zealot = new Zealot();
 			juego.agregarUnidad(zealot, posicion);
-			Acceso acceso = new Acceso();
+			Acceso acceso = new Acceso(posicion);
 			juego.agregarConstruccion(acceso, posicion);
 		} catch(Exception e){
 			assertEquals(true, e instanceof CeldaOcupada);
@@ -65,9 +65,9 @@ public class AccesoTest {
 	@Test
 	public void testJugadorNoCreaAccesoEnCeldaEspacial(){
 		try{
-			Juego juego = new Juego();
-			Acceso acceso = new Acceso();
 			Posicion posicion = new Posicion(1, 18);
+			Juego juego = new Juego();
+			Acceso acceso = new Acceso(posicion);
 			juego.agregarConstruccion(acceso, posicion);
 		} catch(Exception e){
 			assertEquals(true, e instanceof CeldaEspacial);

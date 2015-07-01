@@ -14,9 +14,9 @@ public class Refineria extends Construccion {
 	private static final Integer ESCUDO = 0;
 	private static final String  UNIDAD = "";
 	
-	public Refineria()  {
+	public Refineria(Posicion pos)  {
 		super(NOMBRE, COSTO_MINERAL, COSTO_GAS, TIEMPO_CONSTRUCCION, MAX_VIDA,
-				ESCUDO, UNIDAD);
+				ESCUDO, UNIDAD,pos);
 	}
 	
 	public void actualizarTurno(Jugador jugador){

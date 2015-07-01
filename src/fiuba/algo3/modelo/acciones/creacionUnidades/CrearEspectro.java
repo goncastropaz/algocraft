@@ -20,7 +20,7 @@ public class CrearEspectro extends CrearUnidad{
 	
 	@Override
 	public void crearUnidad(Posicion pos) throws CeldaOcupada, CeldaEspacial{
-		Espectro espectro = new Espectro(pos);
+		Espectro espectro = new Espectro();
 		this.juego.agregarUnidad(espectro, pos);
 
 	}

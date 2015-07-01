@@ -21,7 +21,7 @@ public class CrearZealot extends CrearUnidad{
 	
 	@Override
 	public void crearUnidad(Posicion pos) throws CeldaOcupada, CeldaEspacial{
-		Zealot zealot = new Zealot(pos);
+		Zealot zealot = new Zealot();
 		this.juego.agregarUnidad(zealot, pos);
 
 	}

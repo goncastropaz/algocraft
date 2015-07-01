@@ -41,9 +41,9 @@ public class AltoTemplario extends UnidadTerrestre {
 	private Energia energia;
 	private ArrayList<TormentaPsionica> tormentasPsionicas;
 	
-	public AltoTemplario(Posicion pos){
+	public AltoTemplario(){
 		
-		super(NAME,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD,VISION,SUPPLY_COST,pos);
+		super(NAME,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD,VISION,SUPPLY_COST);
 		RangoDeAtaque rango = new RangoDeAtaque(RANGO_ATAQUE_TERRESTRE,RANGO_ATAQUE_AEREO);
 		CostoDeRecursos costoDeRecursos = new CostoDeRecursos(MINERAL_COST,GAS_COST);
 		this.setCostoDeRecursos(costoDeRecursos);

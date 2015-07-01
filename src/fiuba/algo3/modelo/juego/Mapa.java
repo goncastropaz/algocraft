@@ -98,11 +98,14 @@ public class Mapa {
 			colFinal = (pos.getColumna() + radio);
 		for (int fil = filaInicial; fil < filaFinal + 1; fil++) {
 			for (int col = colInicial; col < colFinal + 1; col++) {
-				try {
-					listaDeCeldas.add(this
-							.devolverCelda(new Posicion(fil, col)));
-				} catch (FueraDeMatriz e) {
-					e.printStackTrace();
+				if(fil>=0&&fil<50&&col>=0&&col<50){
+					Posicion posicion = null;
+					try{
+						posicion = new Posicion(fil, col);
+					}catch (FueraDeMatriz e){
+						e.printStackTrace();
+					}
+					listaDeCeldas.add(this.devolverCelda(posicion));
 				}
 			}
 		}
@@ -110,11 +113,17 @@ public class Mapa {
 
 	}
 
-	public void agregarUnidad(Unidad unidad, Posicion pos) throws CeldaOcupada, CeldaEspacial {
-		Celda celda = this.matriz[pos.getFila()][pos.getColumna()];
-		if(!unidad.permitidaEnArea(celda)) throw new CeldaEspacial();
-		celda.setUnidad(unidad);
-
+	public Posicion agregarUnidad(Unidad unidad, Posicion posConstruccion) throws CeldaOcupada, CeldaEspacial{
+		ArrayList<Celda> posiblesCeldas = this.devolverCeldasRadio(posConstruccion, 1);
+		for(int i =0; i<posiblesCeldas.size();i++){
+			Celda celda = posiblesCeldas.get(i);
+			if(unidad.permitidaEnArea(celda)){
+				celda.setUnidad(unidad);
+				return celda.getPosicion();
+			}
+		}
+		throw new CeldaEspacial();
+					
 	}
 
 	public void agregarConstruccion(Construccion construccion, Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial {

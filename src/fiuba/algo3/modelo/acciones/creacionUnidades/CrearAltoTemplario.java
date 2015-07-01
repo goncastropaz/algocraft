@@ -21,7 +21,7 @@ public class CrearAltoTemplario extends CrearUnidad{
 	
 	@Override
 	public void crearUnidad(Posicion pos) throws CeldaOcupada, CeldaEspacial{
-		AltoTemplario altoTemplario = new AltoTemplario(pos);
+		AltoTemplario altoTemplario = new AltoTemplario();
 		this.juego.agregarUnidad(altoTemplario, pos);
 
 	}

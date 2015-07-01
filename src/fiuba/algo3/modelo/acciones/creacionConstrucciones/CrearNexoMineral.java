@@ -19,7 +19,7 @@ public class CrearNexoMineral extends CrearConstruccion{
 	
 	@Override
 	public void crearConstruccion(Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial  {
-		NexoMineral construccion = new NexoMineral();
+		NexoMineral construccion = new NexoMineral(pos);
 		this.juego.agregarConstruccion(construccion,pos);
 
 	}

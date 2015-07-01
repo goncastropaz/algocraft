@@ -10,8 +10,8 @@ import fiuba.algo3.modelo.juego.Celda;
 
 public abstract class UnidadTerrestre extends Unidad{
 
-	public UnidadTerrestre(String name, Integer construtionTime, Integer maxHealth, Integer maxShield,Integer vision,Integer suministro,Posicion pos) {
-		super(name,construtionTime,maxHealth,maxShield,vision,suministro,pos);
+	public UnidadTerrestre(String name, Integer construtionTime, Integer maxHealth, Integer maxShield,Integer vision,Integer suministro) {
+		super(name,construtionTime,maxHealth,maxShield,vision,suministro);
 	}
 	
 	

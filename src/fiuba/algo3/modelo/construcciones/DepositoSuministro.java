@@ -14,9 +14,9 @@ public class DepositoSuministro extends Construccion {
 	private static final Integer ESCUDO = 0;
 	private static final String  UNIDAD = "";
 	
-	public DepositoSuministro() {
+	public DepositoSuministro(Posicion pos) {
 		super(NOMBRE, COSTO_MINERAL, COSTO_GAS, TIEMPO_CONSTRUCCION, MAX_VIDA,
-				ESCUDO, UNIDAD);
+				ESCUDO, UNIDAD,pos);
 	}
 	
 	public void actualizarPoblacion(Jugador jugador) {

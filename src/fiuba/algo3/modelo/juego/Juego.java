@@ -1,5 +1,6 @@
 package fiuba.algo3.modelo.juego;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import fiuba.algo3.modelo.complementos.Posicion;
@@ -89,10 +90,13 @@ public class Juego {
 		return this.juegoFinalizado;
 	}
 
-	public void agregarUnidad(Unidad unidad, Posicion pos) throws CeldaOcupada, CeldaEspacial{
-		this.turno.getActualJugador().agregarUnidad(unidad);
-		this.mapaJuego.agregarUnidad(unidad,pos);
+	public void agregarUnidad(Unidad unidad, Posicion posConstruccion) throws CeldaOcupada, CeldaEspacial{
 		
+		Posicion posUnidad = this.mapaJuego.agregarUnidad(unidad,posConstruccion);
+		this.turno.getActualJugador().agregarUnidad(unidad);
+		unidad.setUbicacion(posUnidad);
+		
+	
 	}
 	public void agregarConstruccion(Construccion construccion, Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial{
 		this.turno.getActualJugador().agregarConstruccion(construccion);

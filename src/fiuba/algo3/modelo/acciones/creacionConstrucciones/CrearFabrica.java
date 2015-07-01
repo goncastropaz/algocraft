@@ -19,7 +19,7 @@ public class CrearFabrica extends CrearConstruccion{
 	
 	@Override
 	public void crearConstruccion(Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial  {
-		Fabrica construccion = new Fabrica();
+		Fabrica construccion = new Fabrica(pos);
 		this.juego.agregarConstruccion(construccion,pos);
 
 	}

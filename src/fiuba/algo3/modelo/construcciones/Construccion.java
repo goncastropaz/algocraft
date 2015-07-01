@@ -16,17 +16,18 @@ public abstract class Construccion {
 	private TiempoDeConstruccion constructionTime;
 	private Vida health;
 	private Escudo shield;
-
+	protected Posicion ubicacion;
 
 	public Construccion(String name, Integer mineralCost, Integer gasCost,
 			Integer construtionTime, Integer maxHealth, Integer maxShield,
-			String unit){
+			String unit, Posicion pos){
 
 		this.name = name;
 		this.cost = new CostoDeRecursos(mineralCost, gasCost);
 		this.constructionTime = new TiempoDeConstruccion(construtionTime);
 		this.health = new  Vida(maxHealth);
 		this.shield = new Escudo(maxShield);
+		this.ubicacion = pos;
 
 	}
 
@@ -104,6 +105,10 @@ public abstract class Construccion {
 	public void actualizarPoblacion(Jugador jugador) {
 	
 		
+	}
+	
+	public Posicion getUbicacion(){
+		return this.ubicacion;
 	}
 	
 	

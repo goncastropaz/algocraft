@@ -21,7 +21,7 @@ public class CrearMarine extends CrearUnidad{
 	
 	@Override
 	public void crearUnidad(Posicion pos) throws CeldaOcupada, CeldaEspacial{
-		Marine marine = new Marine(pos);
+		Marine marine = new Marine();
 		this.juego.agregarUnidad(marine, pos);
 
 	}

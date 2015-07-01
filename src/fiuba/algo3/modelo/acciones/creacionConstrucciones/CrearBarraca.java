@@ -18,7 +18,7 @@ public class CrearBarraca extends CrearConstruccion{
 	}
 	@Override
 	public void crearConstruccion(Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial  {
-		Barraca acceso = new Barraca();
+		Barraca acceso = new Barraca(pos);
 		this.juego.agregarConstruccion(acceso, pos);
 
 	}

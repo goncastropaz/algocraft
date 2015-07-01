@@ -19,7 +19,7 @@ public class CrearCentroDeMineral extends CrearConstruccion{
 
 	@Override
 	public void crearConstruccion(Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial  {
-		CentroDeMineral construccion = new CentroDeMineral();
+		CentroDeMineral construccion = new CentroDeMineral(pos);
 		this.juego.agregarConstruccion(construccion,pos);
 
 	}

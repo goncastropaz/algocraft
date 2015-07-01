@@ -20,7 +20,7 @@ public class CrearDragon extends CrearUnidad{
 	
 	@Override
 	public void crearUnidad(Posicion pos) throws CeldaOcupada, CeldaEspacial{
-		Dragon dragon = new Dragon(pos);
+		Dragon dragon = new Dragon();
 		this.juego.agregarUnidad(dragon, pos);
 
 	}

@@ -45,9 +45,9 @@ public class CeldaTest {
 			throws CeldaOcupada, CeldaSinRecurso, FueraDeMatriz, CeldaEspacial {
 		Posicion pos = new Posicion(2, 1);
 		Celda unaCelda = new Celda(pos);
-		Unidad marine = new Marine(pos);
+		Unidad marine = new Marine();
 		unaCelda.setUnidad(marine);
-		Construccion barraca = new Barraca();
+		Construccion barraca = new Barraca(pos);
 		unaCelda.setConstruccion(barraca);
 	}
 
@@ -57,10 +57,10 @@ public class CeldaTest {
 			CeldaSinRecurso, CeldaEspacial {
 		Posicion pos = new Posicion(2, 1);
 		Celda unaCelda = new Celda(pos);
-		Construccion barraca = new Barraca();
+		Construccion barraca = new Barraca(pos);
 		unaCelda.setConstruccion(barraca);
 
-		Unidad marine = new Marine(pos);
+		Unidad marine = new Marine();
 		unaCelda.setUnidad(marine);
 
 	}

@@ -14,9 +14,9 @@ public class Asimilador extends Construccion {
 	private static final Integer ESCUDO = 450;
 	private static final String  UNIDAD = "";
 	
-	public Asimilador(){
+	public Asimilador(Posicion pos){
 		super(NOMBRE, COSTO_MINERAL, COSTO_GAS, TIEMPO_CONSTRUCCION, MAX_VIDA,
-				ESCUDO, UNIDAD);
+				ESCUDO, UNIDAD,pos);
 	}
 	
 	public void actualizarTurno(Jugador jugador){

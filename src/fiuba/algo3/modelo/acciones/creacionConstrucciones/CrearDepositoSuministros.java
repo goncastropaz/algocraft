@@ -20,7 +20,7 @@ public class CrearDepositoSuministros extends CrearConstruccion{
 	@Override
 	public void crearConstruccion(Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial  {
 
-		DepositoSuministro construccion = new DepositoSuministro();
+		DepositoSuministro construccion = new DepositoSuministro(pos);
 		this.juego.agregarConstruccion(construccion,pos);
 
 

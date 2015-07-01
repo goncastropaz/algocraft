@@ -20,7 +20,7 @@ public class CrearArchivoTemplario extends CrearConstruccion{
 	@Override
 	public void crearConstruccion(Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial  {
 		
-		ArchivoTemplario construccion = new ArchivoTemplario();
+		ArchivoTemplario construccion = new ArchivoTemplario(pos);
 
 		this.juego.agregarConstruccion(construccion, pos);
 	

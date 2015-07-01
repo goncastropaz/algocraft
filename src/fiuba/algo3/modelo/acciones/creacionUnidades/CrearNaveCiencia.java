@@ -22,7 +22,7 @@ public class CrearNaveCiencia extends CrearUnidad{
 	
 	@Override
 	public void crearUnidad(Posicion pos) throws CeldaOcupada, CeldaEspacial{
-		NaveCiencia naveCiencia = new NaveCiencia(pos);
+		NaveCiencia naveCiencia = new NaveCiencia();
 		this.juego.agregarUnidad(naveCiencia, pos);
 
 	}

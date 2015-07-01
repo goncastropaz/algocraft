@@ -20,7 +20,7 @@ public class CrearNaveTransporteProtoss extends CrearUnidad{
 	
 	@Override
 	public void crearUnidad(Posicion pos) throws CeldaOcupada, CeldaEspacial{
-		NaveTransporteProtoss naveTransporteProtoss = new NaveTransporteProtoss(pos);
+		NaveTransporteProtoss naveTransporteProtoss = new NaveTransporteProtoss();
 		this.juego.agregarUnidad(naveTransporteProtoss, pos);
 
 	}

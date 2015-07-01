@@ -19,7 +19,7 @@ public class CrearPilon extends CrearConstruccion{
 	
 	@Override
 	public void crearConstruccion(Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial  {
-		Pilon construccion = new Pilon();
+		Pilon construccion = new Pilon(pos);
 		this.juego.agregarConstruccion(construccion,pos);
 
 	}

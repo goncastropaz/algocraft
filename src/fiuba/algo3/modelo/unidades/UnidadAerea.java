@@ -10,8 +10,8 @@ import fiuba.algo3.modelo.juego.Celda;
 public abstract class UnidadAerea extends Unidad{
 
 	
-	public UnidadAerea(String name, Integer construtionTime, Integer maxHealth, Integer maxShield, Integer vision,Integer suministro,Posicion pos){
-		super(name,construtionTime,maxHealth,maxShield,vision,suministro,pos);
+	public UnidadAerea(String name, Integer construtionTime, Integer maxHealth, Integer maxShield, Integer vision,Integer suministro){
+		super(name,construtionTime,maxHealth,maxShield,vision,suministro);
 	}
 	
 	public void ataque(Unidad unidadAtacante){

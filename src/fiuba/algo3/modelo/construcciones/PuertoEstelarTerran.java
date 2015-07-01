@@ -1,7 +1,14 @@
 package fiuba.algo3.modelo.construcciones;
 
 import fiuba.algo3.modelo.complementos.Posicion;
+import fiuba.algo3.modelo.excepciones.CeldaEspacial;
+import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
+import fiuba.algo3.modelo.juego.Juego;
+import fiuba.algo3.modelo.unidades.Espectro;
+import fiuba.algo3.modelo.unidades.Golliat;
+import fiuba.algo3.modelo.unidades.NaveCiencia;
+import fiuba.algo3.modelo.unidades.NaveTransporteTerran;
 
 public class PuertoEstelarTerran  extends Construccion{
 
@@ -14,9 +21,27 @@ public class PuertoEstelarTerran  extends Construccion{
 	private static final String  UNIDAD = "";
 	
 	
-	public PuertoEstelarTerran() {
+	public PuertoEstelarTerran(Posicion pos) {
 		super(NOMBRE, COSTO_MINERAL, COSTO_GAS, TIEMPO_CONSTRUCCION, MAX_VIDA,
-				ESCUDO, UNIDAD);
+				ESCUDO, UNIDAD,pos);
+	}
+	
+	public void crearEspectro(Juego juego) throws CeldaOcupada, CeldaEspacial{
+		
+		Espectro unidad = new Espectro();
+		juego.agregarUnidad(unidad, this.ubicacion);
+	}
+	
+	public void crearNaveTransporte(Juego juego) throws CeldaOcupada, CeldaEspacial{
+	
+		NaveTransporteTerran unidad = new NaveTransporteTerran();
+		juego.agregarUnidad(unidad, this.ubicacion);
+	}
+
+	public void crearNaveCiencia(Juego juego) throws CeldaOcupada, CeldaEspacial{
+	
+		NaveCiencia unidad = new NaveCiencia();
+		juego.agregarUnidad(unidad, this.ubicacion);
 	}
 
 }

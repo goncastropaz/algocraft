@@ -21,7 +21,7 @@ public class CrearRefineria extends CrearConstruccion{
 	@Override
 	public void crearConstruccion(Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial  {
 		
-		Refineria construccion = new Refineria();
+		Refineria construccion = new Refineria(pos);
 		this.juego.agregarConstruccion(construccion,pos);
 
 	}

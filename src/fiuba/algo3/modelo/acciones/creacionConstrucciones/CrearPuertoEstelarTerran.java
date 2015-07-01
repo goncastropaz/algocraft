@@ -19,7 +19,7 @@ public class CrearPuertoEstelarTerran extends CrearConstruccion{
 	
 	@Override
 	public void crearConstruccion(Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial  {
-		PuertoEstelarTerran construccion = new PuertoEstelarTerran();
+		PuertoEstelarTerran construccion = new PuertoEstelarTerran(pos);
 		this.juego.agregarConstruccion(construccion,pos);
 	
 	}

@@ -20,7 +20,7 @@ public class CrearGolliat extends CrearUnidad{
 	
 	@Override
 	public void crearUnidad(Posicion pos) throws CeldaOcupada, CeldaEspacial{
-		Golliat golliat = new Golliat(pos);
+		Golliat golliat = new Golliat();
 		this.juego.agregarUnidad(golliat, pos);
 
 	}

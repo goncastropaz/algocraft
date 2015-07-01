@@ -31,7 +31,7 @@ public abstract class Unidad implements IUnidad{
 	public Posicion ubicacion;
 	
 	
-	public Unidad(String nombre, Integer tiempoDeConstruccion, Integer vidaMaxima, Integer escudoMaximo,Integer vision,Integer suministro,Posicion pos) {
+	public Unidad(String nombre, Integer tiempoDeConstruccion, Integer vidaMaxima, Integer escudoMaximo,Integer vision,Integer suministro) {
 		this.nombre = nombre;
 		this.tiempoDeConstruccion = new TiempoDeConstruccion(tiempoDeConstruccion);
 		this.vida = new Vida(vidaMaxima);
@@ -39,7 +39,6 @@ public abstract class Unidad implements IUnidad{
 		this.vision =vision;
 		this.suministro = suministro;
 		this.copia = false;
-		this.ubicacion = pos;
 	}
 
 	public String getNombre() {
@@ -149,6 +148,11 @@ public abstract class Unidad implements IUnidad{
 
 	public Posicion getUbicacion() {
 		return this.ubicacion;
+	}
+
+	public void setUbicacion(Posicion posUnidad) {
+		this.ubicacion = posUnidad;
+		
 	}
 	
 }

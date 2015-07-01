@@ -20,7 +20,7 @@ public class CrearScout extends CrearUnidad{
 	
 	@Override
 	public void crearUnidad(Posicion pos) throws CeldaOcupada, CeldaEspacial{
-		Scout scout = new Scout(pos);
+		Scout scout = new Scout();
 		this.juego.agregarUnidad(scout, pos);
 
 	}
