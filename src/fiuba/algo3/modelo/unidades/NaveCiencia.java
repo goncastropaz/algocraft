@@ -6,6 +6,7 @@ import fiuba.algo3.modelo.complementos.CostoDeRecursos;
 import fiuba.algo3.modelo.complementos.Energia;
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.complementos.RangoDeAtaque;
+import fiuba.algo3.modelo.excepciones.EnergiaInsuficiente;
 import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
 import fiuba.algo3.modelo.juego.Jugador;
 import fiuba.algo3.modelo.juego.Mapa;
@@ -55,10 +56,25 @@ public class NaveCiencia extends UnidadAerea{
 		this.getTiempoDeConstruccion().actualizarTiempo();
 	}
 
-	public ArrayList<Magia> getMagias(){
-		ArrayList<Magia> magias = new ArrayList<Magia>();
-		magias.add(new EMP(this.energia));
-		magias.add(new Radiacion(this.energia));
-		return magias;
+	
+	public void generarEMP(Posicion pos,Mapa mapa) throws EnergiaInsuficiente{
+		EMP magiaEMP = new EMP(this.energia);
+		magiaEMP.tirarMagia(pos, mapa);
+	}
+	
+	public void generarRadiacion(Posicion pos,Mapa mapa) throws EnergiaInsuficiente{
+		Radiacion magiaRadiacion = new Radiacion(this.energia);
+		magiaRadiacion.emitirRadiacion(pos, mapa);
+	}
+	
+	@Override
+	public Unidad generarCopia() {
+		Unidad copia = new NaveCiencia();
+		copia.setCopia();
+		return copia;
+	}
+
+	public void ataqueEMP(){
+		this.energia.setEnergiaActual(0);
 	}
 }	

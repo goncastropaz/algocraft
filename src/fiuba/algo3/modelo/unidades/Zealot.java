@@ -8,6 +8,7 @@ import fiuba.algo3.modelo.complementos.TiempoDeConstruccion;
 import fiuba.algo3.modelo.complementos.Vida;
 import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
 import fiuba.algo3.modelo.juego.Celda;
+import fiuba.algo3.modelo.juego.Juego;
 import fiuba.algo3.modelo.juego.Mapa;
 
 public class Zealot extends UnidadTerrestre {
@@ -36,6 +37,10 @@ public class Zealot extends UnidadTerrestre {
 		this.setRangoDeAtaque(rango);
 	}
 
-	
+	public Unidad generarCopia() {
+		Unidad copia = new Zealot();
+		copia.setCopia();
+		return copia;
+	}
 	
 }

@@ -31,4 +31,11 @@ public class Espectro extends UnidadAerea {
 		this.setCostoDeRecursos(costoDeRecursos);
 		this.setRangoDeAtaque(rango);
 	}
+	
+	@Override
+	public Unidad generarCopia() {
+		Unidad copia = new Espectro();
+		copia.setCopia();
+		return copia;
+	}
 }

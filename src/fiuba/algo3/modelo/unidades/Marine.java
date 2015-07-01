@@ -31,4 +31,11 @@ public class Marine extends UnidadTerrestre{
 		this.setCostoDeRecursos(costoDeRecursos);
 		this.setRangoDeAtaque(rango);
 	}
+	
+	@Override
+	public Unidad generarCopia() {
+		Unidad copia = new Marine();
+		copia.setCopia();
+		return copia;
+	}
 }

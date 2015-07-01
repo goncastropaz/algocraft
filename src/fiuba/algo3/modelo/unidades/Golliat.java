@@ -31,5 +31,11 @@ public class Golliat extends UnidadTerrestre{
 		this.setCostoDeRecursos(costoDeRecursos);
 		this.setRangoDeAtaque(rango);
 	}
+	@Override
+	public Unidad generarCopia() {
+		Unidad copia = new Golliat();
+		copia.setCopia();
+		return copia;
+	}
 	
 }

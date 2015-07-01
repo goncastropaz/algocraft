@@ -3,6 +3,7 @@ package fiuba.algo3.modelo.magias;
 import java.util.ArrayList;
 
 import fiuba.algo3.modelo.complementos.Energia;
+import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.excepciones.EnergiaInsuficiente;
 import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
 import fiuba.algo3.modelo.juego.Celda;
@@ -16,20 +17,19 @@ public class EMP extends Magia {
 	
 	private static int radio = 3;
 	private static Integer energiaRequerida =100;
-	private Energia energiaDeNave;
-	
-	public EMP(Energia energiaDeNave){
 
-		this.energiaDeNave = energiaDeNave;
+	
+	public EMP(Energia energiaDeNave) throws EnergiaInsuficiente{
+
+		if(energiaDeNave.esMenor(this.energiaRequerida)) throw new EnergiaInsuficiente();
 		
 	}
 	
-	public void tirarMagia(NaveCiencia nave, Celda celdaImpacto, Mapa mapa) throws FueraDeMatriz{
-		ArrayList<Celda> listaDeCeldas = mapa.devolverCeldasRadio(celdaImpacto.getPosicion(),this.radio);
+	public void tirarMagia(Posicion pos, Mapa mapa){
+		ArrayList<Celda> listaDeCeldas = mapa.devolverCeldasRadio(pos,this.radio);
 		for(int i = 0; i<listaDeCeldas.size(); i++){
 			if(listaDeCeldas.get(i).getUnidad() != null) listaDeCeldas.get(i).getUnidad().ataqueEMP();
 			
 		}
-		this.energiaDeNave.reducirEnergia(this.energiaRequerida);
 	}
 }

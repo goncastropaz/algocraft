@@ -31,4 +31,11 @@ public class NaveTransporteProtoss extends UnidadAerea {
 		this.setCostoDeRecursos(costoDeRecursos);
 		this.setRangoDeAtaque(new RangoDeAtaque(RANGO_ATAQUE_TERRESTRE,RANGO_ATAQUE_AEREO));
 	}
+	
+	@Override
+	public Unidad generarCopia() {
+		Unidad copia = new NaveTransporteProtoss();
+		copia.setCopia();
+		return copia;
+	}
 }

@@ -35,4 +35,8 @@ public class Energia {
 		this.energiaActual = this.energiaActual - energiaRequerida;
 		
 	}
+
+	public boolean esMenor(Integer energiaRequerida) {
+		return (this.energiaActual< energiaRequerida);
+	}
 }

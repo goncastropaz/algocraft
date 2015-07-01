@@ -31,4 +31,11 @@ public class Dragon extends UnidadTerrestre {
 		this.setCostoDeRecursos(costoDeRecursos);
 		this.setRangoDeAtaque(rango);
 	}
+	
+	@Override
+	public Unidad generarCopia() {
+		Unidad copia = new Dragon();
+		copia.setCopia();
+		return copia;
+	}
 }

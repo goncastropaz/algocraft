@@ -29,4 +29,12 @@ public class Scout extends UnidadAerea {
 		this.setCostoDeRecursos(costoDeRecursos);
 		this.setRangoDeAtaque(new RangoDeAtaque(RANGO_ATAQUE_TERRESTRE,RANGO_ATAQUE_AEREO));
 	}
+	
+	@Override
+	public Unidad generarCopia() {
+		Unidad copia = new Scout();
+		copia.setCopia();
+		return copia;
+	}
+	
 }

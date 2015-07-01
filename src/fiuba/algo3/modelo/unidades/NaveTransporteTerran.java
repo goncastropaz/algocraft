@@ -33,4 +33,11 @@ public class NaveTransporteTerran extends UnidadAerea {
 		this.setRangoDeAtaque(rango);
 		
 	}
+	
+	@Override
+	public Unidad generarCopia() {
+		Unidad copia = new NaveTransporteTerran();
+		copia.setCopia();
+		return copia;
+	}
 }

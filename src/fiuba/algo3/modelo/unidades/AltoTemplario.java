@@ -7,7 +7,12 @@ import fiuba.algo3.modelo.complementos.Energia;
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.complementos.RangoDeAtaque;
 import fiuba.algo3.modelo.complementos.Vida;
+import fiuba.algo3.modelo.excepciones.CeldaEspacial;
+import fiuba.algo3.modelo.excepciones.CeldaOcupada;
+import fiuba.algo3.modelo.excepciones.CopiaNoCausaDanio;
+import fiuba.algo3.modelo.excepciones.EnergiaInsuficiente;
 import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
+import fiuba.algo3.modelo.juego.Juego;
 import fiuba.algo3.modelo.juego.Jugador;
 import fiuba.algo3.modelo.juego.Mapa;
 import fiuba.algo3.modelo.magias.Alucinacion;
@@ -67,15 +72,30 @@ public class AltoTemplario extends UnidadTerrestre {
 		this.getTiempoDeConstruccion().actualizarTiempo();
 	}
 
-	
-	
-	public ArrayList<Magia> getMagias(){
-		ArrayList<Magia> magias = new ArrayList<Magia>();
-		TormentaPsionica tormenta = new TormentaPsionica(this.energia);
+
+	public void provocarTormentaPsionica(Posicion pos,Mapa mapa) throws EnergiaInsuficiente, CopiaNoCausaDanio{
+		if(this.copia) throw new CopiaNoCausaDanio();
+		TormentaPsionica tormenta = new TormentaPsionica(this.energia,pos, mapa);
 		this.tormentasPsionicas.add(tormenta);
-		magias.add(tormenta);
-		magias.add(new Alucinacion(this.energia));
-		return magias;
+		tormenta.provocarTormenta();
+	}
+	
+	public void provocarAlucinacion(Unidad unidadACopiar, Juego juego) throws EnergiaInsuficiente, CeldaOcupada, CeldaEspacial, CopiaNoCausaDanio{
+		if(this.copia) throw new CopiaNoCausaDanio();
+		Alucinacion alucinacion = new Alucinacion(this.energia);
+		alucinacion.generarAlucinacion(unidadACopiar, juego);
+	}
+
+	@Override
+	public Unidad generarCopia() {
+		Unidad copia = new AltoTemplario();
+		copia.setCopia();
+		return copia;
+	}
+	
+	public void ataqueEMP(){
+		this.energia.setEnergiaActual(0);
+		this.getEscudo().setEscudoActual(0);
 	}
 	
 }

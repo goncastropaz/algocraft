@@ -154,5 +154,7 @@ public abstract class Unidad implements IUnidad{
 		this.ubicacion = posUnidad;
 		
 	}
+
+	public abstract Unidad generarCopia();
 	
 }
