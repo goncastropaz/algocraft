@@ -1,6 +1,6 @@
 package fiuba.algo3.modelo.unidades;
 
-import fiuba.algo3.modelo.complementos.CostoDeRecursos;
+import fiuba.algo3.modelo.complementos.Recursos;
 import fiuba.algo3.modelo.complementos.Daniable;
 import fiuba.algo3.modelo.complementos.Escudo;
 import fiuba.algo3.modelo.complementos.Posicion;
@@ -19,7 +19,7 @@ import fiuba.algo3.modelo.juego.Turno;
 public abstract class Unidad implements IUnidad, Daniable{
 
 	private String nombre;
-	private CostoDeRecursos costoDeRecursos;
+	private Recursos costoDeRecursos;
 	private TiempoDeConstruccion tiempoDeConstruccion;
 	protected Vida vida;
 	private Escudo escudo;
@@ -50,11 +50,11 @@ public abstract class Unidad implements IUnidad, Daniable{
 		this.nombre = nombre;
 	}
 
-	public CostoDeRecursos getCostoDeRecursos() {
+	public Recursos getCostoDeRecursos() {
 		return costoDeRecursos;
 	}
 
-	public void setCostoDeRecursos(CostoDeRecursos costoDeRecursos) {
+	public void setCostoDeRecursos(Recursos costoDeRecursos) {
 		this.costoDeRecursos = costoDeRecursos;
 	}
 	

@@ -4,7 +4,11 @@ import fiuba.algo3.modelo.complementos.Danio;
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
+import fiuba.algo3.modelo.excepciones.PoblacionInsuficiente;
+import fiuba.algo3.modelo.excepciones.RazaNoTieneUnidad;
+import fiuba.algo3.modelo.excepciones.RecursosInsuficientes;
 import fiuba.algo3.modelo.juego.Juego;
+import fiuba.algo3.modelo.juego.Jugador;
 import fiuba.algo3.modelo.unidades.Marine;
 
 
@@ -22,7 +26,7 @@ public class Barraca extends Construccion {
 		super(NOMBRE, COSTO_MINERAL, COSTO_GAS, TIEMPO_CONSTRUCCION, MAX_VIDA,ESCUDO, UNIDAD,pos);
 	}
 	
-	public void crearMarine(Juego juego) throws CeldaOcupada, CeldaEspacial{
+	public void crearMarine(Juego juego) throws CeldaOcupada, CeldaEspacial, RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente{
 			
 		Marine marine = new Marine();
 		juego.agregarUnidad(marine, this.ubicacion);
@@ -30,6 +34,12 @@ public class Barraca extends Construccion {
 
 	@Override
 	public void recibirAtaque(Danio danio) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void actualizarPoblacion(Jugador jugador) {
 		// TODO Auto-generated method stub
 		
 	}

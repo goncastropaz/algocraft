@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import fiuba.algo3.modelo.complementos.Energia;
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.excepciones.EnergiaInsuficiente;
-import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
 import fiuba.algo3.modelo.juego.Celda;
 import fiuba.algo3.modelo.juego.Mapa;
 
@@ -19,7 +18,7 @@ public class TormentaPsionica extends Magia {
 	private ArrayList<Celda> listaDeCeldasImpactadas;
 
 	public TormentaPsionica(Energia energiaDeNave,Posicion posImpacto,Mapa mapa) throws EnergiaInsuficiente{
-		if(energiaDeNave.esMenor(this.energiaRequerida)) throw new EnergiaInsuficiente();
+		if(energiaDeNave.esMenor(energiaRequerida)) throw new EnergiaInsuficiente();
 		else {
 			Celda celdaImpacto = mapa.devolverCelda(posImpacto);
 			this.listaDeCeldasImpactadas = mapa.devolverCeldasRadio(celdaImpacto.getPosicion(),radio);

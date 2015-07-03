@@ -2,24 +2,22 @@ package fiuba.algo3.modelo.unidades;
 
 import java.util.ArrayList;
 
-import fiuba.algo3.modelo.complementos.CostoDeRecursos;
+import fiuba.algo3.modelo.complementos.Recursos;
 import fiuba.algo3.modelo.complementos.Danio;
 import fiuba.algo3.modelo.complementos.Energia;
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.complementos.RangoDeAtaque;
-import fiuba.algo3.modelo.complementos.Vida;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.CopiaNoCausaDanio;
 import fiuba.algo3.modelo.excepciones.EnergiaInsuficiente;
-import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
+import fiuba.algo3.modelo.excepciones.PoblacionInsuficiente;
+import fiuba.algo3.modelo.excepciones.RazaNoTieneUnidad;
+import fiuba.algo3.modelo.excepciones.RecursosInsuficientes;
 import fiuba.algo3.modelo.juego.Juego;
 import fiuba.algo3.modelo.juego.Jugador;
 import fiuba.algo3.modelo.juego.Mapa;
 import fiuba.algo3.modelo.magias.Alucinacion;
-import fiuba.algo3.modelo.magias.EMP;
-import fiuba.algo3.modelo.magias.Magia;
-import fiuba.algo3.modelo.magias.Radiacion;
 import fiuba.algo3.modelo.magias.TormentaPsionica;
 
 public class AltoTemplario extends UnidadTerrestre {
@@ -51,7 +49,7 @@ public class AltoTemplario extends UnidadTerrestre {
 		
 		super(NAME,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD,VISION,SUPPLY_COST);
 		RangoDeAtaque rango = new RangoDeAtaque(RANGO_ATAQUE_TERRESTRE,RANGO_ATAQUE_AEREO);
-		CostoDeRecursos costoDeRecursos = new CostoDeRecursos(MINERAL_COST,GAS_COST);
+		Recursos costoDeRecursos = new Recursos(MINERAL_COST,GAS_COST);
 		this.setCostoDeRecursos(costoDeRecursos);
 		this.setRangoDeAtaque(rango);
 		
@@ -84,7 +82,7 @@ public class AltoTemplario extends UnidadTerrestre {
 		tormenta.provocarTormenta();
 	}
 	
-	public void provocarAlucinacion(Unidad unidadACopiar, Juego juego) throws EnergiaInsuficiente, CeldaOcupada, CeldaEspacial, CopiaNoCausaDanio{
+	public void provocarAlucinacion(Unidad unidadACopiar, Juego juego) throws EnergiaInsuficiente, CeldaOcupada, CeldaEspacial, CopiaNoCausaDanio, RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente{
 		if(this.copia) throw new CopiaNoCausaDanio();
 		Alucinacion alucinacion = new Alucinacion(this.energia);
 		alucinacion.generarAlucinacion(unidadACopiar, juego);

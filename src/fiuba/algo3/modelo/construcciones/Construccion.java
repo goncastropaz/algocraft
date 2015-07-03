@@ -1,20 +1,18 @@
 package fiuba.algo3.modelo.construcciones;
 
-import fiuba.algo3.modelo.complementos.CostoDeRecursos;
+import fiuba.algo3.modelo.complementos.Recursos;
 import fiuba.algo3.modelo.complementos.Daniable;
 import fiuba.algo3.modelo.complementos.Danio;
 import fiuba.algo3.modelo.complementos.Escudo;
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.complementos.TiempoDeConstruccion;
 import fiuba.algo3.modelo.complementos.Vida;
-import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
 import fiuba.algo3.modelo.juego.Jugador;
-import fiuba.algo3.modelo.unidades.Unidad;
 
 public abstract class Construccion implements Daniable{
 
 	private String name;
-	private CostoDeRecursos cost;
+	private Recursos cost;
 	private TiempoDeConstruccion constructionTime;
 	private Vida health;
 	private Escudo shield;
@@ -25,7 +23,7 @@ public abstract class Construccion implements Daniable{
 			String unit, Posicion pos){
 
 		this.name = name;
-		this.cost = new CostoDeRecursos(mineralCost, gasCost);
+		this.cost = new Recursos(mineralCost, gasCost);
 		this.constructionTime = new TiempoDeConstruccion(construtionTime);
 		this.health = new  Vida(maxHealth);
 		this.shield = new Escudo(maxShield);
@@ -41,11 +39,11 @@ public abstract class Construccion implements Daniable{
 		this.name = name;
 	}
 
-	public CostoDeRecursos getCost() {
+	public Recursos getCost() {
 		return cost;
 	}
 
-	public void setCost(CostoDeRecursos cost) {
+	public void setCost(Recursos cost) {
 		this.cost = cost;
 	}
 
@@ -104,10 +102,7 @@ public abstract class Construccion implements Daniable{
 		return false;
 	}
 
-	public void actualizarPoblacion(Jugador jugador) {
-	
-		
-	}
+	public abstract void actualizarPoblacion(Jugador jugador);
 	
 	public Posicion getUbicacion(){
 		return this.ubicacion;

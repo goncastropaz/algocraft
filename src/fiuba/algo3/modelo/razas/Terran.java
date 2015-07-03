@@ -1,6 +1,7 @@
 package fiuba.algo3.modelo.razas;
 
 import java.util.HashMap;
+import java.util.HashSet;
 
 import fiuba.algo3.modelo.acciones.creacionConstrucciones.CrearBarraca;
 import fiuba.algo3.modelo.acciones.creacionConstrucciones.CrearCentroDeMineral;
@@ -24,6 +25,8 @@ public class Terran extends Raza {
 		
 		this.listaDeCreacionUnidades = new HashMap<Integer,CrearUnidad>();
 		this.listaDeCreacionConstrucciones = new HashMap<Integer,CrearConstruccion>();
+		this.listaDeUnidadesValidas = new HashSet<String>();
+		this.listaDeConstruccionesValidas = new HashSet<String>();
 		
 		this.listaDeCreacionUnidades.put(1, new CrearMarine(juego));
 		this.listaDeCreacionUnidades.put(2, new CrearGolliat(juego));
@@ -38,5 +41,18 @@ public class Terran extends Raza {
 		this.listaDeCreacionConstrucciones.put(5, new CrearFabrica(juego));
 		this.listaDeCreacionConstrucciones.put(6, new CrearPuertoEstelarTerran(juego));
 		
+		
+		this.listaDeUnidadesValidas.add("MARINE");
+		this.listaDeUnidadesValidas.add("GOLLIAT");
+		this.listaDeUnidadesValidas.add("ESPECTRO");
+		this.listaDeUnidadesValidas.add("NAVE_CIENCIA");
+		this.listaDeUnidadesValidas.add("NAVE_TRANSPORTE_TERRAN");
+		
+		this.listaDeConstruccionesValidas.add("BARRACA");
+		this.listaDeConstruccionesValidas.add("CENTRO_DE_MINERAL");
+		this.listaDeConstruccionesValidas.add("DEPOSITO_SUMINISTRO");
+		this.listaDeConstruccionesValidas.add("REFINERIA");
+		this.listaDeConstruccionesValidas.add("FABRICA");
+		this.listaDeConstruccionesValidas.add("PUERTO_ESTELAR_TERRAN");
 	}
 }

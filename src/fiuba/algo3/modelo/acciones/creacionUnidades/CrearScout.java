@@ -3,13 +3,10 @@ package fiuba.algo3.modelo.acciones.creacionUnidades;
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
-import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
-import fiuba.algo3.modelo.excepciones.JugadorInvalido;
-import fiuba.algo3.modelo.juego.Celda;
+import fiuba.algo3.modelo.excepciones.PoblacionInsuficiente;
+import fiuba.algo3.modelo.excepciones.RazaNoTieneUnidad;
+import fiuba.algo3.modelo.excepciones.RecursosInsuficientes;
 import fiuba.algo3.modelo.juego.Juego;
-import fiuba.algo3.modelo.juego.Jugador;
-import fiuba.algo3.modelo.juego.Turno;
-import fiuba.algo3.modelo.unidades.NaveTransporteTerran;
 import fiuba.algo3.modelo.unidades.Scout;
 
 public class CrearScout extends CrearUnidad{
@@ -19,7 +16,7 @@ public class CrearScout extends CrearUnidad{
 	}
 	
 	@Override
-	public void crearUnidad(Posicion pos) throws CeldaOcupada, CeldaEspacial{
+	public void crearUnidad(Posicion pos) throws CeldaOcupada, CeldaEspacial, RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente{
 		Scout scout = new Scout();
 		this.juego.agregarUnidad(scout, pos);
 

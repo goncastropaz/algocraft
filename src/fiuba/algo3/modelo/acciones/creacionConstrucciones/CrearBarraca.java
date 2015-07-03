@@ -5,11 +5,9 @@ import fiuba.algo3.modelo.construcciones.Barraca;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.CeldaSinRecurso;
-import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
-import fiuba.algo3.modelo.excepciones.JugadorInvalido;
-import fiuba.algo3.modelo.juego.Celda;
+import fiuba.algo3.modelo.excepciones.RazaNoTieneConstruccion;
+import fiuba.algo3.modelo.excepciones.RecursosInsuficientes;
 import fiuba.algo3.modelo.juego.Juego;
-import fiuba.algo3.modelo.juego.Jugador;
 
 public class CrearBarraca extends CrearConstruccion{
 
@@ -17,7 +15,7 @@ public class CrearBarraca extends CrearConstruccion{
 		super(juego);
 	}
 	@Override
-	public void crearConstruccion(Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial  {
+	public void crearConstruccion(Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial, RazaNoTieneConstruccion, RecursosInsuficientes  {
 		Barraca acceso = new Barraca(pos);
 		this.juego.agregarConstruccion(acceso, pos);
 

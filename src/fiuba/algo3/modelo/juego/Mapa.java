@@ -75,11 +75,11 @@ public class Mapa {
 	}
 
 	public int getTamanio() {
-		return this.tamanio;
+		return Mapa.tamanio;
 	}
 
 	public Posicion getBaseJugador(int jugador) {
-		return this.baseJugadores.get(jugador);
+		return Mapa.baseJugadores.get(jugador);
 	}
 
 	public ArrayList<Celda> devolverCeldasRadio(Posicion pos, int radio) {

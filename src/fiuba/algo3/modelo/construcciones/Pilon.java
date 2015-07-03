@@ -2,7 +2,6 @@ package fiuba.algo3.modelo.construcciones;
 
 import fiuba.algo3.modelo.complementos.Danio;
 import fiuba.algo3.modelo.complementos.Posicion;
-import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
 import fiuba.algo3.modelo.juego.Jugador;
 
 public class Pilon extends Construccion {

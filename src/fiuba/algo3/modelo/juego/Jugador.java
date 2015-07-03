@@ -3,10 +3,16 @@ package fiuba.algo3.modelo.juego;
 import java.util.ArrayList;
 import java.util.List;
 
+import fiuba.algo3.modelo.complementos.Poblacion;
 import fiuba.algo3.modelo.complementos.Posicion;
+import fiuba.algo3.modelo.complementos.Recursos;
 import fiuba.algo3.modelo.construcciones.Construccion;
 import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
 import fiuba.algo3.modelo.excepciones.NombreConMenosDe4Caracteres;
+import fiuba.algo3.modelo.excepciones.PoblacionInsuficiente;
+import fiuba.algo3.modelo.excepciones.RazaNoTieneConstruccion;
+import fiuba.algo3.modelo.excepciones.RazaNoTieneUnidad;
+import fiuba.algo3.modelo.excepciones.RecursosInsuficientes;
 import fiuba.algo3.modelo.razas.Raza;
 import fiuba.algo3.modelo.unidades.Unidad;
 
@@ -17,10 +23,8 @@ public class Jugador {
 	private Raza raza;
 	private List<Construccion> construccionesList;
 	private List<Unidad> unidadesList;
-	private int mineral;
-	private int gasVespeno;
-	private int poblacion;
-	private int cuposDePoblacionOcupada;
+	private Recursos recursos;
+	private Poblacion poblacion;
 	private VisionJugador visionMapa;
 	
 	
@@ -29,10 +33,8 @@ public class Jugador {
 		this.color = "";
 		this.construccionesList = new ArrayList<Construccion>();
 		this.unidadesList = new ArrayList<Unidad>();
-		this.mineral = 0;
-		this.gasVespeno = 0;
-		this.poblacion = 0;
-		this.cuposDePoblacionOcupada =0;
+		this.recursos = new Recursos(0, 0);
+		this.poblacion = new Poblacion();
 		this.visionMapa = new VisionJugador(baseInicial);
 	}
 	
@@ -72,26 +74,22 @@ public class Jugador {
 	}
 	
 	public void agregarUnidad(Unidad unidad){
-		//validar si tiene poblacion/ mineral/gas para generar unidad;
 		this.unidadesList.add(unidad);
-		this.cuposDePoblacionOcupada= this.cuposDePoblacionOcupada +unidad.getSuministro();
+		this.poblacion.agregarPoblacion(unidad.getSuministro());
+		this.recursos.sacarRecursos(unidad.getCostoDeRecursos());
 	}
 
 	public void actualizarMineral() {
-		this.mineral = this.mineral + 10;
+		this.recursos.agregarMinerales(10);
 		
 	}
 	public void actualizarGasVespeno(){
-		this.gasVespeno = this.gasVespeno +10;
+		this.recursos.agregarGas(10);
 	}
 
 	public void agregarPoblacion() {
-		this.poblacion = this.poblacion + 5;
-		if(this.poblacion>200) this.poblacion=200;
+		this.poblacion.agregarPoblacionMaxima();
 		
-	}
-	public boolean tieneCupoDePoblacion(int cupo){
-		return ((this.poblacion-this.cuposDePoblacionOcupada)>= cupo);
 	}
 
 	public void actualizarVision(Posicion pos, int radio) throws FueraDeMatriz {
@@ -113,8 +111,17 @@ public class Jugador {
 		
 	}
 
-	public void puedeCrearUnidad(Unidad unidad ) {
-		
+	public void puedeCrearUnidad(Unidad unidad ) throws RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente {
+		if(!this.raza.getListaDeUnidadesValidas().contains(unidad.getNombre())) throw new RazaNoTieneUnidad();
+		if(!unidad.getCostoDeRecursos().tieneSuficientesRecursos(this.recursos.getMineral(),this.recursos.getGas())) throw new RecursosInsuficientes();
+		if(!(this.poblacion.getPoblacionDisponible() > unidad.getSuministro())) throw new PoblacionInsuficiente();
+		//TODO agregar validacion de edificio (?)
+	}
+
+	public void puedeCrearConstruccion(Construccion construccion) throws RazaNoTieneConstruccion, RecursosInsuficientes {
+		if(!this.raza.getListaDeConstruccionesValidas().contains(construccion.getName())) throw new RazaNoTieneConstruccion();
+		if(!construccion.getCost().tieneSuficientesRecursos(this.recursos.getMineral(), this.recursos.getGas())) throw new RecursosInsuficientes();
+		//TODO agregar validacion de edificio (?)
 	}
 
 	

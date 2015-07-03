@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import fiuba.algo3.modelo.complementos.Energia;
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.excepciones.EnergiaInsuficiente;
-import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
 import fiuba.algo3.modelo.juego.Celda;
 import fiuba.algo3.modelo.juego.Mapa;
 
@@ -18,7 +17,7 @@ public class Radiacion extends Magia {
 
 
 	public Radiacion(Energia energiaDeNave) throws EnergiaInsuficiente{
-		if(energiaDeNave.esMenor(this.energiaRequerida)) throw new EnergiaInsuficiente();
+		if(energiaDeNave.esMenor(energiaRequerida)) throw new EnergiaInsuficiente();
 	}
 	
 	public void emitirRadiacion(Posicion posImpacto,Mapa mapa) {

@@ -1,6 +1,5 @@
 package fiuba.algo3.modelo.juego;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import fiuba.algo3.modelo.complementos.Posicion;
@@ -14,6 +13,10 @@ import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
 import fiuba.algo3.modelo.excepciones.JugadorInvalido;
 import fiuba.algo3.modelo.excepciones.NombreConMenosDe4Caracteres;
 import fiuba.algo3.modelo.excepciones.NombreYaExiste;
+import fiuba.algo3.modelo.excepciones.PoblacionInsuficiente;
+import fiuba.algo3.modelo.excepciones.RazaNoTieneConstruccion;
+import fiuba.algo3.modelo.excepciones.RazaNoTieneUnidad;
+import fiuba.algo3.modelo.excepciones.RecursosInsuficientes;
 import fiuba.algo3.modelo.razas.Raza;
 import fiuba.algo3.modelo.unidades.Unidad;
 
@@ -90,19 +93,18 @@ public class Juego {
 		return this.juegoFinalizado;
 	}
 
-	public void agregarUnidad(Unidad unidad, Posicion posConstruccion) throws CeldaOcupada, CeldaEspacial{
-		
-		//this.turno.getActualJugador().puedeCrearUnidad();
+	public void agregarUnidad(Unidad unidad, Posicion posConstruccion) throws CeldaOcupada, CeldaEspacial, RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente{
+		this.turno.getActualJugador().puedeCrearUnidad(unidad);
 		Posicion posUnidad = this.mapaJuego.agregarUnidad(unidad,posConstruccion);
-		this.turno.getActualJugador().agregarUnidad(unidad);
 		unidad.setUbicacion(posUnidad);
+		this.turno.getActualJugador().agregarUnidad(unidad);
 		
 	
 	}
-	public void agregarConstruccion(Construccion construccion, Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial{
-		this.turno.getActualJugador().agregarConstruccion(construccion);
+	public void agregarConstruccion(Construccion construccion, Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial, RazaNoTieneConstruccion, RecursosInsuficientes{
+		this.turno.getActualJugador().puedeCrearConstruccion(construccion);
 		this.mapaJuego.agregarConstruccion(construccion,pos);
-		
+		this.turno.getActualJugador().agregarConstruccion(construccion);
 	}
 
 

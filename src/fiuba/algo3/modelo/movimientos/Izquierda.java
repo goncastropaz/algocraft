@@ -8,7 +8,6 @@ import fiuba.algo3.modelo.excepciones.UnidadTerrestreEnAreaEspacial;
 import fiuba.algo3.modelo.juego.Celda;
 import fiuba.algo3.modelo.juego.Juego;
 import fiuba.algo3.modelo.juego.Mapa;
-import fiuba.algo3.modelo.juego.Turno;
 import fiuba.algo3.modelo.unidades.Unidad;
 
 public class Izquierda extends Movimiento {

@@ -2,7 +2,7 @@ package fiuba.algo3.modelo.unidades;
 
 import java.util.ArrayList;
 
-import fiuba.algo3.modelo.complementos.CostoDeRecursos;
+import fiuba.algo3.modelo.complementos.Recursos;
 import fiuba.algo3.modelo.complementos.Danio;
 import fiuba.algo3.modelo.complementos.Energia;
 import fiuba.algo3.modelo.complementos.Posicion;
@@ -42,7 +42,7 @@ public class NaveCiencia extends UnidadAerea{
 		
 		super(NAME,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD,VISION,SUPPLY_COST);
 		RangoDeAtaque rango = new RangoDeAtaque(RANGO_ATAQUE_TERRESTRE,RANGO_ATAQUE_AEREO);
-		CostoDeRecursos costoDeRecursos = new CostoDeRecursos(MINERAL_COST,GAS_COST);
+		Recursos costoDeRecursos = new Recursos(MINERAL_COST,GAS_COST);
 		this.setCostoDeRecursos(costoDeRecursos);
 		this.setRangoDeAtaque(rango);
 		this.energia = new Energia(MAX_ENERGY,INITIAL_ENERGY);

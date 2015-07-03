@@ -14,9 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 
 import fiuba.algo3.modelo.acciones.Ejecutable;
-import fiuba.algo3.modelo.acciones.creacionConstrucciones.CrearAcceso;
 import fiuba.algo3.modelo.complementos.Posicion;
-import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
 import fiuba.algo3.modelo.juego.Juego;
 import fiuba.algo3.modelo.juego.Mapa;
 import fiuba.algo3.modelo.movimientos.Movimiento;

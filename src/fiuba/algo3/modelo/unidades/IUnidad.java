@@ -1,6 +1,6 @@
 package fiuba.algo3.modelo.unidades;
 
-import fiuba.algo3.modelo.complementos.CostoDeRecursos;
+import fiuba.algo3.modelo.complementos.Recursos;
 import fiuba.algo3.modelo.complementos.Escudo;
 import fiuba.algo3.modelo.complementos.TiempoDeConstruccion;
 import fiuba.algo3.modelo.complementos.Vida;
@@ -14,9 +14,9 @@ public interface IUnidad {
 
 	public void setNombre(String nombre);
 	
-	public CostoDeRecursos getCostoDeRecursos();
+	public Recursos getCostoDeRecursos();
 
-	public void setCostoDeRecursos(CostoDeRecursos costoDeRecursos);
+	public void setCostoDeRecursos(Recursos costoDeRecursos);
 
 	public TiempoDeConstruccion getTiempoDeConstruccion();
 

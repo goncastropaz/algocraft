@@ -2,7 +2,6 @@ package fiuba.algo3.modelo.construcciones;
 
 import fiuba.algo3.modelo.complementos.Danio;
 import fiuba.algo3.modelo.complementos.Posicion;
-import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
 import fiuba.algo3.modelo.juego.Jugador;
 
 public class Asimilador extends Construccion {
@@ -31,6 +30,12 @@ public class Asimilador extends Construccion {
 
 	@Override
 	public void recibirAtaque(Danio danio) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void actualizarPoblacion(Jugador jugador) {
 		// TODO Auto-generated method stub
 		
 	}

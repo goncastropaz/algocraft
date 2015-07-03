@@ -3,12 +3,10 @@ package fiuba.algo3.modelo.movimientos;
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
-import fiuba.algo3.modelo.excepciones.JugadorInvalido;
 import fiuba.algo3.modelo.excepciones.UnidadTerrestreEnAreaEspacial;
 import fiuba.algo3.modelo.juego.Celda;
 import fiuba.algo3.modelo.juego.Juego;
 import fiuba.algo3.modelo.juego.Mapa;
-import fiuba.algo3.modelo.juego.Turno;
 import fiuba.algo3.modelo.unidades.Unidad;
 
 public class Arriba extends Movimiento {

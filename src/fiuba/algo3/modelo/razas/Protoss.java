@@ -1,6 +1,7 @@
 package fiuba.algo3.modelo.razas;
 
 import java.util.HashMap;
+import java.util.HashSet;
 
 import fiuba.algo3.modelo.acciones.creacionConstrucciones.CrearAcceso;
 import fiuba.algo3.modelo.acciones.creacionConstrucciones.CrearArchivoTemplario;
@@ -24,6 +25,8 @@ public class Protoss extends Raza{
 	public Protoss(Juego juego){
 		this.listaDeCreacionUnidades = new HashMap<Integer,CrearUnidad>();
 		this.listaDeCreacionConstrucciones = new HashMap<Integer,CrearConstruccion>();
+		this.listaDeUnidadesValidas = new HashSet<String>();
+		this.listaDeConstruccionesValidas = new HashSet<String>();
 		
 		this.listaDeCreacionUnidades.put(1, new CrearZealot(juego));
 		this.listaDeCreacionUnidades.put(2, new CrearDragon(juego));
@@ -37,5 +40,18 @@ public class Protoss extends Raza{
 		this.listaDeCreacionConstrucciones.put(4, new CrearAcceso(juego));
 		this.listaDeCreacionConstrucciones.put(5, new CrearPuertoEstelarProtoss(juego));
 		this.listaDeCreacionConstrucciones.put(6, new CrearArchivoTemplario(juego));
+		
+		this.listaDeUnidadesValidas.add("ZEALOT");
+		this.listaDeUnidadesValidas.add("DRAGON");
+		this.listaDeUnidadesValidas.add("SCOUT");
+		this.listaDeUnidadesValidas.add("ALTO_TEMPLARIO");
+		this.listaDeUnidadesValidas.add("NAVE_TRANSPORTE_PROTOSS");
+		
+		this.listaDeConstruccionesValidas.add("NEXO_MINERAL");
+		this.listaDeConstruccionesValidas.add("ACCESO");
+		this.listaDeConstruccionesValidas.add("PILON");
+		this.listaDeConstruccionesValidas.add("ASIMILADOR");
+		this.listaDeConstruccionesValidas.add("PUERTO_ESTELAR_PROTOSS");
+		this.listaDeConstruccionesValidas.add("ARCHIVO_TEMPLARIO");
 	}
 }

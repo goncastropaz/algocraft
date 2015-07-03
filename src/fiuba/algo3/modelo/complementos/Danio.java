@@ -4,4 +4,18 @@ public class Danio {
 
 	private Integer danioTerrestre;
 	private Integer danioAereo;
+	
+	public Integer getDanioTerrestre() {
+		return danioTerrestre;
+	}
+	public void setDanioTerrestre(Integer danioTerrestre) {
+		this.danioTerrestre = danioTerrestre;
+	}
+	public Integer getDanioAereo() {
+		return danioAereo;
+	}
+	public void setDanioAereo(Integer danioAereo) {
+		this.danioAereo = danioAereo;
+	}
+	
 }

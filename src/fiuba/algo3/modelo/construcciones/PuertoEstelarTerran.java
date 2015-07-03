@@ -4,10 +4,12 @@ import fiuba.algo3.modelo.complementos.Danio;
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
-import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
+import fiuba.algo3.modelo.excepciones.PoblacionInsuficiente;
+import fiuba.algo3.modelo.excepciones.RazaNoTieneUnidad;
+import fiuba.algo3.modelo.excepciones.RecursosInsuficientes;
 import fiuba.algo3.modelo.juego.Juego;
+import fiuba.algo3.modelo.juego.Jugador;
 import fiuba.algo3.modelo.unidades.Espectro;
-import fiuba.algo3.modelo.unidades.Golliat;
 import fiuba.algo3.modelo.unidades.NaveCiencia;
 import fiuba.algo3.modelo.unidades.NaveTransporteTerran;
 
@@ -27,19 +29,19 @@ public class PuertoEstelarTerran  extends Construccion{
 				ESCUDO, UNIDAD,pos);
 	}
 	
-	public void crearEspectro(Juego juego) throws CeldaOcupada, CeldaEspacial{
+	public void crearEspectro(Juego juego) throws CeldaOcupada, CeldaEspacial, RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente{
 		
 		Espectro unidad = new Espectro();
 		juego.agregarUnidad(unidad, this.ubicacion);
 	}
 	
-	public void crearNaveTransporte(Juego juego) throws CeldaOcupada, CeldaEspacial{
+	public void crearNaveTransporte(Juego juego) throws CeldaOcupada, CeldaEspacial, RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente{
 	
 		NaveTransporteTerran unidad = new NaveTransporteTerran();
 		juego.agregarUnidad(unidad, this.ubicacion);
 	}
 
-	public void crearNaveCiencia(Juego juego) throws CeldaOcupada, CeldaEspacial{
+	public void crearNaveCiencia(Juego juego) throws CeldaOcupada, CeldaEspacial, RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente{
 	
 		NaveCiencia unidad = new NaveCiencia();
 		juego.agregarUnidad(unidad, this.ubicacion);
@@ -47,6 +49,12 @@ public class PuertoEstelarTerran  extends Construccion{
 
 	@Override
 	public void recibirAtaque(Danio danio) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void actualizarPoblacion(Jugador jugador) {
 		// TODO Auto-generated method stub
 		
 	}

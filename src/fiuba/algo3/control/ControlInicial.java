@@ -5,14 +5,11 @@ import java.awt.event.ActionListener;
 
 import fiuba.algo3.modelo.excepciones.ColorYaExiste;
 import fiuba.algo3.modelo.excepciones.CompletarDatosException;
-import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
 import fiuba.algo3.modelo.excepciones.JugadorInvalido;
 import fiuba.algo3.modelo.excepciones.NombreConMenosDe4Caracteres;
 import fiuba.algo3.modelo.excepciones.NombreYaExiste;
 import fiuba.algo3.modelo.juego.Juego;
-import fiuba.algo3.modelo.razas.Protoss;
 import fiuba.algo3.modelo.razas.Raza;
-import fiuba.algo3.modelo.razas.Terran;
 import fiuba.algo3.modelo.utiles.Constants;
 import fiuba.algo3.vista.VistaInicial;
 import fiuba.algo3.vista.VistaJuego;

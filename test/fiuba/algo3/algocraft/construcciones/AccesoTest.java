@@ -7,14 +7,11 @@ import org.junit.Test;
 
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.construcciones.Acceso;
+import fiuba.algo3.modelo.construcciones.Pilon;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
-import fiuba.algo3.modelo.excepciones.CeldaSinRecurso;
-import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
-import fiuba.algo3.modelo.excepciones.JugadorInvalido;
-import fiuba.algo3.modelo.juego.Celda;
 import fiuba.algo3.modelo.juego.Juego;
-import fiuba.algo3.modelo.juego.Mapa;
+import fiuba.algo3.modelo.razas.Protoss;
 import fiuba.algo3.modelo.unidades.Zealot;
 
 public class AccesoTest {
@@ -26,8 +23,9 @@ public class AccesoTest {
 			Posicion posicion = new Posicion(1, 1);
 			Juego juego = new Juego();
 			Acceso acceso = new Acceso(posicion);
+			juego.getActualJugador().setRaza(new Protoss(juego));
+			for(int i = 0; i < 15; i++) juego.getActualJugador().actualizarMineral();
 			juego.agregarConstruccion(acceso, posicion);
-			
 			assertEquals(1, juego.getActualJugador().getConstruccionesList().size());
 			assertEquals(true, juego.getActualJugador().getConstruccionesList().contains(acceso));
 		} catch(Exception e){
@@ -41,6 +39,8 @@ public class AccesoTest {
 			Posicion posicion = new Posicion(1, 1);
 			Juego juego = new Juego();
 			Acceso acceso = new Acceso(posicion);
+			juego.getActualJugador().setRaza(new Protoss(juego));
+			for(int i = 0; i < 30; i++) juego.getActualJugador().actualizarMineral();
 			juego.agregarConstruccion(acceso, posicion);
 			juego.agregarConstruccion(acceso, posicion);
 		} catch(Exception e){
@@ -52,11 +52,16 @@ public class AccesoTest {
 	public void testJugadorNoCreaAccesoEnCeldaOcupadaConUnidad(){
 		try{
 			Juego juego = new Juego();
-			Posicion posicion = new Posicion(1, 1);
+			Posicion posicion1 = new Posicion(1, 1);
+			Posicion posicion2 = new Posicion(2, 2);
 			Zealot zealot = new Zealot();
-			juego.agregarUnidad(zealot, posicion);
-			Acceso acceso = new Acceso(posicion);
-			juego.agregarConstruccion(acceso, posicion);
+			Pilon pilon = new Pilon(posicion1);
+			Acceso acceso = new Acceso(posicion2);
+			juego.getActualJugador().setRaza(new Protoss(juego));
+			for(int i = 0; i < 35; i++) juego.getActualJugador().actualizarMineral();
+			juego.getActualJugador().agregarConstruccion(pilon);
+			juego.agregarUnidad(zealot, posicion2);
+			juego.agregarConstruccion(acceso, posicion2);
 		} catch(Exception e){
 			assertEquals(true, e instanceof CeldaOcupada);
 		}
@@ -68,6 +73,8 @@ public class AccesoTest {
 			Posicion posicion = new Posicion(1, 18);
 			Juego juego = new Juego();
 			Acceso acceso = new Acceso(posicion);
+			juego.getActualJugador().setRaza(new Protoss(juego));
+			for(int i = 0; i < 35; i++) juego.getActualJugador().actualizarMineral();
 			juego.agregarConstruccion(acceso, posicion);
 		} catch(Exception e){
 			assertEquals(true, e instanceof CeldaEspacial);
