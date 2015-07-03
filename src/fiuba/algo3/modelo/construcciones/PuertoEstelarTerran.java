@@ -47,16 +47,4 @@ public class PuertoEstelarTerran  extends Construccion{
 		juego.agregarUnidad(unidad, this.ubicacion);
 	}
 
-	@Override
-	public void recibirAtaque(Danio danio) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void actualizarPoblacion(Jugador jugador) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

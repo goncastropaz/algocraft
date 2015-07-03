@@ -1,20 +1,16 @@
 package fiuba.algo3.modelo.unidades;
 
-import fiuba.algo3.modelo.complementos.Recursos;
 import fiuba.algo3.modelo.complementos.Daniable;
+import fiuba.algo3.modelo.complementos.Danio;
 import fiuba.algo3.modelo.complementos.Escudo;
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.complementos.RangoDeAtaque;
+import fiuba.algo3.modelo.complementos.Recursos;
 import fiuba.algo3.modelo.complementos.TiempoDeConstruccion;
 import fiuba.algo3.modelo.complementos.Vida;
-import fiuba.algo3.modelo.excepciones.CeldaOcupada;
-import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
-import fiuba.algo3.modelo.excepciones.UnidadTerrestreEnAreaEspacial;
+import fiuba.algo3.modelo.excepciones.CopiaNoCausaDanio;
 import fiuba.algo3.modelo.juego.Celda;
-import fiuba.algo3.modelo.juego.Juego;
 import fiuba.algo3.modelo.juego.Jugador;
-import fiuba.algo3.modelo.juego.Mapa;
-import fiuba.algo3.modelo.juego.Turno;
 
 public abstract class Unidad implements IUnidad, Daniable{
 
@@ -26,8 +22,7 @@ public abstract class Unidad implements IUnidad, Daniable{
 	private int vision;
 	public RangoDeAtaque rango;
 	public Integer suministro;
-	public Integer danioAereo;
-	public Integer danioTerrestre;
+	public Danio danio;
 	public boolean copia;
 	public Posicion ubicacion;
 	
@@ -96,15 +91,11 @@ public abstract class Unidad implements IUnidad, Daniable{
 	public Integer getSuministro(){
 		return this.suministro;
 	}
-	public void setDanios(Integer danioAereo,Integer danioTerrestre){
-		this.danioTerrestre = danioTerrestre;
-		this.danioAereo = danioAereo;
+	public void setDanio(Danio danio){
+		this.danio = danio;
 	}
-	public Integer getDanioAereo(){
-		return this.danioAereo;
-	}
-	public Integer getDanioTerrestre(){
-		return this.danioTerrestre;
+	public Danio getDanio(){
+		return this.danio;
 	}
 	
 	public boolean destruir(){
@@ -113,8 +104,7 @@ public abstract class Unidad implements IUnidad, Daniable{
 	}
 	public void setCopia(){
 		this.copia = true;
-		this.danioAereo = 0;
-		this.danioTerrestre = 0;
+		this.danio = new Danio(0,0);
 		this.vida.setVidaActual(0);
 	}
 	
@@ -155,8 +145,22 @@ public abstract class Unidad implements IUnidad, Daniable{
 		
 	}
 
-	public abstract Unidad generarCopia();
-	public abstract void atacarUnidad(Unidad unidad);
+	public void atacarUnidad(Daniable daniable) throws CopiaNoCausaDanio{
+		//TODO o lo dejo gastar accion en la copia total el ataque es 0 (?)
+		if(this.copia) throw new CopiaNoCausaDanio();
+		daniable.recibirAtaque(this.danio);
+	}
+	
+	public void recibirAtaque(Integer danio){
+		Integer escudoActual = this.getEscudo().getEscudoActual();
+		if(escudoActual> danio){
+			this.getEscudo().setEscudoActual(escudoActual-danio);
+		}else{
+			this.getEscudo().setEscudoActual(0);
+			this.vida.setVidaActual(this.getVida().getVidaActual()-(danio-escudoActual));
+		}
+		//actualizar poblacion y destruir
+	}
 	 
 	
 }

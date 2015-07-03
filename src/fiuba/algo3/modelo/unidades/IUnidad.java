@@ -1,11 +1,11 @@
 package fiuba.algo3.modelo.unidades;
 
-import fiuba.algo3.modelo.complementos.Recursos;
+import fiuba.algo3.modelo.complementos.Daniable;
 import fiuba.algo3.modelo.complementos.Escudo;
+import fiuba.algo3.modelo.complementos.Recursos;
 import fiuba.algo3.modelo.complementos.TiempoDeConstruccion;
 import fiuba.algo3.modelo.complementos.Vida;
-import fiuba.algo3.modelo.excepciones.CeldaOcupada;
-import fiuba.algo3.modelo.excepciones.UnidadTerrestreEnAreaEspacial;
+import fiuba.algo3.modelo.excepciones.CopiaNoCausaDanio;
 import fiuba.algo3.modelo.juego.Celda;
 
 public interface IUnidad {
@@ -32,8 +32,6 @@ public interface IUnidad {
 	
 	public void setCopia();
 	
-	public void ataque(Unidad unidadAtacante);
-	
 	public void ataqueEMP();
 	
 	public void radiacion(int danio);
@@ -41,5 +39,9 @@ public interface IUnidad {
 	public void tormentaPsionica(int danio);
 	
 	public boolean permitidaEnArea(Celda celda);
+	
+	public Unidad generarCopia();
+	
+	public void atacarUnidad(Daniable daniable) throws CopiaNoCausaDanio;
 	
 }

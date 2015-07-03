@@ -28,16 +28,4 @@ public class Refineria extends Construccion {
 		return true;
 	}
 
-	@Override
-	public void recibirAtaque(Danio danio) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void actualizarPoblacion(Jugador jugador) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

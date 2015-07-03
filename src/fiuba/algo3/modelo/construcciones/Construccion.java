@@ -84,16 +84,21 @@ public abstract class Construccion implements Daniable{
 	}
 	
 	public void recibirAtaque(Danio danio){
-		/*Integer danioTerrestre = danio
-		Integer escudoActual = this.getShield().getEscudoActual();
-		if(escudoActual> danio){
-			this.getShield().setEscudoActual(escudoActual-danio);
-		}else{
-			this.getShield().setEscudoActual(0);
-			this.setVida(this.getHealth().getVidaActual()-(danio-escudoActual));
-		}*/
+		int danioT = danio.getDanioTerrestre();
+		recibirAtaque(danioT);
 	}
 
+	public void recibirAtaque(Integer danio){
+		Integer escudoActual = this.shield.getEscudoActual();
+		if(escudoActual> danio){
+			this.shield.setEscudoActual(escudoActual-danio);
+		}else{
+			this.shield.setEscudoActual(0);
+			this.health.setVidaActual(this.health.getVidaActual()-(danio-escudoActual));
+		}
+		//actualizar poblacion y destruir
+	}
+	
 	public boolean esProductorMineral() {
 		return false;
 	}
@@ -102,7 +107,7 @@ public abstract class Construccion implements Daniable{
 		return false;
 	}
 
-	public abstract void actualizarPoblacion(Jugador jugador);
+	public void actualizarPoblacion(Jugador jugador){}
 	
 	public Posicion getUbicacion(){
 		return this.ubicacion;

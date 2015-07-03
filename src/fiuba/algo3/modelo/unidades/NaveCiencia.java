@@ -1,18 +1,13 @@
 package fiuba.algo3.modelo.unidades;
 
-import java.util.ArrayList;
-
-import fiuba.algo3.modelo.complementos.Recursos;
-import fiuba.algo3.modelo.complementos.Danio;
 import fiuba.algo3.modelo.complementos.Energia;
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.complementos.RangoDeAtaque;
+import fiuba.algo3.modelo.complementos.Recursos;
 import fiuba.algo3.modelo.excepciones.EnergiaInsuficiente;
-import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
 import fiuba.algo3.modelo.juego.Jugador;
 import fiuba.algo3.modelo.juego.Mapa;
 import fiuba.algo3.modelo.magias.EMP;
-import fiuba.algo3.modelo.magias.Magia;
 import fiuba.algo3.modelo.magias.Radiacion;
 
 public class NaveCiencia extends UnidadAerea{
@@ -79,15 +74,4 @@ public class NaveCiencia extends UnidadAerea{
 		this.energia.setEnergiaActual(0);
 	}
 
-	@Override
-	public void recibirAtaque(Danio danio) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void atacarUnidad(Unidad unidad) {
-		// TODO Auto-generated method stub
-		
-	}
 }	

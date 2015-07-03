@@ -2,11 +2,10 @@ package fiuba.algo3.modelo.unidades;
 
 import java.util.ArrayList;
 
-import fiuba.algo3.modelo.complementos.Recursos;
-import fiuba.algo3.modelo.complementos.Danio;
 import fiuba.algo3.modelo.complementos.Energia;
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.complementos.RangoDeAtaque;
+import fiuba.algo3.modelo.complementos.Recursos;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.CopiaNoCausaDanio;
@@ -100,16 +99,4 @@ public class AltoTemplario extends UnidadTerrestre {
 		this.getEscudo().setEscudoActual(0);
 	}
 
-	@Override
-	public void recibirAtaque(Danio danio) {
-		
-		
-	}
-
-	@Override
-	public void atacarUnidad(Unidad unidad) {
-		// TODO Auto-generated method stub
-		
-	}
-	
 }

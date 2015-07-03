@@ -1,6 +1,5 @@
 package fiuba.algo3.modelo.construcciones;
 
-import fiuba.algo3.modelo.complementos.Danio;
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
@@ -8,7 +7,6 @@ import fiuba.algo3.modelo.excepciones.PoblacionInsuficiente;
 import fiuba.algo3.modelo.excepciones.RazaNoTieneUnidad;
 import fiuba.algo3.modelo.excepciones.RecursosInsuficientes;
 import fiuba.algo3.modelo.juego.Juego;
-import fiuba.algo3.modelo.juego.Jugador;
 import fiuba.algo3.modelo.unidades.Dragon;
 import fiuba.algo3.modelo.unidades.Zealot;
 
@@ -38,18 +36,6 @@ public class Acceso extends Construccion {
 	
 		Dragon unidad = new Dragon();
 		juego.agregarUnidad(unidad, this.ubicacion);
-	}
-
-	@Override
-	public void recibirAtaque(Danio danio) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void actualizarPoblacion(Jugador jugador) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

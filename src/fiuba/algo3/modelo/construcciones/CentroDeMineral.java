@@ -1,6 +1,5 @@
 package fiuba.algo3.modelo.construcciones;
 
-import fiuba.algo3.modelo.complementos.Danio;
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.juego.Jugador;
 
@@ -26,18 +25,6 @@ public class CentroDeMineral extends Construccion {
 	
 	public boolean esProductorMineral() {
 		return true;
-	}
-
-	@Override
-	public void recibirAtaque(Danio danio) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void actualizarPoblacion(Jugador jugador) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

@@ -47,7 +47,6 @@ public class Juego {
 
 	}
 
-
 	public Jugador getJugador(int jugador) throws JugadorInvalido {
 
 		if (jugador > 2 || jugador < 1)
@@ -84,7 +83,6 @@ public class Juego {
 
 	}
 
-
 	public void darFinalizadoElJuego() {
 		this.juegoFinalizado = true;
 	}
@@ -101,12 +99,12 @@ public class Juego {
 		
 	
 	}
+	
 	public void agregarConstruccion(Construccion construccion, Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial, RazaNoTieneConstruccion, RecursosInsuficientes{
 		this.turno.getActualJugador().puedeCrearConstruccion(construccion);
 		this.mapaJuego.agregarConstruccion(construccion,pos);
 		this.turno.getActualJugador().agregarConstruccion(construccion);
 	}
-
 
 	public void cambiarTurnoJugador() {
 		this.turno.cambiarTurnoJugador();
@@ -116,7 +114,6 @@ public class Juego {
 	public Jugador getActualJugador() {
 		return this.turno.getActualJugador();
 	}
-
 
 	public Mapa getMapaDeJuego() {
 		return this.mapaJuego;

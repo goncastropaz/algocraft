@@ -32,17 +32,4 @@ public class Fabrica extends Construccion {
 		juego.agregarUnidad(golliat, this.ubicacion);
 	}
 
-	@Override
-	public void recibirAtaque(Danio danio) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void actualizarPoblacion(Jugador jugador) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
 }

@@ -1,6 +1,5 @@
 package fiuba.algo3.modelo.construcciones;
 
-import fiuba.algo3.modelo.complementos.Danio;
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.juego.Jugador;
 
@@ -19,15 +18,9 @@ public class Pilon extends Construccion {
 				ESCUDO, UNIDAD,pos);
 	}
 	
+	@Override
 	public void actualizarPoblacion(Jugador jugador) {
 		jugador.agregarPoblacion();	
 	}
-
-	@Override
-	public void recibirAtaque(Danio danio) {
-		// TODO Auto-generated method stub
-		
-	}
-	
 
 }
