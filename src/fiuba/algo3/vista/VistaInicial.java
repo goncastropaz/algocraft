@@ -1,6 +1,5 @@
 package fiuba.algo3.vista;
 
-import java.awt.ComponentOrientation;
 import java.awt.EventQueue;
 
 import javax.swing.ButtonGroup;
@@ -20,8 +19,8 @@ public class VistaInicial {
 	private JFrame frame;
 	private ControlInicial control;
 
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField tfNombreJugadorUno;
+	private JTextField tfNombreJugadorDos;
 	private JRadioButton raza1JG1;
 	private JRadioButton raza2JG1;
 	private JRadioButton raza1JG2;
@@ -30,7 +29,6 @@ public class VistaInicial {
 	private JRadioButton azulJG1;
 	private JRadioButton rojoJG2;
 	private JRadioButton azulJG2;
-
 
 	/**
 	 * Launch the application.
@@ -67,15 +65,13 @@ public class VistaInicial {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
-		textField = new JTextField();
-		textField.setBounds(91, 37, 428, 27);
-		frame.getContentPane().add(textField);
-		textField.setColumns(40);
+		tfNombreJugadorUno = new JTextField();
+		tfNombreJugadorUno.setBounds(91, 37, 428, 27);
+		frame.getContentPane().add(tfNombreJugadorUno);
 
-		textField_1 = new JTextField();
-		textField_1.setColumns(40);
-		textField_1.setBounds(91, 178, 428, 27);
-		frame.getContentPane().add(textField_1);
+		tfNombreJugadorDos = new JTextField();
+		tfNombreJugadorDos.setBounds(91, 178, 428, 27);
+		frame.getContentPane().add(tfNombreJugadorDos);
 
 		// Datos Jugador 1
 
@@ -141,17 +137,15 @@ public class VistaInicial {
 		btnComenzarPartida.setBounds(197, 332, 172, 23);
 		btnComenzarPartida.addActionListener(control
 				.getListenerBotonGuardarJugadores());
-		frame.getContentPane().setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+
 		frame.getContentPane().add(btnComenzarPartida);
 
 	}
 
-
 	public void mostrarError(String string) {
-
 		JOptionPane.showMessageDialog(frame, string);
-
 	}
+
 	public String getColorSeleccionadoJG1() throws CompletarDatosException {
 
 		if (this.rojoJG1.isSelected()) {
@@ -181,7 +175,7 @@ public class VistaInicial {
 		}
 		throw new CompletarDatosException();
 	}
-	
+
 	public String getRazaSeleccionadaJG2() throws CompletarDatosException {
 
 		if (this.raza1JG2.isSelected()) {
@@ -192,26 +186,37 @@ public class VistaInicial {
 		throw new CompletarDatosException();
 	}
 
-	public JTextField getTextField() {
-		return textField;
+	public String getNombreJugadorUno() throws CompletarDatosException {
+
+		if (tfNombreJugadorUno.getText().trim().equals("")) {
+			throw new CompletarDatosException();
+		}
+
+		return tfNombreJugadorUno.getText();
+
 	}
 
-	public void setTextField(JTextField textField) {
-		this.textField = textField;
+	public void setNombreJugadorUno(JTextField textField) {
+		this.tfNombreJugadorUno = textField;
 	}
 
-	public JTextField getTextField_1() {
-		return textField_1;
-	}
-
-	public void setTextField_1(JTextField textField_1) {
-		this.textField_1 = textField_1;
-	}	
 	
-	public void cerrarVentanaInicio(){
+	public String getNombreJugadorDos() throws CompletarDatosException {
+
+		if (tfNombreJugadorDos.getText().trim().equals("")) {
+			throw new CompletarDatosException();
+		}
+		return tfNombreJugadorDos.getText();
+	}
+
+	public void setNombreJugadorDos(JTextField textField_1) {
+		this.tfNombreJugadorDos = textField_1;
+	}
+
+	public void cerrarVentanaInicio() {
 		frame.setVisible(false);
 	}
-	
+
 	public JFrame getFrame() {
 		return frame;
 	}
@@ -219,7 +224,9 @@ public class VistaInicial {
 	public void setFrame(JFrame frame) {
 		this.frame = frame;
 	}
-	
-	
+
+	public void mostrarVentanaNuevoJuego() {
+		frame.setVisible(true);		
+	}
 
 }

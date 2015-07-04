@@ -14,7 +14,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 
 import fiuba.algo3.modelo.acciones.Ejecutable;
+import fiuba.algo3.modelo.acciones.creacionConstrucciones.CrearAcceso;
 import fiuba.algo3.modelo.complementos.Posicion;
+import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
 import fiuba.algo3.modelo.juego.Juego;
 import fiuba.algo3.modelo.juego.Mapa;
 import fiuba.algo3.modelo.movimientos.Movimiento;
@@ -24,17 +26,15 @@ import fiuba.algo3.vista.VistaMapa;
 public class ControlMapa {
 
 	private Mapa mapa;
+
 	private Juego juego;
 	private Movimiento movimiento;
 
 	private VistaMapa vistaMapa;
 
-	public ControlMapa(VistaMapa vista) {
-		vistaMapa = vista;
-		juego = new Juego();
-		mapa = juego.getMapaDeJuego();
-		
-		
+	public ControlMapa(VistaMapa vista, Mapa mapa) {
+		this.vistaMapa = vista;
+		this.mapa = mapa;
 	}
 
 	private class EscuchaBotonSeleccionarCelda implements ActionListener {
@@ -179,4 +179,11 @@ public class ControlMapa {
 		return new EscuchaBotonMoverUnidad();
 	}
 
+	public Mapa getMapa() {
+		return mapa;
+	}
+	
+	public void setMapa(Mapa mapa) {
+		this.mapa = mapa;
+	}
 }
