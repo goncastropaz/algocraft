@@ -9,6 +9,7 @@ import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.CeldaSinRecurso;
 import fiuba.algo3.modelo.excepciones.ColorYaExiste;
 import fiuba.algo3.modelo.excepciones.CompletarDatosException;
+import fiuba.algo3.modelo.excepciones.CopiaNoCausaDanio;
 import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
 import fiuba.algo3.modelo.excepciones.JugadorInvalido;
 import fiuba.algo3.modelo.excepciones.NombreConMenosDe4Caracteres;
@@ -104,6 +105,12 @@ public class Juego {
 		this.turno.getActualJugador().puedeCrearConstruccion(construccion);
 		this.mapaJuego.agregarConstruccion(construccion,pos);
 		this.turno.getActualJugador().agregarConstruccion(construccion);
+	}
+	
+	public void atacar(Unidad unidad, Posicion pos) throws CopiaNoCausaDanio{
+		//unidad me pertenece? daniable es enemigo? si daño = 0 permito atacar igual?
+//		this.turno.getActualJugador().tieneUnidad(unidad);
+		unidad.atacarUnidad(this.getMapaDeJuego().getDaniable(pos));
 	}
 
 	public void cambiarTurnoJugador() {

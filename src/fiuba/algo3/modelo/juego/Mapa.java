@@ -3,6 +3,7 @@ package fiuba.algo3.modelo.juego;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import fiuba.algo3.modelo.complementos.Daniable;
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.construcciones.Construccion;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
@@ -130,6 +131,17 @@ public class Mapa {
 	public void agregarConstruccion(Construccion construccion, Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial {
 		this.matriz[pos.getFila()][pos.getColumna()]
 				.setConstruccion(construccion);
+	}
+
+	public Daniable getDaniable(Posicion pos) {
+		Daniable daniable;
+		Celda celda = devolverCelda(pos);
+		if(celda.getUnidad() != null){
+			daniable = celda.getUnidad();
+		} else{
+			daniable = celda.getConstruccion();
+		}
+		return daniable;
 	}
 
 
