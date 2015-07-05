@@ -133,14 +133,14 @@ public class VistaAccionesTerran extends JPanel {
 		
 		txtMover = new JTextField();
 		txtMover.setBackground(new Color(255, 255, 51));
-		txtMover.setText("MOVER");
+		txtMover.setText("  MOVER");
 		txtMover.setBounds(25, 477, 69, 55);
 		add(txtMover);
 		txtMover.setColumns(10);
 		
 		txtMagias = new JTextField();
 		txtMagias.setBackground(new Color(255, 255, 51));
-		txtMagias.setText("MAGIAS");
+		txtMagias.setText("  MAGIAS");
 		txtMagias.setBounds(25, 634, 69, 55);
 		add(txtMagias);
 		txtMagias.setColumns(10);

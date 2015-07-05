@@ -37,7 +37,7 @@ public class VistaAccionesProtoss extends JPanel{
 				public void actionPerformed(ActionEvent arg0) {
 				}
 			});
-			crear_centro_Mineral.setBounds(12,42,204,25);
+			crear_centro_Mineral.setBounds(12,42,175,25);
 			add(crear_centro_Mineral);
 		
 			
@@ -47,11 +47,11 @@ public class VistaAccionesProtoss extends JPanel{
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			crear_Barraca.setBounds(12,70,132,25);
+			crear_Barraca.setBounds(12,70,120,25);
 			add(crear_Barraca);
 			
 			JButton crear_DepositoSuministro = new JButton("Crear Asimilador");
-			crear_DepositoSuministro.setBounds(12, 98, 221, 25);
+			crear_DepositoSuministro.setBounds(12, 98, 160, 25);
 			crear_DepositoSuministro.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 				}
@@ -59,7 +59,7 @@ public class VistaAccionesProtoss extends JPanel{
 			add(crear_DepositoSuministro);
 			
 			JButton btnCrearRefineria = new JButton("Crear Acceso");
-			btnCrearRefineria.setBounds(12, 129, 141, 25);
+			btnCrearRefineria.setBounds(12, 129, 135, 25);
 			add(btnCrearRefineria);
 			
 			JButton btnCrearc = new JButton("Crear Zealot");
@@ -67,7 +67,7 @@ public class VistaAccionesProtoss extends JPanel{
 			add(btnCrearc);
 			
 			JButton btnNewButton = new JButton("Crear Archivos Templarios");
-			btnNewButton.setBounds(12, 188, 179, 25);
+			btnNewButton.setBounds(12, 188, 218, 25);
 			add(btnNewButton);
 			
 			txtCrearUnidades = new JTextField();
@@ -79,19 +79,19 @@ public class VistaAccionesProtoss extends JPanel{
 			txtCrearUnidades.setColumns(11);
 			
 			JButton btnCrearMarine = new JButton("Crear Puerto Estelar");
-			btnCrearMarine.setBounds(12, 160, 132, 25);
+			btnCrearMarine.setBounds(12, 160, 185, 25);
 			add(btnCrearMarine);
 			
 			JButton btnNewButton_1 = new JButton("Crear Dragon");
-			btnNewButton_1.setBounds(12, 285, 127, 25);
+			btnNewButton_1.setBounds(12, 285, 135, 25);
 			add(btnNewButton_1);
 			
 			JButton btnCrearEspectro = new JButton("Crear Scout");
-			btnCrearEspectro.setBounds(12, 315, 141, 25);
+			btnCrearEspectro.setBounds(12, 315, 120, 25);
 			add(btnCrearEspectro);
 			
 			JButton btnNewButton_2 = new JButton("Crear Alto Templario");
-			btnNewButton_2.setBounds(12, 347, 171, 25);
+			btnNewButton_2.setBounds(12, 347, 185, 25);
 			add(btnNewButton_2);
 			
 			JButton btnNewButton_3 = new JButton("Crear Nave Transportadora");
@@ -127,7 +127,7 @@ public class VistaAccionesProtoss extends JPanel{
 			add(btnNewButton_5);
 			
 			JButton btnEmp = new JButton("Tormenta Psionica");
-			btnEmp.setBounds(120, 627, 117, 25);
+			btnEmp.setBounds(120, 627, 170, 25);
 			add(btnEmp);
 			
 			JButton btnRadiacion = new JButton("Alucinacion");
@@ -136,14 +136,14 @@ public class VistaAccionesProtoss extends JPanel{
 			
 			txtMover = new JTextField();
 			txtMover.setBackground(new Color(255, 255, 51));
-			txtMover.setText("MOVER");
+			txtMover.setText("  MOVER");
 			txtMover.setBounds(25, 477, 69, 55);
 			add(txtMover);
 			txtMover.setColumns(10);
 			
 			txtMagias = new JTextField();
 			txtMagias.setBackground(new Color(255, 255, 51));
-			txtMagias.setText("MAGIAS");
+			txtMagias.setText("  MAGIAS");
 			txtMagias.setBounds(25, 634, 69, 55);
 			add(txtMagias);
 			txtMagias.setColumns(10);
