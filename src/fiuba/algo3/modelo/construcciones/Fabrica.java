@@ -1,6 +1,7 @@
 package fiuba.algo3.modelo.construcciones;
 
-import fiuba.algo3.modelo.complementos.Danio;
+import java.util.List;
+
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
@@ -8,7 +9,6 @@ import fiuba.algo3.modelo.excepciones.PoblacionInsuficiente;
 import fiuba.algo3.modelo.excepciones.RazaNoTieneUnidad;
 import fiuba.algo3.modelo.excepciones.RecursosInsuficientes;
 import fiuba.algo3.modelo.juego.Juego;
-import fiuba.algo3.modelo.juego.Jugador;
 import fiuba.algo3.modelo.unidades.Golliat;
 
 public class Fabrica extends Construccion {
@@ -30,6 +30,11 @@ public class Fabrica extends Construccion {
 		
 		Golliat golliat = new Golliat();
 		juego.agregarUnidad(golliat, this.ubicacion);
+	}
+
+	@Override
+	public boolean tieneEdificiosPrevios(List<Construccion> construcciones) {
+		return tieneConstruccion(construcciones, "BARRACA");
 	}
 
 }

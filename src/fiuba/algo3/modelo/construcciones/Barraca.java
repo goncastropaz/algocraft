@@ -1,5 +1,7 @@
 package fiuba.algo3.modelo.construcciones;
 
+import java.util.List;
+
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
@@ -30,4 +32,9 @@ public class Barraca extends Construccion {
 		juego.agregarUnidad(marine, this.ubicacion);
 	}
 
+	@Override
+	public boolean tieneEdificiosPrevios(List<Construccion> construcciones) {
+		return true;
+	}
+	
 }

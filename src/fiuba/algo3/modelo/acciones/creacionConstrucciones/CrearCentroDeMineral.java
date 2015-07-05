@@ -5,6 +5,7 @@ import fiuba.algo3.modelo.construcciones.CentroDeMineral;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.CeldaSinRecurso;
+import fiuba.algo3.modelo.excepciones.NoTieneEdificiosPrevios;
 import fiuba.algo3.modelo.excepciones.RazaNoTieneConstruccion;
 import fiuba.algo3.modelo.excepciones.RecursosInsuficientes;
 import fiuba.algo3.modelo.juego.Juego;
@@ -16,7 +17,7 @@ public class CrearCentroDeMineral extends CrearConstruccion{
 	}
 
 	@Override
-	public void crearConstruccion(Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial, RazaNoTieneConstruccion, RecursosInsuficientes  {
+	public void crearConstruccion(Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial, RazaNoTieneConstruccion, RecursosInsuficientes, NoTieneEdificiosPrevios  {
 		CentroDeMineral construccion = new CentroDeMineral(pos);
 		this.juego.agregarConstruccion(construccion,pos);
 

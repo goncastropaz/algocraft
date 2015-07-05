@@ -12,6 +12,7 @@ import fiuba.algo3.modelo.excepciones.CompletarDatosException;
 import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
 import fiuba.algo3.modelo.excepciones.FueraDeRango;
 import fiuba.algo3.modelo.excepciones.JugadorInvalido;
+import fiuba.algo3.modelo.excepciones.NoTieneEdificiosPrevios;
 import fiuba.algo3.modelo.excepciones.NombreConMenosDe4Caracteres;
 import fiuba.algo3.modelo.excepciones.NombreYaExiste;
 import fiuba.algo3.modelo.excepciones.ObjetivoInvalido;
@@ -100,11 +101,9 @@ public class Juego {
 		Posicion posUnidad = this.mapaJuego.agregarUnidad(unidad,posConstruccion);
 		unidad.setUbicacion(posUnidad);
 		this.turno.getActualJugador().agregarUnidad(unidad);
-		
-	
 	}
 	
-	public void agregarConstruccion(Construccion construccion, Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial, RazaNoTieneConstruccion, RecursosInsuficientes{
+	public void agregarConstruccion(Construccion construccion, Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial, RazaNoTieneConstruccion, RecursosInsuficientes, NoTieneEdificiosPrevios{
 		this.turno.getActualJugador().puedeCrearConstruccion(construccion);
 		this.mapaJuego.agregarConstruccion(construccion,pos);
 		this.turno.getActualJugador().agregarConstruccion(construccion);

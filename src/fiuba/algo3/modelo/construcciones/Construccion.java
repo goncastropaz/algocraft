@@ -125,6 +125,16 @@ public abstract class Construccion implements Daniable{
 	public Posicion getUbicacion(){
 		return this.ubicacion;
 	}
+
+	public abstract boolean tieneEdificiosPrevios(List<Construccion> construcciones);
 	
+	public boolean tieneConstruccion(List<Construccion> construcciones, String edificio){
+		for(Construccion construccion : construcciones){
+			if(edificio.equals(construccion.getName())){
+				return true;
+			}
+		}
+		return false;
+	}
 	
 }

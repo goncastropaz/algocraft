@@ -1,5 +1,7 @@
 package fiuba.algo3.modelo.construcciones;
 
+import java.util.List;
+
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
@@ -28,6 +30,11 @@ public class ArchivoTemplario extends Construccion {
 		
 		AltoTemplario unidad = new AltoTemplario();
 		juego.agregarUnidad(unidad, this.ubicacion);
+	}
+	
+	@Override
+	public boolean tieneEdificiosPrevios(List<Construccion> construcciones) {
+		return tieneConstruccion(construcciones, "ACCESO") && tieneConstruccion(construcciones, "PUERTO_ESTELAR_PROTOSS");
 	}
 
 }

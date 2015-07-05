@@ -1,7 +1,6 @@
 package fiuba.algo3.modelo.juego;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import fiuba.algo3.modelo.complementos.Poblacion;
@@ -9,6 +8,7 @@ import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.complementos.Recursos;
 import fiuba.algo3.modelo.construcciones.Construccion;
 import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
+import fiuba.algo3.modelo.excepciones.NoTieneEdificiosPrevios;
 import fiuba.algo3.modelo.excepciones.NombreConMenosDe4Caracteres;
 import fiuba.algo3.modelo.excepciones.PoblacionInsuficiente;
 import fiuba.algo3.modelo.excepciones.RazaNoTieneConstruccion;
@@ -119,9 +119,10 @@ public class Jugador {
 		//TODO agregar validacion de edificio (?)
 	}
 
-	public void puedeCrearConstruccion(Construccion construccion) throws RazaNoTieneConstruccion, RecursosInsuficientes {
+	public void puedeCrearConstruccion(Construccion construccion) throws RazaNoTieneConstruccion, RecursosInsuficientes, NoTieneEdificiosPrevios {
 		if(!this.raza.getListaDeConstruccionesValidas().contains(construccion.getName())) throw new RazaNoTieneConstruccion();
 		if(!construccion.getCost().tieneSuficientesRecursos(this.recursos.getMineral(), this.recursos.getGas())) throw new RecursosInsuficientes();
+		if(!construccion.tieneEdificiosPrevios(this.getConstruccionesList())) throw new NoTieneEdificiosPrevios(); 
 		//TODO agregar validacion de edificio (?)
 	}
 

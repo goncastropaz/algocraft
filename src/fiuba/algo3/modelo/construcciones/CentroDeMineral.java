@@ -1,5 +1,7 @@
 package fiuba.algo3.modelo.construcciones;
 
+import java.util.List;
+
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.juego.Jugador;
 
@@ -27,4 +29,9 @@ public class CentroDeMineral extends Construccion {
 		return true;
 	}
 
+	@Override
+	public boolean tieneEdificiosPrevios(List<Construccion> construcciones) {
+		return true;
+	}
+	
 }
