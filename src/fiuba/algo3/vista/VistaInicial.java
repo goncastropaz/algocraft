@@ -1,6 +1,7 @@
 package fiuba.algo3.vista;
 
 import java.awt.EventQueue;
+import java.awt.Font;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
@@ -64,7 +65,7 @@ public class VistaInicial {
 		frame.setBounds(100, 100, 605, 400);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-
+		
 		tfNombreJugadorUno = new JTextField();
 		tfNombreJugadorUno.setBounds(91, 37, 428, 27);
 		frame.getContentPane().add(tfNombreJugadorUno);
@@ -76,17 +77,20 @@ public class VistaInicial {
 		// Datos Jugador 1
 
 		JLabel nombreJugador1 = new JLabel("Nombre Jugador 1");
+		nombreJugador1.setFont(new Font("Arial", Font.BOLD, 12));
 		nombreJugador1.setBounds(199, 11, 204, 27);
 		frame.getContentPane().add(nombreJugador1);
 
 		ButtonGroup buttonGroupRazaJG1 = new ButtonGroup();
 
 		raza1JG1 = new JRadioButton(Constants.TERRAN);
+		raza1JG1.setFont(new Font("Arial", Font.PLAIN, 12));
 		raza1JG1.setBounds(103, 75, 109, 23);
 		buttonGroupRazaJG1.add(raza1JG1);
 		frame.getContentPane().add(raza1JG1);
 
 		raza2JG1 = new JRadioButton(Constants.PROTOSS);
+		raza2JG1.setFont(new Font("Arial", Font.PLAIN, 12));
 		raza2JG1.setBounds(346, 75, 109, 23);
 		buttonGroupRazaJG1.add(raza2JG1);
 		frame.getContentPane().add(raza2JG1);
@@ -94,11 +98,13 @@ public class VistaInicial {
 		ButtonGroup buttonGroupColorJG1 = new ButtonGroup();
 
 		rojoJG1 = new JRadioButton(Constants.ROJO);
+		rojoJG1.setFont(new Font("Arial", Font.PLAIN, 12));
 		rojoJG1.setBounds(103, 106, 55, 23);
 		buttonGroupColorJG1.add(rojoJG1);
 		frame.getContentPane().add(rojoJG1);
 
 		azulJG1 = new JRadioButton(Constants.AZUL);
+		azulJG1.setFont(new Font("Arial", Font.PLAIN, 12));
 		azulJG1.setBounds(346, 106, 109, 23);
 		buttonGroupColorJG1.add(azulJG1);
 		frame.getContentPane().add(azulJG1);
@@ -106,17 +112,20 @@ public class VistaInicial {
 		// Datos Jugador 2
 
 		JLabel NombreJugador2 = new JLabel("Nombre Jugador 2");
+		NombreJugador2.setFont(new Font("Arial", Font.BOLD, 12));
 		NombreJugador2.setBounds(199, 153, 204, 14);
 		frame.getContentPane().add(NombreJugador2);
 
 		ButtonGroup buttonGroupRazaJG2 = new ButtonGroup();
 
 		raza1JG2 = new JRadioButton(Constants.TERRAN);
+		raza1JG2.setFont(new Font("Arial", Font.PLAIN, 12));
 		raza1JG2.setBounds(103, 232, 109, 23);
 		buttonGroupRazaJG2.add(raza1JG2);
 		frame.getContentPane().add(raza1JG2);
 
 		raza2JG2 = new JRadioButton(Constants.PROTOSS);
+		raza2JG2.setFont(new Font("Arial", Font.PLAIN, 12));
 		raza2JG2.setBounds(346, 232, 109, 23);
 		buttonGroupRazaJG2.add(raza2JG2);
 		frame.getContentPane().add(raza2JG2);
@@ -124,16 +133,19 @@ public class VistaInicial {
 		ButtonGroup buttonGroupColorJG2 = new ButtonGroup();
 
 		rojoJG2 = new JRadioButton(Constants.ROJO);
+		rojoJG2.setFont(new Font("Arial", Font.PLAIN, 12));
 		rojoJG2.setBounds(103, 263, 55, 23);
 		buttonGroupColorJG2.add(rojoJG2);
 		frame.getContentPane().add(rojoJG2);
 
 		azulJG2 = new JRadioButton(Constants.AZUL);
+		azulJG2.setFont(new Font("Arial", Font.PLAIN, 12));
 		azulJG2.setBounds(346, 263, 109, 23);
 		buttonGroupColorJG2.add(azulJG2);
 		frame.getContentPane().add(azulJG2);
 
 		JButton btnComenzarPartida = new JButton("Comenzar Partida");
+		btnComenzarPartida.setFont(new Font("Arial", Font.BOLD, 12));
 		btnComenzarPartida.setBounds(197, 332, 172, 23);
 		btnComenzarPartida.addActionListener(control
 				.getListenerBotonGuardarJugadores());

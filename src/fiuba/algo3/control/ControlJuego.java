@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
 import fiuba.algo3.modelo.juego.Juego;
+import fiuba.algo3.modelo.juego.Mapa;
 import fiuba.algo3.vista.VistaInicial;
 import fiuba.algo3.vista.VistaJuego;
 import fiuba.algo3.vista.VistaMapa;
@@ -83,6 +84,10 @@ public class ControlJuego {
 	
 	public String getColorJugadorActual(){
 		return juego.getActualJugador().getColor();
+	}
+
+	public Mapa getMapaDelJuego() {
+		return juego.getMapaDeJuego();
 	}
 	
 //	public String getRecursosJugadorActual(){
