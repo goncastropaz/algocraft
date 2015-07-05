@@ -1,7 +1,10 @@
 package fiuba.algo3.modelo.unidades;
 
+import java.util.List;
+
 import fiuba.algo3.modelo.complementos.RangoDeAtaque;
 import fiuba.algo3.modelo.complementos.Recursos;
+import fiuba.algo3.modelo.construcciones.Construccion;
 
 public class Dragon extends UnidadTerrestre {
 
@@ -37,4 +40,8 @@ public class Dragon extends UnidadTerrestre {
 		return copia;
 	}
 
+	@Override
+	public boolean tieneEdificiosPrevios(List<Construccion> construccionesList) {
+		return tieneConstruccion(construccionesList, "ACCESO");
+	}
 }

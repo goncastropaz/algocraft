@@ -5,6 +5,7 @@ import java.util.List;
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
+import fiuba.algo3.modelo.excepciones.NoTieneEdificiosPrevios;
 import fiuba.algo3.modelo.excepciones.PoblacionInsuficiente;
 import fiuba.algo3.modelo.excepciones.RazaNoTieneUnidad;
 import fiuba.algo3.modelo.excepciones.RecursosInsuficientes;
@@ -26,7 +27,7 @@ public class Barraca extends Construccion {
 		super(NOMBRE, COSTO_MINERAL, COSTO_GAS, TIEMPO_CONSTRUCCION, MAX_VIDA,ESCUDO, UNIDAD,pos);
 	}
 	
-	public void crearMarine(Juego juego) throws CeldaOcupada, CeldaEspacial, RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente{
+	public void crearMarine(Juego juego) throws CeldaOcupada, CeldaEspacial, RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente, NoTieneEdificiosPrevios{
 			
 		Marine marine = new Marine();
 		juego.agregarUnidad(marine, this.ubicacion);

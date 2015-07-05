@@ -96,7 +96,7 @@ public class Juego {
 		return this.juegoFinalizado;
 	}
 
-	public void agregarUnidad(Unidad unidad, Posicion posConstruccion) throws CeldaOcupada, CeldaEspacial, RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente{
+	public void agregarUnidad(Unidad unidad, Posicion posConstruccion) throws CeldaOcupada, CeldaEspacial, RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente, NoTieneEdificiosPrevios{
 		this.turno.getActualJugador().puedeCrearUnidad(unidad);
 		Posicion posUnidad = this.mapaJuego.agregarUnidad(unidad,posConstruccion);
 		unidad.setUbicacion(posUnidad);

@@ -1,15 +1,18 @@
 package fiuba.algo3.modelo.unidades;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import fiuba.algo3.modelo.complementos.Energia;
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.complementos.RangoDeAtaque;
 import fiuba.algo3.modelo.complementos.Recursos;
+import fiuba.algo3.modelo.construcciones.Construccion;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.CopiaNoCausaDanio;
 import fiuba.algo3.modelo.excepciones.EnergiaInsuficiente;
+import fiuba.algo3.modelo.excepciones.NoTieneEdificiosPrevios;
 import fiuba.algo3.modelo.excepciones.PoblacionInsuficiente;
 import fiuba.algo3.modelo.excepciones.RazaNoTieneUnidad;
 import fiuba.algo3.modelo.excepciones.RecursosInsuficientes;
@@ -81,7 +84,7 @@ public class AltoTemplario extends UnidadTerrestre {
 		tormenta.provocarTormenta();
 	}
 	
-	public void provocarAlucinacion(Unidad unidadACopiar, Juego juego) throws EnergiaInsuficiente, CeldaOcupada, CeldaEspacial, CopiaNoCausaDanio, RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente{
+	public void provocarAlucinacion(Unidad unidadACopiar, Juego juego) throws EnergiaInsuficiente, CeldaOcupada, CeldaEspacial, CopiaNoCausaDanio, RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente, NoTieneEdificiosPrevios{
 		if(this.copia) throw new CopiaNoCausaDanio();
 		Alucinacion alucinacion = new Alucinacion(this.energia);
 		alucinacion.generarAlucinacion(unidadACopiar, juego);
@@ -97,6 +100,11 @@ public class AltoTemplario extends UnidadTerrestre {
 	public void ataqueEMP(){
 		this.energia.setEnergiaActual(0);
 		this.getEscudo().setEscudoActual(0);
+	}
+
+	@Override
+	public boolean tieneEdificiosPrevios(List<Construccion> construccionesList) {
+		return tieneConstruccion(construccionesList, "ARCHIVO_TEMPLARIO");
 	}
 
 }

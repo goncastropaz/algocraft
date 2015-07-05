@@ -1,9 +1,12 @@
 package fiuba.algo3.modelo.unidades;
 
+import java.util.List;
+
 import fiuba.algo3.modelo.complementos.Energia;
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.complementos.RangoDeAtaque;
 import fiuba.algo3.modelo.complementos.Recursos;
+import fiuba.algo3.modelo.construcciones.Construccion;
 import fiuba.algo3.modelo.excepciones.EnergiaInsuficiente;
 import fiuba.algo3.modelo.juego.Jugador;
 import fiuba.algo3.modelo.juego.Mapa;
@@ -74,4 +77,9 @@ public class NaveCiencia extends UnidadAerea{
 		this.energia.setEnergiaActual(0);
 	}
 
+	@Override
+	public boolean tieneEdificiosPrevios(List<Construccion> construccionesList) {
+		return tieneConstruccion(construccionesList, "PUERTO_ESTELAR_TERRAN");
+	}
+	
 }	

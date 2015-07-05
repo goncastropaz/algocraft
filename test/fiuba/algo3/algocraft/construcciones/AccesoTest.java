@@ -54,14 +54,17 @@ public class AccesoTest {
 			Juego juego = new Juego();
 			Posicion posicion1 = new Posicion(1, 1);
 			Posicion posicion2 = new Posicion(2, 2);
+			Posicion posicion3 = new Posicion(3, 3);
 			Zealot zealot = new Zealot();
 			Pilon pilon = new Pilon(posicion1);
-			Acceso acceso = new Acceso(posicion2);
+			Acceso acceso1 = new Acceso(posicion2);
+			Acceso acceso2 = new Acceso(posicion3);
 			juego.getActualJugador().setRaza(new Protoss(juego));
-			for(int i = 0; i < 35; i++) juego.getActualJugador().actualizarMineral();
+			for(int i = 0; i < 50; i++) juego.getActualJugador().actualizarMineral();
 			juego.getActualJugador().agregarConstruccion(pilon);
-			juego.agregarUnidad(zealot, posicion2);
-			juego.agregarConstruccion(acceso, posicion2);
+			juego.agregarConstruccion(acceso1, posicion2);
+			juego.agregarUnidad(zealot, posicion3);
+			juego.agregarConstruccion(acceso2, posicion3);
 		} catch(Exception e){
 			assertEquals(true, e instanceof CeldaOcupada);
 		}

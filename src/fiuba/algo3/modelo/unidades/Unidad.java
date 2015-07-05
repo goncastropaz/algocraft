@@ -1,6 +1,7 @@
 package fiuba.algo3.modelo.unidades;
 
-import java.awt.List;
+
+import java.util.List;
 
 import fiuba.algo3.modelo.complementos.Daniable;
 import fiuba.algo3.modelo.complementos.Danio;
@@ -10,6 +11,7 @@ import fiuba.algo3.modelo.complementos.RangoDeAtaque;
 import fiuba.algo3.modelo.complementos.Recursos;
 import fiuba.algo3.modelo.complementos.TiempoDeConstruccion;
 import fiuba.algo3.modelo.complementos.Vida;
+import fiuba.algo3.modelo.construcciones.Construccion;
 import fiuba.algo3.modelo.excepciones.FueraDeRango;
 import fiuba.algo3.modelo.excepciones.ObjetivoInvalido;
 import fiuba.algo3.modelo.excepciones.UnidadAtacadaInvalida;
@@ -172,4 +174,14 @@ public abstract class Unidad implements IUnidad, Daniable{
 		//actualizar poblacion y destruir
 	}
 
+	public abstract boolean tieneEdificiosPrevios(List<Construccion> construccionesList);
+
+	public boolean tieneConstruccion(List<Construccion> construcciones, String edificio){
+		for(Construccion construccion : construcciones){
+			if(edificio.equals(construccion.getName())){
+				return true;
+			}
+		}
+		return false;
+	}
 }

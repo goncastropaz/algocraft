@@ -5,6 +5,7 @@ import java.util.List;
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
+import fiuba.algo3.modelo.excepciones.NoTieneEdificiosPrevios;
 import fiuba.algo3.modelo.excepciones.PoblacionInsuficiente;
 import fiuba.algo3.modelo.excepciones.RazaNoTieneUnidad;
 import fiuba.algo3.modelo.excepciones.RecursosInsuficientes;
@@ -29,19 +30,19 @@ public class PuertoEstelarTerran  extends Construccion{
 				ESCUDO, UNIDAD,pos);
 	}
 	
-	public void crearEspectro(Juego juego) throws CeldaOcupada, CeldaEspacial, RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente{
+	public void crearEspectro(Juego juego) throws CeldaOcupada, CeldaEspacial, RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente, NoTieneEdificiosPrevios{
 		
 		Espectro unidad = new Espectro();
 		juego.agregarUnidad(unidad, this.ubicacion);
 	}
 	
-	public void crearNaveTransporte(Juego juego) throws CeldaOcupada, CeldaEspacial, RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente{
+	public void crearNaveTransporte(Juego juego) throws CeldaOcupada, CeldaEspacial, RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente, NoTieneEdificiosPrevios{
 	
 		NaveTransporteTerran unidad = new NaveTransporteTerran();
 		juego.agregarUnidad(unidad, this.ubicacion);
 	}
 
-	public void crearNaveCiencia(Juego juego) throws CeldaOcupada, CeldaEspacial, RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente{
+	public void crearNaveCiencia(Juego juego) throws CeldaOcupada, CeldaEspacial, RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente, NoTieneEdificiosPrevios{
 	
 		NaveCiencia unidad = new NaveCiencia();
 		juego.agregarUnidad(unidad, this.ubicacion);

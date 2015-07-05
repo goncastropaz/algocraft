@@ -3,6 +3,7 @@ package fiuba.algo3.modelo.acciones.creacionUnidades;
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
+import fiuba.algo3.modelo.excepciones.NoTieneEdificiosPrevios;
 import fiuba.algo3.modelo.excepciones.PoblacionInsuficiente;
 import fiuba.algo3.modelo.excepciones.RazaNoTieneUnidad;
 import fiuba.algo3.modelo.excepciones.RecursosInsuficientes;
@@ -15,6 +16,6 @@ public abstract class CrearUnidad {
 	public CrearUnidad(Juego juego){
 		this.juego = juego;
 	}
-	public abstract void crearUnidad(Posicion pos) throws CeldaOcupada, CeldaEspacial, RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente;
+	public abstract void crearUnidad(Posicion pos) throws CeldaOcupada, CeldaEspacial, RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente, NoTieneEdificiosPrevios;
 	
 }

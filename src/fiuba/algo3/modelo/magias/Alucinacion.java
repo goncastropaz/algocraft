@@ -4,6 +4,7 @@ import fiuba.algo3.modelo.complementos.Energia;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.EnergiaInsuficiente;
+import fiuba.algo3.modelo.excepciones.NoTieneEdificiosPrevios;
 import fiuba.algo3.modelo.excepciones.PoblacionInsuficiente;
 import fiuba.algo3.modelo.excepciones.RazaNoTieneUnidad;
 import fiuba.algo3.modelo.excepciones.RecursosInsuficientes;
@@ -23,7 +24,7 @@ public class Alucinacion extends Magia {
 		}
 	}
 	
-	public void generarAlucinacion(Unidad unidadACopiar,Juego juego) throws CeldaOcupada, CeldaEspacial, RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente{
+	public void generarAlucinacion(Unidad unidadACopiar,Juego juego) throws CeldaOcupada, CeldaEspacial, RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente, NoTieneEdificiosPrevios{
 		Unidad unidadCopia1 = unidadACopiar.generarCopia();
 		juego.agregarUnidad(unidadCopia1, unidadACopiar.getUbicacion());
 		Unidad unidadCopia2 = unidadACopiar.generarCopia();

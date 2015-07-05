@@ -112,18 +112,17 @@ public class Jugador {
 		
 	}
 
-	public void puedeCrearUnidad(Unidad unidad ) throws RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente {
+	public void puedeCrearUnidad(Unidad unidad) throws RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente, NoTieneEdificiosPrevios {
 		if(!this.raza.getListaDeUnidadesValidas().contains(unidad.getNombre())) throw new RazaNoTieneUnidad();
 		if(!unidad.getCostoDeRecursos().tieneSuficientesRecursos(this.recursos.getMineral(),this.recursos.getGas())) throw new RecursosInsuficientes();
 		if(!(this.poblacion.getPoblacionDisponible() > unidad.getSuministro())) throw new PoblacionInsuficiente();
-		//TODO agregar validacion de edificio (?)
+		if(!unidad.tieneEdificiosPrevios(this.getConstruccionesList())) throw new NoTieneEdificiosPrevios();
 	}
 
 	public void puedeCrearConstruccion(Construccion construccion) throws RazaNoTieneConstruccion, RecursosInsuficientes, NoTieneEdificiosPrevios {
 		if(!this.raza.getListaDeConstruccionesValidas().contains(construccion.getName())) throw new RazaNoTieneConstruccion();
 		if(!construccion.getCost().tieneSuficientesRecursos(this.recursos.getMineral(), this.recursos.getGas())) throw new RecursosInsuficientes();
 		if(!construccion.tieneEdificiosPrevios(this.getConstruccionesList())) throw new NoTieneEdificiosPrevios(); 
-		//TODO agregar validacion de edificio (?)
 	}
 
 	public boolean tieneDaniable(Posicion ubicacion) {
