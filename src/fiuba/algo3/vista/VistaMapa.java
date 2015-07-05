@@ -44,7 +44,7 @@ public class VistaMapa {
 		tamanioMapa = 0;
 
 		panelMapa = new JPanel();
-		panelMapa.setBounds(1, 80, 2700, 2400);
+		panelMapa.setBounds(1, 200, 900, 900);
 		
 		panelMapa.setBorder(new EmptyBorder(5, 5, 5, 5));
 		tamanioMapa = controlMapa.getMapa().getTamanio();

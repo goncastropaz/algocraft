@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.LineBorder;
 
 import fiuba.algo3.control.ControlJuego;
@@ -50,24 +51,26 @@ public class VistaJuego {
 		lRaza.setFont(new Font("Arial", Font.BOLD, 12));
 		lRaza.setBounds(10, 36, 100, 14);
 		this.frame.getContentPane().add(lRaza);
-		
+
 		JLabel lColor = new JLabel("Color: "
 				+ controlJuego.getColorJugadorActual());
 		lColor.setFont(new Font("Arial", Font.BOLD, 12));
 		lColor.setBounds(121, 36, 200, 14);
 		this.frame.getContentPane().add(lColor);
-		
+
 		JLabel lEnergia = new JLabel("Energ\u00EDa    : 1200");
 		lEnergia.setFont(new Font("Arial", Font.BOLD, 12));
 		lEnergia.setBounds(10, 73, 100, 14);
 		frame.getContentPane().add(lEnergia);
-		
-//		JLabel imagenGas = new JLabel();
-//		BufferedImage wGas = ImageIO.read(this.getClass().getResource("/imagenes/recursos/gasVespeno2.jpg"));
-//		ImageIcon gas = new ImageIcon(wGas);
-//		imagenGas.setIcon(new ImageIcon(gas.getImage().getScaledInstance(79,29,Image.SCALE_SMOOTH)));
-//		imagenGas.setBounds(100, 40, 80, 40);
-//		frame.getContentPane().add(imagenGas);
+
+		// JLabel imagenGas = new JLabel();
+		// BufferedImage wGas =
+		// ImageIO.read(this.getClass().getResource("/imagenes/recursos/gasVespeno2.jpg"));
+		// ImageIcon gas = new ImageIcon(wGas);
+		// imagenGas.setIcon(new
+		// ImageIcon(gas.getImage().getScaledInstance(79,29,Image.SCALE_SMOOTH)));
+		// imagenGas.setBounds(100, 40, 80, 40);
+		// frame.getContentPane().add(imagenGas);
 
 		JLabel lMineral = new JLabel("Minerales: 200");
 		lMineral.setFont(new Font("Arial", Font.BOLD, 12));
@@ -78,33 +81,32 @@ public class VistaJuego {
 		lGas.setFont(new Font("Arial", Font.BOLD, 12));
 		lGas.setBounds(121, 98, 300, 14);
 		frame.getContentPane().add(lGas);
-		
+
 		JLabel lPoblacion = new JLabel("Poblaci\u00F3n: 200");
 		lPoblacion.setFont(new Font("Arial", Font.BOLD, 12));
 		lPoblacion.setBounds(10, 130, 100, 14);
 		frame.getContentPane().add(lPoblacion);
-		
+
 		JButton btnPasarTurno = new JButton("Pasar turno");
 		btnPasarTurno.setFont(new Font("Arial", Font.BOLD, 12));
-		btnPasarTurno.setBounds(410, 150, 103, 23);
+		btnPasarTurno.setBounds(390, 150, 103, 23);
 		btnPasarTurno.addActionListener(controlJuego
 				.getListenerBotonPasarTurno());
 		this.frame.getContentPane().add(btnPasarTurno);
-		
+
 		JButton btnFinalizarPartida = new JButton("Finalizar partida");
 		btnFinalizarPartida.setFont(new Font("Arial", Font.BOLD, 12));
-		btnFinalizarPartida.setBounds(190, 150, 125, 23);
+		btnFinalizarPartida.setBounds(490, 150, 125, 23);
 		btnFinalizarPartida.addActionListener(controlJuego
 				.getListenerBotonFinalizarJuego());
 		this.frame.getContentPane().add(btnFinalizarPartida);
-		
-		VistaMapa vistaMapa = new VistaMapa(controlJuego.getMapaDelJuego());
-		
-		JPanel panel = vistaMapa.getPanel();
-//		panel.setBounds(10, 155, 694, 242);
-		this.frame.getContentPane().add(panel);
-//		panel.setLayout(new GridLayout(1, 0, 0, 0));
 
+		VistaMapa vistaMapa = new VistaMapa(controlJuego.getMapaDelJuego());
+
+		JPanel panel = vistaMapa.getPanel();
+		JScrollPane scroll = new JScrollPane(panel);
+		scroll.setBounds(10, 200, 500, 400);
+		this.frame.getContentPane().add(scroll);
 
 	}
 
@@ -136,7 +138,6 @@ public class VistaJuego {
 		btnFinalizarPartida.addActionListener(controlJuego
 				.getListenerBotonCrearNuevoJuego());
 		this.frame.getContentPane().add(btnFinalizarPartida);
-
 
 		this.frame.getContentPane().revalidate();
 		this.frame.getContentPane().repaint();
