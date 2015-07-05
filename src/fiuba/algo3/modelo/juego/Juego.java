@@ -108,7 +108,7 @@ public class Juego {
 	}
 	
 	public void atacar(Unidad unidad, Posicion pos) throws CopiaNoCausaDanio{
-		//unidad me pertenece? daniable es enemigo? si daño = 0 permito atacar igual?
+		//unidad me pertenece? daniable es enemigo? si danio = 0 permito atacar igual?
 //		this.turno.getActualJugador().tieneUnidad(unidad);
 		unidad.atacarUnidad(this.getMapaDeJuego().getDaniable(pos));
 	}
