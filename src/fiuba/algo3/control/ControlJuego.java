@@ -3,9 +3,13 @@ package fiuba.algo3.control;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JPanel;
+
 import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
 import fiuba.algo3.modelo.juego.Juego;
 import fiuba.algo3.modelo.juego.Mapa;
+import fiuba.algo3.vista.VistaAccionesProtoss;
+import fiuba.algo3.vista.VistaAccionesTerran;
 import fiuba.algo3.vista.VistaInicial;
 import fiuba.algo3.vista.VistaJuego;
 import fiuba.algo3.vista.VistaMapa;
@@ -88,6 +92,18 @@ public class ControlJuego {
 
 	public Mapa getMapaDelJuego() {
 		return juego.getMapaDeJuego();
+	}
+
+	public String getRazaJugadorActual() {
+		return juego.getActualJugador().getNombreRaza();
+	}
+
+	public JPanel getVistaAcciones() {
+		if(this.getRazaJugadorActual() == "Terran"){
+			return new VistaAccionesTerran();
+		} else {
+			return new VistaAccionesProtoss();
+		}
 	}
 	
 //	public String getRecursosJugadorActual(){

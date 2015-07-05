@@ -55,4 +55,9 @@ public class Terran extends Raza {
 		this.listaDeConstruccionesValidas.add("FABRICA");
 		this.listaDeConstruccionesValidas.add("PUERTO_ESTELAR_TERRAN");
 	}
+
+	@Override
+	public String getNombreRaza() {
+		return "Terran";
+	}
 }

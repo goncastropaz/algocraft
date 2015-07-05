@@ -57,8 +57,8 @@ public class Jugador {
 	public String getColor(){
 		return this.color;
 	}
-	public Raza getRaza(){
-		return this.raza;
+	public String getNombreRaza(){
+		return this.raza.getNombreRaza();
 	}
 
 	public List<Construccion> getConstruccionesList(){
@@ -146,6 +146,10 @@ public class Jugador {
 //				eliminarConstruccion();
 			}
 		}
+	}
+
+	public Object getRaza() {
+		return this.raza;
 	}
 
 }

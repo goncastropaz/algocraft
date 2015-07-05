@@ -54,4 +54,10 @@ public class Protoss extends Raza{
 		this.listaDeConstruccionesValidas.add("PUERTO_ESTELAR_PROTOSS");
 		this.listaDeConstruccionesValidas.add("ARCHIVO_TEMPLARIO");
 	}
+
+	@Override
+	public String getNombreRaza() {
+		
+		return "Protoss";
+	}
 }

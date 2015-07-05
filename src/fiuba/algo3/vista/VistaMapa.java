@@ -1,6 +1,7 @@
 package fiuba.algo3.vista;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.io.IOException;
@@ -48,7 +49,8 @@ public class VistaMapa {
 		
 		panelMapa.setBorder(new EmptyBorder(5, 5, 5, 5));
 		tamanioMapa = controlMapa.getMapa().getTamanio();
-		panelMapa.setLayout(new GridLayout(tamanioMapa, tamanioMapa));
+		GridLayout grid = new GridLayout(tamanioMapa, tamanioMapa);
+		panelMapa.setLayout(grid);
 
 		JButtonID[][] mapaBotones = new JButtonID[tamanioMapa][tamanioMapa];
 		llenarArrayConLabels(mapaBotones);
@@ -64,6 +66,8 @@ public class VistaMapa {
 				boton.setBackground(Color.black);
 				boton.addActionListener(controlMapa
 						.getListenerBotonSeleccionarCelda());
+				Dimension dim = new Dimension(50,50);
+				boton.setPreferredSize(dim);
 				tablero[i][j] = boton;
 
 			}

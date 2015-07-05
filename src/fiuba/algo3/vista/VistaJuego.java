@@ -41,26 +41,26 @@ public class VistaJuego {
 		this.frame.getContentPane().setLayout(null);
 		this.frame.setVisible(true);
 
-		JLabel lNombre = new JLabel("Nombre: "
+		JLabel lNombre = new JLabel("Nombre:  "
 				+ controlJuego.getNombreJugadorActual());
-		lNombre.setFont(new Font("Arial", Font.BOLD, 12));
-		lNombre.setBounds(10, 11, 691, 14);
+		lNombre.setFont(new Font("Arial", Font.BOLD, 14));
+		lNombre.setBounds(10, 11, 200, 14);
 		this.frame.getContentPane().add(lNombre);
 
-		JLabel lRaza = new JLabel("Raza      : Protoss");
-		lRaza.setFont(new Font("Arial", Font.BOLD, 12));
-		lRaza.setBounds(10, 36, 100, 14);
+		JLabel lRaza = new JLabel("Raza:   "+ controlJuego.getRazaJugadorActual());
+		lRaza.setFont(new Font("Arial", Font.BOLD, 14));
+		lRaza.setBounds( 250, 11, 200, 14);
 		this.frame.getContentPane().add(lRaza);
 
-		JLabel lColor = new JLabel("Color: "
+		JLabel lColor = new JLabel("Color:    "
 				+ controlJuego.getColorJugadorActual());
-		lColor.setFont(new Font("Arial", Font.BOLD, 12));
-		lColor.setBounds(121, 36, 200, 14);
+		lColor.setFont(new Font("Arial", Font.BOLD, 14));
+		lColor.setBounds(600, 11, 200, 14);
 		this.frame.getContentPane().add(lColor);
 
-		JLabel lEnergia = new JLabel("Energ\u00EDa    : 1200");
-		lEnergia.setFont(new Font("Arial", Font.BOLD, 12));
-		lEnergia.setBounds(10, 73, 100, 14);
+		JLabel lEnergia = new JLabel("Energ\u00EDa:  1200");
+		lEnergia.setFont(new Font("Arial", Font.BOLD, 14));
+		lEnergia.setBounds(10, 50, 150, 14);
 		frame.getContentPane().add(lEnergia);
 
 		// JLabel imagenGas = new JLabel();
@@ -73,30 +73,30 @@ public class VistaJuego {
 		// frame.getContentPane().add(imagenGas);
 
 		JLabel lMineral = new JLabel("Minerales: 200");
-		lMineral.setFont(new Font("Arial", Font.BOLD, 12));
-		lMineral.setBounds(10, 98, 100, 14);
+		lMineral.setFont(new Font("Arial", Font.BOLD, 14));
+		lMineral.setBounds(180, 50, 150, 14);
 		frame.getContentPane().add(lMineral);
 
 		JLabel lGas = new JLabel("Gas Vespeno: 500");
-		lGas.setFont(new Font("Arial", Font.BOLD, 12));
-		lGas.setBounds(121, 98, 300, 14);
+		lGas.setFont(new Font("Arial", Font.BOLD, 14));
+		lGas.setBounds(350, 50, 150, 14);
 		frame.getContentPane().add(lGas);
 
 		JLabel lPoblacion = new JLabel("Poblaci\u00F3n: 200");
-		lPoblacion.setFont(new Font("Arial", Font.BOLD, 12));
-		lPoblacion.setBounds(10, 130, 100, 14);
+		lPoblacion.setFont(new Font("Arial", Font.BOLD, 14));
+		lPoblacion.setBounds(550, 50, 200, 14);
 		frame.getContentPane().add(lPoblacion);
 
 		JButton btnPasarTurno = new JButton("Pasar turno");
-		btnPasarTurno.setFont(new Font("Arial", Font.BOLD, 12));
-		btnPasarTurno.setBounds(390, 150, 103, 23);
+		btnPasarTurno.setFont(new Font("Arial", Font.BOLD, 14));
+		btnPasarTurno.setBounds(150, 80, 200, 23);
 		btnPasarTurno.addActionListener(controlJuego
 				.getListenerBotonPasarTurno());
 		this.frame.getContentPane().add(btnPasarTurno);
 
 		JButton btnFinalizarPartida = new JButton("Finalizar partida");
-		btnFinalizarPartida.setFont(new Font("Arial", Font.BOLD, 12));
-		btnFinalizarPartida.setBounds(490, 150, 125, 23);
+		btnFinalizarPartida.setFont(new Font("Arial", Font.BOLD, 14));
+		btnFinalizarPartida.setBounds(400, 80, 200, 23);
 		btnFinalizarPartida.addActionListener(controlJuego
 				.getListenerBotonFinalizarJuego());
 		this.frame.getContentPane().add(btnFinalizarPartida);
@@ -105,8 +105,12 @@ public class VistaJuego {
 
 		JPanel panel = vistaMapa.getPanel();
 		JScrollPane scroll = new JScrollPane(panel);
-		scroll.setBounds(10, 200, 500, 400);
+		scroll.setBounds(10, 120, 800, 600);
 		this.frame.getContentPane().add(scroll);
+		
+		JPanel panelAcciones = controlJuego.getVistaAcciones();
+		panelAcciones.setBounds(900, 30, 400, 800);
+		this.frame.getContentPane().add(panelAcciones);
 
 	}
 
@@ -118,7 +122,7 @@ public class VistaJuego {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		this.frame.getContentPane().revalidate();
+		this.frame.getContentPane().validate();
 		this.frame.getContentPane().repaint();
 	}
 
@@ -128,18 +132,18 @@ public class VistaJuego {
 		JLabel lNombreJugador = new JLabel(
 				"El juego ha sido finalizado, el ganador es: "
 						+ controlJuego.getNombreJugadorActual());
-		lNombreJugador.setFont(new Font("Arial", Font.BOLD, 12));
+		lNombreJugador.setFont(new Font("Arial", Font.BOLD, 14));
 		lNombreJugador.setBounds(10, 20, 500, 27);
 		this.frame.getContentPane().add(lNombreJugador);
 
 		JButton btnFinalizarPartida = new JButton("Nueva partida");
-		btnFinalizarPartida.setFont(new Font("Arial", Font.BOLD, 12));
+		btnFinalizarPartida.setFont(new Font("Arial", Font.BOLD, 14));
 		btnFinalizarPartida.setBounds(585, 408, 125, 23);
 		btnFinalizarPartida.addActionListener(controlJuego
 				.getListenerBotonCrearNuevoJuego());
 		this.frame.getContentPane().add(btnFinalizarPartida);
 
-		this.frame.getContentPane().revalidate();
+		this.frame.getContentPane().validate();
 		this.frame.getContentPane().repaint();
 	}
 

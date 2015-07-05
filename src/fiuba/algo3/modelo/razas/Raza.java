@@ -34,4 +34,7 @@ public abstract class Raza {
 		return listaDeConstruccionesValidas;
 	}
 
+	public abstract String getNombreRaza();
+	
+
 }
