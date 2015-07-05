@@ -39,6 +39,8 @@ public class VistaMapa {
 
 		String directorio = "/src/imagenes/terrenoPasto.jpg";
 		ImageIcon imagen;
+		
+		
 		tamanioMapa = 0;
 
 		panelMapa = new JPanel();
