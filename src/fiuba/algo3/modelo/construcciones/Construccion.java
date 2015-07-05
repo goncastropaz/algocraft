@@ -1,13 +1,18 @@
 package fiuba.algo3.modelo.construcciones;
 
-import fiuba.algo3.modelo.complementos.Recursos;
+import java.util.List;
+
 import fiuba.algo3.modelo.complementos.Daniable;
-import fiuba.algo3.modelo.complementos.Danio;
 import fiuba.algo3.modelo.complementos.Escudo;
 import fiuba.algo3.modelo.complementos.Posicion;
+import fiuba.algo3.modelo.complementos.Recursos;
 import fiuba.algo3.modelo.complementos.TiempoDeConstruccion;
 import fiuba.algo3.modelo.complementos.Vida;
+import fiuba.algo3.modelo.excepciones.FueraDeRango;
+import fiuba.algo3.modelo.juego.Celda;
+import fiuba.algo3.modelo.juego.Juego;
 import fiuba.algo3.modelo.juego.Jugador;
+import fiuba.algo3.modelo.unidades.Unidad;
 
 public abstract class Construccion implements Daniable{
 
@@ -83,8 +88,16 @@ public abstract class Construccion implements Daniable{
 // hablarlo porque no puedo tener ubicacion ni jugador
 	}
 	
-	public void recibirAtaque(Danio danio){
-		int danioT = danio.getDanioTerrestre();
+	public void recibirAtaque(Juego juego, Unidad unidad) throws FueraDeRango{
+		boolean rangoValido = false;
+		List<Celda> celdas = juego.getMapaDeJuego().devolverCeldasRadio(unidad.getUbicacion(), unidad.getRango().getRangoTierra());
+		for(Celda celda : celdas){
+			if(this.ubicacion.equals(celda.getPosicion())) rangoValido = true;
+		}
+		if(!rangoValido){
+			throw new FueraDeRango();
+		}
+		int danioT = unidad.getDanio().getDanioTerrestre();
 		recibirAtaque(danioT);
 	}
 

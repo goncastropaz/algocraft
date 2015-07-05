@@ -1,6 +1,6 @@
 package fiuba.algo3.modelo.magias;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import fiuba.algo3.modelo.complementos.Energia;
 import fiuba.algo3.modelo.complementos.Posicion;
@@ -15,7 +15,7 @@ public class TormentaPsionica extends Magia {
 	private static Integer energiaRequerida =75;
 	private static int danio = 100;
 	private int turno;
-	private ArrayList<Celda> listaDeCeldasImpactadas;
+	private List<Celda> listaDeCeldasImpactadas;
 
 	public TormentaPsionica(Energia energiaDeNave,Posicion posImpacto,Mapa mapa) throws EnergiaInsuficiente{
 		if(energiaDeNave.esMenor(energiaRequerida)) throw new EnergiaInsuficiente();

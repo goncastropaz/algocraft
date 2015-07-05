@@ -1,6 +1,7 @@
 package fiuba.algo3.modelo.juego;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import fiuba.algo3.modelo.complementos.Poblacion;
@@ -124,5 +125,14 @@ public class Jugador {
 		//TODO agregar validacion de edificio (?)
 	}
 
-	
+	public boolean tieneDaniable(Posicion ubicacion) {
+		for(Unidad unidad : this.getUnidadesList()){
+			if(ubicacion.equals(unidad.getUbicacion())) return true;
+		}
+		for(Construccion construccion : this.getConstruccionesList()){
+			if(ubicacion.equals(construccion.getUbicacion())) return true;
+		}
+		return false;
+	}
+
 }

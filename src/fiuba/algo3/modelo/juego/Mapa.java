@@ -2,6 +2,7 @@ package fiuba.algo3.modelo.juego;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import fiuba.algo3.modelo.complementos.Daniable;
 import fiuba.algo3.modelo.complementos.Posicion;
@@ -10,6 +11,7 @@ import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.CeldaSinRecurso;
 import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
+import fiuba.algo3.modelo.excepciones.ObjetivoInvalido;
 import fiuba.algo3.modelo.unidades.Unidad;
 
 public class Mapa {
@@ -83,8 +85,8 @@ public class Mapa {
 		return Mapa.baseJugadores.get(jugador);
 	}
 
-	public ArrayList<Celda> devolverCeldasRadio(Posicion pos, int radio) {
-		ArrayList<Celda> listaDeCeldas = new ArrayList<Celda>();
+	public List<Celda> devolverCeldasRadio(Posicion pos, int radio) {
+		List<Celda> listaDeCeldas = new ArrayList<Celda>();
 		int filaInicial = 0;
 		int filaFinal = tamanio - 1;
 		int colInicial = 0;
@@ -116,7 +118,7 @@ public class Mapa {
 
 	public Posicion agregarUnidad(Unidad unidad, Posicion posConstruccion) throws CeldaOcupada, CeldaEspacial{
 		//TODO reveer validacion -- ajustar como construccion 
-		ArrayList<Celda> posiblesCeldas = this.devolverCeldasRadio(posConstruccion, 1);
+		List<Celda> posiblesCeldas = this.devolverCeldasRadio(posConstruccion, 1);
 		for(int i =0; i<posiblesCeldas.size();i++){
 			Celda celda = posiblesCeldas.get(i);
 			if(unidad.permitidaEnArea(celda)){
@@ -133,13 +135,15 @@ public class Mapa {
 				.setConstruccion(construccion);
 	}
 
-	public Daniable getDaniable(Posicion pos) {
+	public Daniable getDaniable(Posicion pos) throws ObjetivoInvalido {
 		Daniable daniable;
 		Celda celda = devolverCelda(pos);
 		if(celda.getUnidad() != null){
 			daniable = celda.getUnidad();
-		} else{
+		} else if(celda.getConstruccion() != null){
 			daniable = celda.getConstruccion();
+		} else{
+			throw new ObjetivoInvalido();
 		}
 		return daniable;
 	}

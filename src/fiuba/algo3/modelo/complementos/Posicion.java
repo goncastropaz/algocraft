@@ -33,5 +33,13 @@ public class Posicion {
 		return new Posicion(this.fila,this.columna-1);
 	}
 	
+	@Override
+	public boolean equals(Object posicion){
+		if(posicion != null && posicion instanceof Posicion){
+			Posicion pos = (Posicion) posicion;
+			return (columna == pos.getColumna() && fila == pos.getFila());
+		}
+		return false;
+	}
 	
 }

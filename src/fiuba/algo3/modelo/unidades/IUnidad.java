@@ -1,12 +1,16 @@
 package fiuba.algo3.modelo.unidades;
 
-import fiuba.algo3.modelo.complementos.Daniable;
 import fiuba.algo3.modelo.complementos.Escudo;
+import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.complementos.Recursos;
 import fiuba.algo3.modelo.complementos.TiempoDeConstruccion;
 import fiuba.algo3.modelo.complementos.Vida;
-import fiuba.algo3.modelo.excepciones.CopiaNoCausaDanio;
+import fiuba.algo3.modelo.excepciones.FueraDeRango;
+import fiuba.algo3.modelo.excepciones.ObjetivoInvalido;
+import fiuba.algo3.modelo.excepciones.UnidadAtacadaInvalida;
+import fiuba.algo3.modelo.excepciones.UnidadAtacanteInvalida;
 import fiuba.algo3.modelo.juego.Celda;
+import fiuba.algo3.modelo.juego.Juego;
 
 public interface IUnidad {
 
@@ -42,6 +46,6 @@ public interface IUnidad {
 	
 	public Unidad generarCopia();
 	
-	public void atacarUnidad(Daniable daniable) throws CopiaNoCausaDanio;
+	public void atacarUnidad(Juego juego, Posicion posicion) throws ObjetivoInvalido, UnidadAtacanteInvalida, UnidadAtacadaInvalida, FueraDeRango;
 	
 }

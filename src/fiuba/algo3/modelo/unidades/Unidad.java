@@ -1,5 +1,7 @@
 package fiuba.algo3.modelo.unidades;
 
+import java.awt.List;
+
 import fiuba.algo3.modelo.complementos.Daniable;
 import fiuba.algo3.modelo.complementos.Danio;
 import fiuba.algo3.modelo.complementos.Escudo;
@@ -8,8 +10,12 @@ import fiuba.algo3.modelo.complementos.RangoDeAtaque;
 import fiuba.algo3.modelo.complementos.Recursos;
 import fiuba.algo3.modelo.complementos.TiempoDeConstruccion;
 import fiuba.algo3.modelo.complementos.Vida;
-import fiuba.algo3.modelo.excepciones.CopiaNoCausaDanio;
+import fiuba.algo3.modelo.excepciones.FueraDeRango;
+import fiuba.algo3.modelo.excepciones.ObjetivoInvalido;
+import fiuba.algo3.modelo.excepciones.UnidadAtacadaInvalida;
+import fiuba.algo3.modelo.excepciones.UnidadAtacanteInvalida;
 import fiuba.algo3.modelo.juego.Celda;
+import fiuba.algo3.modelo.juego.Juego;
 import fiuba.algo3.modelo.juego.Jugador;
 
 public abstract class Unidad implements IUnidad, Daniable{
@@ -139,16 +145,20 @@ public abstract class Unidad implements IUnidad, Daniable{
 	public Posicion getUbicacion() {
 		return this.ubicacion;
 	}
+	
+	public RangoDeAtaque getRango(){
+		return this.rango;
+	}
 
 	public void setUbicacion(Posicion posUnidad) {
 		this.ubicacion = posUnidad;
 		
 	}
 
-	public void atacarUnidad(Daniable daniable) throws CopiaNoCausaDanio{
-		//TODO o lo dejo gastar accion en la copia total el ataque es 0 (?)
-		if(this.copia) throw new CopiaNoCausaDanio();
-		daniable.recibirAtaque(this.danio);
+	public void atacarUnidad(Juego juego, Posicion posicion) throws ObjetivoInvalido, UnidadAtacanteInvalida, UnidadAtacadaInvalida, FueraDeRango{
+		if(!juego.getActualJugador().tieneDaniable(this.getUbicacion())) throw new UnidadAtacanteInvalida();
+		if(juego.getActualJugador().tieneDaniable(posicion)) throw new UnidadAtacadaInvalida();
+		juego.getMapaDeJuego().getDaniable(posicion).recibirAtaque(juego,this);
 	}
 	
 	public void recibirAtaque(Integer danio){
@@ -161,6 +171,5 @@ public abstract class Unidad implements IUnidad, Daniable{
 		}
 		//actualizar poblacion y destruir
 	}
-	 
-	
+
 }

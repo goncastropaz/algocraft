@@ -9,15 +9,18 @@ import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.CeldaSinRecurso;
 import fiuba.algo3.modelo.excepciones.ColorYaExiste;
 import fiuba.algo3.modelo.excepciones.CompletarDatosException;
-import fiuba.algo3.modelo.excepciones.CopiaNoCausaDanio;
 import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
+import fiuba.algo3.modelo.excepciones.FueraDeRango;
 import fiuba.algo3.modelo.excepciones.JugadorInvalido;
 import fiuba.algo3.modelo.excepciones.NombreConMenosDe4Caracteres;
 import fiuba.algo3.modelo.excepciones.NombreYaExiste;
+import fiuba.algo3.modelo.excepciones.ObjetivoInvalido;
 import fiuba.algo3.modelo.excepciones.PoblacionInsuficiente;
 import fiuba.algo3.modelo.excepciones.RazaNoTieneConstruccion;
 import fiuba.algo3.modelo.excepciones.RazaNoTieneUnidad;
 import fiuba.algo3.modelo.excepciones.RecursosInsuficientes;
+import fiuba.algo3.modelo.excepciones.UnidadAtacadaInvalida;
+import fiuba.algo3.modelo.excepciones.UnidadAtacanteInvalida;
 import fiuba.algo3.modelo.razas.Raza;
 import fiuba.algo3.modelo.unidades.Unidad;
 
@@ -107,10 +110,8 @@ public class Juego {
 		this.turno.getActualJugador().agregarConstruccion(construccion);
 	}
 	
-	public void atacar(Unidad unidad, Posicion pos) throws CopiaNoCausaDanio{
-		//unidad me pertenece? daniable es enemigo? si danio = 0 permito atacar igual?
-//		this.turno.getActualJugador().tieneUnidad(unidad);
-		unidad.atacarUnidad(this.getMapaDeJuego().getDaniable(pos));
+	public void atacar(Unidad unidad, Posicion pos) throws ObjetivoInvalido, UnidadAtacanteInvalida, UnidadAtacadaInvalida, FueraDeRango{
+		unidad.atacarUnidad(this,pos);
 	}
 
 	public void cambiarTurnoJugador() {

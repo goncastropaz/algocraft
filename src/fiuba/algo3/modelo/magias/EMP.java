@@ -1,6 +1,6 @@
 package fiuba.algo3.modelo.magias;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import fiuba.algo3.modelo.complementos.Energia;
 import fiuba.algo3.modelo.complementos.Posicion;
@@ -22,7 +22,7 @@ public class EMP extends Magia {
 	}
 	
 	public void tirarMagia(Posicion pos, Mapa mapa){
-		ArrayList<Celda> listaDeCeldas = mapa.devolverCeldasRadio(pos,radio);
+		List<Celda> listaDeCeldas = mapa.devolverCeldasRadio(pos,radio);
 		for(int i = 0; i<listaDeCeldas.size(); i++){
 			if(listaDeCeldas.get(i).getUnidad() != null) listaDeCeldas.get(i).getUnidad().ataqueEMP();
 			
