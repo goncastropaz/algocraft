@@ -135,4 +135,17 @@ public class Jugador {
 		return false;
 	}
 
+	public void refrescar() {
+		for(Unidad unidad : unidadesList){
+			if(unidad.getVida().getVidaActual().equals(0)){
+//				eliminarUnidad();
+			}
+		}
+		for(Construccion construccion : construccionesList){
+			if(construccion.getHealth().getVidaActual().equals(0)){
+//				eliminarConstruccion();
+			}
+		}
+	}
+
 }

@@ -111,6 +111,7 @@ public class Juego {
 	
 	public void atacar(Unidad unidad, Posicion pos) throws ObjetivoInvalido, UnidadAtacanteInvalida, UnidadAtacadaInvalida, FueraDeRango{
 		unidad.atacarUnidad(this,pos);
+		this.refrescar();
 	}
 
 	public void cambiarTurnoJugador() {
@@ -125,4 +126,11 @@ public class Juego {
 	public Mapa getMapaDeJuego() {
 		return this.mapaJuego;
 	}
+	
+	public void refrescar(){
+		for(int i = 1; i < 3;i++){
+			jugadores.get(i).refrescar();
+		}
+	}
+
 }
