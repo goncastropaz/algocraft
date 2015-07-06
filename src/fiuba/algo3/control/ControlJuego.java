@@ -102,10 +102,10 @@ public class ControlJuego {
 		JPanel vistaAcciones;
 		if(this.getRazaJugadorActual() == "Terran"){
 			vistaAcciones = new VistaAccionesTerran();
-			vistaAcciones.setBounds(900, 30, 400, 800);
+			vistaAcciones.setBounds(900, 10, 400, 700);
 		} else {
 			vistaAcciones = new VistaAccionesProtoss();
-			vistaAcciones.setBounds(900, 30, 400, 800);
+			vistaAcciones.setBounds(900, 10, 400, 700);
 		}
 		return vistaAcciones;
 	}

@@ -127,11 +127,11 @@ public class VistaAccionesProtoss extends JPanel{
 			add(btnNewButton_5);
 			
 			JButton btnEmp = new JButton("Tormenta Psionica");
-			btnEmp.setBounds(120, 627, 170, 25);
+			btnEmp.setBounds(120, 610, 170, 25);
 			add(btnEmp);
 			
 			JButton btnRadiacion = new JButton("Alucinacion");
-			btnRadiacion.setBounds(120, 664, 117, 25);
+			btnRadiacion.setBounds(120, 640, 117, 25);
 			add(btnRadiacion);
 			
 			txtMover = new JTextField();
@@ -144,7 +144,7 @@ public class VistaAccionesProtoss extends JPanel{
 			txtMagias = new JTextField();
 			txtMagias.setBackground(new Color(255, 255, 51));
 			txtMagias.setText("  MAGIAS");
-			txtMagias.setBounds(25, 634, 69, 55);
+			txtMagias.setBounds(25, 610, 69, 55);
 			add(txtMagias);
 			txtMagias.setColumns(10);
 		

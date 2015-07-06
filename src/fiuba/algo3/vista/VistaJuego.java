@@ -134,7 +134,7 @@ public class VistaJuego {
 		this.vistaMapa = new VistaMapa(controlJuego.getMapaDelJuego());
 
 		JScrollPane scroll = new JScrollPane(this.vistaMapa.getPanel());
-		scroll.setBounds(10, 120, 800, 600);
+		scroll.setBounds(10, 120, 800, 550);
 		this.Scrollmapa = scroll;
 		this.frame.getContentPane().add(this.Scrollmapa);
 		
