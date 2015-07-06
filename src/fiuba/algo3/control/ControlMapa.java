@@ -29,12 +29,12 @@ public class ControlMapa {
 
 	private Juego juego;
 	private Movimiento movimiento;
-
 	private VistaMapa vistaMapa;
 
 	public ControlMapa(VistaMapa vista, Mapa mapa) {
 		this.vistaMapa = vista;
 		this.mapa = mapa;
+		
 	}
 
 	private class EscuchaBotonSeleccionarCelda implements ActionListener {

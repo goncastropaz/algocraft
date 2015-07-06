@@ -3,6 +3,7 @@ package fiuba.algo3.vista;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -16,9 +17,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JViewport;
 import javax.swing.border.LineBorder;
 
 import fiuba.algo3.control.ControlJuego;
+import fiuba.algo3.control.ControlVistaJugador;
 import fiuba.algo3.modelo.juego.Juego;
 
 public class VistaJuego {
@@ -26,10 +29,12 @@ public class VistaJuego {
 	private JFrame frame;
 	private ControlJuego controlJuego;
 	private VistaMapa vistaMapa;
+	private ControlVistaJugador controlMapaJugador;
 
 	public VistaJuego(Juego juego) throws IOException {
 		this.frame = new JFrame();
 		this.controlJuego = new ControlJuego(juego, this);
+		this.controlMapaJugador = new ControlVistaJugador(juego);
 		initialize();
 	}
 
@@ -106,6 +111,8 @@ public class VistaJuego {
 		JPanel panel = vistaMapa.getPanel();
 		JScrollPane scroll = new JScrollPane(panel);
 		scroll.setBounds(10, 120, 800, 600);
+		Rectangle bounds = this.controlMapaJugador.getBoundsJugadorActual();
+		scroll.getViewport().scrollRectToVisible(bounds);
 		this.frame.getContentPane().add(scroll);
 		
 		JPanel panelAcciones = controlJuego.getVistaAcciones();

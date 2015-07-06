@@ -19,7 +19,7 @@ public class ControlJuego {
 	private ControlMapa controlMapa;
 	private VistaMapa vistaMapa;
 	private VistaJuego vistaJuego;
-
+	
 	public ControlJuego(Juego juego, VistaJuego vista) {
 		vistaJuego = vista;
 		this.juego = juego;
