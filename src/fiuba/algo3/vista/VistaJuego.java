@@ -119,8 +119,8 @@ public class VistaJuego {
 				.getListenerBotonFinalizarJuego());
 		this.frame.getContentPane().add(btnFinalizarPartida);
 
-		this.vistaMapa = new VistaMapa(controlJuego.getMapaDelJuego(), controlJuego.getJugadorActual());
-
+		this.vistaMapa = new VistaMapa(controlJuego.getMapaDelJuego());
+		
 		this.Scrollmapa = new JScrollPane(this.vistaMapa.getPanel());
 		this.Scrollmapa.setBounds(10, 120, 800, 550);
 		this.frame.getContentPane().add(this.Scrollmapa);
@@ -147,12 +147,6 @@ public class VistaJuego {
 		String poblacion =Integer.toString(controlJuego.getPoblacionJugadorActual());
 		this.labelPoblacion.setText("Poblaci\u00F3n:  "+poblacion);
 		
-		this.vistaMapa.actualizarVista(controlJuego.getJugadorActual());
-		
-		this.frame.getContentPane().remove(this.Scrollmapa);
-		this.Scrollmapa = new JScrollPane(this.vistaMapa.getPanel());
-		this.Scrollmapa.setBounds(10, 120, 800, 550);
-		this.frame.getContentPane().add(this.Scrollmapa);
 		this.controlMapaJugador.actualizarVistaJugadorActual(this.Scrollmapa);
 		
 		this.frame.getContentPane().remove(this.panelAcciones);

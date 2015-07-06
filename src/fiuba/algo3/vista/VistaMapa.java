@@ -27,8 +27,8 @@ public class VistaMapa {
 	private JPanel panelMapa;
 	private JButtonID[][] mapa;
 	private ControlMapa controlMapa;
-	private int tamanioMapa;	
-	
+	private int tamanioMapa;
+
 	private Icon agua;
 	private Icon tierra;
 	private Icon mineral;
@@ -36,16 +36,17 @@ public class VistaMapa {
 
 	private Jugador jugador;
 
+
 	public VistaMapa(Mapa mapa) {
 		controlMapa = new ControlMapa(this, mapa);
 		tamanioMapa = 0;
 
-		this.tierra = new ImageIcon(getClass().getResource(
-				"/imagenes/mapa/pasto.jpg"));
-		this.agua = new ImageIcon(getClass().getResource(
-				"/imagenes/mapa/agua.jpg"));
-		// imagen gas
-		// imagen mineral
+		this.tierra = new ImageIcon(getClass()
+				.getResource(Constants.URL_TIERRA));
+		this.agua = new ImageIcon(getClass().getResource(Constants.URL_AGUA));
+		this.gas = new ImageIcon(getClass().getResource(Constants.URL_GAS));
+		this.mineral = new ImageIcon(getClass().getResource(
+				Constants.URL_MINERAL));
 
 		try {
 			initialize();
@@ -70,38 +71,6 @@ public class VistaMapa {
 		llenarArrayConLabels(this.mapa);
 		agregarLabels(this.mapa);
 		setearImagenesDefault(this.mapa);
-	}
-
-	public VistaMapa(Mapa mapa, Jugador jugador) {
-		this.controlMapa = new ControlMapa(this, mapa);
-		this.tamanioMapa = 0;
-		
-		this.jugador = jugador;
-		
-		try {
-			initializarMapa();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	private void initializarMapa() throws IOException {
-
-		this.tamanioMapa = 0;
-		this.panelMapa = new JPanel();
-		this.panelMapa.setBounds(1, 200, 900, 900);
-		this.panelMapa.setBorder(new EmptyBorder(5, 5, 5, 5));
-
-		this.tamanioMapa = controlMapa.getMapa().getTamanio();
-
-		GridLayout grid = new GridLayout(this.tamanioMapa, this.tamanioMapa);
-		this.panelMapa.setLayout(grid);
-
-		this.mapa = new JButtonID[this.tamanioMapa][this.tamanioMapa];
-		llenarArrayConLabels(this.mapa);
-		agregarLabels(this.mapa);
-		setearImagenesDelJugador(this.mapa);
-
 	}
 
 	public void llenarArrayConLabels(JButtonID tablero[][]) throws IOException {
@@ -135,79 +104,34 @@ public class VistaMapa {
 	public void setearImagenesDefault(JButtonID mapa[][]) {
 		for (int i = 0; i < tamanioMapa; i++) {
 			for (int j = 0; j < tamanioMapa; j++) {
-				if (this.controlMapa.isCeldaAerea(i, j)) {
-					mapa[i][j].setIcon(this.agua);
-				} else if (this.controlMapa.isMineral(i, j)) {
-					mapa[i][j].setIcon(this.mineral);
-				} else if (this.controlMapa.isGas(i, j)) {
-					mapa[i][j].setIcon(this.gas);
-				} else {
-					mapa[i][j].setIcon(this.tierra);
-				}
 
-			}
-		}
-	}
-
-	public void setearImagenesDelJugador(JButtonID mapa[][]) {
-		VisionJugador vision = this.jugador.getVision();
-
-		for (int i = 0; i < tamanioMapa; i++) {
-			for (int j = 0; j < tamanioMapa; j++) {
-
-				try {
-
-					if (vision.estaDescubierto(new Posicion(i, j))) {
-						if (this.controlMapa.isCeldaAerea(i, j)) {
-							mapa[i][j].setIcon(new ImageIcon(getClass().getResource(
-									Constants.URL_AGUA)));
-						} else if (this.controlMapa.isMineral(i, j)) {
-							BufferedImage bufferTierra;
-							try {
-								bufferTierra = ImageIO.read(this.getClass().getResource(Constants.URL_MINERAL));
-								ImageIcon iTierra = new ImageIcon(bufferTierra);
-								mapa[i][j].setIcon(new ImageIcon(iTierra.getImage().getScaledInstance(50,50,Image.SCALE_SMOOTH)));
-
-							} catch (IOException e) {
-								e.printStackTrace();
-							}
-							
+				if (!this.controlMapa.isCeldaAerea(i, j)) {
+					try {
+						if (this.controlMapa.isMineral(i, j)) {
+							BufferedImage bufferImage = ImageIO.read(this.getClass().getResource(Constants.URL_MINERAL));
+							ImageIcon imagenIcon = new ImageIcon(bufferImage);
+							mapa[i][j].setIcon(new ImageIcon(imagenIcon.getImage().getScaledInstance(50, 50,Image.SCALE_SMOOTH)));
 						} else if (this.controlMapa.isGas(i, j)) {
-							
-							BufferedImage bufferTierra;
-							try {
-								bufferTierra = ImageIO.read(this.getClass().getResource(Constants.URL_GAS));
-								ImageIcon iTierra = new ImageIcon(bufferTierra);
-								mapa[i][j].setIcon(new ImageIcon(iTierra.getImage().getScaledInstance(50,50,Image.SCALE_SMOOTH)));
-							} catch (IOException e) {
-								e.printStackTrace();
-							}
-								
+							BufferedImage bufferImage = ImageIO.read(this.getClass().getResource(Constants.URL_GAS));
+							ImageIcon imagenIcon = new ImageIcon(bufferImage);
+							mapa[i][j].setIcon(new ImageIcon(imagenIcon.getImage().getScaledInstance(50, 50,Image.SCALE_SMOOTH)));
 						} else {
-							mapa[i][j].setIcon(new ImageIcon(getClass().getResource(
-									Constants.URL_TIERRA)));
+							mapa[i][j].setIcon(this.tierra);
 						}
-
-					} else {
-						mapa[i][j].setBackground(Color.black);
+					} catch (IOException e) {
+						e.printStackTrace();
 					}
 
-				} catch (FueraDeMatriz e) {
-					e.printStackTrace();
+				} else {
+					mapa[i][j].setIcon(this.agua);
 				}
+
 			}
 		}
 	}
 
-	public void actualizarVista(Jugador jugadorActual) {
-		this.jugador = jugadorActual;
-
-		try {
-			initializarMapa();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
+	public void actualizarMapa() {
+		
 	}
 
 }
