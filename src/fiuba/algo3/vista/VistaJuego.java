@@ -24,12 +24,25 @@ import fiuba.algo3.control.ControlJuego;
 import fiuba.algo3.control.ControlVistaJugador;
 import fiuba.algo3.modelo.juego.Juego;
 
+
 public class VistaJuego {
 
 	private JFrame frame;
 	private ControlJuego controlJuego;
 	private VistaMapa vistaMapa;
 	private ControlVistaJugador controlMapaJugador;
+	
+	private JLabel labelNombreJugador;
+	private JLabel labelColorJugador;
+	private JLabel labelRazaJugador;
+	private JLabel labelEnergia;
+	private JLabel labelMineral;
+	private JLabel labelGas;
+	private JLabel labelPoblacion;
+	private JScrollPane Scrollmapa;
+	private JPanel panelmapa;
+	private JPanel panelAcciones;
+
 
 	public VistaJuego(Juego juego) throws IOException {
 		this.frame = new JFrame();
@@ -50,23 +63,21 @@ public class VistaJuego {
 				+ controlJuego.getNombreJugadorActual());
 		lNombre.setFont(new Font("Arial", Font.BOLD, 14));
 		lNombre.setBounds(10, 11, 200, 14);
-		this.frame.getContentPane().add(lNombre);
+		this.labelNombreJugador = lNombre;
+		this.frame.getContentPane().add(this.labelNombreJugador );
 
 		JLabel lRaza = new JLabel("Raza:   "+ controlJuego.getRazaJugadorActual());
 		lRaza.setFont(new Font("Arial", Font.BOLD, 14));
 		lRaza.setBounds( 250, 11, 200, 14);
-		this.frame.getContentPane().add(lRaza);
+		this.labelRazaJugador = lRaza;
+		this.frame.getContentPane().add(this.labelRazaJugador);
 
 		JLabel lColor = new JLabel("Color:    "
 				+ controlJuego.getColorJugadorActual());
 		lColor.setFont(new Font("Arial", Font.BOLD, 14));
 		lColor.setBounds(600, 11, 200, 14);
-		this.frame.getContentPane().add(lColor);
-
-		JLabel lEnergia = new JLabel("Energ\u00EDa:  1200");
-		lEnergia.setFont(new Font("Arial", Font.BOLD, 14));
-		lEnergia.setBounds(10, 50, 150, 14);
-		frame.getContentPane().add(lEnergia);
+		this.labelColorJugador = lColor;
+		this.frame.getContentPane().add(this.labelColorJugador);
 
 		// JLabel imagenGas = new JLabel();
 		// BufferedImage wGas =
@@ -76,21 +87,35 @@ public class VistaJuego {
 		// ImageIcon(gas.getImage().getScaledInstance(79,29,Image.SCALE_SMOOTH)));
 		// imagenGas.setBounds(100, 40, 80, 40);
 		// frame.getContentPane().add(imagenGas);
-
-		JLabel lMineral = new JLabel("Minerales: 200");
+		
+		String mineral =Integer.toString(controlJuego.getMineralJugadorActual());
+		JLabel lMineral = new JLabel("Mineral:  "+ mineral);
 		lMineral.setFont(new Font("Arial", Font.BOLD, 14));
-		lMineral.setBounds(180, 50, 150, 14);
-		frame.getContentPane().add(lMineral);
+		lMineral.setBounds(10, 50, 150, 14);
+		this.labelMineral = lMineral;
+		frame.getContentPane().add(this.labelMineral);
 
-		JLabel lGas = new JLabel("Gas Vespeno: 500");
+		String gas =Integer.toString(controlJuego.getGasJugadorActual());
+		JLabel lGas = new JLabel("Gas Vespeno:  "+ gas);
 		lGas.setFont(new Font("Arial", Font.BOLD, 14));
-		lGas.setBounds(350, 50, 150, 14);
-		frame.getContentPane().add(lGas);
+		lGas.setBounds(180, 50, 150, 14);
+		this.labelGas = lGas;
+		frame.getContentPane().add(this.labelGas);
 
-		JLabel lPoblacion = new JLabel("Poblaci\u00F3n: 200");
+		String poblacion =Integer.toString(controlJuego.getPoblacionJugadorActual());
+		JLabel lPoblacion = new JLabel("Poblaci\u00F3n:  "+poblacion);
 		lPoblacion.setFont(new Font("Arial", Font.BOLD, 14));
-		lPoblacion.setBounds(550, 50, 200, 14);
-		frame.getContentPane().add(lPoblacion);
+		lPoblacion.setBounds(350, 50, 150, 14);
+		this.labelPoblacion = lPoblacion;
+		frame.getContentPane().add(this.labelPoblacion);
+		
+		JLabel lEnergia = new JLabel("");
+		lEnergia.setFont(new Font("Arial", Font.BOLD, 14));
+		lEnergia.setBounds(550, 50, 200, 14);
+		this.labelEnergia = lEnergia;
+		this.labelEnergia.setVisible(false);
+		frame.getContentPane().add(this.labelEnergia);
+
 
 		JButton btnPasarTurno = new JButton("Pasar turno");
 		btnPasarTurno.setFont(new Font("Arial", Font.BOLD, 14));
@@ -106,31 +131,42 @@ public class VistaJuego {
 				.getListenerBotonFinalizarJuego());
 		this.frame.getContentPane().add(btnFinalizarPartida);
 
-		VistaMapa vistaMapa = new VistaMapa(controlJuego.getMapaDelJuego());
+		this.vistaMapa = new VistaMapa(controlJuego.getMapaDelJuego());
 
-		JPanel panel = vistaMapa.getPanel();
-		JScrollPane scroll = new JScrollPane(panel);
+		JScrollPane scroll = new JScrollPane(this.vistaMapa.getPanel());
 		scroll.setBounds(10, 120, 800, 600);
-		Rectangle bounds = this.controlMapaJugador.getBoundsJugadorActual();
-		scroll.getViewport().scrollRectToVisible(bounds);
-		this.frame.getContentPane().add(scroll);
+		this.Scrollmapa = scroll;
+		this.frame.getContentPane().add(this.Scrollmapa);
 		
-		JPanel panelAcciones = controlJuego.getVistaAcciones();
-		panelAcciones.setBounds(900, 30, 400, 800);
-		this.frame.getContentPane().add(panelAcciones);
+		this.panelAcciones = controlJuego.getVistaAcciones();
+		this.frame.getContentPane().add(this.panelAcciones);
 
 	}
 
 	public void cambiarVistaJugador() {
-		this.frame.getContentPane().removeAll();
-		try {
-			initialize();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		this.actualizarVista();
 		this.frame.getContentPane().validate();
 		this.frame.getContentPane().repaint();
+	}
+
+	private void actualizarVista() {
+		this.labelNombreJugador.setText("Nombre:  "+ controlJuego.getNombreJugadorActual());
+		this.labelColorJugador.setText("Color:    "+ controlJuego.getColorJugadorActual());
+		this.labelRazaJugador.setText("Raza:   "+ controlJuego.getRazaJugadorActual());
+		String mineral =Integer.toString(controlJuego.getMineralJugadorActual());
+		this.labelMineral.setText("Mineral:  "+ mineral);
+		String gas =Integer.toString(controlJuego.getGasJugadorActual());
+		this.labelGas.setText("Gas Vespeno:  "+ gas);
+		String poblacion =Integer.toString(controlJuego.getPoblacionJugadorActual());
+		this.labelPoblacion.setText("Poblaci\u00F3n:  "+poblacion);
+		
+		this.controlMapaJugador.actualizarVistaJugadorActual(this.Scrollmapa);
+		
+		this.frame.getContentPane().remove(this.panelAcciones);
+		this.panelAcciones = controlJuego.getVistaAcciones();
+		this.frame.getContentPane().add(this.panelAcciones);
+
+		
 	}
 
 	public void mostarFinalizarJuego() {

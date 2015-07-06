@@ -152,4 +152,14 @@ public class Jugador {
 		return this.raza;
 	}
 
+	public Recursos getRecursos() {
+		return this.recursos;
+	}
+
+	public int getPoblacion() {
+		return this.poblacion.getPoblacionActual();
+
+	}
+
+
 }

@@ -4,8 +4,11 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.io.IOException;
 
+import javax.imageio.ImageIO;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -23,22 +26,28 @@ public class VistaMapa {
 	private ControlMapa controlMapa;
 	private Mapa mapa;
 	private int tamanioMapa;
+	
+	private Icon agua;
+	private Icon tierra;
 
 	public VistaMapa(Mapa mapa) {
 		controlMapa = new ControlMapa(this, mapa);
-//		tamanioMapa = (controlMapa.getMapa() != null)?10:controlMapa.getMapa().getTamanio();
 		tamanioMapa = 0;
+		
+		this.tierra  = new ImageIcon(getClass().getResource("/imagenes/mapa/pasto.jpg"));
+		this.agua = new ImageIcon(getClass().getResource("/imagenes/mapa/agua.jpg"));
+		
+		
 		try {
 			initialize();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
 	private void initialize() throws IOException {
 
-		String directorio = "/src/imagenes/terrenoPasto.jpg";
+		String directorio = "/src/imagenes/mapa/pasto2.jpg";
 		ImageIcon imagen;
 		
 		
@@ -63,11 +72,12 @@ public class VistaMapa {
 		for (int i = 0; i < tamanioMapa; i++) {
 			for (int j = 0; j < tamanioMapa; j++) {
 				final JButtonID boton = new JButtonID(i, j);
-				boton.setBackground(Color.black);
+				//boton.setBackground(Color.black);
 				boton.addActionListener(controlMapa
 						.getListenerBotonSeleccionarCelda());
 				Dimension dim = new Dimension(50,50);
 				boton.setPreferredSize(dim);
+				boton.setIcon(this.tierra);
 				tablero[i][j] = boton;
 
 			}

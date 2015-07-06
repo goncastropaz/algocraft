@@ -99,13 +99,29 @@ public class ControlJuego {
 	}
 
 	public JPanel getVistaAcciones() {
+		JPanel vistaAcciones;
 		if(this.getRazaJugadorActual() == "Terran"){
-			return new VistaAccionesTerran();
+			vistaAcciones = new VistaAccionesTerran();
+			vistaAcciones.setBounds(900, 30, 400, 800);
 		} else {
-			return new VistaAccionesProtoss();
+			vistaAcciones = new VistaAccionesProtoss();
+			vistaAcciones.setBounds(900, 30, 400, 800);
 		}
+		return vistaAcciones;
+	}
+
+	public int getMineralJugadorActual() {
+		return juego.getActualJugador().getRecursos().getMineral();
 	}
 	
+	public int getGasJugadorActual() {
+		return juego.getActualJugador().getRecursos().getGas();
+	}
+
+	public int getPoblacionJugadorActual() {
+		return juego.getActualJugador().getPoblacion();
+	}
+
 //	public String getRecursosJugadorActual(){
 //		return juego.getActualJugador().
 //	}
