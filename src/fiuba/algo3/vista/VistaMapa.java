@@ -22,13 +22,14 @@ import fiuba.algo3.modelo.juego.Mapa;
 public class VistaMapa {
 
 	private JPanel panelMapa;
-	private JScrollPane scrollPaneMapa;
+	private JButtonID[][] mapa;
 	private ControlMapa controlMapa;
-	private Mapa mapa;
 	private int tamanioMapa;
 	
 	private Icon agua;
 	private Icon tierra;
+	private Icon mineral;
+	private Icon gas;
 
 	public VistaMapa(Mapa mapa) {
 		controlMapa = new ControlMapa(this, mapa);
@@ -36,7 +37,8 @@ public class VistaMapa {
 		
 		this.tierra  = new ImageIcon(getClass().getResource("/imagenes/mapa/pasto.jpg"));
 		this.agua = new ImageIcon(getClass().getResource("/imagenes/mapa/agua.jpg"));
-		
+		//imagen gas
+		//imagen mineral
 		
 		try {
 			initialize();
@@ -61,10 +63,10 @@ public class VistaMapa {
 		GridLayout grid = new GridLayout(tamanioMapa, tamanioMapa);
 		panelMapa.setLayout(grid);
 
-		JButtonID[][] mapaBotones = new JButtonID[tamanioMapa][tamanioMapa];
-		llenarArrayConLabels(mapaBotones);
-		agregarLabels(mapaBotones);
-
+		this.mapa = new JButtonID[tamanioMapa][tamanioMapa];
+		llenarArrayConLabels(this.mapa);
+		agregarLabels(this.mapa);
+		setearImagenesDefault(this.mapa);
 	}
 
 	public void llenarArrayConLabels(JButtonID tablero[][]) throws IOException {
@@ -94,11 +96,22 @@ public class VistaMapa {
 	}
 
 	public JPanel getPanel() {
+		//	actualizar panel
 		return panelMapa;
 	}
 	
 	public JScrollPane getScrollPanel(){
 		return new JScrollPane(panelMapa);
+	}
+	
+	public void setearImagenesDefault(JButtonID mapa[][]){
+		for (int i = 0; i < tamanioMapa; i++) {
+			for (int j = 0; j < tamanioMapa; j++) {
+				if(this.controlMapa.isCeldaAerea(i,j)){
+					mapa[i][j].setIcon(this.agua);
+				}
+			}
+		}
 	}
 	
 	

@@ -186,4 +186,14 @@ public class ControlMapa {
 	public void setMapa(Mapa mapa) {
 		this.mapa = mapa;
 	}
+
+	public boolean isCeldaAerea(int fil,int col) {
+		try {
+			return this.mapa.devolverCelda(new Posicion(fil,col)).isEspacial();
+		} catch (FueraDeMatriz e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+	}
 }
