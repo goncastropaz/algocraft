@@ -9,4 +9,11 @@ public class Constants {
 	//colores
 	public static final String AZUL = "Azul";
 	public static final String ROJO = "Rojo";
+	
+	//Url imagenes
+	
+	public static final String URL_MINERAL = "/imagenes/recursos/mineral1.jpg";
+	public static final String URL_GAS = "/imagenes/recursos/gasVespeno1.jpg";
+	public static final String URL_AGUA = "/imagenes/mapa/agua.jpg";
+	public static final String URL_TIERRA = "/imagenes/mapa/pasto.jpg";
 }

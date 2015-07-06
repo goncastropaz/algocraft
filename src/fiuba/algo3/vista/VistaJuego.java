@@ -1,24 +1,13 @@
 package fiuba.algo3.vista;
 
-import java.awt.Color;
 import java.awt.Font;
-import java.awt.GridLayout;
-import java.awt.Rectangle;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.awt.Image;
 import java.io.IOException;
 
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JViewport;
-import javax.swing.border.LineBorder;
 
 import fiuba.algo3.control.ControlJuego;
 import fiuba.algo3.control.ControlVistaJugador;
@@ -40,7 +29,6 @@ public class VistaJuego {
 	private JLabel labelGas;
 	private JLabel labelPoblacion;
 	private JScrollPane Scrollmapa;
-	private JPanel panelmapa;
 	private JPanel panelAcciones;
 
 
@@ -131,11 +119,10 @@ public class VistaJuego {
 				.getListenerBotonFinalizarJuego());
 		this.frame.getContentPane().add(btnFinalizarPartida);
 
-		this.vistaMapa = new VistaMapa(controlJuego.getMapaDelJuego());
+		this.vistaMapa = new VistaMapa(controlJuego.getMapaDelJuego(), controlJuego.getJugadorActual());
 
-		JScrollPane scroll = new JScrollPane(this.vistaMapa.getPanel());
-		scroll.setBounds(10, 120, 800, 550);
-		this.Scrollmapa = scroll;
+		this.Scrollmapa = new JScrollPane(this.vistaMapa.getPanel());
+		this.Scrollmapa.setBounds(10, 120, 800, 550);
 		this.frame.getContentPane().add(this.Scrollmapa);
 		
 		this.panelAcciones = controlJuego.getVistaAcciones();
@@ -160,6 +147,12 @@ public class VistaJuego {
 		String poblacion =Integer.toString(controlJuego.getPoblacionJugadorActual());
 		this.labelPoblacion.setText("Poblaci\u00F3n:  "+poblacion);
 		
+		this.vistaMapa.actualizarVista(controlJuego.getJugadorActual());
+		
+		this.frame.getContentPane().remove(this.Scrollmapa);
+		this.Scrollmapa = new JScrollPane(this.vistaMapa.getPanel());
+		this.Scrollmapa.setBounds(10, 120, 800, 550);
+		this.frame.getContentPane().add(this.Scrollmapa);
 		this.controlMapaJugador.actualizarVistaJugadorActual(this.Scrollmapa);
 		
 		this.frame.getContentPane().remove(this.panelAcciones);
@@ -181,7 +174,7 @@ public class VistaJuego {
 
 		JButton btnFinalizarPartida = new JButton("Nueva partida");
 		btnFinalizarPartida.setFont(new Font("Arial", Font.BOLD, 14));
-		btnFinalizarPartida.setBounds(585, 408, 125, 23);
+		btnFinalizarPartida.setBounds(585, 408, 200, 23);
 		btnFinalizarPartida.addActionListener(controlJuego
 				.getListenerBotonCrearNuevoJuego());
 		this.frame.getContentPane().add(btnFinalizarPartida);

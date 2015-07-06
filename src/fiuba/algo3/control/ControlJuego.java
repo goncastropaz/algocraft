@@ -5,19 +5,17 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
-import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
 import fiuba.algo3.modelo.juego.Juego;
+import fiuba.algo3.modelo.juego.Jugador;
 import fiuba.algo3.modelo.juego.Mapa;
+import fiuba.algo3.modelo.utiles.Constants;
 import fiuba.algo3.vista.VistaAccionesProtoss;
 import fiuba.algo3.vista.VistaAccionesTerran;
 import fiuba.algo3.vista.VistaInicial;
 import fiuba.algo3.vista.VistaJuego;
-import fiuba.algo3.vista.VistaMapa;
 
 public class ControlJuego {
 	private Juego juego;
-	private ControlMapa controlMapa;
-	private VistaMapa vistaMapa;
 	private VistaJuego vistaJuego;
 	
 	public ControlJuego(Juego juego, VistaJuego vista) {
@@ -40,8 +38,6 @@ public class ControlJuego {
 
 	private class EscuchaBotonFinalizarJuego implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			// PasarTurno pasarTurno = new PasarTurno();
-			// pasarTurno.ejecutar();
 			juego.darFinalizadoElJuego();
 			vistaJuego.mostarFinalizarJuego();
 		}
@@ -100,7 +96,7 @@ public class ControlJuego {
 
 	public JPanel getVistaAcciones() {
 		JPanel vistaAcciones;
-		if(this.getRazaJugadorActual() == "Terran"){
+		if(this.getRazaJugadorActual().endsWith(Constants.TERRAN)){
 			vistaAcciones = new VistaAccionesTerran();
 			vistaAcciones.setBounds(900, 10, 400, 700);
 		} else {
@@ -122,9 +118,9 @@ public class ControlJuego {
 		return juego.getActualJugador().getPoblacion();
 	}
 
-//	public String getRecursosJugadorActual(){
-//		return juego.getActualJugador().
-//	}
+	public Jugador getJugadorActual(){
+		return juego.getActualJugador();
+	}
 	
 	
 

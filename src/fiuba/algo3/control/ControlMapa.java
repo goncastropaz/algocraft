@@ -14,89 +14,88 @@ import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 
 import fiuba.algo3.modelo.acciones.Ejecutable;
-import fiuba.algo3.modelo.acciones.creacionConstrucciones.CrearAcceso;
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
-import fiuba.algo3.modelo.juego.Juego;
 import fiuba.algo3.modelo.juego.Mapa;
-import fiuba.algo3.modelo.movimientos.Movimiento;
 import fiuba.algo3.vista.JButtonID;
 import fiuba.algo3.vista.VistaMapa;
 
 public class ControlMapa {
 
 	private Mapa mapa;
-
-	private Juego juego;
-	private Movimiento movimiento;
 	private VistaMapa vistaMapa;
 
 	public ControlMapa(VistaMapa vista, Mapa mapa) {
 		this.vistaMapa = vista;
 		this.mapa = mapa;
-		
 	}
 
 	private class EscuchaBotonSeleccionarCelda implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 
 			final JButtonID celdaSeleccionada = (JButtonID) e.getSource();
-			final Map<String,Ejecutable> acciones = getAccionesDisponibles(celdaSeleccionada.getFila(),celdaSeleccionada.getColumna());
-			
-			//--
+			final Map<String, Ejecutable> acciones = getAccionesDisponibles(
+					celdaSeleccionada.getFila(), celdaSeleccionada.getColumna());
+
+			// --
 			final JFrame frame = new JFrame("Acciones");
-			 
-	        // build poup menu
-	        final JPopupMenu popup = new JPopupMenu();
-	        // New project menu item
-	        
-	        for(final String key : acciones.keySet()){
-	        	JButton btn = new JButton(key);
-	    		btn.addActionListener(new ActionListener() {
-		            public void actionPerformed(ActionEvent e) {
-		            	try {
-							acciones.get(key).ejecutar(new Posicion(celdaSeleccionada.getFila(),celdaSeleccionada.getColumna()));
+
+			// build poup menu
+			final JPopupMenu popup = new JPopupMenu();
+			// New project menu item
+
+			for (final String key : acciones.keySet()) {
+				JButton btn = new JButton(key);
+				btn.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						try {
+							acciones.get(key).ejecutar(
+									new Posicion(celdaSeleccionada.getFila(),
+											celdaSeleccionada.getColumna()));
 							frame.dispose();
 						} catch (Exception e1) {
-							JOptionPane.showMessageDialog(frame, e1.getMessage());
+							JOptionPane.showMessageDialog(frame,
+									e1.getMessage());
 						}
-		            }
-	    		});
-	    		frame.getContentPane().add(btn);
-//		        JMenuItem menuItem = new JMenuItem(key);
-//		        menuItem.setMnemonic(KeyEvent.VK_P);
-//		        menuItem.getAccessibleContext().setAccessibleDescription(key);
-//		        menuItem.addActionListener(new ActionListener() {
-//		            public void actionPerformed(ActionEvent e) {
-//		            	try {
-//							acciones.get(key).ejecutar();
-//						} catch (Exception e1) {
-//							JOptionPane.showMessageDialog(frame, e1.getMessage());
-//						}
-//		            }
-//		        });
-//		        popup.add(menuItem);
-	        }
-	        frame.addMouseListener(new MouseAdapter() {
-	            @Override
-	            public void mousePressed(MouseEvent e) {
-	                showPopup(e);
-	            }
-	            @Override
-	            public void mouseReleased(MouseEvent e) {
-	                showPopup(e);
-	            }
-	            private void showPopup(MouseEvent e) {
-	                if (e.isPopupTrigger()) {
-	                    popup.show(e.getComponent(),
-	                            e.getX(), e.getY());
-	                }
-	            }
-	        });
-	        frame.getContentPane().setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-	        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-	        frame.setSize(200*acciones.size(), 100*acciones.size());
-	        frame.setVisible(true);
+					}
+				});
+				frame.getContentPane().add(btn);
+				// JMenuItem menuItem = new JMenuItem(key);
+				// menuItem.setMnemonic(KeyEvent.VK_P);
+				// menuItem.getAccessibleContext().setAccessibleDescription(key);
+				// menuItem.addActionListener(new ActionListener() {
+				// public void actionPerformed(ActionEvent e) {
+				// try {
+				// acciones.get(key).ejecutar();
+				// } catch (Exception e1) {
+				// JOptionPane.showMessageDialog(frame, e1.getMessage());
+				// }
+				// }
+				// });
+				// popup.add(menuItem);
+			}
+			frame.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mousePressed(MouseEvent e) {
+					showPopup(e);
+				}
+
+				@Override
+				public void mouseReleased(MouseEvent e) {
+					showPopup(e);
+				}
+
+				private void showPopup(MouseEvent e) {
+					if (e.isPopupTrigger()) {
+						popup.show(e.getComponent(), e.getX(), e.getY());
+					}
+				}
+			});
+			frame.getContentPane().setComponentOrientation(
+					ComponentOrientation.RIGHT_TO_LEFT);
+			frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			frame.setSize(200 * acciones.size(), 100 * acciones.size());
+			frame.setVisible(true);
 		}
 	}
 
@@ -105,9 +104,9 @@ public class ControlMapa {
 	}
 
 	public Map<String, Ejecutable> getAccionesDisponibles(int fila, int columna) {
-//		return mapa.getCelda(fila, columna).getAcciones();
+		// return mapa.getCelda(fila, columna).getAcciones();
 		Map<String, Ejecutable> map = new HashMap<String, Ejecutable>();
-		//map.put("ASD", new Seleccionar());
+		// map.put("ASD", new Seleccionar());
 		return map;
 	}
 
@@ -116,7 +115,7 @@ public class ControlMapa {
 
 			// TODO: e debería traerme la interfaz de la accion
 			// correspondiente.
-			//Ejecutable ejecutable = new CrearAcceso();
+			// Ejecutable ejecutable = new CrearAcceso();
 			//
 			// if(ejecutable.ejecutar()){
 			// //actualizar vista
@@ -182,18 +181,42 @@ public class ControlMapa {
 	public Mapa getMapa() {
 		return mapa;
 	}
-	
+
 	public void setMapa(Mapa mapa) {
 		this.mapa = mapa;
 	}
 
-	public boolean isCeldaAerea(int fil,int col) {
+	public boolean isCeldaAerea(int fil, int col) {
 		try {
-			return this.mapa.devolverCelda(new Posicion(fil,col)).isEspacial();
+			return this.mapa.devolverCelda(new Posicion(fil, col)).isEspacial();
 		} catch (FueraDeMatriz e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return false;
 		}
 	}
+
+	public boolean isMineral(int fil, int col) {
+
+		try {
+			return this.mapa.devolverCelda(new Posicion(fil, col))
+					.tieneMineral();
+		} catch (FueraDeMatriz e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public boolean isGas(int fil, int col) {
+
+		try {
+			return this.mapa.devolverCelda(new Posicion(fil, col)).tieneGas();
+		} catch (FueraDeMatriz e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+	}
+
 }
