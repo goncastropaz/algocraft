@@ -40,13 +40,13 @@ public class Turno {
 		public void actualizarUnidadesTurno(Jugador jugador){
 			List<Unidad> unidadesList = jugador.getUnidadesList();
 			for(int i = 0; i< unidadesList.size(); i++){
-				unidadesList.get(0).actualizarTurno(jugador);
+				unidadesList.get(i).actualizarTurno(jugador);
 			}
 		}
 		public void actualizarConstruccionesTurno(Jugador jugador){
 			 List<Construccion> construccionesList = jugador.getConstruccionesList();
 			for(int i = 0; i< construccionesList.size(); i++){
-				construccionesList.get(0).actualizarTurno(jugador);
+				construccionesList.get(i).actualizarTurno(jugador);
 			}
 		}
 		
