@@ -16,4 +16,5 @@ public class Constants {
 	public static final String URL_GAS = "/imagenes/recursos/gasVespeno1.jpg";
 	public static final String URL_AGUA = "/imagenes/mapa/agua.jpg";
 	public static final String URL_TIERRA = "/imagenes/mapa/pasto.jpg";
+	public static final String URL_NEGRO = "/imagenes/mapa/color_negro.jpg";
 }

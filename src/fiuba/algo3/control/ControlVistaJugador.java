@@ -4,8 +4,11 @@ import java.awt.Rectangle;
 
 import javax.swing.JScrollPane;
 
+import fiuba.algo3.modelo.complementos.Posicion;
+import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
 import fiuba.algo3.modelo.excepciones.JugadorInvalido;
 import fiuba.algo3.modelo.juego.Juego;
+import fiuba.algo3.modelo.juego.Jugador;
 
 public class ControlVistaJugador {
 
@@ -29,7 +32,7 @@ public class ControlVistaJugador {
 	
 		}
 
-		public void actualizarVistaJugadorActual(JScrollPane scrollmapa) {
+		public void actualizarVistaBase(JScrollPane scrollmapa) {
 			try {
 				if(juego.getJugador(1) == juego.getActualJugador()){
 					scrollmapa.getHorizontalScrollBar().setValue(scrollmapa.getHorizontalScrollBar().getMinimum());
@@ -45,6 +48,17 @@ public class ControlVistaJugador {
 				e.printStackTrace();
 			}
 				
+		}
+
+		public boolean esVisible(int fil, int col) {
+			Jugador jugadorActual = this.juego.getActualJugador();
+			try {
+				return jugadorActual.getVision().estaDescubierto(new Posicion(fil,col));
+			} catch (FueraDeMatriz e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return false;
+			}
 		}
 		
 		

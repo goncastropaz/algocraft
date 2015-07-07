@@ -23,79 +23,20 @@ import fiuba.algo3.vista.VistaMapa;
 public class ControlMapa {
 
 	private Mapa mapa;
-	private VistaMapa vistaMapa;
+	private Posicion primerCeldaSeleccionada;
+	private Posicion segundaCeldaSeleccionada;
+	
 
-	public ControlMapa(VistaMapa vista, Mapa mapa) {
-		this.vistaMapa = vista;
-		this.mapa = mapa;
+	public ControlMapa(Mapa mapa) {
+			this.mapa = mapa;
+			this.primerCeldaSeleccionada =null;
+			this.segundaCeldaSeleccionada =null;
 	}
 
 	private class EscuchaBotonSeleccionarCelda implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 
-			final JButtonID celdaSeleccionada = (JButtonID) e.getSource();
-			final Map<String, Ejecutable> acciones = getAccionesDisponibles(
-					celdaSeleccionada.getFila(), celdaSeleccionada.getColumna());
-
-			// --
-			final JFrame frame = new JFrame("Acciones");
-
-			// build poup menu
-			final JPopupMenu popup = new JPopupMenu();
-			// New project menu item
-
-			for (final String key : acciones.keySet()) {
-				JButton btn = new JButton(key);
-				btn.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						try {
-							acciones.get(key).ejecutar(
-									new Posicion(celdaSeleccionada.getFila(),
-											celdaSeleccionada.getColumna()));
-							frame.dispose();
-						} catch (Exception e1) {
-							JOptionPane.showMessageDialog(frame,
-									e1.getMessage());
-						}
-					}
-				});
-				frame.getContentPane().add(btn);
-				// JMenuItem menuItem = new JMenuItem(key);
-				// menuItem.setMnemonic(KeyEvent.VK_P);
-				// menuItem.getAccessibleContext().setAccessibleDescription(key);
-				// menuItem.addActionListener(new ActionListener() {
-				// public void actionPerformed(ActionEvent e) {
-				// try {
-				// acciones.get(key).ejecutar();
-				// } catch (Exception e1) {
-				// JOptionPane.showMessageDialog(frame, e1.getMessage());
-				// }
-				// }
-				// });
-				// popup.add(menuItem);
-			}
-			frame.addMouseListener(new MouseAdapter() {
-				@Override
-				public void mousePressed(MouseEvent e) {
-					showPopup(e);
-				}
-
-				@Override
-				public void mouseReleased(MouseEvent e) {
-					showPopup(e);
-				}
-
-				private void showPopup(MouseEvent e) {
-					if (e.isPopupTrigger()) {
-						popup.show(e.getComponent(), e.getX(), e.getY());
-					}
-				}
-			});
-			frame.getContentPane().setComponentOrientation(
-					ComponentOrientation.RIGHT_TO_LEFT);
-			frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-			frame.setSize(200 * acciones.size(), 100 * acciones.size());
-			frame.setVisible(true);
+				
 		}
 	}
 
@@ -219,4 +160,13 @@ public class ControlMapa {
 		}
 	}
 
+	public void seleccionarCelda(JButtonID celdaSeleccionada){
+		
+		this.primerCeldaSeleccionada = this.segundaCeldaSeleccionada;
+		try {
+			this.segundaCeldaSeleccionada = new Posicion (celdaSeleccionada.getFila(), celdaSeleccionada.getColumna());
+		} catch (FueraDeMatriz e) {
+			e.printStackTrace();
+		}
+	}
 }

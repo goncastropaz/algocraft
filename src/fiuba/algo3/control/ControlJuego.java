@@ -17,10 +17,12 @@ import fiuba.algo3.vista.VistaJuego;
 public class ControlJuego {
 	private Juego juego;
 	private VistaJuego vistaJuego;
+	private ControlMapa controlMapa;
 	
 	public ControlJuego(Juego juego, VistaJuego vista) {
 		vistaJuego = vista;
 		this.juego = juego;
+		this.controlMapa = new ControlMapa(juego.getMapaDeJuego());
 	}
 
 	private class EscuchaBotonPasarTurno implements ActionListener {
@@ -122,6 +124,9 @@ public class ControlJuego {
 		return juego.getActualJugador();
 	}
 	
+	public ControlMapa getControlMapa(){
+		return this.controlMapa;
+	}
 	
 
 }

@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -15,8 +17,10 @@ import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
 import fiuba.algo3.control.ControlMapa;
+import fiuba.algo3.control.ControlVistaJugador;
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
+import fiuba.algo3.modelo.juego.Juego;
 import fiuba.algo3.modelo.juego.Jugador;
 import fiuba.algo3.modelo.juego.Mapa;
 import fiuba.algo3.modelo.juego.VisionJugador;
@@ -27,26 +31,41 @@ public class VistaMapa {
 	private JPanel panelMapa;
 	private JButtonID[][] mapa;
 	private ControlMapa controlMapa;
-	private int tamanioMapa;
 
+	private int tamanioMapa;
+	
 	private Icon agua;
 	private Icon tierra;
 	private Icon mineral;
 	private Icon gas;
+	private Icon noVisible;
 
-	private Jugador jugador;
 
 
-	public VistaMapa(Mapa mapa) {
-		controlMapa = new ControlMapa(this, mapa);
+	public VistaMapa(Mapa mapa, ControlMapa controlMapa) {
+		this.controlMapa = new ControlMapa(mapa);
+		
 		tamanioMapa = 0;
 
-		this.tierra = new ImageIcon(getClass()
-				.getResource(Constants.URL_TIERRA));
+		this.tierra = new ImageIcon(getClass().getResource(Constants.URL_TIERRA));
 		this.agua = new ImageIcon(getClass().getResource(Constants.URL_AGUA));
-		this.gas = new ImageIcon(getClass().getResource(Constants.URL_GAS));
-		this.mineral = new ImageIcon(getClass().getResource(
-				Constants.URL_MINERAL));
+		this.noVisible = new ImageIcon(getClass().getResource(Constants.URL_NEGRO));
+		
+		BufferedImage bufferMineral = null;
+		BufferedImage bufferGas =null;
+	
+		try {
+			bufferMineral = ImageIO.read(this.getClass().getResource(Constants.URL_MINERAL));
+			bufferGas = ImageIO.read(this.getClass().getResource(Constants.URL_GAS));
+			} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		ImageIcon imagenIconMineral = new ImageIcon(bufferMineral);
+		ImageIcon imagenIconGas = new ImageIcon(bufferGas);
+		this.mineral = new ImageIcon(imagenIconMineral.getImage().getScaledInstance(50, 50,Image.SCALE_SMOOTH));
+		this.gas = new ImageIcon(imagenIconGas.getImage().getScaledInstance(50, 50,Image.SCALE_SMOOTH));
+		
+
 
 		try {
 			initialize();
@@ -78,8 +97,13 @@ public class VistaMapa {
 		for (int i = 0; i < tamanioMapa; i++) {
 			for (int j = 0; j < tamanioMapa; j++) {
 				final JButtonID boton = new JButtonID(i, j);
-				boton.addActionListener(controlMapa
-						.getListenerBotonSeleccionarCelda());
+				boton.addActionListener(new ActionListener(){
+					public void actionPerformed(ActionEvent e){
+						final JButtonID celdaSeleccionada = (JButtonID) e.getSource();
+						controlMapa.seleccionarCelda(celdaSeleccionada);
+												
+					}
+				});	
 				Dimension dim = new Dimension(50, 50);
 				boton.setPreferredSize(dim);
 				tablero[i][j] = boton;
@@ -106,20 +130,14 @@ public class VistaMapa {
 			for (int j = 0; j < tamanioMapa; j++) {
 
 				if (!this.controlMapa.isCeldaAerea(i, j)) {
-					try {
-						if (this.controlMapa.isMineral(i, j)) {
-							BufferedImage bufferImage = ImageIO.read(this.getClass().getResource(Constants.URL_MINERAL));
-							ImageIcon imagenIcon = new ImageIcon(bufferImage);
-							mapa[i][j].setIcon(new ImageIcon(imagenIcon.getImage().getScaledInstance(50, 50,Image.SCALE_SMOOTH)));
-						} else if (this.controlMapa.isGas(i, j)) {
-							BufferedImage bufferImage = ImageIO.read(this.getClass().getResource(Constants.URL_GAS));
-							ImageIcon imagenIcon = new ImageIcon(bufferImage);
-							mapa[i][j].setIcon(new ImageIcon(imagenIcon.getImage().getScaledInstance(50, 50,Image.SCALE_SMOOTH)));
-						} else {
-							mapa[i][j].setIcon(this.tierra);
-						}
-					} catch (IOException e) {
-						e.printStackTrace();
+					if (this.controlMapa.isMineral(i, j)) {
+						
+						mapa[i][j].setIcon(this.mineral);
+					} else if (this.controlMapa.isGas(i, j)) {
+						
+						mapa[i][j].setIcon(this.gas);
+					} else {
+						mapa[i][j].setIcon(this.tierra);
 					}
 
 				} else {
@@ -132,6 +150,22 @@ public class VistaMapa {
 
 	public void actualizarMapa() {
 		
+	}
+
+	public void actualizarVista(ControlVistaJugador control) {
+		this.setearImagenesDefault(this.mapa);
+		this.mapaVisibleJugador(control);
+	}
+	
+	public void mapaVisibleJugador(ControlVistaJugador controlVistaJugador){
+		
+			for (int fil = 0; fil < tamanioMapa; fil++) {
+				for (int col = 0; col < tamanioMapa; col++) {
+						if(!controlVistaJugador.esVisible(fil,col))  mapa[fil][col].setIcon(this.noVisible);
+				}
+			}
+	
+
 	}
 
 }
