@@ -8,6 +8,8 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import fiuba.algo3.control.ControlJuego;
+
 public class VistaAccionesProtoss extends JPanel{
 
 		private JTextField txtCrearContrucciones;
@@ -15,9 +17,10 @@ public class VistaAccionesProtoss extends JPanel{
 		private JTextField txtAcciones;
 		private JTextField txtMover;
 		private JTextField txtMagias;
+		private ControlJuego control;
 	
-	
-		public VistaAccionesProtoss(){
+		public VistaAccionesProtoss(ControlJuego control){
+			this.control =control;
 			initialize();			
 		}
 		

@@ -126,7 +126,7 @@ public class VistaJuego {
 		this.Scrollmapa.setBounds(10, 120, 800, 550);
 		this.frame.getContentPane().add(this.Scrollmapa);
 		
-		this.panelAcciones = controlJuego.getVistaAcciones();
+		this.panelAcciones = controlJuego.getVistaAcciones(this.controlJuego);
 		this.frame.getContentPane().add(this.panelAcciones);
 
 	}
@@ -153,7 +153,7 @@ public class VistaJuego {
 		this.controlMapaJugador.actualizarVistaBase(this.Scrollmapa);
 		
 		this.frame.getContentPane().remove(this.panelAcciones);
-		this.panelAcciones = controlJuego.getVistaAcciones();
+		this.panelAcciones = controlJuego.getVistaAcciones(this.controlJuego);
 		this.frame.getContentPane().add(this.panelAcciones);
 
 		

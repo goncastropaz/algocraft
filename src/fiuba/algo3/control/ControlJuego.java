@@ -96,13 +96,13 @@ public class ControlJuego {
 		return juego.getActualJugador().getNombreRaza();
 	}
 
-	public JPanel getVistaAcciones() {
+	public JPanel getVistaAcciones(ControlJuego control) {
 		JPanel vistaAcciones;
 		if(this.getRazaJugadorActual().endsWith(Constants.TERRAN)){
-			vistaAcciones = new VistaAccionesTerran();
+			vistaAcciones = new VistaAccionesTerran(control);
 			vistaAcciones.setBounds(900, 10, 400, 700);
 		} else {
-			vistaAcciones = new VistaAccionesProtoss();
+			vistaAcciones = new VistaAccionesProtoss(control);
 			vistaAcciones.setBounds(900, 10, 400, 700);
 		}
 		return vistaAcciones;

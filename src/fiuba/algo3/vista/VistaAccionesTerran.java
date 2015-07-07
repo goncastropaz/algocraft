@@ -2,10 +2,15 @@ package fiuba.algo3.vista;
 
 import javax.swing.JPanel;
 import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.JToggleButton;
 import javax.swing.JTextField;
+
+import fiuba.algo3.control.ControlJuego;
+
 import java.awt.Color;
 
 public class VistaAccionesTerran extends JPanel {
@@ -14,11 +19,13 @@ public class VistaAccionesTerran extends JPanel {
 	private JTextField txtAcciones;
 	private JTextField txtMover;
 	private JTextField txtMagias;
+	private ControlJuego control;
 
 	/**
 	 * Create the panel.
 	 */
-	public VistaAccionesTerran() {
+	public VistaAccionesTerran(ControlJuego control) {
+		this.control =control;
 		setLayout(null);
 		
 		
