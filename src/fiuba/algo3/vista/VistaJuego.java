@@ -147,7 +147,9 @@ public class VistaJuego {
 		this.labelGas.setText("Gas Vespeno:  "+ gas);
 		String poblacion =Integer.toString(controlJuego.getPoblacionJugadorActual());
 		this.labelPoblacion.setText("Poblaci\u00F3n:  "+poblacion);
-		
+
+		this.vistaMapa.actualizarMapa();
+
 		this.vistaMapa.actualizarVista(this.controlMapaJugador);
 		
 		this.controlMapaJugador.actualizarVistaBase(this.Scrollmapa);

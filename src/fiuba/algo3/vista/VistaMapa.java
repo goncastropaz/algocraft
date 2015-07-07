@@ -1,6 +1,5 @@
 package fiuba.algo3.vista;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -13,17 +12,11 @@ import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
 import fiuba.algo3.control.ControlMapa;
 import fiuba.algo3.control.ControlVistaJugador;
-import fiuba.algo3.modelo.complementos.Posicion;
-import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
-import fiuba.algo3.modelo.juego.Juego;
-import fiuba.algo3.modelo.juego.Jugador;
 import fiuba.algo3.modelo.juego.Mapa;
-import fiuba.algo3.modelo.juego.VisionJugador;
 import fiuba.algo3.modelo.utiles.Constants;
 
 public class VistaMapa {
@@ -149,7 +142,7 @@ public class VistaMapa {
 	}
 
 	public void actualizarMapa() {
-		
+		this.controlMapa.actualizarMapa(this.mapa);
 	}
 
 	public void actualizarVista(ControlVistaJugador control) {

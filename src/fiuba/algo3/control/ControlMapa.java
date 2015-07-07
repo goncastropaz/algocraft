@@ -15,28 +15,41 @@ import javax.swing.JPopupMenu;
 
 import fiuba.algo3.modelo.acciones.Ejecutable;
 import fiuba.algo3.modelo.complementos.Posicion;
+import fiuba.algo3.modelo.construcciones.Barraca;
+import fiuba.algo3.modelo.excepciones.CeldaEspacial;
+import fiuba.algo3.modelo.excepciones.CeldaOcupada;
+import fiuba.algo3.modelo.excepciones.CeldaSinRecurso;
 import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
+import fiuba.algo3.modelo.juego.Celda;
 import fiuba.algo3.modelo.juego.Mapa;
+import fiuba.algo3.modelo.unidades.Marine;
 import fiuba.algo3.vista.JButtonID;
 import fiuba.algo3.vista.VistaMapa;
+import fiuba.algo3.vista.construcciones.FabricaVistaConstruccion;
+import fiuba.algo3.vista.unidades.FabricaVistaUnidad;
 
 public class ControlMapa {
 
 	private Mapa mapa;
+	private VistaMapa vistaMapa;
 	private Posicion primerCeldaSeleccionada;
 	private Posicion segundaCeldaSeleccionada;
-	
+
+	private FabricaVistaConstruccion fabricaVistaConstruccion;
+	private FabricaVistaUnidad fabricaVistaUnidad;
 
 	public ControlMapa(Mapa mapa) {
-			this.mapa = mapa;
-			this.primerCeldaSeleccionada =null;
-			this.segundaCeldaSeleccionada =null;
+		this.mapa = mapa;
+		this.primerCeldaSeleccionada = null;
+		this.segundaCeldaSeleccionada = null;
+		this.fabricaVistaConstruccion = new FabricaVistaConstruccion();
+		this.fabricaVistaUnidad = new FabricaVistaUnidad();
+
 	}
 
 	private class EscuchaBotonSeleccionarCelda implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 
-				
 		}
 	}
 
@@ -160,13 +173,38 @@ public class ControlMapa {
 		}
 	}
 
-	public void seleccionarCelda(JButtonID celdaSeleccionada){
-		
+	public void seleccionarCelda(JButtonID celdaSeleccionada) {
+
 		this.primerCeldaSeleccionada = this.segundaCeldaSeleccionada;
 		try {
-			this.segundaCeldaSeleccionada = new Posicion (celdaSeleccionada.getFila(), celdaSeleccionada.getColumna());
+			this.segundaCeldaSeleccionada = new Posicion(
+					celdaSeleccionada.getFila(), celdaSeleccionada.getColumna());
 		} catch (FueraDeMatriz e) {
 			e.printStackTrace();
 		}
+	}
+
+	public void actualizarMapa(JButtonID[][] mapaDibujado) {
+		
+		int tamanioMapa = this.mapa.getTamanio();
+
+		for (int i = 0; i < tamanioMapa; i++) {
+			for (int j = 0; j < tamanioMapa; j++) {
+				try {
+					Celda celda = this.mapa.devolverCelda(new Posicion(i, j));
+
+					if (celda.getConstruccion() != null) {
+						this.fabricaVistaConstruccion.crearVistaConstruccion(celda.getConstruccion()).dibujar(mapaDibujado);
+					} else if (celda.getUnidad() != null) {
+						this.fabricaVistaUnidad.crearVistaUnidad(celda.getUnidad()).dibujar(mapaDibujado);
+					}
+
+				} catch (FueraDeMatriz e) {
+					e.printStackTrace();
+				}
+
+			}
+		}
+
 	}
 }
