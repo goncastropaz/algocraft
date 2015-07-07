@@ -136,16 +136,21 @@ public class Jugador {
 	}
 
 	public void refrescar() {
+		List<Unidad> unidades = new ArrayList<Unidad>();
+		List<Construccion> construcciones = new ArrayList<Construccion>();
 		for(Unidad unidad : unidadesList){
 			if(unidad.getVida().getVidaActual().equals(0)){
-//				eliminarUnidad();
+				unidades.add(unidad);
+				poblacion.sacarPoblacion(unidad.getSuministro());
 			}
 		}
 		for(Construccion construccion : construccionesList){
 			if(construccion.getHealth().getVidaActual().equals(0)){
-//				eliminarConstruccion();
+				construcciones.add(construccion);
 			}
 		}
+		if(!unidades.isEmpty()) unidadesList.removeAll(unidades);
+		if(!construcciones.isEmpty()) construccionesList.removeAll(construcciones);
 	}
 
 	public Object getRaza() {
