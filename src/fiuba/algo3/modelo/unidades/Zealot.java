@@ -43,4 +43,9 @@ public class Zealot extends UnidadTerrestre {
 		return tieneConstruccion(construccionesList, "ACCESO");
 	}
 	
+	@Override
+	public boolean tieneMagia(String magia){
+		return false;
+	}
+	
 }

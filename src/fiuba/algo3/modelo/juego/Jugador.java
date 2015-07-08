@@ -76,8 +76,10 @@ public class Jugador {
 	
 	public void agregarUnidad(Unidad unidad){
 		this.unidadesList.add(unidad);
-		this.poblacion.agregarPoblacion(unidad.getSuministro());
-		this.recursos.sacarRecursos(unidad.getCostoDeRecursos());
+		if(!unidad.copia){
+			this.poblacion.agregarPoblacion(unidad.getSuministro());
+			this.recursos.sacarRecursos(unidad.getCostoDeRecursos());
+		}
 	}
 
 	public void actualizarMineral() {
@@ -113,10 +115,12 @@ public class Jugador {
 	}
 
 	public void puedeCrearUnidad(Unidad unidad) throws RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente, NoTieneEdificiosPrevios {
-		if(!this.raza.getListaDeUnidadesValidas().contains(unidad.getNombre())) throw new RazaNoTieneUnidad();
-		if(!unidad.getCostoDeRecursos().tieneSuficientesRecursos(this.recursos.getMineral(),this.recursos.getGas())) throw new RecursosInsuficientes();
-		if(!(this.poblacion.getPoblacionDisponible() > unidad.getSuministro())) throw new PoblacionInsuficiente();
-		if(!unidad.tieneEdificiosPrevios(this.getConstruccionesList())) throw new NoTieneEdificiosPrevios();
+		if(!unidad.copia){
+			if(!this.raza.getListaDeUnidadesValidas().contains(unidad.getNombre())) throw new RazaNoTieneUnidad();
+			if(!unidad.getCostoDeRecursos().tieneSuficientesRecursos(this.recursos.getMineral(),this.recursos.getGas())) throw new RecursosInsuficientes();
+			if(!(this.poblacion.getPoblacionDisponible() > unidad.getSuministro())) throw new PoblacionInsuficiente();
+			if(!unidad.tieneEdificiosPrevios(this.getConstruccionesList())) throw new NoTieneEdificiosPrevios();
+		}
 	}
 
 	public void puedeCrearConstruccion(Construccion construccion) throws RazaNoTieneConstruccion, RecursosInsuficientes, NoTieneEdificiosPrevios {

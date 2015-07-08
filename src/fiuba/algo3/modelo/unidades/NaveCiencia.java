@@ -82,4 +82,9 @@ public class NaveCiencia extends UnidadAerea{
 		return tieneConstruccion(construccionesList, "PUERTO_ESTELAR_TERRAN");
 	}
 	
+	@Override
+	public boolean tieneMagia(String magia){
+		return magia.equals("RADIACION") || magia.equals("EMP");
+	}
+	
 }	

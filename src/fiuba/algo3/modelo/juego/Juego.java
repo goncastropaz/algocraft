@@ -9,9 +9,12 @@ import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.CeldaSinRecurso;
 import fiuba.algo3.modelo.excepciones.ColorYaExiste;
 import fiuba.algo3.modelo.excepciones.CompletarDatosException;
+import fiuba.algo3.modelo.excepciones.CopiaNoCausaDanio;
+import fiuba.algo3.modelo.excepciones.EnergiaInsuficiente;
 import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
 import fiuba.algo3.modelo.excepciones.FueraDeRango;
 import fiuba.algo3.modelo.excepciones.JugadorInvalido;
+import fiuba.algo3.modelo.excepciones.MagiaDesconocida;
 import fiuba.algo3.modelo.excepciones.NoTieneEdificiosPrevios;
 import fiuba.algo3.modelo.excepciones.NombreConMenosDe4Caracteres;
 import fiuba.algo3.modelo.excepciones.NombreYaExiste;
@@ -22,7 +25,10 @@ import fiuba.algo3.modelo.excepciones.RazaNoTieneUnidad;
 import fiuba.algo3.modelo.excepciones.RecursosInsuficientes;
 import fiuba.algo3.modelo.excepciones.UnidadAtacadaInvalida;
 import fiuba.algo3.modelo.excepciones.UnidadAtacanteInvalida;
+import fiuba.algo3.modelo.excepciones.UnidadNoTieneMagia;
 import fiuba.algo3.modelo.razas.Raza;
+import fiuba.algo3.modelo.unidades.AltoTemplario;
+import fiuba.algo3.modelo.unidades.NaveCiencia;
 import fiuba.algo3.modelo.unidades.Unidad;
 
 public class Juego {
@@ -111,6 +117,22 @@ public class Juego {
 	
 	public void atacar(Unidad unidad, Posicion pos) throws ObjetivoInvalido, UnidadAtacanteInvalida, UnidadAtacadaInvalida, FueraDeRango{
 		unidad.atacarUnidad(this,pos);
+		this.refrescar();
+	}
+	
+	public void usarMagia(Unidad unidad, String magia, Posicion pos) throws UnidadNoTieneMagia, MagiaDesconocida, EnergiaInsuficiente, CopiaNoCausaDanio, CeldaOcupada, CeldaEspacial, RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente, NoTieneEdificiosPrevios{
+		if(!unidad.tieneMagia(magia)) throw new UnidadNoTieneMagia();
+		if(magia.equals("TORMENTA")){
+			((AltoTemplario) unidad).provocarTormentaPsionica(pos, this.mapaJuego);
+		} else if(magia.equals("ALUCINACION")){
+			((AltoTemplario) unidad).provocarAlucinacion(pos, this);
+		} else if(magia.equals("RADIACION")){
+			((NaveCiencia) unidad).generarRadiacion(pos, this.mapaJuego);
+		} else if(magia.equals("EMP")){
+			((NaveCiencia) unidad).generarEMP(pos, this.mapaJuego);
+		} else{
+			throw new MagiaDesconocida();
+		}
 		this.refrescar();
 	}
 

@@ -84,10 +84,10 @@ public class AltoTemplario extends UnidadTerrestre {
 		tormenta.provocarTormenta();
 	}
 	
-	public void provocarAlucinacion(Unidad unidadACopiar, Juego juego) throws EnergiaInsuficiente, CeldaOcupada, CeldaEspacial, CopiaNoCausaDanio, RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente, NoTieneEdificiosPrevios{
+	public void provocarAlucinacion(Posicion pos, Juego juego) throws EnergiaInsuficiente, CeldaOcupada, CeldaEspacial, CopiaNoCausaDanio, RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente, NoTieneEdificiosPrevios{
 		if(this.copia) throw new CopiaNoCausaDanio();
 		Alucinacion alucinacion = new Alucinacion(this.energia);
-		alucinacion.generarAlucinacion(unidadACopiar, juego);
+		alucinacion.generarAlucinacion(pos, juego);
 	}
 
 	@Override
@@ -107,4 +107,8 @@ public class AltoTemplario extends UnidadTerrestre {
 		return tieneConstruccion(construccionesList, "ARCHIVO_TEMPLARIO");
 	}
 
+	@Override
+	public boolean tieneMagia(String magia){
+		return magia.equals("TORMENTA") || magia.equals("ALUCINACION");
+	}
 }

@@ -47,4 +47,9 @@ public class NaveTransporteTerran extends UnidadAerea {
 		return tieneConstruccion(construccionesList, "PUERTO_ESTELAR_TERRAN");
 	}
 	
+	@Override
+	public boolean tieneMagia(String magia){
+		return false;
+	}
+	
 }

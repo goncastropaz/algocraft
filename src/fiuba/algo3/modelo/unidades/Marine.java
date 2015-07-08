@@ -44,4 +44,9 @@ public class Marine extends UnidadTerrestre{
 	public boolean tieneEdificiosPrevios(List<Construccion> construccionesList) {
 		return tieneConstruccion(construccionesList, "BARRACA");
 	}
+	
+	@Override
+	public boolean tieneMagia(String magia){
+		return false;
+	}
 }

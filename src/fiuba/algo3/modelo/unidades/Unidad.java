@@ -171,7 +171,6 @@ public abstract class Unidad implements IUnidad, Daniable{
 			this.getEscudo().setEscudoActual(0);
 			this.vida.setVidaActual(this.getVida().getVidaActual()-(danio-escudoActual));
 		}
-		//actualizar poblacion y destruir
 	}
 
 	public abstract boolean tieneEdificiosPrevios(List<Construccion> construccionesList);
@@ -184,4 +183,6 @@ public abstract class Unidad implements IUnidad, Daniable{
 		}
 		return false;
 	}
+
+	public abstract boolean tieneMagia(String magia);
 }

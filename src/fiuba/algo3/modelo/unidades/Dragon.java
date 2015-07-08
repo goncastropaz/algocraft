@@ -44,4 +44,9 @@ public class Dragon extends UnidadTerrestre {
 	public boolean tieneEdificiosPrevios(List<Construccion> construccionesList) {
 		return tieneConstruccion(construccionesList, "ACCESO");
 	}
+	
+	@Override
+	public boolean tieneMagia(String magia){
+		return false;
+	}
 }

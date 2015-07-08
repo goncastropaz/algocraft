@@ -44,4 +44,9 @@ public class Golliat extends UnidadTerrestre{
 		return tieneConstruccion(construccionesList, "FABRICA");
 	}
 	
+	@Override
+	public boolean tieneMagia(String magia){
+		return false;
+	}
+	
 }

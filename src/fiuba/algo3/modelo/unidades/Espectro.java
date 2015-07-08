@@ -44,4 +44,9 @@ public class Espectro extends UnidadAerea {
 	public boolean tieneEdificiosPrevios(List<Construccion> construccionesList) {
 		return tieneConstruccion(construccionesList, "PUERTO_ESTELAR_TERRAN");
 	}
+	
+	@Override
+	public boolean tieneMagia(String magia){
+		return false;
+	}
 }

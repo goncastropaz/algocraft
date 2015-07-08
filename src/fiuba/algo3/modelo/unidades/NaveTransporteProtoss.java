@@ -45,4 +45,9 @@ public class NaveTransporteProtoss extends UnidadAerea {
 		return tieneConstruccion(construccionesList, "PUERTO_ESTELAR_PROTOSS");
 	}
 	
+	@Override
+	public boolean tieneMagia(String magia){
+		return false;
+	}
+	
 }
