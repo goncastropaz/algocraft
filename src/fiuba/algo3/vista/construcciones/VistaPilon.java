@@ -12,7 +12,7 @@ public class VistaPilon extends VistaConstruccion {
 
 	public VistaPilon(Construccion construccion) throws IOException {
 		super(construccion);
-		rutaImagenEnConstruccion = "";
+//		rutaImagenEnConstruccion = "";
 		rutaImagenConstruida = "/imagenes/construcciones/protoss/Pilon.jpg";
 
 		BufferedImage enConstruccion = ImageIO.read(VistaConstruccion.class

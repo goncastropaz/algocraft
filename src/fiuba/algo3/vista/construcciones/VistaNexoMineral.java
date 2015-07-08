@@ -12,7 +12,7 @@ public class VistaNexoMineral extends VistaConstruccion {
 
 	public VistaNexoMineral(Construccion construccion) throws IOException {
 		super(construccion);
-		rutaImagenEnConstruccion = "";
+//		rutaImagenEnConstruccion = "";
 		rutaImagenConstruida = "/imagenes/construcciones/protoss/NexoMineral.jpg";
 
 		BufferedImage enConstruccion = ImageIO.read(VistaConstruccion.class

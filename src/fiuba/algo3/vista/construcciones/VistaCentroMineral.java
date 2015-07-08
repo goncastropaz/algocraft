@@ -13,7 +13,7 @@ public class VistaCentroMineral extends VistaConstruccion {
 	public VistaCentroMineral(Construccion construccion) throws IOException {
 		super(construccion);
 
-		this.rutaImagenEnConstruccion = "";
+//		this.rutaImagenEnConstruccion = "";
 		this.rutaImagenConstruida = "/imagenes/construcciones/terran/CentroMineral.jpg";
 
 		BufferedImage enConstruccion = ImageIO.read(VistaConstruccion.class

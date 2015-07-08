@@ -12,7 +12,7 @@ import fiuba.algo3.vista.JButtonID;
 public abstract class VistaConstruccion {
 
 	protected Construccion construccion;
-	protected String rutaImagenEnConstruccion;
+	protected String rutaImagenEnConstruccion = "/imagenes/construcciones/EdificioEnConstruccion.jpg";
 	protected String rutaImagenConstruida;
 	protected ImageIcon imagenEnConstruccion;
 	protected ImageIcon  imagenConstruida;
@@ -24,7 +24,7 @@ public abstract class VistaConstruccion {
 	public void dibujar(JButtonID[][] tablero) {
 		Posicion posicion = this.construccion.getUbicacion();
 		
-		if(this.construccion.getConstructionTime().getTurnosMaximos()<this.construccion.getConstructionTime().getTurnosRestantes()){
+		if(this.construccion.getConstructionTime().getTurnosRestantes() != 0){
 			tablero[posicion.getFila()][posicion.getColumna()].setIcon(new ImageIcon(this.imagenEnConstruccion.getImage().getScaledInstance(50,50,Image.SCALE_SMOOTH)));
 		}else{
 			tablero[posicion.getFila()][posicion.getColumna()].setIcon(new ImageIcon(this.imagenConstruida.getImage().getScaledInstance(50,50,Image.SCALE_SMOOTH)));

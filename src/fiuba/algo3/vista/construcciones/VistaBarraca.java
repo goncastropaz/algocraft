@@ -13,7 +13,7 @@ public class VistaBarraca extends VistaConstruccion {
 	public VistaBarraca(Construccion construccion) throws IOException {
 		super(construccion);
 
-		this.rutaImagenEnConstruccion = "";
+//		this.rutaImagenEnConstruccion = "";
 		this.rutaImagenConstruida = "/imagenes/construcciones/terran/Barraca.jpg";
 
 		BufferedImage enConstruccion = ImageIO.read(VistaConstruccion.class

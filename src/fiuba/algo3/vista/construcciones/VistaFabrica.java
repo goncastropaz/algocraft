@@ -12,7 +12,7 @@ public class VistaFabrica extends VistaConstruccion {
 
 	public VistaFabrica(Construccion construccion) throws IOException {
 		super(construccion);
-		rutaImagenEnConstruccion = "";
+//		rutaImagenEnConstruccion = "";
 		rutaImagenConstruida = "/imagenes/construcciones/terran/Fabrica.jpg";
 
 		BufferedImage enConstruccion = ImageIO.read(VistaConstruccion.class

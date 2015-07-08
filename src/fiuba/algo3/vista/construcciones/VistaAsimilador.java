@@ -13,7 +13,7 @@ public class VistaAsimilador extends VistaConstruccion {
 	public VistaAsimilador(Construccion construccion) throws IOException {
 		super(construccion);
 
-		this.rutaImagenEnConstruccion = "";
+//		this.rutaImagenEnConstruccion = "";
 		this.rutaImagenConstruida = "/imagenes/construcciones/protoss/Asimilador.jpg";
 
 		BufferedImage enConstruccion = ImageIO.read(VistaConstruccion.class

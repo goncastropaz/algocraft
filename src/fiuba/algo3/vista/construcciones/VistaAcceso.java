@@ -13,7 +13,7 @@ public class VistaAcceso extends VistaConstruccion {
 	public VistaAcceso(Construccion construccion) throws IOException {
 		super(construccion);
 
-		this.rutaImagenEnConstruccion = "";
+//		this.rutaImagenEnConstruccion = "";
 		this.rutaImagenConstruida = "/imagenes/construcciones/terran/Acceso.jpg";
 
 		BufferedImage enConstruccion = ImageIO.read(VistaConstruccion.class.getResource(this.rutaImagenEnConstruccion));

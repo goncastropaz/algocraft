@@ -15,7 +15,7 @@ public class VistaArchivosTemplarios extends VistaConstruccion {
 			throws IOException {
 		super(construccion);
 		
-		this.rutaImagenEnConstruccion = "";
+//		this.rutaImagenEnConstruccion = "";
 		this.rutaImagenConstruida = "/imagenes/construcciones/protoss/ArchivosTemplarios.jpg";
 
 		BufferedImage enConstruccion = ImageIO.read(VistaConstruccion.class

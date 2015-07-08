@@ -14,7 +14,7 @@ public class VistaDepositoSuministros extends VistaConstruccion {
 			throws IOException {
 		super(construccion);
 
-		this.rutaImagenEnConstruccion = "";
+//		this.rutaImagenEnConstruccion = "";
 		this.rutaImagenConstruida = "/imagenes/construcciones/terran/DepositoSuministros.jpg";
 
 		BufferedImage enConstruccion = ImageIO.read(VistaConstruccion.class
