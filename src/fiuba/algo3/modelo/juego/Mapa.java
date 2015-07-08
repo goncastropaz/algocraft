@@ -116,17 +116,17 @@ public class Mapa {
 
 	}
 
-	public Posicion agregarUnidad(Unidad unidad, Posicion posConstruccion) throws CeldaOcupada, CeldaEspacial{
+	public Posicion agregarUnidad(Unidad unidad, Posicion posConstruccion) throws CeldaOcupada{
 		//TODO reveer validacion -- ajustar como construccion 
 		List<Celda> posiblesCeldas = this.devolverCeldasRadio(posConstruccion, 1);
 		for(int i =0; i<posiblesCeldas.size();i++){
 			Celda celda = posiblesCeldas.get(i);
-			if(unidad.permitidaEnArea(celda)){
+			if(unidad.permitidaEnArea(celda)&& celda.desocupada()){
 				celda.setUnidad(unidad);
 				return celda.getPosicion();
 			}
 		}
-		throw new CeldaEspacial();
+		throw new CeldaOcupada();
 					
 	}
 
@@ -146,6 +146,10 @@ public class Mapa {
 			throw new ObjetivoInvalido();
 		}
 		return daniable;
+	}
+
+	public boolean tieneConstruccion(Posicion pos) {
+		return (this.matriz[pos.getFila()][pos.getColumna()].tieneConstruccion());
 	}
 
 

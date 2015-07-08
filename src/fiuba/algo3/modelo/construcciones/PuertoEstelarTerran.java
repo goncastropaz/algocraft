@@ -1,5 +1,6 @@
 package fiuba.algo3.modelo.construcciones;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import fiuba.algo3.modelo.complementos.Posicion;
@@ -13,6 +14,7 @@ import fiuba.algo3.modelo.juego.Juego;
 import fiuba.algo3.modelo.unidades.Espectro;
 import fiuba.algo3.modelo.unidades.NaveCiencia;
 import fiuba.algo3.modelo.unidades.NaveTransporteTerran;
+import fiuba.algo3.modelo.unidades.Unidad;
 
 public class PuertoEstelarTerran  extends Construccion{
 
@@ -22,14 +24,19 @@ public class PuertoEstelarTerran  extends Construccion{
 	private static final Integer TIEMPO_CONSTRUCCION = 10;
 	private static final Integer MAX_VIDA = 1300;
 	private static final Integer ESCUDO = 0;
-	private static final String  UNIDAD = "";
+	private ArrayList<String> unidadesHabilitadas;
 	
 	
 	public PuertoEstelarTerran(Posicion pos) {
 		super(NOMBRE, COSTO_MINERAL, COSTO_GAS, TIEMPO_CONSTRUCCION, MAX_VIDA,
-				ESCUDO, UNIDAD,pos);
+				ESCUDO, pos);
+		
+		this.unidadesHabilitadas = new ArrayList<String>();
+		this.unidadesHabilitadas.add("ESPECTRO");
+		this.unidadesHabilitadas.add("NAVE_TRANSPORTE_TERRAN");
+		this.unidadesHabilitadas.add("NAVE_CIENCIA");
 	}
-	
+	/*
 	public void crearEspectro(Juego juego) throws CeldaOcupada, CeldaEspacial, RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente, NoTieneEdificiosPrevios{
 		
 		Espectro unidad = new Espectro();
@@ -46,11 +53,17 @@ public class PuertoEstelarTerran  extends Construccion{
 	
 		NaveCiencia unidad = new NaveCiencia();
 		juego.agregarUnidad(unidad, this.ubicacion);
-	}
+	}*/
 
 	@Override
 	public boolean tieneEdificiosPrevios(List<Construccion> construcciones) {
 		return tieneConstruccion(construcciones, "BARRACA") && tieneConstruccion(construcciones, "FABRICA");
+	}
+	
+	public boolean puedeCrearUnidad(Unidad unidad) {
+		if(this.unidadesHabilitadas.contains(unidad.getNombre())) return true;
+		return false;
+		
 	}
 	
 }

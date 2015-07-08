@@ -41,7 +41,7 @@ public class Protoss extends Raza{
 		this.listaDeCreacionConstrucciones.put(5, new CrearPuertoEstelarProtoss(juego));
 		this.listaDeCreacionConstrucciones.put(6, new CrearArchivoTemplario(juego));
 		
-		this.listaDeUnidadesValidas.add("ZEALOT");
+		/*this.listaDeUnidadesValidas.add("ZEALOT");
 		this.listaDeUnidadesValidas.add("DRAGON");
 		this.listaDeUnidadesValidas.add("SCOUT");
 		this.listaDeUnidadesValidas.add("ALTO_TEMPLARIO");
@@ -52,7 +52,7 @@ public class Protoss extends Raza{
 		this.listaDeConstruccionesValidas.add("PILON");
 		this.listaDeConstruccionesValidas.add("ASIMILADOR");
 		this.listaDeConstruccionesValidas.add("PUERTO_ESTELAR_PROTOSS");
-		this.listaDeConstruccionesValidas.add("ARCHIVO_TEMPLARIO");
+		this.listaDeConstruccionesValidas.add("ARCHIVO_TEMPLARIO");*/
 	}
 
 	@Override

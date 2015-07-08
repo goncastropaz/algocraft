@@ -113,6 +113,7 @@ public abstract class Unidad implements IUnidad, Daniable{
 	public void setCopia(){
 		this.copia = true;
 		this.danio = new Danio(0,0);
+		this.setCostoDeRecursos(new Recursos(0,0));
 		this.vida.setVidaActual(0);
 	}
 	

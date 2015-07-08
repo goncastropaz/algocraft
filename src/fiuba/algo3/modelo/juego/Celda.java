@@ -90,5 +90,15 @@ public class Celda {
 		return this.edificio;
 	}
 
+	public boolean tieneConstruccion() {
+		if(this.edificio == null) return false;
+		return true;
+	}
+
+	public boolean desocupada() {
+		if(this.mineral || this.gas || this.edificio != null || this.unidad != null) return false;
+		return true;
+	}
+
 	
 }

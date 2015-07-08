@@ -1,5 +1,6 @@
 package fiuba.algo3.modelo.construcciones;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import fiuba.algo3.modelo.complementos.Daniable;
@@ -22,10 +23,11 @@ public abstract class Construccion implements Daniable{
 	private Vida health;
 	private Escudo shield;
 	protected Posicion ubicacion;
+	
 
 	public Construccion(String name, Integer mineralCost, Integer gasCost,
 			Integer construtionTime, Integer maxHealth, Integer maxShield,
-			String unit, Posicion pos){
+			Posicion pos){
 
 		this.name = name;
 		this.cost = new Recursos(mineralCost, gasCost);
@@ -33,6 +35,7 @@ public abstract class Construccion implements Daniable{
 		this.health = new  Vida(maxHealth);
 		this.shield = new Escudo(maxShield);
 		this.ubicacion = pos;
+		
 
 	}
 
@@ -136,5 +139,7 @@ public abstract class Construccion implements Daniable{
 		}
 		return false;
 	}
+
+	public abstract boolean puedeCrearUnidad(Unidad unidad);
 	
 }

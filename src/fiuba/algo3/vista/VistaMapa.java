@@ -36,7 +36,7 @@ public class VistaMapa {
 
 
 	public VistaMapa(Mapa mapa, ControlMapa controlMapa) {
-		this.controlMapa = new ControlMapa(mapa);
+		this.controlMapa = controlMapa;
 		
 		tamanioMapa = 0;
 
@@ -92,7 +92,7 @@ public class VistaMapa {
 				final JButtonID boton = new JButtonID(i, j);
 				boton.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
-						final JButtonID celdaSeleccionada = (JButtonID) e.getSource();
+						JButtonID celdaSeleccionada = (JButtonID) e.getSource();
 						controlMapa.seleccionarCelda(celdaSeleccionada);
 												
 					}
@@ -142,11 +142,12 @@ public class VistaMapa {
 	}
 
 	public void actualizarMapa() {
+		this.setearImagenesDefault(this.mapa);
 		this.controlMapa.actualizarMapa(this.mapa);
 	}
 
 	public void actualizarVista(ControlVistaJugador control) {
-		this.setearImagenesDefault(this.mapa);
+		
 		this.mapaVisibleJugador(control);
 	}
 	

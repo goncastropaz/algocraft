@@ -34,7 +34,7 @@ public class Jugador {
 		this.color = "";
 		this.construccionesList = new ArrayList<Construccion>();
 		this.unidadesList = new ArrayList<Unidad>();
-		this.recursos = new Recursos(0, 0);
+		this.recursos = new Recursos(200, 0);
 		this.poblacion = new Poblacion();
 		this.visionMapa = new VisionJugador(baseInicial);
 	}
@@ -114,17 +114,17 @@ public class Jugador {
 		
 	}
 
-	public void puedeCrearUnidad(Unidad unidad) throws RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente, NoTieneEdificiosPrevios {
+	public void puedeCrearUnidad(Unidad unidad) throws RecursosInsuficientes, PoblacionInsuficiente {
 		if(!unidad.copia){
-			if(!this.raza.getListaDeUnidadesValidas().contains(unidad.getNombre())) throw new RazaNoTieneUnidad();
+			//if(!this.raza.getListaDeUnidadesValidas().contains(unidad.getNombre())) throw new RazaNoTieneUnidad();
 			if(!unidad.getCostoDeRecursos().tieneSuficientesRecursos(this.recursos.getMineral(),this.recursos.getGas())) throw new RecursosInsuficientes();
 			if(!(this.poblacion.getPoblacionDisponible() > unidad.getSuministro())) throw new PoblacionInsuficiente();
-			if(!unidad.tieneEdificiosPrevios(this.getConstruccionesList())) throw new NoTieneEdificiosPrevios();
+			//if(!unidad.tieneEdificiosPrevios(this.getConstruccionesList())) throw new NoTieneEdificiosPrevios();
 		}
 	}
 
 	public void puedeCrearConstruccion(Construccion construccion) throws RazaNoTieneConstruccion, RecursosInsuficientes, NoTieneEdificiosPrevios {
-		if(!this.raza.getListaDeConstruccionesValidas().contains(construccion.getName())) throw new RazaNoTieneConstruccion();
+		//if(!this.raza.getListaDeConstruccionesValidas().contains(construccion.getName())) throw new RazaNoTieneConstruccion();
 		if(!construccion.getCost().tieneSuficientesRecursos(this.recursos.getMineral(), this.recursos.getGas())) throw new RecursosInsuficientes();
 		if(!construccion.tieneEdificiosPrevios(this.getConstruccionesList())) throw new NoTieneEdificiosPrevios(); 
 	}

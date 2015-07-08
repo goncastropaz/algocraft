@@ -1,5 +1,6 @@
 package fiuba.algo3.modelo.construcciones;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import fiuba.algo3.modelo.complementos.Posicion;
@@ -12,6 +13,7 @@ import fiuba.algo3.modelo.excepciones.RecursosInsuficientes;
 import fiuba.algo3.modelo.juego.Juego;
 import fiuba.algo3.modelo.unidades.NaveTransporteProtoss;
 import fiuba.algo3.modelo.unidades.Scout;
+import fiuba.algo3.modelo.unidades.Unidad;
 
 public class PuertoEstelarProtoss extends Construccion {
 
@@ -21,13 +23,18 @@ public class PuertoEstelarProtoss extends Construccion {
 	private static final Integer TIEMPO_CONSTRUCCION = 10;
 	private static final Integer MAX_VIDA = 600;
 	private static final Integer ESCUDO = 600;
-	private static final String  UNIDAD = "";
+	private ArrayList<String> unidadesHabilitadas;
 		
 	public PuertoEstelarProtoss(Posicion pos){
 		super(NOMBRE, COSTO_MINERAL, COSTO_GAS, TIEMPO_CONSTRUCCION, MAX_VIDA,
-				ESCUDO, UNIDAD,pos);
+				ESCUDO, pos);
+
+		this.unidadesHabilitadas = new ArrayList<String>();
+		this.unidadesHabilitadas.add("SCOUT");
+		this.unidadesHabilitadas.add("NAVE_TRANSPORTE_PROTOSS");
+		
 	}
-	
+	/*
 	public void crearScout(Juego juego) throws CeldaOcupada, CeldaEspacial, RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente, NoTieneEdificiosPrevios{
 		
 		Scout unidad = new Scout();
@@ -38,11 +45,18 @@ public class PuertoEstelarProtoss extends Construccion {
 	
 		NaveTransporteProtoss unidad = new NaveTransporteProtoss();
 		juego.agregarUnidad(unidad, this.ubicacion);
-	}
+	}*/
 
 	@Override
 	public boolean tieneEdificiosPrevios(List<Construccion> construcciones) {
 		return tieneConstruccion(construcciones, "ACCESO");
+	}
+	
+	
+	public boolean puedeCrearUnidad(Unidad unidad) {
+		if(this.unidadesHabilitadas.contains(unidad.getNombre())) return true;
+		return false;
+		
 	}
 	
 }

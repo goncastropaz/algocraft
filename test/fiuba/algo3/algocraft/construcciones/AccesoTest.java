@@ -63,7 +63,7 @@ public class AccesoTest {
 			for(int i = 0; i < 50; i++) juego.getActualJugador().actualizarMineral();
 			juego.getActualJugador().agregarConstruccion(pilon);
 			juego.agregarConstruccion(acceso1, posicion2);
-			juego.agregarUnidad(zealot, posicion3);
+			juego.getMapaDeJuego().devolverCelda(posicion3).setUnidad(zealot);
 			juego.agregarConstruccion(acceso2, posicion3);
 		} catch(Exception e){
 			assertEquals(true, e instanceof CeldaOcupada);

@@ -6,6 +6,7 @@ import java.io.IOException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
@@ -137,7 +138,7 @@ public class VistaJuego {
 		this.frame.getContentPane().repaint();
 	}
 
-	private void actualizarVista() {
+	public void actualizarVista() {
 		this.labelNombreJugador.setText("Nombre:  "+ controlJuego.getNombreJugadorActual());
 		this.labelColorJugador.setText("Color:    "+ controlJuego.getColorJugadorActual());
 		this.labelRazaJugador.setText("Raza:   "+ controlJuego.getRazaJugadorActual());
@@ -184,6 +185,11 @@ public class VistaJuego {
 
 	public void cerrarVentanaJuego() {
 		frame.setVisible(false);
+	}
+
+	public void mostrarError(String string) {
+		JOptionPane.showMessageDialog(frame, string);
+		
 	}
 
 }

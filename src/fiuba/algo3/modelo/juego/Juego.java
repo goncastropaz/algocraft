@@ -6,10 +6,12 @@ import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.construcciones.Construccion;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
+import fiuba.algo3.modelo.excepciones.CeldaSinConstruccion;
 import fiuba.algo3.modelo.excepciones.CeldaSinRecurso;
 import fiuba.algo3.modelo.excepciones.ColorYaExiste;
 import fiuba.algo3.modelo.excepciones.CompletarDatosException;
 import fiuba.algo3.modelo.excepciones.CopiaNoCausaDanio;
+import fiuba.algo3.modelo.excepciones.EdificioNoPuedeCrearUnidad;
 import fiuba.algo3.modelo.excepciones.EnergiaInsuficiente;
 import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
 import fiuba.algo3.modelo.excepciones.FueraDeRango;
@@ -102,11 +104,19 @@ public class Juego {
 		return this.juegoFinalizado;
 	}
 
-	public void agregarUnidad(Unidad unidad, Posicion posConstruccion) throws CeldaOcupada, CeldaEspacial, RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente, NoTieneEdificiosPrevios{
+	public void agregarUnidad(Unidad unidad, Posicion posConstruccion) throws CeldaOcupada, RecursosInsuficientes, PoblacionInsuficiente, CeldaSinConstruccion, EdificioNoPuedeCrearUnidad{
+		if(!this.mapaJuego.tieneConstruccion(posConstruccion)) throw new CeldaSinConstruccion();
+		if(!this.mapaJuego.devolverCelda(posConstruccion).getConstruccion().puedeCrearUnidad(unidad)) throw new EdificioNoPuedeCrearUnidad();
 		this.turno.getActualJugador().puedeCrearUnidad(unidad);
 		Posicion posUnidad = this.mapaJuego.agregarUnidad(unidad,posConstruccion);
 		unidad.setUbicacion(posUnidad);
 		this.turno.getActualJugador().agregarUnidad(unidad);
+	}
+	public void agregarUnidadCopia(Unidad copia, Posicion posUnidadCopiada) throws RecursosInsuficientes, PoblacionInsuficiente, CeldaOcupada{
+		this.turno.getActualJugador().puedeCrearUnidad(copia);
+		Posicion posUnidad = this.mapaJuego.agregarUnidad(copia,posUnidadCopiada);
+		copia.setUbicacion(posUnidad);
+		this.turno.getActualJugador().agregarUnidad(copia);
 	}
 	
 	public void agregarConstruccion(Construccion construccion, Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial, RazaNoTieneConstruccion, RecursosInsuficientes, NoTieneEdificiosPrevios{
@@ -120,7 +130,7 @@ public class Juego {
 		this.refrescar();
 	}
 	
-	public void usarMagia(Unidad unidad, String magia, Posicion pos) throws UnidadNoTieneMagia, MagiaDesconocida, EnergiaInsuficiente, CopiaNoCausaDanio, CeldaOcupada, CeldaEspacial, RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente, NoTieneEdificiosPrevios{
+	public void usarMagia(Unidad unidad, String magia, Posicion pos) throws UnidadNoTieneMagia, EnergiaInsuficiente, CopiaNoCausaDanio, CeldaOcupada, CeldaEspacial, RecursosInsuficientes, PoblacionInsuficiente, CeldaSinConstruccion, EdificioNoPuedeCrearUnidad, MagiaDesconocida {
 		if(!unidad.tieneMagia(magia)) throw new UnidadNoTieneMagia();
 		if(magia.equals("TORMENTA")){
 			((AltoTemplario) unidad).provocarTormentaPsionica(pos, this.mapaJuego);

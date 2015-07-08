@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
+import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.juego.Juego;
 import fiuba.algo3.modelo.juego.Jugador;
 import fiuba.algo3.modelo.juego.Mapa;
@@ -126,6 +127,20 @@ public class ControlJuego {
 	
 	public ControlMapa getControlMapa(){
 		return this.controlMapa;
+	}
+
+	public Posicion getUltimaPosicion() {
+		return this.controlMapa.getUltimaPosicion();
+	}
+
+	public void mostrarMensajeError(String string) {
+		this.vistaJuego.mostrarError(string);
+		
+	}
+
+	public void actualizarVista() {
+		this.vistaJuego.actualizarVista();
+		
 	}
 	
 

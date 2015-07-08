@@ -1,9 +1,11 @@
 package fiuba.algo3.modelo.construcciones;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.juego.Jugador;
+import fiuba.algo3.modelo.unidades.Unidad;
 
 public class Asimilador extends Construccion {
 
@@ -13,11 +15,14 @@ public class Asimilador extends Construccion {
 	private static final Integer TIEMPO_CONSTRUCCION = 6;
 	private static final Integer MAX_VIDA = 450;
 	private static final Integer ESCUDO = 450;
-	private static final String  UNIDAD = "";
+	private ArrayList<String> unidadesHabilitadas;
 	
 	public Asimilador(Posicion pos){
 		super(NOMBRE, COSTO_MINERAL, COSTO_GAS, TIEMPO_CONSTRUCCION, MAX_VIDA,
-				ESCUDO, UNIDAD,pos);
+				ESCUDO, pos);
+		
+		this.unidadesHabilitadas = new ArrayList<String>();
+	
 	}
 	
 	public void actualizarTurno(Jugador jugador){
@@ -34,4 +39,9 @@ public class Asimilador extends Construccion {
 		return true;
 	}
 	
+	public boolean puedeCrearUnidad(Unidad unidad) {
+		if(this.unidadesHabilitadas.contains(unidad.getNombre())) return true;
+		return false;
+		
+	}
 }

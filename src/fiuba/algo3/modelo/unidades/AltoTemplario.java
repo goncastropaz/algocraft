@@ -10,7 +10,9 @@ import fiuba.algo3.modelo.complementos.Recursos;
 import fiuba.algo3.modelo.construcciones.Construccion;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
+import fiuba.algo3.modelo.excepciones.CeldaSinConstruccion;
 import fiuba.algo3.modelo.excepciones.CopiaNoCausaDanio;
+import fiuba.algo3.modelo.excepciones.EdificioNoPuedeCrearUnidad;
 import fiuba.algo3.modelo.excepciones.EnergiaInsuficiente;
 import fiuba.algo3.modelo.excepciones.NoTieneEdificiosPrevios;
 import fiuba.algo3.modelo.excepciones.PoblacionInsuficiente;
@@ -84,7 +86,7 @@ public class AltoTemplario extends UnidadTerrestre {
 		tormenta.provocarTormenta();
 	}
 	
-	public void provocarAlucinacion(Posicion pos, Juego juego) throws EnergiaInsuficiente, CeldaOcupada, CeldaEspacial, CopiaNoCausaDanio, RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente, NoTieneEdificiosPrevios{
+	public void provocarAlucinacion(Posicion pos, Juego juego) throws CeldaOcupada, CeldaEspacial, RecursosInsuficientes, PoblacionInsuficiente, CeldaSinConstruccion, EdificioNoPuedeCrearUnidad, CopiaNoCausaDanio, EnergiaInsuficiente{
 		if(this.copia) throw new CopiaNoCausaDanio();
 		Alucinacion alucinacion = new Alucinacion(this.energia);
 		alucinacion.generarAlucinacion(pos, juego);
@@ -111,4 +113,6 @@ public class AltoTemplario extends UnidadTerrestre {
 	public boolean tieneMagia(String magia){
 		return magia.equals("TORMENTA") || magia.equals("ALUCINACION");
 	}
+	
+	
 }

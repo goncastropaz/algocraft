@@ -207,4 +207,8 @@ public class ControlMapa {
 		}
 
 	}
+
+	public Posicion getUltimaPosicion() {
+		return this.segundaCeldaSeleccionada;
+	}
 }
