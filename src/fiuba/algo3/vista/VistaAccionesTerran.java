@@ -283,6 +283,7 @@ public class VistaAccionesTerran extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					controlAccionesTerran.atacar(controlJuego.getPrimeraPosicion(),controlJuego.getUltimaPosicion());
+					controlJuego.actualizarVista();
 				} catch (ObjetivoInvalido e1) {
 					controlJuego.mostrarMensajeError("El objetivo seleccionado para ser atacado es invalido.");
 				} catch (UnidadAtacanteInvalida e1) {

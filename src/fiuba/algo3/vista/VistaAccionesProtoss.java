@@ -281,6 +281,7 @@ public class VistaAccionesProtoss extends JPanel{
 				public void actionPerformed(ActionEvent e) {
 						try {
 							controlAccionesProtoss.atacar(controlJuego.getPrimeraPosicion(),controlJuego.getUltimaPosicion());
+							controlJuego.actualizarVista();
 						} catch (ObjetivoInvalido e1) {
 							controlJuego.mostrarMensajeError("El objetivo seleccionado para ser atacado es invalido.");
 						} catch (UnidadAtacanteInvalida e1) {
