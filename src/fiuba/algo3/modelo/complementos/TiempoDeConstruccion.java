@@ -24,5 +24,9 @@ public class TiempoDeConstruccion {
 		}
 		
 	}
+	
+	public boolean terminado(){
+		return (this.getTurnosRestantes() == 0 );
+	}
 
 }

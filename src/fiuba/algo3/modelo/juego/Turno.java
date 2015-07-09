@@ -51,14 +51,13 @@ public class Turno {
 		}
 		
 		public void cambiarTurnoJugador(){
+			this.actualizarConstruccionesTurno(this.actualJugador);
+			this.actualizarUnidadesTurno(this.actualJugador);
 			Jugador aux = actualJugador;
 			this.actualJugador = proximoJugador;
 			this.proximoJugador = aux;
 			this.cantidadDeAccionesDisponibles =3;
-			this.actualizarConstruccionesTurno(this.actualJugador);
-			this.actualizarConstruccionesTurno(this.proximoJugador);
-			this.actualizarUnidadesTurno(this.actualJugador);
-			this.actualizarUnidadesTurno(this.proximoJugador);
+			
 			
 		}
 		

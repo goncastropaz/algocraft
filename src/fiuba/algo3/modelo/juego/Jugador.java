@@ -72,6 +72,7 @@ public class Jugador {
 	public void agregarConstruccion(Construccion construccion){
 		this.construccionesList.add(construccion);
 		construccion.actualizarPoblacion(this);
+		this.recursos.sacarRecursos(construccion.getCost());
 	}
 	
 	public void agregarUnidad(Unidad unidad){
@@ -166,7 +167,7 @@ public class Jugador {
 	}
 
 	public int getPoblacion() {
-		return this.poblacion.getPoblacionActual();
+		return this.poblacion.getPoblacionDisponible();
 
 	}
 

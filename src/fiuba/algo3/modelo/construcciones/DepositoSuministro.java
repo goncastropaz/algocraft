@@ -36,7 +36,7 @@ public class DepositoSuministro extends Construccion {
 	}
 	
 	public boolean puedeCrearUnidad(Unidad unidad) {
-		if(this.unidadesHabilitadas.contains(unidad.getNombre())) return true;
+		if(this.unidadesHabilitadas.contains(unidad.getNombre())&& this.terminado()) return true;
 		return false;
 		
 	}

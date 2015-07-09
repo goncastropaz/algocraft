@@ -1,5 +1,6 @@
 package fiuba.algo3.modelo.construcciones;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import fiuba.algo3.modelo.complementos.Posicion;
@@ -21,12 +22,16 @@ public class Fabrica extends Construccion {
 	private static final Integer TIEMPO_CONSTRUCCION = 12;
 	private static final Integer MAX_VIDA = 1250;
 	private static final Integer ESCUDO = 0;
-	private static final String  UNIDAD = "GOLLIAT";
+	private ArrayList<String> unidadesHabilitadas;
 
 	
 	public Fabrica(Posicion pos){
 		super(NOMBRE, COSTO_MINERAL, COSTO_GAS, TIEMPO_CONSTRUCCION, MAX_VIDA,
 				ESCUDO, pos);
+		
+		this.unidadesHabilitadas = new ArrayList<String>();
+		this.unidadesHabilitadas.add("GOLLIAT");
+		
 	}
 	/*
 	public void crearGolliat(Juego juego) throws CeldaOcupada, CeldaEspacial, RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente, NoTieneEdificiosPrevios{
@@ -39,10 +44,10 @@ public class Fabrica extends Construccion {
 	public boolean tieneEdificiosPrevios(List<Construccion> construcciones) {
 		return tieneConstruccion(construcciones, "BARRACA");
 	}
+	
 
-	@Override
 	public boolean puedeCrearUnidad(Unidad unidad) {
-		if(unidad.getNombre().equalsIgnoreCase(UNIDAD)) return true;
+		if(this.unidadesHabilitadas.contains(unidad.getNombre())&& this.terminado()) return true;
 		return false;
 		
 	}

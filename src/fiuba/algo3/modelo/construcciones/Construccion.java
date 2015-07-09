@@ -55,8 +55,12 @@ public abstract class Construccion implements Daniable{
 		this.cost = cost;
 	}
 
-	public TiempoDeConstruccion getConstructionTime() {
-		return constructionTime;
+	public boolean terminado() {
+		return this.constructionTime.terminado();
+	}
+	
+	public TiempoDeConstruccion getConstructionTime(){
+		return this.constructionTime;
 	}
 
 	public void setConstructionTime(TiempoDeConstruccion constructionTime) {
