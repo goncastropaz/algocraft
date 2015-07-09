@@ -14,7 +14,7 @@ public class VistaAcceso extends VistaConstruccion {
 		super(construccion);
 
 //		this.rutaImagenEnConstruccion = "";
-		this.rutaImagenConstruida = "/imagenes/construcciones/terran/Acceso.jpg";
+		this.rutaImagenConstruida = "/imagenes/construcciones/protoss/Acceso.jpg";
 
 		BufferedImage enConstruccion = ImageIO.read(VistaConstruccion.class.getResource(this.rutaImagenEnConstruccion));
 		BufferedImage construida = ImageIO.read(VistaConstruccion.class.getResource(this.rutaImagenConstruida));
