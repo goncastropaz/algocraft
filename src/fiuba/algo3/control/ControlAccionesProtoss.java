@@ -17,6 +17,7 @@ import fiuba.algo3.modelo.acciones.creacionUnidades.CrearUnidad;
 import fiuba.algo3.modelo.acciones.creacionUnidades.CrearZealot;
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
+import fiuba.algo3.modelo.excepciones.CeldaInvalida;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.CeldaSinConstruccion;
 import fiuba.algo3.modelo.excepciones.CeldaSinRecurso;
@@ -78,7 +79,7 @@ public class ControlAccionesProtoss implements ControlAcciones{
 		ejecutable.crearUnidad(pos);
 	}
 	
-	public void crearContruccion(int identificador,Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial, RazaNoTieneConstruccion, RecursosInsuficientes, NoTieneEdificiosPrevios{
+	public void crearContruccion(int identificador,Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial, RazaNoTieneConstruccion, RecursosInsuficientes, NoTieneEdificiosPrevios, CeldaInvalida{
 		CrearConstruccion ejecutable = this.listaDeCreacionConstrucciones.get(identificador);
 		ejecutable.crearConstruccion(pos);
 	}

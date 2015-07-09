@@ -14,6 +14,7 @@ import fiuba.algo3.control.ControlAccionesProtoss;
 import fiuba.algo3.control.ControlAccionesTerran;
 import fiuba.algo3.control.ControlJuego;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
+import fiuba.algo3.modelo.excepciones.CeldaInvalida;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.CeldaSinConstruccion;
 import fiuba.algo3.modelo.excepciones.CeldaSinRecurso;
@@ -251,6 +252,8 @@ public class VistaAccionesTerran extends JPanel {
 			controlJuego.mostrarMensajeError("Recursos insuficientes para crear el edificio.");
 		} catch (NoTieneEdificiosPrevios e) {
 			controlJuego.mostrarMensajeError("Requiere edificios previos");
+		} catch (CeldaInvalida e) {
+			controlJuego.mostrarMensajeError("La construccion no puede crearse sobre mineral/gas.");
 		}
 	}
 	

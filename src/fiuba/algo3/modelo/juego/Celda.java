@@ -3,6 +3,7 @@ package fiuba.algo3.modelo.juego;
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.construcciones.Construccion;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
+import fiuba.algo3.modelo.excepciones.CeldaInvalida;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.CeldaSinRecurso;
 import fiuba.algo3.modelo.unidades.Unidad;
@@ -70,10 +71,12 @@ public class Celda {
 		this.espacial =true;
 	}
 	
-	public void setConstruccion(Construccion unaConstruccion) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial{
+	public void setConstruccion(Construccion unaConstruccion) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial, CeldaInvalida{
 		if(this.espacial) throw new CeldaEspacial();
 		
 		if(this.edificio != null || this.unidad != null) throw new CeldaOcupada();
+		
+		if(!unaConstruccion.esProductorMineral() && !unaConstruccion.esProductorGas() && (this.mineral || this.gas)) throw new CeldaInvalida();
 		
 		if((unaConstruccion.esProductorMineral() && !this.mineral)||(unaConstruccion.esProductorGas() && !this.gas)) throw new CeldaSinRecurso();
 		

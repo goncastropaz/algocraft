@@ -3,6 +3,7 @@ package fiuba.algo3.modelo.acciones.creacionConstrucciones;
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.construcciones.PuertoEstelarTerran;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
+import fiuba.algo3.modelo.excepciones.CeldaInvalida;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.CeldaSinRecurso;
 import fiuba.algo3.modelo.excepciones.NoTieneEdificiosPrevios;
@@ -17,7 +18,7 @@ public class CrearPuertoEstelarTerran extends CrearConstruccion{
 	}
 	
 	@Override
-	public void crearConstruccion(Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial, RazaNoTieneConstruccion, RecursosInsuficientes, NoTieneEdificiosPrevios  {
+	public void crearConstruccion(Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial, RazaNoTieneConstruccion, RecursosInsuficientes, NoTieneEdificiosPrevios, CeldaInvalida  {
 		PuertoEstelarTerran construccion = new PuertoEstelarTerran(pos);
 		this.juego.agregarConstruccion(construccion,pos);
 	

@@ -11,6 +11,7 @@ import fiuba.algo3.modelo.construcciones.CentroDeMineral;
 import fiuba.algo3.modelo.construcciones.Construccion;
 import fiuba.algo3.modelo.construcciones.Refineria;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
+import fiuba.algo3.modelo.excepciones.CeldaInvalida;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.CeldaSinRecurso;
 import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
@@ -45,7 +46,7 @@ public class CeldaTest {
 
 	@Test(expected = CeldaOcupada.class)
 	public void testAgregarContruccionSiHayUnaUnidadDeberiaLanzarError()
-			throws CeldaOcupada, CeldaSinRecurso, FueraDeMatriz, CeldaEspacial {
+			throws CeldaOcupada, CeldaSinRecurso, FueraDeMatriz, CeldaEspacial, CeldaInvalida {
 		Posicion pos = new Posicion(2, 1);
 		Celda unaCelda = new Celda(pos);
 		Unidad marine = new Marine();
@@ -57,7 +58,7 @@ public class CeldaTest {
 	@Test(expected = CeldaOcupada.class)
 	public void testAgregarUnidadSiHayUnaConstruccionDeberiaLanzarError()
 			throws CeldaOcupada, FueraDeMatriz, JugadorInvalido,
-			CeldaSinRecurso, CeldaEspacial {
+			CeldaSinRecurso, CeldaEspacial, CeldaInvalida {
 		Posicion pos = new Posicion(2, 1);
 		Celda unaCelda = new Celda(pos);
 		Construccion barraca = new Barraca(pos);
@@ -91,7 +92,7 @@ public class CeldaTest {
 
 	}
 	@Test(expected = CeldaOcupada.class)
-	public void testAgregarConstruccionSiHayUnaConstruccionDeberiaLanzarError() throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial, FueraDeMatriz {
+	public void testAgregarConstruccionSiHayUnaConstruccionDeberiaLanzarError() throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial, FueraDeMatriz, CeldaInvalida {
 		Posicion pos = new Posicion(2, 1);
 		Celda unaCelda = new Celda(pos);
 		Construccion barraca = new Barraca(pos);
@@ -102,7 +103,7 @@ public class CeldaTest {
 
 	}
 	@Test(expected = CeldaOcupada.class)
-	public void testAgregarConstruccionSiHayUnaUnidadDeberiaLanzarError() throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial, FueraDeMatriz {
+	public void testAgregarConstruccionSiHayUnaUnidadDeberiaLanzarError() throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial, FueraDeMatriz, CeldaInvalida {
 		Posicion pos = new Posicion(2, 1);
 		Celda unaCelda = new Celda(pos);
 		Unidad marine = new Marine();
@@ -114,7 +115,7 @@ public class CeldaTest {
 	}
 	
 	@Test(expected = CeldaEspacial.class)
-	public void testAgregarConstruccionEnCeldaEspacialDeberiaLanzarError() throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial, FueraDeMatriz {
+	public void testAgregarConstruccionEnCeldaEspacialDeberiaLanzarError() throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial, FueraDeMatriz, CeldaInvalida {
 		Posicion pos = new Posicion(2, 1);
 		Celda unaCelda = new Celda(pos);
 		unaCelda.setAsEspacial();
@@ -124,7 +125,7 @@ public class CeldaTest {
 
 	}
 	@Test(expected = CeldaSinRecurso.class)
-	public void testAgregarCentroDeMineralEnCeldaSinMineralDeberiaLanzarError() throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial, FueraDeMatriz {
+	public void testAgregarCentroDeMineralEnCeldaSinMineralDeberiaLanzarError() throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial, FueraDeMatriz, CeldaInvalida {
 		Posicion pos = new Posicion(2, 1);
 		Celda unaCelda = new Celda(pos);
 			
@@ -133,7 +134,7 @@ public class CeldaTest {
 
 	}
 	@Test(expected = CeldaSinRecurso.class)
-	public void testAgregarRecolectoDeGasEnCeldaSinGasDeberiaLanzarError() throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial, FueraDeMatriz {
+	public void testAgregarRecolectoDeGasEnCeldaSinGasDeberiaLanzarError() throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial, FueraDeMatriz, CeldaInvalida {
 		Posicion pos = new Posicion(2, 1);
 		Celda unaCelda = new Celda(pos);
 			
@@ -143,7 +144,7 @@ public class CeldaTest {
 	}
 	@Ignore
 	@Test
-	public void testAgregarRecolectoDeGasEnCeldaConGasDeberiaDejarAgregar() throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial, FueraDeMatriz {
+	public void testAgregarRecolectoDeGasEnCeldaConGasDeberiaDejarAgregar() throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial, FueraDeMatriz, CeldaInvalida {
 		Posicion pos = new Posicion(2, 1);
 		Celda unaCelda = new Celda(pos);
 			
