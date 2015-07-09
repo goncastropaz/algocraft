@@ -20,7 +20,7 @@ public abstract class Movimiento extends java.util.Observable{
 		this.juego = juego;
 	}
 	
-	public abstract void mover(Posicion posActual) throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, CeldaOcupada, NoHayUnidadParaMoverEnCelda, CeldaEspacial;
+	public abstract void mover(Posicion posActual) throws FueraDeMatriz, CeldaOcupada, NoHayUnidadParaMoverEnCelda, CeldaEspacial;
 	
 	public void ActualizarObservadores() {
 		setChanged();

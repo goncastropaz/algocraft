@@ -17,7 +17,7 @@ public class Arriba extends Movimiento {
 		super(juego);
 	}
 	
-	public void mover(Posicion posActual) throws FueraDeMatriz,UnidadTerrestreEnAreaEspacial, CeldaOcupada, NoHayUnidadParaMoverEnCelda, CeldaEspacial {
+	public void mover(Posicion posActual) throws FueraDeMatriz, CeldaOcupada, NoHayUnidadParaMoverEnCelda, CeldaEspacial {
 		
 		Mapa mapa =  this.juego.getMapaDeJuego();
 		Unidad unidad = mapa.devolverCelda(posActual).getUnidad();

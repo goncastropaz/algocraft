@@ -19,7 +19,7 @@ public class Derecha extends Movimiento {
 	}
 	
 	
-	public void mover(Posicion posActual) throws FueraDeMatriz,UnidadTerrestreEnAreaEspacial, CeldaOcupada, NoHayUnidadParaMoverEnCelda, CeldaEspacial {
+	public void mover(Posicion posActual) throws FueraDeMatriz, CeldaOcupada, NoHayUnidadParaMoverEnCelda, CeldaEspacial {
 		Mapa mapa =  this.juego.getMapaDeJuego();
 		Unidad unidad = mapa.devolverCelda(posActual).getUnidad();
 		if(unidad == null) throw new NoHayUnidadParaMoverEnCelda();

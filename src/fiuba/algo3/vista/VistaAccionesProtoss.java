@@ -353,14 +353,12 @@ public class VistaAccionesProtoss extends JPanel{
 				controlJuego.actualizarVista();
 			} catch (FueraDeMatriz e) {
 				controlJuego.mostrarMensajeError("No se puede mover la unidad fuera de los limites del mapa.");
-			} catch (UnidadTerrestreEnAreaEspacial e) {
-				controlJuego.mostrarMensajeError("Unidad terrestre en area espacial.");
 			} catch (CeldaOcupada e) {
 				controlJuego.mostrarMensajeError("No se puede mover la unidad a una celda ocupada.");
 			} catch (NoHayUnidadParaMoverEnCelda e) {
 				controlJuego.mostrarMensajeError("Seleccione una unidad para mover.");
 			} catch (CeldaEspacial e) {
-				controlJuego.mostrarMensajeError("No se puede mover la unidad a una celda espacial.");
+				controlJuego.mostrarMensajeError("No se puede mover la unidad terrestre a una celda espacial.");
 			}
 		}
 
