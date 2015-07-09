@@ -20,7 +20,9 @@ import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.CeldaSinConstruccion;
 import fiuba.algo3.modelo.excepciones.CeldaSinRecurso;
 import fiuba.algo3.modelo.excepciones.CeldaSinUnidad;
+import fiuba.algo3.modelo.excepciones.CopiaNoCausaDanio;
 import fiuba.algo3.modelo.excepciones.EdificioNoPuedeCrearUnidad;
+import fiuba.algo3.modelo.excepciones.EnergiaInsuficiente;
 import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
 import fiuba.algo3.modelo.excepciones.FueraDeRango;
 import fiuba.algo3.modelo.excepciones.NoHayUnidadParaMoverEnCelda;
@@ -32,6 +34,7 @@ import fiuba.algo3.modelo.excepciones.RazaNoTieneUnidad;
 import fiuba.algo3.modelo.excepciones.RecursosInsuficientes;
 import fiuba.algo3.modelo.excepciones.UnidadAtacadaInvalida;
 import fiuba.algo3.modelo.excepciones.UnidadAtacanteInvalida;
+import fiuba.algo3.modelo.excepciones.UnidadNoTieneMagia;
 import fiuba.algo3.modelo.excepciones.UnidadTerrestreEnAreaEspacial;
 
 import java.awt.Color;
@@ -304,7 +307,7 @@ public class VistaAccionesTerran extends JPanel {
 		btnEmp.setBounds(120, 610, 170, 25);
 		btnEmp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-		
+				usarMagia(0);
 			}
 		});
 		add(btnEmp);
@@ -319,7 +322,7 @@ public class VistaAccionesTerran extends JPanel {
 		btnRadiacion.setBounds(120, 640, 117, 25);
 		btnRadiacion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-		
+				usarMagia(1);
 			}
 		});
 		add(btnRadiacion);
@@ -396,6 +399,34 @@ public class VistaAccionesTerran extends JPanel {
 			controlJuego.mostrarMensajeError("Seleccione una unidad para mover.");
 		} catch (CeldaEspacial e) {
 			controlJuego.mostrarMensajeError("No se puede mover la unidad terrestre a una celda espacial.");
+		}
+	}
+	
+
+	public void usarMagia(int id){
+		try {
+			controlAccionesTerran.magia(controlJuego.getPrimeraPosicion(),controlJuego.getUltimaPosicion(),id);
+			controlJuego.actualizarVista();
+		} catch (UnidadNoTieneMagia e) {
+			controlJuego.mostrarMensajeError("La unidad seleccionada no tiene magias.");
+		} catch (EnergiaInsuficiente e) {
+			controlJuego.mostrarMensajeError("Energia insuficiente.");
+		} catch (CopiaNoCausaDanio e) {
+			controlJuego.mostrarMensajeError("La unidad copia no posee magias.");
+		} catch (CeldaOcupada e) {
+			controlJuego.mostrarMensajeError("Las celdas para la creacion de la unidad estan ocupadas.");
+		} catch (CeldaEspacial e) {
+			controlJuego.mostrarMensajeError("Unidad no puede crearse en celda espacial.");
+		} catch (RecursosInsuficientes e) {
+			controlJuego.mostrarMensajeError("Recursos insuficientes.");
+		} catch (PoblacionInsuficiente e) {
+			controlJuego.mostrarMensajeError("Poblacion insuficiente para crear unidad copia.");
+		} catch (CeldaSinConstruccion e) {
+			controlJuego.mostrarMensajeError("La celda seleccionada no posee construccion.");
+		} catch (EdificioNoPuedeCrearUnidad e) {
+			controlJuego.mostrarMensajeError("El edificio no puede crear unidad.");
+		} catch (CeldaSinUnidad e) {
+			controlJuego.mostrarMensajeError("La celda seleccionada no tiene unidad para copiar.");
 		}
 	}
 }

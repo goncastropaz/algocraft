@@ -141,7 +141,9 @@ public class Juego {
 		this.turno.completarAccionJugador();
 	}
 	
-	public void usarMagia(Unidad unidad, String magia, Posicion pos) throws UnidadNoTieneMagia, EnergiaInsuficiente, CopiaNoCausaDanio, CeldaOcupada, CeldaEspacial, RecursosInsuficientes, PoblacionInsuficiente, CeldaSinConstruccion, EdificioNoPuedeCrearUnidad, MagiaDesconocida {
+	public void usarMagia(Posicion atacante, String magia, Posicion pos) throws UnidadNoTieneMagia, EnergiaInsuficiente, CopiaNoCausaDanio, CeldaOcupada, CeldaEspacial, RecursosInsuficientes, PoblacionInsuficiente, CeldaSinConstruccion, EdificioNoPuedeCrearUnidad, CeldaSinUnidad {
+		Unidad unidad = this.mapaJuego.devolverCelda(atacante).getUnidad();
+		if(unidad ==null) throw new CeldaSinUnidad();
 		if(!unidad.tieneMagia(magia)) throw new UnidadNoTieneMagia();
 		if(magia.equals("TORMENTA")){
 			((AltoTemplario) unidad).provocarTormentaPsionica(pos, this.mapaJuego);
@@ -151,9 +153,7 @@ public class Juego {
 			((NaveCiencia) unidad).generarRadiacion(pos, this.mapaJuego);
 		} else if(magia.equals("EMP")){
 			((NaveCiencia) unidad).generarEMP(pos, this.mapaJuego);
-		} else{
-			throw new MagiaDesconocida();
-		}
+		} 
 		this.refrescar(this.mapaJuego);
 		this.turno.completarAccionJugador();
 	}
@@ -205,4 +205,5 @@ public class Juego {
 		this.turno.completarAccionMovimiento();
 	}
 
+	
 }

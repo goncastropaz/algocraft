@@ -1,5 +1,6 @@
 package fiuba.algo3.control;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import fiuba.algo3.modelo.acciones.creacionConstrucciones.CrearAcceso;
@@ -33,10 +34,13 @@ import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.CeldaSinConstruccion;
 import fiuba.algo3.modelo.excepciones.CeldaSinRecurso;
 import fiuba.algo3.modelo.excepciones.CeldaSinUnidad;
+import fiuba.algo3.modelo.excepciones.CopiaNoCausaDanio;
 import fiuba.algo3.modelo.excepciones.EdificioNoPuedeCrearUnidad;
+import fiuba.algo3.modelo.excepciones.EnergiaInsuficiente;
 import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
 import fiuba.algo3.modelo.excepciones.FueraDeRango;
 import fiuba.algo3.modelo.excepciones.JugadorInvalido;
+import fiuba.algo3.modelo.excepciones.MagiaDesconocida;
 import fiuba.algo3.modelo.excepciones.NoHayUnidadParaMoverEnCelda;
 import fiuba.algo3.modelo.excepciones.NoTieneEdificiosPrevios;
 import fiuba.algo3.modelo.excepciones.ObjetivoInvalido;
@@ -46,6 +50,7 @@ import fiuba.algo3.modelo.excepciones.RazaNoTieneUnidad;
 import fiuba.algo3.modelo.excepciones.RecursosInsuficientes;
 import fiuba.algo3.modelo.excepciones.UnidadAtacadaInvalida;
 import fiuba.algo3.modelo.excepciones.UnidadAtacanteInvalida;
+import fiuba.algo3.modelo.excepciones.UnidadNoTieneMagia;
 import fiuba.algo3.modelo.excepciones.UnidadTerrestreEnAreaEspacial;
 import fiuba.algo3.modelo.juego.Juego;
 import fiuba.algo3.modelo.movimientos.Abajo;
@@ -63,6 +68,7 @@ public class ControlAccionesTerran implements ControlAcciones{
 	private HashMap<Integer,CrearUnidad> listaDeCreacionUnidades;
 	private HashMap<Integer,CrearConstruccion> listaDeCreacionConstrucciones;
 	private HashMap<Integer,Movimiento> listaDeMovimientos;
+	private ArrayList<String> magias;
 	
 	public ControlAccionesTerran(ControlJuego controlJuego){
 		this.controlJuego = controlJuego;
@@ -89,6 +95,8 @@ public class ControlAccionesTerran implements ControlAcciones{
 		this.listaDeMovimientos.put(3, new Derecha(juego));
 		this.listaDeMovimientos.put(4, new Izquierda(juego));
 		
+		this.magias.add("EMP");
+		this.magias.add("RADIACION");
 	}
 	
 	public void crearUnidad(int identificador,Posicion pos) throws CeldaOcupada, RecursosInsuficientes, PoblacionInsuficiente, CeldaSinConstruccion, EdificioNoPuedeCrearUnidad {
@@ -112,6 +120,11 @@ public class ControlAccionesTerran implements ControlAcciones{
 	public void atacar(Posicion posAtacante, Posicion posAtacado) throws ObjetivoInvalido, UnidadAtacanteInvalida, UnidadAtacadaInvalida, FueraDeRango, CeldaSinUnidad {
 		this.juego.atacar(posAtacante, posAtacado);
 		
+	}
+
+	@Override
+	public void magia(Posicion unidadAtacante, Posicion unidadAtacada,int id) throws UnidadNoTieneMagia, EnergiaInsuficiente, CopiaNoCausaDanio, CeldaOcupada, CeldaEspacial, RecursosInsuficientes, PoblacionInsuficiente, CeldaSinConstruccion, EdificioNoPuedeCrearUnidad,  CeldaSinUnidad{
+		this.juego.usarMagia(unidadAtacante, this.magias.get(id), unidadAtacada);
 	}
 
 	
