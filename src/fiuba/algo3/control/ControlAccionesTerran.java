@@ -97,7 +97,7 @@ public class ControlAccionesTerran implements ControlAcciones{
 	}
 
 	@Override
-	public void mover(int id,Posicion pos) throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, CeldaOcupada, NoHayUnidadParaMoverEnCelda {
+	public void mover(int id,Posicion pos) throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, CeldaOcupada, NoHayUnidadParaMoverEnCelda, CeldaEspacial {
 		Movimiento movimiento = this.listaDeMovimientos.get(id);
 		movimiento.mover(pos);
 		

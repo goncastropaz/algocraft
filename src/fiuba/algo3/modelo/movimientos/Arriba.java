@@ -1,6 +1,7 @@
 package fiuba.algo3.modelo.movimientos;
 
 import fiuba.algo3.modelo.complementos.Posicion;
+import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
 import fiuba.algo3.modelo.excepciones.NoHayUnidadParaMoverEnCelda;
@@ -16,7 +17,7 @@ public class Arriba extends Movimiento {
 		super(juego);
 	}
 	
-	public void mover(Posicion posActual) throws FueraDeMatriz,UnidadTerrestreEnAreaEspacial, CeldaOcupada, NoHayUnidadParaMoverEnCelda {
+	public void mover(Posicion posActual) throws FueraDeMatriz,UnidadTerrestreEnAreaEspacial, CeldaOcupada, NoHayUnidadParaMoverEnCelda, CeldaEspacial {
 		
 		Mapa mapa =  this.juego.getMapaDeJuego();
 		Unidad unidad = mapa.devolverCelda(posActual).getUnidad();
@@ -25,6 +26,7 @@ public class Arriba extends Movimiento {
 		Celda celdaActual = mapa.devolverCelda(posActual);
 		Posicion posNueva = posActual.getPosicionArriba();
 		Celda celdaNueva = mapa.devolverCelda(posNueva);
+		if(celdaNueva.isEspacial() && !unidad.vuela()) throw new CeldaEspacial();
 		celdaNueva.setUnidad(unidad);
 		celdaActual.removeUnidad();
 		unidad.cambiarUbicacion(posNueva);

@@ -362,6 +362,8 @@ public class VistaAccionesTerran extends JPanel {
 			controlJuego.mostrarMensajeError("No se puede mover la unidad a una celda ocupada.");
 		} catch (NoHayUnidadParaMoverEnCelda e) {
 			controlJuego.mostrarMensajeError("Seleccione una unidad para mover.");
+		} catch (CeldaEspacial e) {
+			controlJuego.mostrarMensajeError("No se puede mover la unidad a una celda espacial.");
 		}
 	}
 }
