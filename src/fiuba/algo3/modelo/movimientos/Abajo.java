@@ -34,6 +34,7 @@ public class Abajo extends Movimiento {
 		int visionUnidad = unidad.getVision();
 		this.juego.getActualJugador().actualizarVision(posNueva, visionUnidad);
 		ActualizarObservadores();
+		this.juego.completarAccionMovimiento();
 	}
 
 }

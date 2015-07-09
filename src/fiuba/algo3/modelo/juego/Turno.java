@@ -14,18 +14,20 @@ public class Turno {
 		private Jugador actualJugador;
 		private Jugador proximoJugador;
 		private int cantidadDeAccionesDisponibles;
+		private int cantidadDeMovimientosDisponibles;
 		
 		
 		public Turno(HashMap<Integer,Jugador> jugadores) throws JugadorInvalido, FueraDeMatriz{
 			this.actualJugador = jugadores.get(1);
 			this.proximoJugador = jugadores.get(2);
 			this.cantidadDeAccionesDisponibles =3;
+			this.cantidadDeMovimientosDisponibles =5;
 		}
 				
 
 		public void completarAccionJugador(){
 			this.cantidadDeAccionesDisponibles = this.cantidadDeAccionesDisponibles -1;
-			
+			this.cantidadDeMovimientosDisponibles =5;
 			if(this.cantidadDeAccionesDisponibles ==0){
 				this.cambiarTurnoJugador();
 			}
@@ -57,12 +59,25 @@ public class Turno {
 			this.actualJugador = proximoJugador;
 			this.proximoJugador = aux;
 			this.cantidadDeAccionesDisponibles =3;
+			this.cantidadDeMovimientosDisponibles =5;
 			
 			
 		}
 		
 		public Jugador getProximoJugador(){
 			return this.proximoJugador;
+		}
+		
+		public int getAccionesDisponiblesJugadorActual(){
+			return this.cantidadDeAccionesDisponibles;
+		}
+
+
+		public void completarAccionMovimiento() {
+			this.cantidadDeMovimientosDisponibles = this.cantidadDeMovimientosDisponibles -1;
+			if(this.cantidadDeMovimientosDisponibles ==0){
+				this.completarAccionJugador();
+			}			
 		}
 		
 }

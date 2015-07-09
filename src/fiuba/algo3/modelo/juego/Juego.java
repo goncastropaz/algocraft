@@ -118,6 +118,7 @@ public class Juego {
 		Posicion posUnidad = this.mapaJuego.agregarUnidad(unidad,posConstruccion);
 		unidad.setUbicacion(posUnidad);
 		this.turno.getActualJugador().agregarUnidad(unidad);
+		this.turno.completarAccionJugador();
 	}
 	public void agregarUnidadCopia(Unidad copia, Posicion posUnidadCopiada) throws RecursosInsuficientes, PoblacionInsuficiente, CeldaOcupada{
 		this.turno.getActualJugador().puedeCrearUnidad(copia);
@@ -130,6 +131,7 @@ public class Juego {
 		this.turno.getActualJugador().puedeCrearConstruccion(construccion);
 		this.mapaJuego.agregarConstruccion(construccion,pos);
 		this.turno.getActualJugador().agregarConstruccion(construccion);
+		this.turno.completarAccionJugador();
 	}
 	
 	public void atacar(Posicion posUnidadAtacante, Posicion posUnidadAtacada) throws ObjetivoInvalido, UnidadAtacanteInvalida, UnidadAtacadaInvalida, FueraDeRango, CeldaSinUnidad{
@@ -137,6 +139,7 @@ public class Juego {
 		if(unidad ==null) throw new CeldaSinUnidad();
 		unidad.atacarUnidad(this,posUnidadAtacada);
 		this.refrescar();
+		this.turno.completarAccionJugador();
 	}
 	
 	public void usarMagia(Unidad unidad, String magia, Posicion pos) throws UnidadNoTieneMagia, EnergiaInsuficiente, CopiaNoCausaDanio, CeldaOcupada, CeldaEspacial, RecursosInsuficientes, PoblacionInsuficiente, CeldaSinConstruccion, EdificioNoPuedeCrearUnidad, MagiaDesconocida {
@@ -153,6 +156,7 @@ public class Juego {
 			throw new MagiaDesconocida();
 		}
 		this.refrescar();
+		this.turno.completarAccionJugador();
 	}
 	
 	public void cargarUnidad(Unidad unidad, Posicion pos) throws CapacidadInsuficiente, UnidadAereaNoSePuedeCargar, UnidadNoPerteneceAJugador, FueraDeRango, CeldaSinUnidad, UnidadNoPuedeTransportar{
@@ -164,6 +168,7 @@ public class Juego {
 		if(!this.mapaJuego.devolverCeldasRadio(pos, unidad.getVision()).contains(this.mapaJuego.devolverCelda(pos))) throw new FueraDeRango();
 		((Cargable) unidad).cargarUnidad(this.mapaJuego.devolverCelda(pos).getUnidad());
 		celda.removeUnidad();
+		this.turno.completarAccionJugador();
 	}
 	
 	public void descargarUnidades(Unidad unidad) throws UnidadNoPuedeTransportar, UnidadNoPerteneceAJugador, CeldaOcupada, NaveVacia{
@@ -190,6 +195,15 @@ public class Juego {
 		for(int i = 1; i < 3;i++){
 			jugadores.get(i).refrescar();
 		}
+	}
+
+	public int getAccionesDisponiblesJugadorActual() {
+		return this.turno.getAccionesDisponiblesJugadorActual();
+		
+	}
+	
+	public void completarAccionMovimiento(){
+		this.turno.completarAccionMovimiento();
 	}
 
 }

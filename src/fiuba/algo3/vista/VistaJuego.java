@@ -31,6 +31,7 @@ public class VistaJuego {
 	private JLabel labelPoblacion;
 	private JScrollPane Scrollmapa;
 	private JPanel panelAcciones;
+	private JLabel labelAcciones;
 
 
 	public VistaJuego(Juego juego) throws IOException {
@@ -57,26 +58,24 @@ public class VistaJuego {
 
 		JLabel lRaza = new JLabel("Raza:   "+ controlJuego.getRazaJugadorActual());
 		lRaza.setFont(new Font("Arial", Font.BOLD, 14));
-		lRaza.setBounds( 250, 11, 200, 14);
+		lRaza.setBounds( 240, 11, 150, 14);
 		this.labelRazaJugador = lRaza;
 		this.frame.getContentPane().add(this.labelRazaJugador);
 
 		JLabel lColor = new JLabel("Color:    "
 				+ controlJuego.getColorJugadorActual());
 		lColor.setFont(new Font("Arial", Font.BOLD, 14));
-		lColor.setBounds(600, 11, 200, 14);
+		lColor.setBounds(400, 11, 100, 14);
 		this.labelColorJugador = lColor;
 		this.frame.getContentPane().add(this.labelColorJugador);
-
-		// JLabel imagenGas = new JLabel();
-		// BufferedImage wGas =
-		// ImageIO.read(this.getClass().getResource("/imagenes/recursos/gasVespeno2.jpg"));
-		// ImageIcon gas = new ImageIcon(wGas);
-		// imagenGas.setIcon(new
-		// ImageIcon(gas.getImage().getScaledInstance(79,29,Image.SCALE_SMOOTH)));
-		// imagenGas.setBounds(100, 40, 80, 40);
-		// frame.getContentPane().add(imagenGas);
 		
+		String accionesDisp =Integer.toString(controlJuego.getAccionesDisponiblesJugadorActual());
+		JLabel lAcciones = new JLabel("Acciones Disponibles:  "+ accionesDisp);
+		lAcciones.setFont(new Font("Arial", Font.BOLD, 14));
+		lAcciones.setBounds(550, 11, 200, 14);
+		this.labelAcciones = lAcciones;
+		this.frame.getContentPane().add(this.labelAcciones );
+
 		String mineral =Integer.toString(controlJuego.getMineralJugadorActual());
 		JLabel lMineral = new JLabel("Mineral:  "+ mineral);
 		lMineral.setFont(new Font("Arial", Font.BOLD, 14));
@@ -141,6 +140,13 @@ public class VistaJuego {
 	}
 
 	public void actualizarVista() {
+		int acciones = controlJuego.getAccionesDisponiblesJugadorActual();
+		if(acciones == 3){
+			this.controlJuego.setCeldasSeleccionadasDefault();
+			this.frame.getContentPane().validate();
+			this.frame.getContentPane().repaint();
+		}
+
 		this.labelNombreJugador.setText("Nombre:  "+ controlJuego.getNombreJugadorActual());
 		this.labelColorJugador.setText("Color:    "+ controlJuego.getColorJugadorActual());
 		this.labelRazaJugador.setText("Raza:   "+ controlJuego.getRazaJugadorActual());
@@ -150,6 +156,8 @@ public class VistaJuego {
 		this.labelGas.setText("Gas Vespeno:  "+ gas);
 		String poblacion =Integer.toString(controlJuego.getPoblacionJugadorActual());
 		this.labelPoblacion.setText("Poblaci\u00F3n:  "+poblacion);
+		String accionesDisp =Integer.toString(acciones);
+		this.labelAcciones.setText("Acciones Disponibles:  "+ accionesDisp);
 		this.labelEnergia.setVisible(false);
 
 		this.vistaMapa.actualizarMapa();

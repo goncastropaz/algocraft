@@ -150,6 +150,11 @@ public class ControlJuego {
 	public Posicion getPrimeraPosicion() {
 		return this.controlMapa.getPrimeraPosicion();
 	}
+
+	public int getAccionesDisponiblesJugadorActual() {
+		return this.juego.getAccionesDisponiblesJugadorActual();
+	}
+
 	
 
 }
