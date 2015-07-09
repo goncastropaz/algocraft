@@ -11,6 +11,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -24,6 +25,7 @@ public class VistaMapa {
 	private JPanel panelMapa;
 	private JButtonID[][] mapa;
 	private ControlMapa controlMapa;
+	private JLabel energia;
 
 	private int tamanioMapa;
 	
@@ -35,8 +37,9 @@ public class VistaMapa {
 
 
 
-	public VistaMapa(Mapa mapa, ControlMapa controlMapa) {
+	public VistaMapa(Mapa mapa, ControlMapa controlMapa, JLabel energia) {
 		this.controlMapa = controlMapa;
+		this.energia = energia;
 		
 		tamanioMapa = 0;
 
@@ -93,7 +96,7 @@ public class VistaMapa {
 				boton.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
 						JButtonID celdaSeleccionada = (JButtonID) e.getSource();
-						controlMapa.seleccionarCelda(celdaSeleccionada);
+						controlMapa.seleccionarCelda(celdaSeleccionada,energia);
 												
 					}
 				});	

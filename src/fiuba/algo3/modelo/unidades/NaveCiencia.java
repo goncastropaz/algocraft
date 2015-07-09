@@ -91,4 +91,12 @@ public class NaveCiencia extends UnidadAerea{
 		return false;
 	}
 	
+	public boolean isUnidadMagica() {
+		return true;
+	}
+	
+	public int getEnergia(){
+		return this.energia.getEnergiaActual();
+	}
+	
 }	

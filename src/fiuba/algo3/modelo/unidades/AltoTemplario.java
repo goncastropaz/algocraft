@@ -114,5 +114,12 @@ public class AltoTemplario extends UnidadTerrestre {
 		return magia.equals("TORMENTA") || magia.equals("ALUCINACION");
 	}
 	
+	public boolean isUnidadMagica() {
+		return true;
+	}
+	
+	public int getEnergia(){
+		return this.energia.getEnergiaActual();
+	}
 	
 }

@@ -10,7 +10,9 @@ import java.util.Map;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
 import fiuba.algo3.modelo.acciones.Ejecutable;
@@ -173,15 +175,23 @@ public class ControlMapa {
 		}
 	}
 
-	public void seleccionarCelda(JButtonID celdaSeleccionada) {
-
-		this.primerCeldaSeleccionada = this.segundaCeldaSeleccionada;
-		try {
-			this.segundaCeldaSeleccionada = new Posicion(
-					celdaSeleccionada.getFila(), celdaSeleccionada.getColumna());
+	public void seleccionarCelda(JButtonID celdaSeleccionada,JLabel lEnergia) {
+		Posicion posCelda = null;
+		try{
+			posCelda = new Posicion(celdaSeleccionada.getFila(), celdaSeleccionada.getColumna());
 		} catch (FueraDeMatriz e) {
 			e.printStackTrace();
 		}
+		if(this.mapa.devolverCelda(posCelda).tieneUnidadMagica()){
+			String energia =Integer.toString(this.mapa.devolverCelda(posCelda).getUnidad().getEnergia());
+			lEnergia.setText("Energia:  "+ energia);
+			lEnergia.setVisible(true);
+		}else{
+			lEnergia.setVisible(false);
+		}
+		this.primerCeldaSeleccionada = this.segundaCeldaSeleccionada;
+		this.segundaCeldaSeleccionada = posCelda;
+		
 	}
 
 	public void actualizarMapa(JButtonID[][] mapaDibujado) {

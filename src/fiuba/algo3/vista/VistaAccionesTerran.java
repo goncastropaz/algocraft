@@ -301,6 +301,11 @@ public class VistaAccionesTerran extends JPanel {
 		
 		JButton btnEmp = new JButton("EMP");
 		btnEmp.setBounds(120, 610, 170, 25);
+		btnEmp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+		
+			}
+		});
 		add(btnEmp);
 		
 		JLabel costoEMP = new JLabel("100 E");
@@ -311,6 +316,11 @@ public class VistaAccionesTerran extends JPanel {
 		
 		JButton btnRadiacion = new JButton("Radiacion");
 		btnRadiacion.setBounds(120, 640, 117, 25);
+		btnRadiacion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+		
+			}
+		});
 		add(btnRadiacion);
 		
 		JLabel costoRadiacion = new JLabel("100 E");

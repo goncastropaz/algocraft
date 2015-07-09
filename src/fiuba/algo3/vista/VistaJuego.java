@@ -98,6 +98,7 @@ public class VistaJuego {
 		this.labelPoblacion = lPoblacion;
 		frame.getContentPane().add(this.labelPoblacion);
 		
+				
 		JLabel lEnergia = new JLabel("");
 		lEnergia.setFont(new Font("Arial", Font.BOLD, 14));
 		lEnergia.setBounds(550, 50, 200, 14);
@@ -120,7 +121,7 @@ public class VistaJuego {
 				.getListenerBotonFinalizarJuego());
 		this.frame.getContentPane().add(btnFinalizarPartida);
 
-		this.vistaMapa = new VistaMapa(controlJuego.getMapaDelJuego(),this.controlJuego.getControlMapa());
+		this.vistaMapa = new VistaMapa(controlJuego.getMapaDelJuego(),this.controlJuego.getControlMapa(),this.labelEnergia);
 		this.vistaMapa.actualizarVista(this.controlMapaJugador);
 
 		this.Scrollmapa = new JScrollPane(this.vistaMapa.getPanel());
@@ -149,6 +150,7 @@ public class VistaJuego {
 		this.labelGas.setText("Gas Vespeno:  "+ gas);
 		String poblacion =Integer.toString(controlJuego.getPoblacionJugadorActual());
 		this.labelPoblacion.setText("Poblaci\u00F3n:  "+poblacion);
+		this.labelEnergia.setVisible(false);
 
 		this.vistaMapa.actualizarMapa();
 

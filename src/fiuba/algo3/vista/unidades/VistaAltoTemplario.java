@@ -18,5 +18,7 @@ public class VistaAltoTemplario extends VistaUnidad {
 
 		this.imagen = new ImageIcon(this.imagenInicial);
 	}
+	
+	
 
 }

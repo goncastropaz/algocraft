@@ -107,5 +107,13 @@ public class Celda {
 		return true;
 	}
 
+	public boolean tieneUnidadMagica() {
+		if(this.unidad != null){
+			if(this.getUnidad().isUnidadMagica()) return true;
+		}
+		return false;
+		
+	}
+
 	
 }

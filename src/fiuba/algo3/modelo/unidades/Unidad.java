@@ -198,4 +198,12 @@ public abstract class Unidad implements IUnidad, Daniable{
 	public Integer getTransporte(){
 		return this.transporte;
 	}
+
+	public boolean isUnidadMagica() {
+		return false;
+	}
+	
+	public int getEnergia(){
+		return 0;
+	}
 }
