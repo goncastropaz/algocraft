@@ -26,8 +26,8 @@ public class Abajo extends Movimiento {
 		Celda celdaActual = mapa.devolverCelda(posActual);
 		Posicion posNueva = posActual.getPosicionAbajo();
 		Celda celdaNueva = mapa.devolverCelda(posNueva);
-		celdaActual.removeUnidad();
 		celdaNueva.setUnidad(unidad);
+		celdaActual.removeUnidad();
 		unidad.cambiarUbicacion(posNueva);
 		int visionUnidad = unidad.getVision();
 		this.juego.getActualJugador().actualizarVision(posNueva, visionUnidad);

@@ -25,8 +25,8 @@ public class Arriba extends Movimiento {
 		Celda celdaActual = mapa.devolverCelda(posActual);
 		Posicion posNueva = posActual.getPosicionArriba();
 		Celda celdaNueva = mapa.devolverCelda(posNueva);
-		celdaActual.removeUnidad();
 		celdaNueva.setUnidad(unidad);
+		celdaActual.removeUnidad();
 		unidad.cambiarUbicacion(posNueva);
 		int visionUnidad = unidad.getVision();
 		this.juego.getActualJugador().actualizarVision(posNueva, visionUnidad);
