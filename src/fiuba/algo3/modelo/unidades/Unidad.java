@@ -33,9 +33,10 @@ public abstract class Unidad implements IUnidad, Daniable{
 	public Danio danio;
 	public boolean copia;
 	public Posicion ubicacion;
+	private Integer transporte;
 	
 	
-	public Unidad(String nombre, Integer tiempoDeConstruccion, Integer vidaMaxima, Integer escudoMaximo,Integer vision,Integer suministro) {
+	public Unidad(String nombre, Integer tiempoDeConstruccion, Integer vidaMaxima, Integer escudoMaximo,Integer vision,Integer suministro, Integer transporte) {
 		this.nombre = nombre;
 		this.tiempoDeConstruccion = new TiempoDeConstruccion(tiempoDeConstruccion);
 		this.vida = new Vida(vidaMaxima);
@@ -43,6 +44,7 @@ public abstract class Unidad implements IUnidad, Daniable{
 		this.vision =vision;
 		this.suministro = suministro;
 		this.copia = false;
+		this.transporte = transporte;
 	}
 
 	public String getNombre() {
@@ -186,4 +188,14 @@ public abstract class Unidad implements IUnidad, Daniable{
 	}
 
 	public abstract boolean tieneMagia(String magia);
+
+	public abstract boolean puedeTransportar();
+
+	public boolean vuela() {
+		return this.transporte == 0;
+	}
+	
+	public Integer getTransporte(){
+		return this.transporte;
+	}
 }

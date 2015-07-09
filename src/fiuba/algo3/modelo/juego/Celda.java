@@ -94,6 +94,10 @@ public class Celda {
 		if(this.edificio == null) return false;
 		return true;
 	}
+	
+	public boolean tieneUnidad(){
+		return this.unidad != null;
+	}
 
 	public boolean desocupada() {
 		if(this.mineral || this.gas || this.edificio != null || this.unidad != null) return false;

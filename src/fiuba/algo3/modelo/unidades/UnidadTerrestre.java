@@ -8,8 +8,8 @@ import fiuba.algo3.modelo.juego.Juego;
 
 public abstract class UnidadTerrestre extends Unidad{
 
-	public UnidadTerrestre(String name, Integer construtionTime, Integer maxHealth, Integer maxShield,Integer vision,Integer suministro) {
-		super(name,construtionTime,maxHealth,maxShield,vision,suministro);
+	public UnidadTerrestre(String name, Integer construtionTime, Integer maxHealth, Integer maxShield,Integer vision,Integer suministro, Integer transporte) {
+		super(name,construtionTime,maxHealth,maxShield,vision,suministro, transporte);
 	}
 	
 	public boolean permitidaEnArea(Celda celda){
@@ -28,5 +28,9 @@ public abstract class UnidadTerrestre extends Unidad{
 		}
 		int danioT = unidad.getDanio().getDanioTerrestre();
 		this.recibirAtaque(danioT);
+	}
+	
+	public boolean puedeTransportar(){
+		return false;
 	}
 }

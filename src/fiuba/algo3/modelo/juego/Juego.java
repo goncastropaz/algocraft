@@ -4,10 +4,12 @@ import java.util.HashMap;
 
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.construcciones.Construccion;
+import fiuba.algo3.modelo.excepciones.CapacidadInsuficiente;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.CeldaSinConstruccion;
 import fiuba.algo3.modelo.excepciones.CeldaSinRecurso;
+import fiuba.algo3.modelo.excepciones.CeldaSinUnidad;
 import fiuba.algo3.modelo.excepciones.ColorYaExiste;
 import fiuba.algo3.modelo.excepciones.CompletarDatosException;
 import fiuba.algo3.modelo.excepciones.CopiaNoCausaDanio;
@@ -23,13 +25,16 @@ import fiuba.algo3.modelo.excepciones.NombreYaExiste;
 import fiuba.algo3.modelo.excepciones.ObjetivoInvalido;
 import fiuba.algo3.modelo.excepciones.PoblacionInsuficiente;
 import fiuba.algo3.modelo.excepciones.RazaNoTieneConstruccion;
-import fiuba.algo3.modelo.excepciones.RazaNoTieneUnidad;
 import fiuba.algo3.modelo.excepciones.RecursosInsuficientes;
+import fiuba.algo3.modelo.excepciones.UnidadAereaNoSePuedeCargar;
 import fiuba.algo3.modelo.excepciones.UnidadAtacadaInvalida;
 import fiuba.algo3.modelo.excepciones.UnidadAtacanteInvalida;
+import fiuba.algo3.modelo.excepciones.UnidadNoPerteneceAJugador;
+import fiuba.algo3.modelo.excepciones.UnidadNoPuedeTransportar;
 import fiuba.algo3.modelo.excepciones.UnidadNoTieneMagia;
 import fiuba.algo3.modelo.razas.Raza;
 import fiuba.algo3.modelo.unidades.AltoTemplario;
+import fiuba.algo3.modelo.unidades.Cargable;
 import fiuba.algo3.modelo.unidades.NaveCiencia;
 import fiuba.algo3.modelo.unidades.Unidad;
 
@@ -144,6 +149,19 @@ public class Juego {
 			throw new MagiaDesconocida();
 		}
 		this.refrescar();
+	}
+	
+	public void cargarUnidad(Unidad unidad, Posicion pos) throws CapacidadInsuficiente, UnidadAereaNoSePuedeCargar, UnidadNoPerteneceAJugador, FueraDeRango, CeldaSinUnidad, UnidadNoPuedeTransportar{
+		if(!unidad.puedeTransportar()) throw new UnidadNoPuedeTransportar();
+		if(!this.mapaJuego.devolverCelda(pos).tieneUnidad()) throw new CeldaSinUnidad();
+		if(!this.getActualJugador().tieneDaniable(unidad.getUbicacion())) throw new UnidadNoPerteneceAJugador();
+		if(!this.getActualJugador().tieneDaniable(pos)) throw new UnidadNoPerteneceAJugador();
+		if(!this.mapaJuego.devolverCeldasRadio(pos, unidad.getVision()).contains(this.mapaJuego.devolverCelda(pos))) throw new FueraDeRango();
+		((Cargable) unidad).cargarUnidad(this.mapaJuego, this.mapaJuego.devolverCelda(pos).getUnidad());
+	}
+	
+	public void descargarUnidades(){
+		
 	}
 
 	public void cambiarTurnoJugador() {

@@ -1,12 +1,18 @@
 package fiuba.algo3.modelo.unidades;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import fiuba.algo3.modelo.complementos.Capacidad;
 import fiuba.algo3.modelo.complementos.RangoDeAtaque;
 import fiuba.algo3.modelo.complementos.Recursos;
 import fiuba.algo3.modelo.construcciones.Construccion;
+import fiuba.algo3.modelo.excepciones.CapacidadInsuficiente;
+import fiuba.algo3.modelo.excepciones.UnidadAereaNoSePuedeCargar;
+import fiuba.algo3.modelo.juego.Celda;
+import fiuba.algo3.modelo.juego.Mapa;
 
-public class NaveTransporteProtoss extends UnidadAerea {
+public class NaveTransporteProtoss extends UnidadAerea implements Cargable{
 
 	private static final String NAME = "NAVE_TRANSPORTE_PROTOSS";
 	private static final Integer MINERAL_COST = 200;
@@ -21,18 +27,26 @@ public class NaveTransporteProtoss extends UnidadAerea {
 	private static final Integer SUPPLY_COST = 2;
 	private static final Integer VISION = 8;
 	private static final Integer TRANSPORT = 0;
-	private static final Integer CAPACIDAD = 8;
+	private static final Integer MAX_CAPACIDAD = 8;
 	private static final Integer RANGO_ATAQUE_TERRESTRE = 0;
 	private static final Integer RANGO_ATAQUE_AEREO = 0;
+	private Capacidad capacidad;
+	private List<Unidad> unidadesCargadas;
 	
 	public NaveTransporteProtoss() {
 		
-		super(NAME,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD,VISION,SUPPLY_COST);
+		super(NAME,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD,VISION,SUPPLY_COST,TRANSPORT);
 		Recursos costoDeRecursos = new Recursos(MINERAL_COST,GAS_COST);
 		this.setCostoDeRecursos(costoDeRecursos);
 		this.setRangoDeAtaque(new RangoDeAtaque(RANGO_ATAQUE_TERRESTRE,RANGO_ATAQUE_AEREO));
+		this.capacidad = new Capacidad(MAX_CAPACIDAD);
+		this.unidadesCargadas = new ArrayList<Unidad>();
 	}
 	
+	public Capacidad getCapacidad() {
+		return capacidad;
+	}
+
 	@Override
 	public Unidad generarCopia() {
 		Unidad copia = new NaveTransporteProtoss();
@@ -48,6 +62,26 @@ public class NaveTransporteProtoss extends UnidadAerea {
 	@Override
 	public boolean tieneMagia(String magia){
 		return false;
+	}
+	
+	public boolean puedeTransportar(){
+		return true;
+	}
+
+	@Override
+	public void cargarUnidad(Mapa mapa, Unidad unidad) throws CapacidadInsuficiente, UnidadAereaNoSePuedeCargar {
+		if(unidad.vuela()) throw new UnidadAereaNoSePuedeCargar();
+		if(!this.capacidad.tieneCapacidad(unidad.getTransporte())) throw new CapacidadInsuficiente();
+		this.capacidad.sacarCapacidad(unidad.getTransporte());
+		this.unidadesCargadas.add(unidad);
+	}
+	
+	@Override
+	public void descargarUnidades(Mapa mapa) {
+		for(Celda celda : mapa.devolverCeldasRadio(this.getUbicacion(),this.VISION)){
+			
+		}
+//		this.capacidad.agregarCapacidad(unidad.getTransporte());
 	}
 	
 }

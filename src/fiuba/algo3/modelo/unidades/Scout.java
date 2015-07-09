@@ -25,7 +25,7 @@ public class Scout extends UnidadAerea {
 	private static final Integer RANGO_ATAQUE_AEREO = 4;
 	
 	public Scout(){
-		super(NAME,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD,VISION,SUPPLY_COST);
+		super(NAME,CONSTRUCTION_TIME,MAX_HEALTH,MAX_SHIELD,VISION,SUPPLY_COST,TRANSPORT);
 		Recursos costoDeRecursos = new Recursos(MINERAL_COST,GAS_COST);
 		this.setCostoDeRecursos(costoDeRecursos);
 		this.setRangoDeAtaque(new RangoDeAtaque(RANGO_ATAQUE_TERRESTRE,RANGO_ATAQUE_AEREO));
@@ -45,6 +45,10 @@ public class Scout extends UnidadAerea {
 	
 	@Override
 	public boolean tieneMagia(String magia){
+		return false;
+	}
+	
+	public boolean puedeTransportar(){
 		return false;
 	}
 	
