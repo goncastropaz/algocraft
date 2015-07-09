@@ -16,10 +16,13 @@ import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.CeldaSinConstruccion;
 import fiuba.algo3.modelo.excepciones.CeldaSinRecurso;
 import fiuba.algo3.modelo.excepciones.EdificioNoPuedeCrearUnidad;
+import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
+import fiuba.algo3.modelo.excepciones.NoHayUnidadParaMoverEnCelda;
 import fiuba.algo3.modelo.excepciones.NoTieneEdificiosPrevios;
 import fiuba.algo3.modelo.excepciones.PoblacionInsuficiente;
 import fiuba.algo3.modelo.excepciones.RazaNoTieneConstruccion;
 import fiuba.algo3.modelo.excepciones.RecursosInsuficientes;
+import fiuba.algo3.modelo.excepciones.UnidadTerrestreEnAreaEspacial;
 
 public class VistaAccionesProtoss extends JPanel{
 
@@ -167,18 +170,38 @@ public class VistaAccionesProtoss extends JPanel{
 			
 			JButton btnNewButton_4 = new JButton("Mover Arriba");
 			btnNewButton_4.setBounds(120, 446, 132, 25);
+			btnNewButton_4.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					mover(1);
+				}
+			});
 			add(btnNewButton_4);
 			
 			JButton btnMoverAbajo = new JButton("Mover Abajo");
 			btnMoverAbajo.setBounds(120, 476, 132, 25);
+			btnMoverAbajo.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					mover(2);
+				}
+			});
 			add(btnMoverAbajo);
 			
 			JButton btnMoverIzquierda = new JButton("Mover Izquierda");
 			btnMoverIzquierda.setBounds(120, 507, 148, 25);
+			btnMoverIzquierda.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					mover(4);
+				}
+			});
 			add(btnMoverIzquierda);
 			
 			JButton btnMoverDerecha = new JButton("Mover Derecha");
 			btnMoverDerecha.setBounds(120, 537, 141, 25);
+			btnMoverDerecha.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					mover(3);
+				}
+			});
 			add(btnMoverDerecha);
 			
 			JButton btnNewButton_5 = new JButton("Atacar");
@@ -248,6 +271,20 @@ public class VistaAccionesProtoss extends JPanel{
 			}
 	
 	}
+		public void mover(int id){
+			try {
+				controlAccionesProtoss.mover(id, controlJuego.getUltimaPosicion());
+				controlJuego.actualizarVista();
+			} catch (FueraDeMatriz e) {
+				controlJuego.mostrarMensajeError("No se puede mover la unidad fuera de los limites del mapa.");
+			} catch (UnidadTerrestreEnAreaEspacial e) {
+				controlJuego.mostrarMensajeError("Unidad terrestre en area espacial.");
+			} catch (CeldaOcupada e) {
+				controlJuego.mostrarMensajeError("No se puede mover la unidad a una celda ocupada.");
+			} catch (NoHayUnidadParaMoverEnCelda e) {
+				controlJuego.mostrarMensajeError("Seleccione una unidad para mover.");
+			}
+		}
 
 }
 

@@ -21,12 +21,21 @@ import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.CeldaSinConstruccion;
 import fiuba.algo3.modelo.excepciones.CeldaSinRecurso;
 import fiuba.algo3.modelo.excepciones.EdificioNoPuedeCrearUnidad;
+import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
+import fiuba.algo3.modelo.excepciones.NoHayUnidadParaMoverEnCelda;
 import fiuba.algo3.modelo.excepciones.NoTieneEdificiosPrevios;
 import fiuba.algo3.modelo.excepciones.PoblacionInsuficiente;
 import fiuba.algo3.modelo.excepciones.RazaNoTieneConstruccion;
 import fiuba.algo3.modelo.excepciones.RazaNoTieneUnidad;
 import fiuba.algo3.modelo.excepciones.RecursosInsuficientes;
+import fiuba.algo3.modelo.excepciones.UnidadTerrestreEnAreaEspacial;
 import fiuba.algo3.modelo.juego.Juego;
+import fiuba.algo3.modelo.movimientos.Abajo;
+import fiuba.algo3.modelo.movimientos.Arriba;
+import fiuba.algo3.modelo.movimientos.Derecha;
+import fiuba.algo3.modelo.movimientos.Izquierda;
+import fiuba.algo3.modelo.movimientos.Movimiento;
+import fiuba.algo3.modelo.unidades.Unidad;
 
 public class ControlAccionesProtoss implements ControlAcciones{
 	
@@ -34,6 +43,7 @@ public class ControlAccionesProtoss implements ControlAcciones{
 	private Juego juego;
 	private HashMap<Integer,CrearUnidad> listaDeCreacionUnidades;
 	private HashMap<Integer,CrearConstruccion> listaDeCreacionConstrucciones;
+	private HashMap<Integer,Movimiento> listaDeMovimientos;
 	
 	
 	public ControlAccionesProtoss(ControlJuego controlJuego){
@@ -41,6 +51,7 @@ public class ControlAccionesProtoss implements ControlAcciones{
 		this.juego = controlJuego.getJuego();
 		this.listaDeCreacionUnidades = new HashMap<Integer,CrearUnidad>();
 		this.listaDeCreacionConstrucciones = new HashMap<Integer,CrearConstruccion>();
+		this.listaDeMovimientos = new HashMap<Integer,Movimiento>();
 			
 		this.listaDeCreacionUnidades.put(1, new CrearZealot(juego));
 		this.listaDeCreacionUnidades.put(2, new CrearDragon(juego));
@@ -55,6 +66,11 @@ public class ControlAccionesProtoss implements ControlAcciones{
 		this.listaDeCreacionConstrucciones.put(5, new CrearPuertoEstelarProtoss(juego));
 		this.listaDeCreacionConstrucciones.put(6, new CrearArchivoTemplario(juego));
 		
+		this.listaDeMovimientos.put(1, new Arriba(juego));
+		this.listaDeMovimientos.put(2, new Abajo (juego));
+		this.listaDeMovimientos.put(3, new Derecha(juego));
+		this.listaDeMovimientos.put(4, new Izquierda(juego));
+		
 	}
 	
 	public void crearUnidad(int identificador,Posicion pos) throws CeldaOcupada, RecursosInsuficientes, PoblacionInsuficiente, CeldaSinConstruccion, EdificioNoPuedeCrearUnidad{
@@ -65,5 +81,12 @@ public class ControlAccionesProtoss implements ControlAcciones{
 	public void crearContruccion(int identificador,Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial, RazaNoTieneConstruccion, RecursosInsuficientes, NoTieneEdificiosPrevios{
 		CrearConstruccion ejecutable = this.listaDeCreacionConstrucciones.get(identificador);
 		ejecutable.crearConstruccion(pos);
+	}
+
+	@Override
+	public void mover(int id,Posicion pos) throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, CeldaOcupada, NoHayUnidadParaMoverEnCelda {
+		Movimiento movimiento = this.listaDeMovimientos.get(id);
+		movimiento.mover(pos);
+		
 	}
 }
