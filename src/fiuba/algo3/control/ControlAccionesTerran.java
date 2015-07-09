@@ -76,7 +76,9 @@ public class ControlAccionesTerran implements ControlAcciones{
 		this.listaDeCreacionUnidades = new HashMap<Integer,CrearUnidad>();
 		this.listaDeCreacionConstrucciones = new HashMap<Integer,CrearConstruccion>();
 		this.listaDeMovimientos = new HashMap<Integer,Movimiento>();
+		this.magias = new ArrayList<String>();
 			
+
 		this.listaDeCreacionUnidades.put(1, new CrearMarine(juego));
 		this.listaDeCreacionUnidades.put(2, new CrearGolliat(juego));
 		this.listaDeCreacionUnidades.put(3, new CrearEspectro(juego));
