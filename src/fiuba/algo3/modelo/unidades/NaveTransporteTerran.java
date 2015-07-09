@@ -1,6 +1,7 @@
 package fiuba.algo3.modelo.unidades;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import fiuba.algo3.modelo.complementos.Capacidad;
@@ -8,6 +9,8 @@ import fiuba.algo3.modelo.complementos.RangoDeAtaque;
 import fiuba.algo3.modelo.complementos.Recursos;
 import fiuba.algo3.modelo.construcciones.Construccion;
 import fiuba.algo3.modelo.excepciones.CapacidadInsuficiente;
+import fiuba.algo3.modelo.excepciones.CeldaOcupada;
+import fiuba.algo3.modelo.excepciones.NaveVacia;
 import fiuba.algo3.modelo.excepciones.UnidadAereaNoSePuedeCargar;
 import fiuba.algo3.modelo.juego.Celda;
 import fiuba.algo3.modelo.juego.Mapa;
@@ -70,7 +73,7 @@ public class NaveTransporteTerran extends UnidadAerea implements Cargable{
 	}
 	
 	@Override
-	public void cargarUnidad(Mapa mapa, Unidad unidad) throws CapacidadInsuficiente, UnidadAereaNoSePuedeCargar {
+	public void cargarUnidad(Unidad unidad) throws CapacidadInsuficiente, UnidadAereaNoSePuedeCargar {
 		if(unidad.vuela()) throw new UnidadAereaNoSePuedeCargar();
 		if(!this.capacidad.tieneCapacidad(unidad.getTransporte())) throw new CapacidadInsuficiente();
 		this.capacidad.sacarCapacidad(unidad.getTransporte());
@@ -78,11 +81,21 @@ public class NaveTransporteTerran extends UnidadAerea implements Cargable{
 	}
 	
 	@Override
-	public void descargarUnidades(Mapa mapa) {
-		for(Celda celda : mapa.devolverCeldasRadio(this.getUbicacion(),this.VISION)){
-			
+	public void descargarUnidades(Mapa mapa) throws CeldaOcupada, NaveVacia {
+		if(unidadesCargadas.isEmpty()) throw new NaveVacia();
+		Iterator<Celda> iterator = mapa.devolverCeldasRadio(this.getUbicacion(),this.VISION).iterator();
+		boolean descargoUnidad = false;
+		while(!unidadesCargadas.isEmpty() && iterator.hasNext()){
+			Celda celda = iterator.next();
+			if(!celda.isEspacial() && celda.desocupada()){
+				Unidad unidad = unidadesCargadas.get(0);
+				celda.setUnidad(unidad);
+				this.capacidad.agregarCapacidad(unidad.getTransporte());
+				unidadesCargadas.remove(unidad);
+				descargoUnidad = true;
+			}
 		}
-//		this.capacidad.agregarCapacidad(unidad.getTransporte());
+		if(!descargoUnidad) throw new CeldaOcupada();
 	}
 	
 }

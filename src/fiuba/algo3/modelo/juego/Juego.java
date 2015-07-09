@@ -20,6 +20,7 @@ import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
 import fiuba.algo3.modelo.excepciones.FueraDeRango;
 import fiuba.algo3.modelo.excepciones.JugadorInvalido;
 import fiuba.algo3.modelo.excepciones.MagiaDesconocida;
+import fiuba.algo3.modelo.excepciones.NaveVacia;
 import fiuba.algo3.modelo.excepciones.NoTieneEdificiosPrevios;
 import fiuba.algo3.modelo.excepciones.NombreConMenosDe4Caracteres;
 import fiuba.algo3.modelo.excepciones.NombreYaExiste;
@@ -154,14 +155,19 @@ public class Juego {
 	
 	public void cargarUnidad(Unidad unidad, Posicion pos) throws CapacidadInsuficiente, UnidadAereaNoSePuedeCargar, UnidadNoPerteneceAJugador, FueraDeRango, CeldaSinUnidad, UnidadNoPuedeTransportar{
 		if(!unidad.puedeTransportar()) throw new UnidadNoPuedeTransportar();
-		if(!this.mapaJuego.devolverCelda(pos).tieneUnidad()) throw new CeldaSinUnidad();
+		Celda celda = this.mapaJuego.devolverCelda(pos);
+		if(!celda.tieneUnidad()) throw new CeldaSinUnidad();
 		if(!this.getActualJugador().tieneDaniable(unidad.getUbicacion())) throw new UnidadNoPerteneceAJugador();
 		if(!this.getActualJugador().tieneDaniable(pos)) throw new UnidadNoPerteneceAJugador();
 		if(!this.mapaJuego.devolverCeldasRadio(pos, unidad.getVision()).contains(this.mapaJuego.devolverCelda(pos))) throw new FueraDeRango();
-		((Cargable) unidad).cargarUnidad(this.mapaJuego, this.mapaJuego.devolverCelda(pos).getUnidad());
+		((Cargable) unidad).cargarUnidad(this.mapaJuego.devolverCelda(pos).getUnidad());
+		celda.removeUnidad();
 	}
 	
-	public void descargarUnidades(){
+	public void descargarUnidades(Unidad unidad) throws UnidadNoPuedeTransportar, UnidadNoPerteneceAJugador, CeldaOcupada, NaveVacia{
+		if(!unidad.puedeTransportar()) throw new UnidadNoPuedeTransportar();
+		if(!this.getActualJugador().tieneDaniable(unidad.getUbicacion())) throw new UnidadNoPerteneceAJugador();
+		((Cargable) unidad).descargarUnidades(this.mapaJuego);
 		
 	}
 
