@@ -2,6 +2,7 @@ package fiuba.algo3.modelo.unidades;
 
 import java.util.List;
 
+import fiuba.algo3.modelo.complementos.Danio;
 import fiuba.algo3.modelo.complementos.RangoDeAtaque;
 import fiuba.algo3.modelo.complementos.Recursos;
 import fiuba.algo3.modelo.construcciones.Construccion;
@@ -14,8 +15,6 @@ public class Scout extends UnidadAerea {
 	private static final Integer CONSTRUCTION_TIME = 9;
 	private static final Integer MAX_HEALTH = 150;
 	private static final Integer MAX_SHIELD = 100;
-	private static final Integer LAND_RANGE = 4;
-	private static final Integer AIR_RANGE = 4;
 	private static final Integer LAND_DMG = 8;
 	private static final Integer AIR_DMG = 14;
 	private static final Integer SUPPLY_COST = 3;
@@ -29,6 +28,7 @@ public class Scout extends UnidadAerea {
 		Recursos costoDeRecursos = new Recursos(MINERAL_COST,GAS_COST);
 		this.setCostoDeRecursos(costoDeRecursos);
 		this.setRangoDeAtaque(new RangoDeAtaque(RANGO_ATAQUE_TERRESTRE,RANGO_ATAQUE_AEREO));
+		this.setDanio(new Danio(LAND_DMG, AIR_DMG));
 	}
 	
 	@Override

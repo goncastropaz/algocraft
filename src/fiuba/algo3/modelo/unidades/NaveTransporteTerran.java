@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import fiuba.algo3.modelo.complementos.Capacidad;
+import fiuba.algo3.modelo.complementos.Danio;
 import fiuba.algo3.modelo.complementos.RangoDeAtaque;
 import fiuba.algo3.modelo.complementos.Recursos;
 import fiuba.algo3.modelo.construcciones.Construccion;
@@ -23,8 +24,6 @@ public class NaveTransporteTerran extends UnidadAerea implements Cargable{
 	private static final Integer CONSTRUCTION_TIME = 7;
 	private static final Integer MAX_HEALTH = 150;
 	private static final Integer MAX_SHIELD = 0;
-	private static final Integer LAND_RANGE = 0;
-	private static final Integer AIR_RANGE = 0;
 	private static final Integer LAND_DMG = 0;
 	private static final Integer AIR_DMG = 0;
 	private static final Integer SUPPLY_COST = 2;
@@ -43,6 +42,8 @@ public class NaveTransporteTerran extends UnidadAerea implements Cargable{
 		Recursos costoDeRecursos = new Recursos(MINERAL_COST,GAS_COST);
 		this.setCostoDeRecursos(costoDeRecursos);
 		this.setRangoDeAtaque(rango);
+		this.setDanio(new Danio(LAND_DMG, AIR_DMG));
+		
 		this.capacidad = new Capacidad(MAX_CAPACIDAD);
 		this.unidadesCargadas = new ArrayList<Unidad>();
 	}
@@ -83,7 +84,7 @@ public class NaveTransporteTerran extends UnidadAerea implements Cargable{
 	@Override
 	public void descargarUnidades(Mapa mapa) throws CeldaOcupada, NaveVacia {
 		if(unidadesCargadas.isEmpty()) throw new NaveVacia();
-		Iterator<Celda> iterator = mapa.devolverCeldasRadio(this.getUbicacion(),this.VISION).iterator();
+		Iterator<Celda> iterator = mapa.devolverCeldasRadio(this.getUbicacion(),VISION).iterator();
 		boolean descargoUnidad = false;
 		while(!unidadesCargadas.isEmpty() && iterator.hasNext()){
 			Celda celda = iterator.next();

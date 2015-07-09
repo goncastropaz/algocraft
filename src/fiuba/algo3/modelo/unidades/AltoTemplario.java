@@ -3,6 +3,7 @@ package fiuba.algo3.modelo.unidades;
 import java.util.ArrayList;
 import java.util.List;
 
+import fiuba.algo3.modelo.complementos.Danio;
 import fiuba.algo3.modelo.complementos.Energia;
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.complementos.RangoDeAtaque;
@@ -14,9 +15,7 @@ import fiuba.algo3.modelo.excepciones.CeldaSinConstruccion;
 import fiuba.algo3.modelo.excepciones.CopiaNoCausaDanio;
 import fiuba.algo3.modelo.excepciones.EdificioNoPuedeCrearUnidad;
 import fiuba.algo3.modelo.excepciones.EnergiaInsuficiente;
-import fiuba.algo3.modelo.excepciones.NoTieneEdificiosPrevios;
 import fiuba.algo3.modelo.excepciones.PoblacionInsuficiente;
-import fiuba.algo3.modelo.excepciones.RazaNoTieneUnidad;
 import fiuba.algo3.modelo.excepciones.RecursosInsuficientes;
 import fiuba.algo3.modelo.juego.Juego;
 import fiuba.algo3.modelo.juego.Jugador;
@@ -32,8 +31,6 @@ public class AltoTemplario extends UnidadTerrestre {
 	private static final Integer CONSTRUCTION_TIME = 7;
 	private static final Integer MAX_HEALTH = 40;
 	private static final Integer MAX_SHIELD = 40;
-	private static final Integer LAND_RANGE = 0;
-	private static final Integer AIR_RANGE = 0;
 	private static final Integer LAND_DMG = 0;
 	private static final Integer AIR_DMG = 0;
 	private static final Integer SUPPLY_COST = 2;
@@ -56,6 +53,7 @@ public class AltoTemplario extends UnidadTerrestre {
 		Recursos costoDeRecursos = new Recursos(MINERAL_COST,GAS_COST);
 		this.setCostoDeRecursos(costoDeRecursos);
 		this.setRangoDeAtaque(rango);
+		this.setDanio(new Danio(LAND_DMG, AIR_DMG));
 		
 		this.energia = new Energia(MAX_ENERGY,INITIAL_ENERGY);
 		this.tormentasPsionicas = new ArrayList<TormentaPsionica>();

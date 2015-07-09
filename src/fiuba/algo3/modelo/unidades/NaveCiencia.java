@@ -2,6 +2,7 @@ package fiuba.algo3.modelo.unidades;
 
 import java.util.List;
 
+import fiuba.algo3.modelo.complementos.Danio;
 import fiuba.algo3.modelo.complementos.Energia;
 import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.complementos.RangoDeAtaque;
@@ -21,8 +22,6 @@ public class NaveCiencia extends UnidadAerea{
 	private static final Integer CONSTRUCTION_TIME = 10;
 	private static final Integer MAX_HEALTH = 200;
 	private static final Integer MAX_SHIELD = 0;
-	private static final Integer LAND_RANGE = 0;
-	private static final Integer AIR_RANGE = 0;
 	private static final Integer LAND_DMG = 0;
 	private static final Integer AIR_DMG = 0;
 	private static final Integer SUPPLY_COST = 2;
@@ -43,6 +42,8 @@ public class NaveCiencia extends UnidadAerea{
 		Recursos costoDeRecursos = new Recursos(MINERAL_COST,GAS_COST);
 		this.setCostoDeRecursos(costoDeRecursos);
 		this.setRangoDeAtaque(rango);
+		this.setDanio(new Danio(LAND_DMG, AIR_DMG));
+		
 		this.energia = new Energia(MAX_ENERGY,INITIAL_ENERGY);
 
 	}
