@@ -18,13 +18,18 @@ import fiuba.algo3.modelo.excepciones.CeldaInvalida;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.CeldaSinConstruccion;
 import fiuba.algo3.modelo.excepciones.CeldaSinRecurso;
+import fiuba.algo3.modelo.excepciones.CeldaSinUnidad;
 import fiuba.algo3.modelo.excepciones.EdificioNoPuedeCrearUnidad;
 import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
+import fiuba.algo3.modelo.excepciones.FueraDeRango;
 import fiuba.algo3.modelo.excepciones.NoHayUnidadParaMoverEnCelda;
 import fiuba.algo3.modelo.excepciones.NoTieneEdificiosPrevios;
+import fiuba.algo3.modelo.excepciones.ObjetivoInvalido;
 import fiuba.algo3.modelo.excepciones.PoblacionInsuficiente;
 import fiuba.algo3.modelo.excepciones.RazaNoTieneConstruccion;
 import fiuba.algo3.modelo.excepciones.RecursosInsuficientes;
+import fiuba.algo3.modelo.excepciones.UnidadAtacadaInvalida;
+import fiuba.algo3.modelo.excepciones.UnidadAtacanteInvalida;
 import fiuba.algo3.modelo.excepciones.UnidadTerrestreEnAreaEspacial;
 
 public class VistaAccionesProtoss extends JPanel{
@@ -272,6 +277,23 @@ public class VistaAccionesProtoss extends JPanel{
 			
 			JButton btnNewButton_5 = new JButton("Atacar");
 			btnNewButton_5.setBounds(12, 574, 117, 25);
+			btnNewButton_5.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+						try {
+							controlAccionesProtoss.atacar(controlJuego.getPrimeraPosicion(),controlJuego.getUltimaPosicion());
+						} catch (ObjetivoInvalido e1) {
+							controlJuego.mostrarMensajeError("El objetivo seleccionado para ser atacado es invalido.");
+						} catch (UnidadAtacanteInvalida e1) {
+							controlJuego.mostrarMensajeError("La unidad Atacante seleccionada no pertenece a sus tropas.");
+						} catch (UnidadAtacadaInvalida e1) {
+							controlJuego.mostrarMensajeError("La unidad seleccionada para ser atacada no pertenece a las tropas enemigas.");
+						} catch (FueraDeRango e1) {
+							controlJuego.mostrarMensajeError("El rango de su unidad no permite atacar a la unidad enemiga seleccionada.");
+						} catch (CeldaSinUnidad e1) {
+							controlJuego.mostrarMensajeError("La celda seleccionada no posee unidad para atacar.");
+						}
+				}
+			});
 			add(btnNewButton_5);
 			
 			JButton btnEmp = new JButton("Tormenta Psionica");

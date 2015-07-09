@@ -216,4 +216,8 @@ public class ControlMapa {
 		this.primerCeldaSeleccionada = null;
 		this.segundaCeldaSeleccionada=null;
 	}
+
+	public Posicion getPrimeraPosicion() {
+		return this.primerCeldaSeleccionada;
+	}
 }

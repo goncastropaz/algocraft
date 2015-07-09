@@ -146,6 +146,10 @@ public class ControlJuego {
 	public void setCeldasSeleccionadasDefault(){
 		this.controlMapa.setCeldasSeleccionadasDefault();
 	}
+
+	public Posicion getPrimeraPosicion() {
+		return this.controlMapa.getPrimeraPosicion();
+	}
 	
 
 }

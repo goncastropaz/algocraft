@@ -132,8 +132,10 @@ public class Juego {
 		this.turno.getActualJugador().agregarConstruccion(construccion);
 	}
 	
-	public void atacar(Unidad unidad, Posicion pos) throws ObjetivoInvalido, UnidadAtacanteInvalida, UnidadAtacadaInvalida, FueraDeRango{
-		unidad.atacarUnidad(this,pos);
+	public void atacar(Posicion posUnidadAtacante, Posicion posUnidadAtacada) throws ObjetivoInvalido, UnidadAtacanteInvalida, UnidadAtacadaInvalida, FueraDeRango, CeldaSinUnidad{
+		Unidad unidad = this.mapaJuego.devolverCelda(posUnidadAtacante).getUnidad();
+		if(unidad ==null) throw new CeldaSinUnidad();
+		unidad.atacarUnidad(this,posUnidadAtacada);
 		this.refrescar();
 	}
 	
