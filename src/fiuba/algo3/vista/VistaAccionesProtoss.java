@@ -1,10 +1,12 @@
 package fiuba.algo3.vista;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -52,61 +54,89 @@ public class VistaAccionesProtoss extends JPanel{
 			txtCrearConstrucciones.setBounds(12,12,171,25);
 			add(txtCrearConstrucciones);
 			
-			JButton crear_centro_Mineral = new JButton("Crear Nexo Mineral");
-			crear_centro_Mineral.addActionListener(new ActionListener() {
+			JButton crear_nexo_Mineral = new JButton("Crear Nexo Mineral");
+			crear_nexo_Mineral.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					crearConstruccion(1);
 				}
 			});
-			crear_centro_Mineral.setBounds(12,42,175,25);
-			add(crear_centro_Mineral);
+			crear_nexo_Mineral.setBounds(12,42,175,25);
+			add(crear_nexo_Mineral);
 		
+			JLabel costoNexo = new JLabel("50 M");
+			costoNexo.setFont(new Font("Arial", Font.BOLD, 14));
+			costoNexo.setBounds(220,42,175,25);
+			add(costoNexo);
 			
-			
-			JButton crear_Barraca = new JButton("Crear Pilon");
-			crear_Barraca.addActionListener(new ActionListener() {
+			JButton crear_Pilon = new JButton("Crear Pilon");
+			crear_Pilon.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					crearConstruccion(2);
 				}
 			});
-			crear_Barraca.setBounds(12,70,120,25);
-			add(crear_Barraca);
+			crear_Pilon.setBounds(12,70,120,25);
+			add(crear_Pilon);
 			
-			JButton crear_DepositoSuministro = new JButton("Crear Asimilador");
-			crear_DepositoSuministro.setBounds(12, 98, 160, 25);
-			crear_DepositoSuministro.addActionListener(new ActionListener() {
+			JLabel costoPilon = new JLabel("100 M");
+			costoPilon.setFont(new Font("Arial", Font.BOLD, 14));
+			costoPilon.setBounds(150,70,120,25);
+			add(costoPilon);
+			
+			JButton crear_Asimilador = new JButton("Crear Asimilador");
+			crear_Asimilador.setBounds(12, 98, 160, 25);
+			crear_Asimilador.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					crearConstruccion(3);
 				}
 			});
-			add(crear_DepositoSuministro);
+			add(crear_Asimilador);
 			
-			JButton btnCrearRefineria = new JButton("Crear Acceso");
-			btnCrearRefineria.setBounds(12, 129, 135, 25);
-			btnCrearRefineria.addActionListener(new ActionListener() {
+			JLabel costoAsimilador = new JLabel("100 M");
+			costoAsimilador.setFont(new Font("Arial", Font.BOLD, 14));
+			costoAsimilador.setBounds(190, 98, 160, 25);
+			add(costoAsimilador);
+			
+			JButton btnCrearAcceso = new JButton("Crear Acceso");
+			btnCrearAcceso.setBounds(12, 129, 135, 25);
+			btnCrearAcceso.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					crearConstruccion(4);
 				}
 			});
-			add(btnCrearRefineria);
+			add(btnCrearAcceso);
 			
-			JButton btnCrearc = new JButton("Crear Zealot");
-			btnCrearc.setBounds(12, 256, 129, 25);
-			btnCrearc.addActionListener(new ActionListener() {
+			JLabel costoAcceso = new JLabel("150 M");
+			costoAcceso.setFont(new Font("Arial", Font.BOLD, 14));
+			costoAcceso.setBounds(180, 129, 135, 25);
+			add(costoAcceso);
+			
+			JButton btnCrearPuerto = new JButton("Crear Puerto Estelar");
+			btnCrearPuerto.setBounds(12, 160, 185, 25);
+			btnCrearPuerto.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					crearUnidad(1);
+					crearConstruccion(5);
 				}
 			});
-			add(btnCrearc);
+			add(btnCrearPuerto);
 			
-			JButton btnNewButton = new JButton("Crear Archivos Templarios");
-			btnNewButton.setBounds(12, 188, 218, 25);
-			btnNewButton.addActionListener(new ActionListener() {
+			JLabel costoPuerto = new JLabel("150 M / 150 G");
+			costoPuerto.setFont(new Font("Arial", Font.BOLD, 14));
+			costoPuerto.setBounds(220, 160, 185, 25);
+			add(costoPuerto);
+			
+			JButton btnCrearArchivo = new JButton("Crear Archivos Templarios");
+			btnCrearArchivo.setBounds(12, 188, 218, 25);
+			btnCrearArchivo.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					crearConstruccion(6);
 				}
 			});
-			add(btnNewButton);
+			add(btnCrearArchivo);
+			
+			JLabel costoArchivo = new JLabel("150 M / 200 G");
+			costoArchivo.setFont(new Font("Arial", Font.BOLD, 14));
+			costoArchivo.setBounds(260, 188, 218, 25);
+			add(costoArchivo);
 			
 			txtCrearUnidades = new JTextField();
 			txtCrearUnidades.setBounds(12, 225, 171, 25);
@@ -116,50 +146,76 @@ public class VistaAccionesProtoss extends JPanel{
 			add(txtCrearUnidades);
 			txtCrearUnidades.setColumns(11);
 			
-			JButton btnCrearMarine = new JButton("Crear Puerto Estelar");
-			btnCrearMarine.setBounds(12, 160, 185, 25);
-			btnCrearMarine.addActionListener(new ActionListener() {
+			JButton btnCrearZealot = new JButton("Crear Zealot");
+			btnCrearZealot.setBounds(12, 256, 129, 25);
+			btnCrearZealot.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					crearConstruccion(5);
+					crearUnidad(1);
 				}
 			});
-			add(btnCrearMarine);
+			add(btnCrearZealot);
 			
-			JButton btnNewButton_1 = new JButton("Crear Dragon");
-			btnNewButton_1.setBounds(12, 285, 135, 25);
-			btnNewButton_1.addActionListener(new ActionListener() {
+			JLabel costoZealot = new JLabel("100 M");
+			costoZealot.setFont(new Font("Arial", Font.BOLD, 14));
+			costoZealot.setBounds(160, 256, 129, 25);
+			add(costoZealot);
+			
+			JButton btnCrearDragon = new JButton("Crear Dragon");
+			btnCrearDragon.setBounds(12, 285, 135, 25);
+			btnCrearDragon.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					crearUnidad(2);
 				}
 			});
-			add(btnNewButton_1);
+			add(btnCrearDragon);
 			
-			JButton btnCrearEspectro = new JButton("Crear Scout");
-			btnCrearEspectro.setBounds(12, 315, 120, 25);
-			btnCrearEspectro.addActionListener(new ActionListener() {
+			JLabel costoDragon = new JLabel("125 M / 50 G");
+			costoDragon.setFont(new Font("Arial", Font.BOLD, 14));
+			costoDragon.setBounds(180, 285, 135, 25);
+			add(costoDragon);
+			
+			JButton btnCrearScout = new JButton("Crear Scout");
+			btnCrearScout.setBounds(12, 315, 120, 25);
+			btnCrearScout.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					crearUnidad(3);
 				}
 			});
-			add(btnCrearEspectro);
+			add(btnCrearScout);
 			
-			JButton btnNewButton_2 = new JButton("Crear Alto Templario");
-			btnNewButton_2.setBounds(12, 347, 185, 25);
-			btnNewButton_2.addActionListener(new ActionListener() {
+			JLabel costoScout = new JLabel("300 M / 150 G");
+			costoScout.setFont(new Font("Arial", Font.BOLD, 14));
+			costoScout.setBounds(160, 315, 120, 25);
+			add(costoScout);
+			
+			JButton btnCrearAlto = new JButton("Crear Alto Templario");
+			btnCrearAlto.setBounds(12, 347, 185, 25);
+			btnCrearAlto.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					crearUnidad(4);
 				}
 			});
-			add(btnNewButton_2);
+			add(btnCrearAlto);
 			
-			JButton btnNewButton_3 = new JButton("Crear Nave Transportadora");
-			btnNewButton_3.setBounds(12, 378, 231, 25);
-			btnNewButton_3.addActionListener(new ActionListener() {
+			JLabel costoAlto = new JLabel("50 M / 150 G");
+			costoAlto.setFont(new Font("Arial", Font.BOLD, 14));
+			costoAlto.setBounds(220, 347, 185, 25);
+			add(costoAlto);
+			
+			JButton btnCrearNave = new JButton("Crear Nave Transportadora");
+			btnCrearNave.setBounds(12, 378, 231, 25);
+			btnCrearNave.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					crearUnidad(5);
 				}
 			});
-			add(btnNewButton_3);
+			add(btnCrearNave);
+			
+			JLabel costoNave = new JLabel("200 M");
+			costoNave.setFont(new Font("Arial", Font.BOLD, 14));
+			costoNave.setBounds(260, 378, 231, 25);
+			add(costoNave);
+			
 			
 			txtAcciones = new JTextField();
 			txtAcciones.setBackground(new Color(255, 102, 0));
@@ -170,7 +226,7 @@ public class VistaAccionesProtoss extends JPanel{
 			txtAcciones.setColumns(10);
 			
 			JButton btnNewButton_4 = new JButton("Mover Arriba");
-			btnNewButton_4.setBounds(120, 446, 132, 25);
+			btnNewButton_4.setBounds(120, 446, 148, 25);
 			btnNewButton_4.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					mover(1);
@@ -179,7 +235,7 @@ public class VistaAccionesProtoss extends JPanel{
 			add(btnNewButton_4);
 			
 			JButton btnMoverAbajo = new JButton("Mover Abajo");
-			btnMoverAbajo.setBounds(120, 476, 132, 25);
+			btnMoverAbajo.setBounds(120, 476, 148, 25);
 			btnMoverAbajo.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					mover(2);
@@ -197,13 +253,22 @@ public class VistaAccionesProtoss extends JPanel{
 			add(btnMoverIzquierda);
 			
 			JButton btnMoverDerecha = new JButton("Mover Derecha");
-			btnMoverDerecha.setBounds(120, 537, 141, 25);
+			btnMoverDerecha.setBounds(120, 537, 148, 25);
 			btnMoverDerecha.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					mover(3);
 				}
 			});
 			add(btnMoverDerecha);
+			
+			JButton btnCargar =   new JButton("<html>"+"Cargar en"+"<br>"+"Nave"+"<br>"+"Transporte"+"</html>");
+			btnCargar.setBounds(280, 446, 100, 110);
+			btnCargar.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+			
+				}
+			});
+			add(btnCargar);
 			
 			JButton btnNewButton_5 = new JButton("Atacar");
 			btnNewButton_5.setBounds(12, 574, 117, 25);
@@ -213,9 +278,19 @@ public class VistaAccionesProtoss extends JPanel{
 			btnEmp.setBounds(120, 610, 170, 25);
 			add(btnEmp);
 			
+			JLabel costoTormenta = new JLabel("75 E");
+			costoTormenta.setFont(new Font("Arial", Font.BOLD, 14));
+			costoTormenta.setBounds(300, 610, 170, 25);
+			add(costoTormenta);
+			
 			JButton btnRadiacion = new JButton("Alucinacion");
 			btnRadiacion.setBounds(120, 640, 117, 25);
 			add(btnRadiacion);
+			
+			JLabel costoRadiacion = new JLabel("100 E");
+			costoRadiacion.setFont(new Font("Arial", Font.BOLD, 14));
+			costoRadiacion.setBounds(245, 640, 117, 25);
+			add(costoRadiacion);
 			
 			txtMover = new JTextField();
 			txtMover.setBackground(new Color(255, 255, 51));
@@ -239,6 +314,8 @@ public class VistaAccionesProtoss extends JPanel{
 			try {
 				controlAccionesProtoss.crearContruccion(id,controlJuego.getUltimaPosicion());
 				controlJuego.actualizarVista();
+			} catch (CeldaInvalida e) {
+				controlJuego.mostrarMensajeError("La construccion no puede ser creada en una celda con recursos.");
 			} catch (CeldaOcupada e) {
 				controlJuego.mostrarMensajeError("La construccion no puede ser creada en una celda ocupada.");
 			} catch (CeldaSinRecurso e) {
@@ -251,8 +328,6 @@ public class VistaAccionesProtoss extends JPanel{
 				controlJuego.mostrarMensajeError("Recursos insuficientes.");
 			} catch (NoTieneEdificiosPrevios e) {
 				controlJuego.mostrarMensajeError("Requiere edificios previos");
-			} catch (CeldaInvalida e) {
-				controlJuego.mostrarMensajeError("La construccion no puede crearse sobre mineral/gas.");
 			}
 		}
 		
