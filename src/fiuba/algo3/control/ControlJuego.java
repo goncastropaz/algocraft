@@ -143,5 +143,9 @@ public class ControlJuego {
 		
 	}
 	
+	public void setCeldasSeleccionadasDefault(){
+		this.controlMapa.setCeldasSeleccionadasDefault();
+	}
+	
 
 }

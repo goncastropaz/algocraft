@@ -133,6 +133,7 @@ public class VistaJuego {
 	}
 
 	public void cambiarVistaJugador() {
+		this.controlJuego.setCeldasSeleccionadasDefault();
 		this.actualizarVista();
 		this.frame.getContentPane().validate();
 		this.frame.getContentPane().repaint();
