@@ -17,6 +17,6 @@ public abstract class CrearConstruccion {
 	public CrearConstruccion(Juego juego){
 		this.juego = juego;
 	}
-	public abstract void crearConstruccion(Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial, RazaNoTieneConstruccion, RecursosInsuficientes, NoTieneEdificiosPrevios, CeldaInvalida;
+	public abstract void crearConstruccion(Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial, RecursosInsuficientes, NoTieneEdificiosPrevios, CeldaInvalida;
 	
 }

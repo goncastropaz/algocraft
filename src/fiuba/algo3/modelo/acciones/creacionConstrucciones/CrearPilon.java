@@ -18,7 +18,7 @@ public class CrearPilon extends CrearConstruccion{
 	}
 	
 	@Override
-	public void crearConstruccion(Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial, RazaNoTieneConstruccion, RecursosInsuficientes, NoTieneEdificiosPrevios, CeldaInvalida  {
+	public void crearConstruccion(Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial, RecursosInsuficientes, NoTieneEdificiosPrevios, CeldaInvalida  {
 		Pilon construccion = new Pilon(pos);
 		this.juego.agregarConstruccion(construccion,pos);
 

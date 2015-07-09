@@ -17,7 +17,7 @@ public class CrearAsimilador extends CrearConstruccion{
 		super(juego);
 	}
 	@Override
-	public void crearConstruccion(Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial, RazaNoTieneConstruccion, RecursosInsuficientes, NoTieneEdificiosPrevios, CeldaInvalida  {
+	public void crearConstruccion(Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial, RecursosInsuficientes, NoTieneEdificiosPrevios, CeldaInvalida  {
 		Asimilador construccion = new Asimilador(pos);
 		this.juego.agregarConstruccion(construccion,pos);
 	}

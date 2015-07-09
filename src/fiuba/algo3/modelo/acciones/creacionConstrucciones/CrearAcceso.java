@@ -18,7 +18,7 @@ public class CrearAcceso extends CrearConstruccion{
 	}
 
 	@Override
-	public void crearConstruccion(Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial, RazaNoTieneConstruccion, RecursosInsuficientes, NoTieneEdificiosPrevios, CeldaInvalida {
+	public void crearConstruccion(Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial, RecursosInsuficientes, NoTieneEdificiosPrevios, CeldaInvalida {
 		Acceso construccion = new Acceso(pos);
 		this.juego.agregarConstruccion(construccion, pos);
 

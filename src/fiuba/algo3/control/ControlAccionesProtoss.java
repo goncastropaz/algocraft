@@ -79,7 +79,7 @@ public class ControlAccionesProtoss implements ControlAcciones{
 		ejecutable.crearUnidad(pos);
 	}
 	
-	public void crearContruccion(int identificador,Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial, RazaNoTieneConstruccion, RecursosInsuficientes, NoTieneEdificiosPrevios, CeldaInvalida{
+	public void crearContruccion(int identificador,Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial, RecursosInsuficientes, NoTieneEdificiosPrevios, CeldaInvalida{
 		CrearConstruccion ejecutable = this.listaDeCreacionConstrucciones.get(identificador);
 		ejecutable.crearConstruccion(pos);
 	}

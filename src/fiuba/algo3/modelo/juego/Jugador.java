@@ -124,8 +124,8 @@ public class Jugador {
 		}
 	}
 
-	public void puedeCrearConstruccion(Construccion construccion) throws RazaNoTieneConstruccion, RecursosInsuficientes, NoTieneEdificiosPrevios {
-		//if(!this.raza.getListaDeConstruccionesValidas().contains(construccion.getName())) throw new RazaNoTieneConstruccion();
+	public void puedeCrearConstruccion(Construccion construccion) throws RecursosInsuficientes, NoTieneEdificiosPrevios {
+
 		if(!construccion.getCost().tieneSuficientesRecursos(this.recursos.getMineral(), this.recursos.getGas())) throw new RecursosInsuficientes();
 		if(!construccion.tieneEdificiosPrevios(this.getConstruccionesList())) throw new NoTieneEdificiosPrevios(); 
 	}

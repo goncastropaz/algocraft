@@ -322,8 +322,6 @@ public class VistaAccionesProtoss extends JPanel{
 				controlJuego.mostrarMensajeError("La construccion debe crearse sobre mineral.");
 			} catch (CeldaEspacial e) {
 				controlJuego.mostrarMensajeError("La construccion debe crearse sobre una celda terrestre.");
-			} catch (RazaNoTieneConstruccion e) {
-				controlJuego.mostrarMensajeError("WHAT!?.");  //CHEQUEAR CON GON!!!
 			} catch (RecursosInsuficientes e) {
 				controlJuego.mostrarMensajeError("Recursos insuficientes.");
 			} catch (NoTieneEdificiosPrevios e) {
