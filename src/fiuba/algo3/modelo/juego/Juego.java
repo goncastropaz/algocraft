@@ -26,7 +26,6 @@ import fiuba.algo3.modelo.excepciones.NombreConMenosDe4Caracteres;
 import fiuba.algo3.modelo.excepciones.NombreYaExiste;
 import fiuba.algo3.modelo.excepciones.ObjetivoInvalido;
 import fiuba.algo3.modelo.excepciones.PoblacionInsuficiente;
-import fiuba.algo3.modelo.excepciones.RazaNoTieneConstruccion;
 import fiuba.algo3.modelo.excepciones.RecursosInsuficientes;
 import fiuba.algo3.modelo.excepciones.UnidadAereaNoSePuedeCargar;
 import fiuba.algo3.modelo.excepciones.UnidadAtacadaInvalida;
@@ -138,7 +137,7 @@ public class Juego {
 		Unidad unidad = this.mapaJuego.devolverCelda(posUnidadAtacante).getUnidad();
 		if(unidad ==null) throw new CeldaSinUnidad();
 		unidad.atacarUnidad(this,posUnidadAtacada);
-		this.refrescar();
+		this.refrescar(this.mapaJuego);
 		this.turno.completarAccionJugador();
 	}
 	
@@ -155,7 +154,7 @@ public class Juego {
 		} else{
 			throw new MagiaDesconocida();
 		}
-		this.refrescar();
+		this.refrescar(this.mapaJuego);
 		this.turno.completarAccionJugador();
 	}
 	
@@ -191,9 +190,9 @@ public class Juego {
 		return this.mapaJuego;
 	}
 	
-	public void refrescar(){
+	public void refrescar(Mapa mapa){
 		for(int i = 1; i < 3;i++){
-			jugadores.get(i).refrescar();
+			jugadores.get(i).refrescar(mapa);
 		}
 	}
 

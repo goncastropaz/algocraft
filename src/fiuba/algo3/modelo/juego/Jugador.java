@@ -140,18 +140,20 @@ public class Jugador {
 		return false;
 	}
 
-	public void refrescar() {
+	public void refrescar(Mapa mapa) {
 		List<Unidad> unidades = new ArrayList<Unidad>();
 		List<Construccion> construcciones = new ArrayList<Construccion>();
 		for(Unidad unidad : unidadesList){
-			if(unidad.getVida().getVidaActual().equals(0)){
+			if(unidad.getVida().getVidaActual().compareTo(0) <= 0){
 				unidades.add(unidad);
 				poblacion.sacarPoblacion(unidad.getSuministro());
+				mapa.devolverCelda(unidad.getUbicacion()).removeUnidad();
 			}
 		}
 		for(Construccion construccion : construccionesList){
-			if(construccion.getHealth().getVidaActual().equals(0)){
+			if(construccion.getHealth().getVidaActual().compareTo(0) <= 0){
 				construcciones.add(construccion);
+				mapa.devolverCelda(construccion.getUbicacion()).removerConstruccion();
 			}
 		}
 		if(!unidades.isEmpty()) unidadesList.removeAll(unidades);
