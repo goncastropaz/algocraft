@@ -5,12 +5,12 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
-import fiuba.algo3.modelo.complementos.Posicion;
+import fiuba.algo3.modelo.unidades.Unidad;
 
 public class VistaEspectro extends VistaUnidad {
 
-	public VistaEspectro(Posicion posicion) throws IOException {
-		super(posicion);
+	public VistaEspectro(Unidad unidad) throws IOException {
+		super(unidad);
 		this.rutaImagen = "/imagenes/unidades/terran/Espectro.jpg";
 
 		this.imagenInicial = ImageIO.read(VistaUnidad.class

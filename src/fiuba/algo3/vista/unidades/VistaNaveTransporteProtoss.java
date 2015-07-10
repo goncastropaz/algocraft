@@ -6,11 +6,12 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 import fiuba.algo3.modelo.complementos.Posicion;
+import fiuba.algo3.modelo.unidades.Unidad;
 
 public class VistaNaveTransporteProtoss extends VistaUnidad {
 
-	public VistaNaveTransporteProtoss(Posicion posicion) throws IOException {
-		super(posicion);
+	public VistaNaveTransporteProtoss(Unidad unidad) throws IOException {
+		super(unidad);
 		this.rutaImagen = "/imagenes/unidades/protoss/NaveTransporteProtoss.jpg";
 
 		this.imagenInicial = ImageIO.read(VistaUnidad.class

@@ -46,7 +46,7 @@ public class FabricaVistaUnidad {
 		constructores = listaDeVistasUnidades.get(unidad.getClass()).getConstructors();
 		
 		try {
-			vistaUnidad = (VistaUnidad) constructores[0].newInstance(unidad.getUbicacion());
+			vistaUnidad = (VistaUnidad) constructores[0].newInstance(unidad);
 		} catch (InstantiationException e) {
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {

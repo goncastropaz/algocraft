@@ -5,12 +5,12 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
-import fiuba.algo3.modelo.complementos.Posicion;
+import fiuba.algo3.modelo.unidades.Unidad;
 
 public class VistaGolliat extends VistaUnidad {
 
-	public VistaGolliat(Posicion posicion)throws IOException {
-		super(posicion);
+	public VistaGolliat(Unidad unidad)throws IOException {
+		super(unidad);
 		this.rutaImagen = "/imagenes/unidades/terran/Golliat.jpg";
 
 		this.imagenInicial = ImageIO.read(VistaUnidad.class
