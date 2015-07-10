@@ -1,4 +1,4 @@
-package fiuba.algo3.algocraft.construcciones;
+package fiuba.algo3.modelo.construcciones;
 
 import static org.junit.Assert.assertTrue;
 
@@ -60,7 +60,7 @@ public class ArchivosTemplariosTest {
 		juego.agregarConstruccion(new Acceso(new Posicion(9, 9)), new Posicion(
 				9, 9));
 		
-		// Se agrega la construcción necesaria para crear el archivo templario.
+		// Se agrega la construccion necesaria para crear el archivo templario.
 		juego.agregarConstruccion(
 				new PuertoEstelarProtoss(new Posicion(6, 6)), new Posicion(
 						6, 6));

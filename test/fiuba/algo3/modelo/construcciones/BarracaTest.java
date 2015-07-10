@@ -1,4 +1,4 @@
-package fiuba.algo3.algocraft.construcciones;
+package fiuba.algo3.modelo.construcciones;
 
 import static org.junit.Assert.assertTrue;
 
@@ -44,8 +44,8 @@ public class BarracaTest {
 			juego.cambiarTurnoJugador();
 
 		//Barraca requiere de población para crear marine.
-		DepositoSuministro construccionDeposito = new DepositoSuministro(new Posicion(10, 10));
-		juego.agregarConstruccion(construccionDeposito, new Posicion(6, 6));
+		DepositoSuministro construccionDeposito = new DepositoSuministro(new Posicion(8, 8));
+		juego.agregarConstruccion(construccionDeposito, new Posicion(8, 8));
 
 		//Se crea la unidad marine en la barraca.
 		Marine marine = new Marine();

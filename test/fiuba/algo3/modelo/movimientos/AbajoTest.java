@@ -1,4 +1,4 @@
-package fiuba.algo3.algocraft.movimientos;
+package fiuba.algo3.modelo.movimientos;
 
 import static org.junit.Assert.*;
 

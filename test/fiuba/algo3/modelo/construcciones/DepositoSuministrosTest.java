@@ -1,4 +1,4 @@
-package fiuba.algo3.algocraft.construcciones;
+package fiuba.algo3.modelo.construcciones;
 
 import static org.junit.Assert.assertTrue;
 

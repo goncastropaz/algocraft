@@ -1,4 +1,4 @@
-package fiuba.algo3.algocraft.unidades;
+package fiuba.algo3.modelo.unidades;
 
 import static org.junit.Assert.assertTrue;
 

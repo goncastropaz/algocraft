@@ -1,4 +1,4 @@
-package fiuba.algo3.algocraft.construcciones;
+package fiuba.algo3.modelo.construcciones;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
@@ -70,19 +70,19 @@ public class AccesoTest {
 		}
 	}
 	
-	@Test
-	public void testJugadorNoCreaAccesoEnCeldaEspacial(){
-		try{
-			Posicion posicion = new Posicion(1, 18);
-			Juego juego = new Juego();
-			Acceso acceso = new Acceso(posicion);
-			juego.getActualJugador().setRaza(new Protoss(juego));
-			for(int i = 0; i < 35; i++) juego.getActualJugador().actualizarMineral();
-			juego.agregarConstruccion(acceso, posicion);
-		} catch(Exception e){
-			assertEquals(true, e instanceof CeldaEspacial);
-		}
-	}
+//	@Test
+//	public void testJugadorNoCreaAccesoEnCeldaEspacial(){
+//		try{
+//			Posicion posicion = new Posicion(1, 18);
+//			Juego juego = new Juego();
+//			Acceso acceso = new Acceso(posicion);
+//			juego.getActualJugador().setRaza(new Protoss(juego));
+//			for(int i = 0; i < 35; i++) juego.getActualJugador().actualizarMineral();
+//			juego.agregarConstruccion(acceso, posicion);
+//		} catch(Exception e){
+//			assertEquals(true, e instanceof CeldaEspacial);
+//		}
+//	}
 	
 //	@Test
 //	public void testCrearAccesoDeberiaSetearElNombreACCESO() throws FueraDeMatriz, JugadorInvalido{
