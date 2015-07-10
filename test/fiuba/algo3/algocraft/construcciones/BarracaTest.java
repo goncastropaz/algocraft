@@ -10,6 +10,7 @@ import fiuba.algo3.modelo.construcciones.CentroDeMineral;
 import fiuba.algo3.modelo.construcciones.DepositoSuministro;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaInvalida;
+import fiuba.algo3.modelo.excepciones.CeldaNoVisible;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.CeldaSinConstruccion;
 import fiuba.algo3.modelo.excepciones.CeldaSinRecurso;
@@ -29,7 +30,7 @@ public class BarracaTest {
 			CeldaSinRecurso, CeldaEspacial, CeldaInvalida,
 			RazaNoTieneConstruccion, RecursosInsuficientes,
 			NoTieneEdificiosPrevios, PoblacionInsuficiente,
-			CeldaSinConstruccion, EdificioNoPuedeCrearUnidad {
+			CeldaSinConstruccion, EdificioNoPuedeCrearUnidad, CeldaNoVisible {
 
 		Juego juego = new Juego();
 

@@ -7,6 +7,7 @@ import fiuba.algo3.modelo.construcciones.Construccion;
 import fiuba.algo3.modelo.excepciones.CapacidadInsuficiente;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaInvalida;
+import fiuba.algo3.modelo.excepciones.CeldaNoVisible;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.CeldaSinConstruccion;
 import fiuba.algo3.modelo.excepciones.CeldaSinRecurso;
@@ -114,19 +115,20 @@ public class Juego {
 		if(!this.mapaJuego.tieneConstruccion(posConstruccion)) throw new CeldaSinConstruccion();
 		if(!this.mapaJuego.devolverCelda(posConstruccion).getConstruccion().puedeCrearUnidad(unidad)) throw new EdificioNoPuedeCrearUnidad();
 		this.turno.getActualJugador().puedeCrearUnidad(unidad);
-		Posicion posUnidad = this.mapaJuego.agregarUnidad(unidad,posConstruccion);
+		Posicion posUnidad = this.mapaJuego.agregarUnidad(unidad,posConstruccion,this.turno.getActualJugador());
 		unidad.setUbicacion(posUnidad);
 		this.turno.getActualJugador().agregarUnidad(unidad);
 		this.turno.completarAccionJugador();
 	}
 	public void agregarUnidadCopia(Unidad copia, Posicion posUnidadCopiada) throws RecursosInsuficientes, PoblacionInsuficiente, CeldaOcupada{
 		this.turno.getActualJugador().puedeCrearUnidad(copia);
-		Posicion posUnidad = this.mapaJuego.agregarUnidad(copia,posUnidadCopiada);
+		Posicion posUnidad = this.mapaJuego.agregarUnidad(copia,posUnidadCopiada,this.turno.getActualJugador());
 		copia.setUbicacion(posUnidad);
 		this.turno.getActualJugador().agregarUnidad(copia);
 	}
 	
-	public void agregarConstruccion(Construccion construccion, Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial, RecursosInsuficientes, NoTieneEdificiosPrevios, CeldaInvalida{
+	public void agregarConstruccion(Construccion construccion, Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial, RecursosInsuficientes, NoTieneEdificiosPrevios, CeldaInvalida, CeldaNoVisible{
+		if(!this.turno.getActualJugador().tieneVisionDeCelda(pos)) throw new CeldaNoVisible();
 		this.turno.getActualJugador().puedeCrearConstruccion(construccion);
 		this.mapaJuego.agregarConstruccion(construccion,pos);
 		this.turno.getActualJugador().agregarConstruccion(construccion);

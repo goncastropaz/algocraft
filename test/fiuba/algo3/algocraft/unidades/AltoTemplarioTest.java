@@ -14,6 +14,7 @@ import fiuba.algo3.modelo.construcciones.Pilon;
 import fiuba.algo3.modelo.construcciones.PuertoEstelarProtoss;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaInvalida;
+import fiuba.algo3.modelo.excepciones.CeldaNoVisible;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.CeldaSinConstruccion;
 import fiuba.algo3.modelo.excepciones.CeldaSinRecurso;
@@ -32,7 +33,7 @@ import fiuba.algo3.modelo.unidades.AltoTemplario;
 public class AltoTemplarioTest {
 
 	@Test
-	public void testCrearUnAltoTemplarioCarga15DeEnergiaPorTurno() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, CeldaOcupada, RecursosInsuficientes, PoblacionInsuficiente, CeldaSinConstruccion, EdificioNoPuedeCrearUnidad, CeldaSinRecurso, CeldaEspacial, NoTieneEdificiosPrevios, CeldaInvalida, NombreYaExiste, JugadorInvalido, NombreConMenosDe4Caracteres{
+	public void testCrearUnAltoTemplarioCarga15DeEnergiaPorTurno() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, CeldaOcupada, RecursosInsuficientes, PoblacionInsuficiente, CeldaSinConstruccion, EdificioNoPuedeCrearUnidad, CeldaSinRecurso, CeldaEspacial, NoTieneEdificiosPrevios, CeldaInvalida, NombreYaExiste, JugadorInvalido, NombreConMenosDe4Caracteres, CeldaNoVisible{
 		
 		Juego juego = new Juego();
 		

@@ -12,6 +12,7 @@ import fiuba.algo3.modelo.construcciones.PuertoEstelarTerran;
 import fiuba.algo3.modelo.construcciones.Refineria;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaInvalida;
+import fiuba.algo3.modelo.excepciones.CeldaNoVisible;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.CeldaSinRecurso;
 import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
@@ -24,7 +25,7 @@ public class PuertoEstelarTerranTest {
 	@Test(expected = NoTieneEdificiosPrevios.class)
 	public void testParaCrearseRequiereFabrica() throws CeldaOcupada,
 			CeldaSinRecurso, CeldaEspacial, RecursosInsuficientes,
-			NoTieneEdificiosPrevios, CeldaInvalida, FueraDeMatriz {
+			NoTieneEdificiosPrevios, CeldaInvalida, FueraDeMatriz, CeldaNoVisible {
 		Juego juego = new Juego();
 
 		CentroDeMineral centro = new CentroDeMineral(new Posicion(4, 4));
@@ -44,7 +45,7 @@ public class PuertoEstelarTerranTest {
 	@Test
 	public void testSeCreaLuegoDeCrearUnaFabrica() throws FueraDeMatriz,
 			CeldaOcupada, CeldaSinRecurso, CeldaEspacial,
-			RecursosInsuficientes, NoTieneEdificiosPrevios, CeldaInvalida {
+			RecursosInsuficientes, NoTieneEdificiosPrevios, CeldaInvalida, CeldaNoVisible {
 		Juego juego = new Juego();
 
 		CentroDeMineral centro = new CentroDeMineral(new Posicion(4, 4));

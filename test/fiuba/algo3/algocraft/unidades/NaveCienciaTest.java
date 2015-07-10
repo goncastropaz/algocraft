@@ -19,6 +19,7 @@ import fiuba.algo3.modelo.construcciones.PuertoEstelarTerran;
 import fiuba.algo3.modelo.construcciones.Refineria;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaInvalida;
+import fiuba.algo3.modelo.excepciones.CeldaNoVisible;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.CeldaSinConstruccion;
 import fiuba.algo3.modelo.excepciones.CeldaSinRecurso;
@@ -48,7 +49,7 @@ public class NaveCienciaTest {
 			RecursosInsuficientes, NoTieneEdificiosPrevios, CeldaInvalida,
 			PoblacionInsuficiente, CeldaSinConstruccion,
 			EdificioNoPuedeCrearUnidad, NombreYaExiste, JugadorInvalido,
-			NombreConMenosDe4Caracteres {
+			NombreConMenosDe4Caracteres, CeldaNoVisible {
 
 		Juego juego = new Juego();
 
@@ -92,7 +93,7 @@ public class NaveCienciaTest {
 	public void testAtacarConEmpHaceQueLasUnidadesMagicasEnemigasPierdanSuEnergiaYProtossSuEscudo() throws FueraDeMatriz, CeldaOcupada,
 			CeldaSinRecurso, CeldaEspacial, RecursosInsuficientes,
 			NoTieneEdificiosPrevios, CeldaInvalida, PoblacionInsuficiente,
-			CeldaSinConstruccion, EdificioNoPuedeCrearUnidad, UnidadNoTieneMagia, EnergiaInsuficiente, CopiaNoCausaDanio, MagiaDesconocida, CeldaSinUnidad {
+			CeldaSinConstruccion, EdificioNoPuedeCrearUnidad, UnidadNoTieneMagia, EnergiaInsuficiente, CopiaNoCausaDanio, MagiaDesconocida, CeldaSinUnidad, CeldaNoVisible {
 		
 		Juego juego = new Juego();
 		

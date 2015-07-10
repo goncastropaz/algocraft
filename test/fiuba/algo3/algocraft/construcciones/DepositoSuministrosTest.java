@@ -8,6 +8,7 @@ import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.construcciones.DepositoSuministro;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaInvalida;
+import fiuba.algo3.modelo.excepciones.CeldaNoVisible;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.CeldaSinRecurso;
 import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
@@ -18,7 +19,7 @@ import fiuba.algo3.modelo.juego.Juego;
 public class DepositoSuministrosTest {
 	
 	@Test
-	public void testSuma5ALaPoblacion() throws FueraDeMatriz, CeldaOcupada, CeldaSinRecurso, CeldaEspacial, RecursosInsuficientes, NoTieneEdificiosPrevios, CeldaInvalida{
+	public void testSuma5ALaPoblacion() throws FueraDeMatriz, CeldaOcupada, CeldaSinRecurso, CeldaEspacial, RecursosInsuficientes, NoTieneEdificiosPrevios, CeldaInvalida, CeldaNoVisible{
 		Juego juego = new Juego();
 		
 		DepositoSuministro deposito = new DepositoSuministro(new Posicion(10,10));

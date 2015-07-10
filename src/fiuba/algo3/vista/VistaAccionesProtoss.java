@@ -15,6 +15,7 @@ import fiuba.algo3.control.ControlAccionesProtoss;
 import fiuba.algo3.control.ControlJuego;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaInvalida;
+import fiuba.algo3.modelo.excepciones.CeldaNoVisible;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.CeldaSinConstruccion;
 import fiuba.algo3.modelo.excepciones.CeldaSinRecurso;
@@ -363,6 +364,8 @@ public class VistaAccionesProtoss extends JPanel{
 				controlJuego.mostrarMensajeError("Recursos insuficientes.");
 			} catch (NoTieneEdificiosPrevios e) {
 				controlJuego.mostrarMensajeError("Requiere edificios previos");
+			} catch (CeldaNoVisible e) {
+				controlJuego.mostrarMensajeError("Celda no visible.");
 			}
 		}
 		

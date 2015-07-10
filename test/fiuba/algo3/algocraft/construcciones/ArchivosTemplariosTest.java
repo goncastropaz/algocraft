@@ -12,6 +12,7 @@ import fiuba.algo3.modelo.construcciones.NexoMineral;
 import fiuba.algo3.modelo.construcciones.PuertoEstelarProtoss;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaInvalida;
+import fiuba.algo3.modelo.excepciones.CeldaNoVisible;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.CeldaSinRecurso;
 import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
@@ -24,7 +25,7 @@ public class ArchivosTemplariosTest {
 	public void testParaCrearseRequierePuertoEstelarProttos()
 			throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial,
 			RecursosInsuficientes, NoTieneEdificiosPrevios, CeldaInvalida,
-			FueraDeMatriz {
+			FueraDeMatriz, CeldaNoVisible {
 		Juego juego = new Juego();
 
 		// Se recolectan los recursos necesarios para crear las construcciones.
@@ -44,7 +45,7 @@ public class ArchivosTemplariosTest {
 	public void testSeCreaLuegoDeAgregarUnPuertoEstelarProttosAlJuego()
 			throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial,
 			RecursosInsuficientes, NoTieneEdificiosPrevios, CeldaInvalida,
-			FueraDeMatriz {
+			FueraDeMatriz, CeldaNoVisible {
 		Juego juego = new Juego();
 
 		// Se recolectan los recursos necesarios para crear las construcciones.

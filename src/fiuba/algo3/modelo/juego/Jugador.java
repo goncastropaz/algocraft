@@ -173,5 +173,9 @@ public class Jugador {
 
 	}
 
+	public boolean tieneVisionDeCelda(Posicion pos) {
+		return this.visionMapa.estaDescubierto(pos);
+	}
+
 
 }

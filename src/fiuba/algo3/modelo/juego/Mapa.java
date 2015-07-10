@@ -117,12 +117,12 @@ public class Mapa {
 
 	}
 
-	public Posicion agregarUnidad(Unidad unidad, Posicion posConstruccion) throws CeldaOcupada{
-		//TODO reveer validacion -- ajustar como construccion 
+	public Posicion agregarUnidad(Unidad unidad, Posicion posConstruccion,Jugador jugadorAcual) throws CeldaOcupada{
+	
 		List<Celda> posiblesCeldas = this.devolverCeldasRadio(posConstruccion, 1);
 		for(int i =0; i<posiblesCeldas.size();i++){
 			Celda celda = posiblesCeldas.get(i);
-			if(unidad.permitidaEnArea(celda)&& celda.desocupada()){
+			if(unidad.permitidaEnArea(celda)&& celda.desocupada()&& jugadorAcual.tieneVisionDeCelda(celda.getPosicion())){
 				celda.setUnidad(unidad);
 				return celda.getPosicion();
 			}

@@ -4,6 +4,7 @@ import fiuba.algo3.modelo.complementos.Posicion;
 import fiuba.algo3.modelo.construcciones.Acceso;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaInvalida;
+import fiuba.algo3.modelo.excepciones.CeldaNoVisible;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.CeldaSinRecurso;
 import fiuba.algo3.modelo.excepciones.NoTieneEdificiosPrevios;
@@ -18,7 +19,7 @@ public class CrearAcceso extends CrearConstruccion{
 	}
 
 	@Override
-	public void crearConstruccion(Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial, RecursosInsuficientes, NoTieneEdificiosPrevios, CeldaInvalida {
+	public void crearConstruccion(Posicion pos) throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial, RecursosInsuficientes, NoTieneEdificiosPrevios, CeldaInvalida, CeldaNoVisible {
 		Acceso construccion = new Acceso(pos);
 		this.juego.agregarConstruccion(construccion, pos);
 
