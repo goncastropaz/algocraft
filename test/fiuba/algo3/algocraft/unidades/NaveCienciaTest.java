@@ -35,6 +35,7 @@ import fiuba.algo3.modelo.excepciones.NombreConMenosDe4Caracteres;
 import fiuba.algo3.modelo.excepciones.NombreYaExiste;
 import fiuba.algo3.modelo.excepciones.PoblacionInsuficiente;
 import fiuba.algo3.modelo.excepciones.RecursosInsuficientes;
+import fiuba.algo3.modelo.excepciones.UnidadNoTerminada;
 import fiuba.algo3.modelo.excepciones.UnidadNoTieneMagia;
 import fiuba.algo3.modelo.juego.Juego;
 import fiuba.algo3.modelo.unidades.AltoTemplario;
@@ -93,7 +94,7 @@ public class NaveCienciaTest {
 	public void testAtacarConEmpHaceQueLasUnidadesMagicasEnemigasPierdanSuEnergiaYProtossSuEscudo() throws FueraDeMatriz, CeldaOcupada,
 			CeldaSinRecurso, CeldaEspacial, RecursosInsuficientes,
 			NoTieneEdificiosPrevios, CeldaInvalida, PoblacionInsuficiente,
-			CeldaSinConstruccion, EdificioNoPuedeCrearUnidad, UnidadNoTieneMagia, EnergiaInsuficiente, CopiaNoCausaDanio, MagiaDesconocida, CeldaSinUnidad, CeldaNoVisible {
+			CeldaSinConstruccion, EdificioNoPuedeCrearUnidad, UnidadNoTieneMagia, EnergiaInsuficiente, CopiaNoCausaDanio, MagiaDesconocida, CeldaSinUnidad, CeldaNoVisible, UnidadNoTerminada {
 		
 		Juego juego = new Juego();
 		

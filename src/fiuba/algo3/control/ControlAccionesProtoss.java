@@ -39,6 +39,7 @@ import fiuba.algo3.modelo.excepciones.RazaNoTieneUnidad;
 import fiuba.algo3.modelo.excepciones.RecursosInsuficientes;
 import fiuba.algo3.modelo.excepciones.UnidadAtacadaInvalida;
 import fiuba.algo3.modelo.excepciones.UnidadAtacanteInvalida;
+import fiuba.algo3.modelo.excepciones.UnidadNoTerminada;
 import fiuba.algo3.modelo.excepciones.UnidadNoTieneMagia;
 import fiuba.algo3.modelo.excepciones.UnidadTerrestreEnAreaEspacial;
 import fiuba.algo3.modelo.juego.Juego;
@@ -100,20 +101,20 @@ public class ControlAccionesProtoss implements ControlAcciones{
 	}
 
 	@Override
-	public void mover(int id,Posicion pos) throws FueraDeMatriz, CeldaOcupada, NoHayUnidadParaMoverEnCelda, CeldaEspacial {
+	public void mover(int id,Posicion pos) throws FueraDeMatriz, CeldaOcupada, NoHayUnidadParaMoverEnCelda, CeldaEspacial, UnidadNoTerminada {
 		Movimiento movimiento = this.listaDeMovimientos.get(id);
 		movimiento.mover(pos);
 		
 	}
 
 	@Override
-	public void atacar(Posicion unidadAtacante, Posicion unidadAtacada) throws ObjetivoInvalido, UnidadAtacanteInvalida, UnidadAtacadaInvalida, FueraDeRango, CeldaSinUnidad {
+	public void atacar(Posicion unidadAtacante, Posicion unidadAtacada) throws ObjetivoInvalido, UnidadAtacanteInvalida, UnidadAtacadaInvalida, FueraDeRango, CeldaSinUnidad, UnidadNoTerminada {
 		this.juego.atacar(unidadAtacante, unidadAtacada);
 		
 	}
 	
 	@Override
-	public void magia(Posicion unidadAtacante, Posicion unidadAtacada,int id) throws UnidadNoTieneMagia, EnergiaInsuficiente, CopiaNoCausaDanio, CeldaOcupada, CeldaEspacial, RecursosInsuficientes, PoblacionInsuficiente, CeldaSinConstruccion, EdificioNoPuedeCrearUnidad, CeldaSinUnidad {
+	public void magia(Posicion unidadAtacante, Posicion unidadAtacada,int id) throws UnidadNoTieneMagia, EnergiaInsuficiente, CopiaNoCausaDanio, CeldaOcupada, CeldaEspacial, RecursosInsuficientes, PoblacionInsuficiente, CeldaSinConstruccion, EdificioNoPuedeCrearUnidad, CeldaSinUnidad, UnidadNoTerminada {
 		this.juego.usarMagia(unidadAtacante, this.magias.get(id), unidadAtacada);
 
 	}

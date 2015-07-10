@@ -91,7 +91,6 @@ public abstract class Unidad implements IUnidad, Daniable{
 
 	public void actualizarTurno(Jugador jugador) {
 			this.tiempoDeConstruccion.actualizarTiempo();	
-			//tormenta turnos
 	}
 
 	public int getVision() {
@@ -205,5 +204,9 @@ public abstract class Unidad implements IUnidad, Daniable{
 	
 	public int getEnergia(){
 		return 0;
+	}
+	
+	public boolean terminado() {
+		return this.tiempoDeConstruccion.terminado();
 	}
 }

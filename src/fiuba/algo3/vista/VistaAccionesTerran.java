@@ -35,6 +35,7 @@ import fiuba.algo3.modelo.excepciones.RazaNoTieneUnidad;
 import fiuba.algo3.modelo.excepciones.RecursosInsuficientes;
 import fiuba.algo3.modelo.excepciones.UnidadAtacadaInvalida;
 import fiuba.algo3.modelo.excepciones.UnidadAtacanteInvalida;
+import fiuba.algo3.modelo.excepciones.UnidadNoTerminada;
 import fiuba.algo3.modelo.excepciones.UnidadNoTieneMagia;
 import fiuba.algo3.modelo.excepciones.UnidadTerrestreEnAreaEspacial;
 
@@ -298,6 +299,8 @@ public class VistaAccionesTerran extends JPanel {
 					controlJuego.mostrarMensajeError("El rango de su unidad no permite atacar a la unidad enemiga seleccionada.");
 				} catch (CeldaSinUnidad e1) {
 					controlJuego.mostrarMensajeError("La celda seleccionada no posee unidad para atacar.");
+				}catch (UnidadNoTerminada e1) {
+					controlJuego.mostrarMensajeError("La no esta terminada.");
 				}
 		}	
 			
@@ -402,6 +405,8 @@ public class VistaAccionesTerran extends JPanel {
 			controlJuego.mostrarMensajeError("Seleccione una unidad para mover.");
 		} catch (CeldaEspacial e) {
 			controlJuego.mostrarMensajeError("No se puede mover la unidad terrestre a una celda espacial.");
+		} catch (UnidadNoTerminada e1) {
+			controlJuego.mostrarMensajeError("La no esta terminada.");
 		}
 	}
 	
@@ -430,6 +435,8 @@ public class VistaAccionesTerran extends JPanel {
 			controlJuego.mostrarMensajeError("El edificio no puede crear unidad.");
 		} catch (CeldaSinUnidad e) {
 			controlJuego.mostrarMensajeError("La celda seleccionada no tiene unidad para copiar.");
+		} catch (UnidadNoTerminada e1) {
+			controlJuego.mostrarMensajeError("La no esta terminada.");
 		}
 	}
 }

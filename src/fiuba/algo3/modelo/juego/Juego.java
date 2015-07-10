@@ -33,6 +33,7 @@ import fiuba.algo3.modelo.excepciones.UnidadAtacadaInvalida;
 import fiuba.algo3.modelo.excepciones.UnidadAtacanteInvalida;
 import fiuba.algo3.modelo.excepciones.UnidadNoPerteneceAJugador;
 import fiuba.algo3.modelo.excepciones.UnidadNoPuedeTransportar;
+import fiuba.algo3.modelo.excepciones.UnidadNoTerminada;
 import fiuba.algo3.modelo.excepciones.UnidadNoTieneMagia;
 import fiuba.algo3.modelo.razas.Raza;
 import fiuba.algo3.modelo.unidades.AltoTemplario;
@@ -135,17 +136,19 @@ public class Juego {
 		this.turno.completarAccionJugador();
 	}
 	
-	public void atacar(Posicion posUnidadAtacante, Posicion posUnidadAtacada) throws ObjetivoInvalido, UnidadAtacanteInvalida, UnidadAtacadaInvalida, FueraDeRango, CeldaSinUnidad{
+	public void atacar(Posicion posUnidadAtacante, Posicion posUnidadAtacada) throws ObjetivoInvalido, UnidadAtacanteInvalida, UnidadAtacadaInvalida, FueraDeRango, CeldaSinUnidad, UnidadNoTerminada{
 		Unidad unidad = this.mapaJuego.devolverCelda(posUnidadAtacante).getUnidad();
 		if(unidad ==null) throw new CeldaSinUnidad();
+		if(!unidad.terminado()) throw new UnidadNoTerminada();
 		unidad.atacarUnidad(this,posUnidadAtacada);
 		this.refrescar(this.mapaJuego);
 		this.turno.completarAccionJugador();
 	}
 	
-	public void usarMagia(Posicion atacante, String magia, Posicion pos) throws UnidadNoTieneMagia, EnergiaInsuficiente, CopiaNoCausaDanio, CeldaOcupada, CeldaEspacial, RecursosInsuficientes, PoblacionInsuficiente, CeldaSinConstruccion, EdificioNoPuedeCrearUnidad, CeldaSinUnidad {
+	public void usarMagia(Posicion atacante, String magia, Posicion pos) throws UnidadNoTieneMagia, EnergiaInsuficiente, CopiaNoCausaDanio, CeldaOcupada, CeldaEspacial, RecursosInsuficientes, PoblacionInsuficiente, CeldaSinConstruccion, EdificioNoPuedeCrearUnidad, CeldaSinUnidad, UnidadNoTerminada {
 		Unidad unidad = this.mapaJuego.devolverCelda(atacante).getUnidad();
 		if(unidad ==null) throw new CeldaSinUnidad();
+		if(!unidad.terminado()) throw new UnidadNoTerminada();
 		if(!unidad.tieneMagia(magia)) throw new UnidadNoTieneMagia();
 		if(magia.equals("TORMENTA")){
 			((AltoTemplario) unidad).provocarTormentaPsionica(pos, this.mapaJuego);
@@ -160,7 +163,10 @@ public class Juego {
 		this.turno.completarAccionJugador();
 	}
 	
-	public void cargarUnidad(Unidad unidad, Posicion pos) throws CapacidadInsuficiente, UnidadAereaNoSePuedeCargar, UnidadNoPerteneceAJugador, FueraDeRango, CeldaSinUnidad, UnidadNoPuedeTransportar{
+	public void cargarUnidad(Posicion posNave, Posicion pos) throws CapacidadInsuficiente, UnidadAereaNoSePuedeCargar, UnidadNoPerteneceAJugador, FueraDeRango, CeldaSinUnidad, UnidadNoPuedeTransportar, UnidadNoTerminada{
+		Unidad unidad = this.mapaJuego.devolverCelda(posNave).getUnidad();
+		if(unidad ==null) throw new CeldaSinUnidad();
+		if(!unidad.terminado()) throw new UnidadNoTerminada();
 		if(!unidad.puedeTransportar()) throw new UnidadNoPuedeTransportar();
 		Celda celda = this.mapaJuego.devolverCelda(pos);
 		if(!celda.tieneUnidad()) throw new CeldaSinUnidad();
@@ -172,7 +178,10 @@ public class Juego {
 		this.turno.completarAccionJugador();
 	}
 	
-	public void descargarUnidades(Unidad unidad) throws UnidadNoPuedeTransportar, UnidadNoPerteneceAJugador, CeldaOcupada, NaveVacia{
+	public void descargarUnidades(Posicion posNave) throws UnidadNoPuedeTransportar, UnidadNoPerteneceAJugador, CeldaOcupada, NaveVacia, UnidadNoTerminada, CeldaSinUnidad{
+		Unidad unidad = this.mapaJuego.devolverCelda(posNave).getUnidad();
+		if(unidad ==null) throw new CeldaSinUnidad();
+		if(!unidad.terminado()) throw new UnidadNoTerminada();
 		if(!unidad.puedeTransportar()) throw new UnidadNoPuedeTransportar();
 		if(!this.getActualJugador().tieneDaniable(unidad.getUbicacion())) throw new UnidadNoPerteneceAJugador();
 		((Cargable) unidad).descargarUnidades(this.mapaJuego);

@@ -11,6 +11,7 @@ import fiuba.algo3.vista.JButtonID;
 public abstract class VistaUnidad {
 
 	protected Posicion posUnidad;
+	protected String rutaImagenConstruccion = "/imagenes/construcciones/unitConstruction.jpg";
 	protected String rutaImagen;
 	protected ImageIcon imagen;
 	protected BufferedImage imagenInicial;
