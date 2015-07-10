@@ -57,7 +57,7 @@ public class ArchivosTemplariosTest {
 			juego.cambiarTurnoJugador();
 
 		juego.agregarConstruccion(new Acceso(new Posicion(9, 9)), new Posicion(
-				1, 1));
+				9, 9));
 		
 		// Se agrega la construcción necesaria para crear el archivo templario.
 		juego.agregarConstruccion(
