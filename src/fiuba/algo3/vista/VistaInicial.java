@@ -68,10 +68,12 @@ public class VistaInicial {
 		
 		tfNombreJugadorUno = new JTextField();
 		tfNombreJugadorUno.setBounds(91, 37, 428, 27);
+		tfNombreJugadorUno.setDocument(new LimitarJTextField(15));
 		frame.getContentPane().add(tfNombreJugadorUno);
 
 		tfNombreJugadorDos = new JTextField();
 		tfNombreJugadorDos.setBounds(91, 178, 428, 27);
+		tfNombreJugadorDos.setDocument(new LimitarJTextField(15));
 		frame.getContentPane().add(tfNombreJugadorDos);
 
 		// Datos Jugador 1
