@@ -45,7 +45,7 @@ public class BarracaTest {
 
 		//Barraca requiere de población para crear marine.
 		DepositoSuministro construccionDeposito = new DepositoSuministro(new Posicion(10, 10));
-		juego.agregarConstruccion(construccionDeposito, new Posicion(10, 10));
+		juego.agregarConstruccion(construccionDeposito, new Posicion(6, 6));
 
 		//Se crea la unidad marine en la barraca.
 		Marine marine = new Marine();

@@ -24,15 +24,14 @@ public class DepositoSuministrosTest {
 		
 		DepositoSuministro deposito = new DepositoSuministro(new Posicion(10,10));
 		
-		juego.agregarConstruccion(deposito, new Posicion(10,10));
+		juego.agregarConstruccion(deposito, new Posicion(7,7));
 		
 		assertTrue(juego.getActualJugador().getPoblacion()  == 5);
 		
 		juego.cambiarTurnoJugador();
 		juego.cambiarTurnoJugador();
 		
-		DepositoSuministro deposito2 = new DepositoSuministro(new Posicion(10,12));
-		juego.agregarConstruccion(deposito2, new Posicion(12,12)); 
+		juego.agregarConstruccion( new DepositoSuministro(new Posicion(6,6)), new Posicion(6,6)); 
 		
 		assertTrue(juego.getActualJugador().getPoblacion()  == 10);
 	}

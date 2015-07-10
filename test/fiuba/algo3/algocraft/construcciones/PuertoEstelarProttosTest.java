@@ -36,8 +36,8 @@ public class PuertoEstelarProttosTest {
 			juego.cambiarTurnoJugador();
 
 		juego.agregarConstruccion(
-				new PuertoEstelarProtoss(new Posicion(10, 11)), new Posicion(
-						10, 11));
+				new PuertoEstelarProtoss(new Posicion(7,7)), new Posicion(
+						7,7));
 
 	}
 
@@ -60,9 +60,9 @@ public class PuertoEstelarProttosTest {
 		juego.agregarConstruccion(new Acceso(new Posicion(9, 9)), new Posicion(
 				1, 1));
 
-		PuertoEstelarProtoss puerto = new PuertoEstelarProtoss(new Posicion(10,
-				11));
-		juego.agregarConstruccion(puerto, new Posicion(10, 11));
+		PuertoEstelarProtoss puerto = new PuertoEstelarProtoss(new Posicion(7,
+				7));
+		juego.agregarConstruccion(puerto, new Posicion(7, 7));
 
 		assertTrue(puerto.getCost().getMineral() == 150);
 	}

@@ -62,12 +62,12 @@ public class ArchivosTemplariosTest {
 		
 		// Se agrega la construcción necesaria para crear el archivo templario.
 		juego.agregarConstruccion(
-				new PuertoEstelarProtoss(new Posicion(10, 10)), new Posicion(
-						10, 10));
+				new PuertoEstelarProtoss(new Posicion(6, 6)), new Posicion(
+						6, 6));
 
-		ArchivoTemplario archivo = new ArchivoTemplario(new Posicion(11, 11));
+		ArchivoTemplario archivo = new ArchivoTemplario(new Posicion(3, 3));
 
-		juego.agregarConstruccion(archivo, new Posicion(11, 11));
+		juego.agregarConstruccion(archivo, new Posicion(3, 3));
 
 		assertTrue(archivo.getCost().getMineral() == 150);
 	}

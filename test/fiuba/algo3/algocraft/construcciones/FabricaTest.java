@@ -35,8 +35,8 @@ public class FabricaTest {
 		for (int i = 0; i < 100; i++)
 			juego.cambiarTurnoJugador();
 
-		juego.agregarConstruccion(new Fabrica(new Posicion(10, 10)),
-				new Posicion(10, 10));
+		juego.agregarConstruccion(new Fabrica(new Posicion(9, 9)),
+				new Posicion(9, 9));
 
 	}
 
@@ -54,12 +54,12 @@ public class FabricaTest {
 		for (int i = 0; i < 100; i++)
 			juego.cambiarTurnoJugador();
 
-		juego.agregarConstruccion(new Barraca(new Posicion(13, 13)),
-				new Posicion(13, 13));
+		juego.agregarConstruccion(new Barraca(new Posicion(9, 9)),
+				new Posicion(9, 9));
 
-		Fabrica fabrica = new Fabrica(new Posicion(10, 10));
+		Fabrica fabrica = new Fabrica(new Posicion(8,8));
 		juego.agregarConstruccion(fabrica,
-				new Posicion(10, 10));
+				new Posicion(8, 8));
 		
 		assertTrue(fabrica.getCost().getMineral() == 200);
 

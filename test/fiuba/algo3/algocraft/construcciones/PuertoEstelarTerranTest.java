@@ -37,8 +37,8 @@ public class PuertoEstelarTerranTest {
 			juego.cambiarTurnoJugador();
 
 		juego.agregarConstruccion(
-				new PuertoEstelarTerran(new Posicion(10, 10)), new Posicion(10,
-						10));
+				new PuertoEstelarTerran(new Posicion(7,7)), new Posicion(7,
+						7));
 
 	}
 
@@ -56,14 +56,14 @@ public class PuertoEstelarTerranTest {
 		for (int i = 0; i < 100; i++)
 			juego.cambiarTurnoJugador();
 
-		juego.agregarConstruccion(new Barraca(new Posicion(13, 13)),
-				new Posicion(13, 13));
-		juego.agregarConstruccion(new Fabrica(new Posicion(10, 10)),
-				new Posicion(10, 10));
+		juego.agregarConstruccion(new Barraca(new Posicion(9, 9)),
+				new Posicion(9, 9));
+		juego.agregarConstruccion(new Fabrica(new Posicion(7,7)),
+				new Posicion(7, 7));
 
 		PuertoEstelarTerran puertoEstelar = new PuertoEstelarTerran(
-				new Posicion(10, 15));
-		juego.agregarConstruccion(puertoEstelar, new Posicion(10, 15));
+				new Posicion(3,3));
+		juego.agregarConstruccion(puertoEstelar, new Posicion(3,3));
 
 		assertTrue(puertoEstelar.getCost().getGas() == 100);
 	}

@@ -41,15 +41,15 @@ public class AltoTemplarioTest {
 		juego.agregarConstruccion(new NexoMineral(new Posicion(4, 4)), new Posicion(4, 4));
 		juego.agregarConstruccion(new Asimilador(new Posicion(5, 5)), new Posicion(5, 5));
 		for (int i = 0; i < 150; i++)juego.cambiarTurnoJugador();
-		juego.agregarConstruccion(new Pilon(new Posicion(14, 14)), new Posicion(14, 14));
+		juego.agregarConstruccion(new Pilon(new Posicion(9, 8)), new Posicion(9, 8));
 		for (int i = 0; i < 18; i++)juego.cambiarTurnoJugador();
 		juego.agregarConstruccion(new Acceso(new Posicion(9, 9)), new Posicion(9, 9));
-		juego.agregarConstruccion(new PuertoEstelarProtoss(new Posicion(10, 10)), new Posicion(10, 10));
-		juego.agregarConstruccion(new ArchivoTemplario(new Posicion(11, 11)), new Posicion(11, 11));
+		juego.agregarConstruccion(new PuertoEstelarProtoss(new Posicion(7, 7)), new Posicion(7, 7));
+		juego.agregarConstruccion(new ArchivoTemplario(new Posicion(6, 6)), new Posicion(6, 6));
 		for (int i = 0; i < 197; i++)juego.cambiarTurnoJugador();
 		
 		AltoTemplario unAltoTemplario = new AltoTemplario();
-		juego.agregarUnidad(unAltoTemplario, new Posicion(11, 11));
+		juego.agregarUnidad(unAltoTemplario, new Posicion(6, 6));
 		
 		//Se crea con 50 de energia.
 		assertTrue(unAltoTemplario.getEnergia() == 50);

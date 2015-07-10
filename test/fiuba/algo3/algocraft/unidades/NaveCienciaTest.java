@@ -62,24 +62,24 @@ public class NaveCienciaTest {
 		for (int i = 0; i < 100; i++)
 			juego.cambiarTurnoJugador();
 
-		juego.agregarConstruccion(new Barraca(new Posicion(13, 13)),
-				new Posicion(13, 13));
-		juego.agregarConstruccion(new Fabrica(new Posicion(10, 10)),
-				new Posicion(10, 10));
-		juego.agregarConstruccion(new DepositoSuministro(new Posicion(11, 15)),
-				new Posicion(11, 15));
+		juego.agregarConstruccion(new Barraca(new Posicion(9, 9)),
+				new Posicion(9, 9));
+		juego.agregarConstruccion(new Fabrica(new Posicion(8, 8)),
+				new Posicion(8, 8));
+		juego.agregarConstruccion(new DepositoSuministro(new Posicion(7, 7)),
+				new Posicion(7, 7));
 		for (int i = 0; i < 201; i++)
 			juego.cambiarTurnoJugador();
 
 		juego.agregarConstruccion(
-				new PuertoEstelarTerran(new Posicion(10, 15)), new Posicion(10,
-						15));
+				new PuertoEstelarTerran(new Posicion(9, 8)), new Posicion(9,
+						8));
 
 		for (int i = 0; i < 100; i++)
 			juego.cambiarTurnoJugador();
 
 		NaveCiencia nave = new NaveCiencia();
-		juego.agregarUnidad(nave, new Posicion(10, 15));
+		juego.agregarUnidad(nave, new Posicion(9, 8));
 
 		assertTrue(nave.getEnergia() == 50);
 
@@ -112,12 +112,9 @@ public class NaveCienciaTest {
 		for (int i = 0; i < 201; i++)juego.cambiarTurnoJugador();
 
 		//Jugador uno TERRAN
-		juego.agregarConstruccion(new Barraca(new Posicion(13, 13)),new Posicion(13, 13));
-		juego.agregarConstruccion(new Fabrica(new Posicion(10, 10)),new Posicion(10, 10));
-		juego.agregarConstruccion(new DepositoSuministro(new Posicion(11, 15)),	new Posicion(11, 15));
-		
-		juego.cambiarTurnoJugador();
-		juego.cambiarTurnoJugador();
+		juego.agregarConstruccion(new Barraca(new Posicion(9, 9)), new Posicion(9, 9));
+		juego.agregarConstruccion(new Fabrica(new Posicion(8, 8)), new Posicion(8, 8));
+		juego.agregarConstruccion(new DepositoSuministro(new Posicion(7, 7)), new Posicion(7, 7));
 		
 		//Jugador dos PROTOSS
 		juego.agregarConstruccion(new Pilon(new Posicion(47, 47)), new Posicion(47,47));
@@ -126,19 +123,19 @@ public class NaveCienciaTest {
 		for (int i = 0; i < 201; i++)juego.cambiarTurnoJugador();
 		
 		//Jugador uno TERRAN
-		juego.agregarConstruccion(new PuertoEstelarTerran(new Posicion(10, 15)), new Posicion(10,15));
+		juego.agregarConstruccion(new PuertoEstelarTerran(new Posicion(6, 5)), new Posicion(6, 5));
 		
 		juego.cambiarTurnoJugador();
 		
 		//Jugador dos PROTOSS
-		juego.agregarConstruccion(new PuertoEstelarProtoss(new Posicion(44, 44)), new Posicion(46, 10));
+		juego.agregarConstruccion(new PuertoEstelarProtoss(new Posicion(40, 40)), new Posicion(40, 40));
 		juego.agregarConstruccion(new ArchivoTemplario(new Posicion(43, 42)), new Posicion(43,42));
 		
 		for (int i = 0; i < 101; i++) juego.cambiarTurnoJugador();
 		
 		//Jugador uno TERRAN
 		NaveCiencia naveCienciaUno = new NaveCiencia();
-		juego.agregarUnidad(naveCienciaUno, new Posicion(10, 15));
+		juego.agregarUnidad(naveCienciaUno, new Posicion(6, 5));
 
 		juego.cambiarTurnoJugador();
 		
@@ -155,10 +152,99 @@ public class NaveCienciaTest {
 		
 		juego.cambiarTurnoJugador();
 		
-		juego.usarMagia(new Posicion(9, 14), "EMP", new Posicion(2,2));
+		juego.usarMagia(new Posicion(5,6), "EMP", new Posicion(2,2));
 
 		assertTrue(altoTemplario.getEnergia() == 0);
 		assertTrue(zealot.getEscudo().getEscudoActual() == 0);
+	}
+	
+	@Test
+	public void testAtaqueRadiacionAfectaUnaUnidadEnParticularYLeSacaVidaALaUnidadQueSeEncuentreCerca()
+			throws CeldaOcupada, CeldaSinRecurso, CeldaEspacial,
+			RecursosInsuficientes, NoTieneEdificiosPrevios, CeldaInvalida,
+			FueraDeMatriz, PoblacionInsuficiente, CeldaSinConstruccion,
+			EdificioNoPuedeCrearUnidad, UnidadNoTieneMagia,
+			EnergiaInsuficiente, CopiaNoCausaDanio, CeldaSinUnidad, CeldaNoVisible, UnidadNoTerminada {
+
+		Juego juego = new Juego();
+
+		// Jugador uno TERRAN
+		juego.agregarConstruccion(new CentroDeMineral(new Posicion(4, 4)),
+				new Posicion(4, 4));
+		juego.agregarConstruccion(new Refineria(new Posicion(5, 5)),
+				new Posicion(5, 5));
+
+		juego.cambiarTurnoJugador();
+
+		// Jugador dos PROTOSS
+		juego.agregarConstruccion(new NexoMineral(new Posicion(45, 45)),
+				new Posicion(45, 45));
+		juego.agregarConstruccion(new Asimilador(new Posicion(46, 46)),
+				new Posicion(46, 46));
+
+		// Se recolectan minerales y gas para poder construir los edificios.
+		for (int i = 0; i < 201; i++)
+			juego.cambiarTurnoJugador();
+
+		// Jugador uno TERRAN
+		juego.agregarConstruccion(new Barraca(new Posicion(9, 9)),
+				new Posicion(9, 9));
+		juego.agregarConstruccion(new Fabrica(new Posicion(8, 8)),
+				new Posicion(8, 8));
+		juego.agregarConstruccion(new DepositoSuministro(new Posicion(7, 7)),
+				new Posicion(7, 7));
+
+		//juego.cambiarTurnoJugador();
+
+		// Jugador dos PROTOSS
+		juego.agregarConstruccion(new Pilon(new Posicion(44, 44)),
+				new Posicion(44, 44));
+		juego.agregarConstruccion(new Acceso(new Posicion(43, 44)),
+				new Posicion(43, 44));
+
+		for (int i = 0; i < 201; i++)
+			juego.cambiarTurnoJugador();
+
+		// Jugador uno TERRAN
+		juego.agregarConstruccion(
+				new PuertoEstelarTerran(new Posicion(6, 5)), new Posicion(6,
+						5));
+
+		for (int i = 0; i < 100; i++)
+			juego.cambiarTurnoJugador();
+
+		// Jugador uno TERRAN
+		NaveCiencia naveCienciaUno = new NaveCiencia();
+		juego.agregarUnidad(naveCienciaUno, new Posicion(6, 5));
+
+		juego.cambiarTurnoJugador();
+
+		// Jugador dos PROTOSS
+		Zealot unZealot = new Zealot();
+		Zealot otroZealot = new Zealot();
+		juego.agregarUnidad(unZealot, new Posicion(43, 44));
+		juego.agregarUnidad(otroZealot, new Posicion(43, 44));
+
+		for (int i = 0; i < 100; i++)
+			juego.cambiarTurnoJugador();
+
+		juego.getMapaDeJuego().devolverCelda(new Posicion(1, 1))
+				.setUnidad(unZealot);
+		juego.getMapaDeJuego().devolverCelda(new Posicion(0, 0))
+				.setUnidad(otroZealot);
+
+		juego.cambiarTurnoJugador();
+
+		juego.usarMagia(new Posicion(5, 6), "RADIACION", new Posicion(1, 1));
+
+		juego.cambiarTurnoJugador();
+		juego.cambiarTurnoJugador();
+
+		assertTrue(unZealot.getVida().getVidaActual() < unZealot.getVida()
+				.getVidaMaxima());
+		assertTrue(otroZealot.getVida().getVidaActual() < otroZealot.getVida()
+				.getVidaMaxima());
+
 	}
 	
 	
