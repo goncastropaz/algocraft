@@ -404,6 +404,8 @@ public class VistaAccionesProtoss extends JPanel{
 				controlJuego.mostrarMensajeError("No se puede mover la unidad terrestre a una celda espacial.");
 			} catch (UnidadNoTerminada e1) {
 				controlJuego.mostrarMensajeError("La no esta terminada.");
+			}catch (UnidadAtacanteInvalida e1) {
+				controlJuego.mostrarMensajeError("La unidad no pertenece a sus tropas.");
 			}
 		}
 		

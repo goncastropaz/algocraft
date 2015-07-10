@@ -5,6 +5,7 @@ import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
 import fiuba.algo3.modelo.excepciones.NoHayUnidadParaMoverEnCelda;
+import fiuba.algo3.modelo.excepciones.UnidadAtacanteInvalida;
 import fiuba.algo3.modelo.excepciones.UnidadNoTerminada;
 import fiuba.algo3.modelo.excepciones.UnidadTerrestreEnAreaEspacial;
 import fiuba.algo3.modelo.juego.Celda;
@@ -18,11 +19,12 @@ public class Arriba extends Movimiento {
 		super(juego);
 	}
 	
-	public void mover(Posicion posActual) throws FueraDeMatriz, CeldaOcupada, NoHayUnidadParaMoverEnCelda, CeldaEspacial, UnidadNoTerminada {
+	public void mover(Posicion posActual) throws FueraDeMatriz, CeldaOcupada, NoHayUnidadParaMoverEnCelda, CeldaEspacial, UnidadNoTerminada, UnidadAtacanteInvalida {
 		
 		Mapa mapa =  this.juego.getMapaDeJuego();
 		Unidad unidad = mapa.devolverCelda(posActual).getUnidad();
 		if(unidad == null) throw new NoHayUnidadParaMoverEnCelda();
+		if(!juego.getActualJugador().tieneDaniable(unidad.getUbicacion())) throw new UnidadAtacanteInvalida();
 		if(!unidad.terminado()) throw new UnidadNoTerminada();
 		
 		Celda celdaActual = mapa.devolverCelda(posActual);

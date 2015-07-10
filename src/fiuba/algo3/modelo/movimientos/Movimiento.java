@@ -6,6 +6,7 @@ import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
 import fiuba.algo3.modelo.excepciones.JugadorInvalido;
 import fiuba.algo3.modelo.excepciones.NoHayUnidadParaMoverEnCelda;
+import fiuba.algo3.modelo.excepciones.UnidadAtacanteInvalida;
 import fiuba.algo3.modelo.excepciones.UnidadNoTerminada;
 import fiuba.algo3.modelo.excepciones.UnidadTerrestreEnAreaEspacial;
 import fiuba.algo3.modelo.juego.Juego;
@@ -21,7 +22,7 @@ public abstract class Movimiento extends java.util.Observable{
 		this.juego = juego;
 	}
 	
-	public abstract void mover(Posicion posActual) throws FueraDeMatriz, CeldaOcupada, NoHayUnidadParaMoverEnCelda, CeldaEspacial, UnidadNoTerminada;
+	public abstract void mover(Posicion posActual) throws FueraDeMatriz, CeldaOcupada, NoHayUnidadParaMoverEnCelda, CeldaEspacial, UnidadNoTerminada, UnidadAtacanteInvalida;
 	
 	public void ActualizarObservadores() {
 		setChanged();

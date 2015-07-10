@@ -101,7 +101,7 @@ public class ControlAccionesProtoss implements ControlAcciones{
 	}
 
 	@Override
-	public void mover(int id,Posicion pos) throws FueraDeMatriz, CeldaOcupada, NoHayUnidadParaMoverEnCelda, CeldaEspacial, UnidadNoTerminada {
+	public void mover(int id,Posicion pos) throws FueraDeMatriz, CeldaOcupada, NoHayUnidadParaMoverEnCelda, CeldaEspacial, UnidadNoTerminada, UnidadAtacanteInvalida {
 		Movimiento movimiento = this.listaDeMovimientos.get(id);
 		movimiento.mover(pos);
 		
