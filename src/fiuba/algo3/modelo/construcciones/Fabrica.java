@@ -4,14 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fiuba.algo3.modelo.complementos.Posicion;
-import fiuba.algo3.modelo.excepciones.CeldaEspacial;
-import fiuba.algo3.modelo.excepciones.CeldaOcupada;
-import fiuba.algo3.modelo.excepciones.NoTieneEdificiosPrevios;
-import fiuba.algo3.modelo.excepciones.PoblacionInsuficiente;
-import fiuba.algo3.modelo.excepciones.RazaNoTieneUnidad;
-import fiuba.algo3.modelo.excepciones.RecursosInsuficientes;
-import fiuba.algo3.modelo.juego.Juego;
-import fiuba.algo3.modelo.unidades.Golliat;
 import fiuba.algo3.modelo.unidades.Unidad;
 
 public class Fabrica extends Construccion {
@@ -33,13 +25,7 @@ public class Fabrica extends Construccion {
 		this.unidadesHabilitadas.add("GOLLIAT");
 		
 	}
-	/*
-	public void crearGolliat(Juego juego) throws CeldaOcupada, CeldaEspacial, RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente, NoTieneEdificiosPrevios{
-		
-		Golliat golliat = new Golliat();
-		juego.agregarUnidad(golliat, this.ubicacion);
-	}*/
-
+	
 	@Override
 	public boolean tieneEdificiosPrevios(List<Construccion> construcciones) {
 		return tieneConstruccion(construcciones, "BARRACA");

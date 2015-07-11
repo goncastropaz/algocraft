@@ -4,16 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fiuba.algo3.modelo.complementos.Posicion;
-import fiuba.algo3.modelo.excepciones.CeldaEspacial;
-import fiuba.algo3.modelo.excepciones.CeldaOcupada;
-import fiuba.algo3.modelo.excepciones.NoTieneEdificiosPrevios;
-import fiuba.algo3.modelo.excepciones.PoblacionInsuficiente;
-import fiuba.algo3.modelo.excepciones.RazaNoTieneUnidad;
-import fiuba.algo3.modelo.excepciones.RecursosInsuficientes;
-import fiuba.algo3.modelo.juego.Juego;
-import fiuba.algo3.modelo.unidades.Espectro;
-import fiuba.algo3.modelo.unidades.NaveCiencia;
-import fiuba.algo3.modelo.unidades.NaveTransporteTerran;
 import fiuba.algo3.modelo.unidades.Unidad;
 
 public class PuertoEstelarTerran  extends Construccion{
@@ -36,25 +26,7 @@ public class PuertoEstelarTerran  extends Construccion{
 		this.unidadesHabilitadas.add("NAVE_TRANSPORTE_TERRAN");
 		this.unidadesHabilitadas.add("NAVE_CIENCIA");
 	}
-	/*
-	public void crearEspectro(Juego juego) throws CeldaOcupada, CeldaEspacial, RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente, NoTieneEdificiosPrevios{
-		
-		Espectro unidad = new Espectro();
-		juego.agregarUnidad(unidad, this.ubicacion);
-	}
 	
-	public void crearNaveTransporte(Juego juego) throws CeldaOcupada, CeldaEspacial, RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente, NoTieneEdificiosPrevios{
-	
-		NaveTransporteTerran unidad = new NaveTransporteTerran();
-		juego.agregarUnidad(unidad, this.ubicacion);
-	}
-
-	public void crearNaveCiencia(Juego juego) throws CeldaOcupada, CeldaEspacial, RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente, NoTieneEdificiosPrevios{
-	
-		NaveCiencia unidad = new NaveCiencia();
-		juego.agregarUnidad(unidad, this.ubicacion);
-	}*/
-
 	@Override
 	public boolean tieneEdificiosPrevios(List<Construccion> construcciones) {
 		return tieneConstruccion(construcciones, "BARRACA") && tieneConstruccion(construcciones, "FABRICA");

@@ -36,8 +36,6 @@ import fiuba.algo3.modelo.excepciones.NoHayUnidadParaMoverEnCelda;
 import fiuba.algo3.modelo.excepciones.NoTieneEdificiosPrevios;
 import fiuba.algo3.modelo.excepciones.ObjetivoInvalido;
 import fiuba.algo3.modelo.excepciones.PoblacionInsuficiente;
-import fiuba.algo3.modelo.excepciones.RazaNoTieneConstruccion;
-import fiuba.algo3.modelo.excepciones.RazaNoTieneUnidad;
 import fiuba.algo3.modelo.excepciones.RecursosInsuficientes;
 import fiuba.algo3.modelo.excepciones.UnidadAereaNoSePuedeCargar;
 import fiuba.algo3.modelo.excepciones.UnidadAtacadaInvalida;

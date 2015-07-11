@@ -18,7 +18,6 @@ import fiuba.algo3.modelo.excepciones.EdificioNoPuedeCrearUnidad;
 import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
 import fiuba.algo3.modelo.excepciones.NoTieneEdificiosPrevios;
 import fiuba.algo3.modelo.excepciones.PoblacionInsuficiente;
-import fiuba.algo3.modelo.excepciones.RazaNoTieneConstruccion;
 import fiuba.algo3.modelo.excepciones.RecursosInsuficientes;
 import fiuba.algo3.modelo.juego.Juego;
 import fiuba.algo3.modelo.unidades.Marine;
@@ -28,7 +27,7 @@ public class BarracaTest {
 	@Test
 	public void testEntrenaMarine() throws FueraDeMatriz, CeldaOcupada,
 			CeldaSinRecurso, CeldaEspacial, CeldaInvalida,
-			RazaNoTieneConstruccion, RecursosInsuficientes,
+			 RecursosInsuficientes,
 			NoTieneEdificiosPrevios, PoblacionInsuficiente,
 			CeldaSinConstruccion, EdificioNoPuedeCrearUnidad, CeldaNoVisible {
 

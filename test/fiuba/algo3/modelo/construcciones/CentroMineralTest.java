@@ -15,7 +15,6 @@ import fiuba.algo3.modelo.excepciones.CeldaOcupada;
 import fiuba.algo3.modelo.excepciones.CeldaSinRecurso;
 import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
 import fiuba.algo3.modelo.excepciones.NoTieneEdificiosPrevios;
-import fiuba.algo3.modelo.excepciones.RazaNoTieneConstruccion;
 import fiuba.algo3.modelo.excepciones.RecursosInsuficientes;
 import fiuba.algo3.modelo.juego.Celda;
 import fiuba.algo3.modelo.juego.Juego;
@@ -27,7 +26,7 @@ public class CentroMineralTest {
 	@Test(expected = CeldaSinRecurso.class)
 	public void testSiLaCeldaNoTieneRecursoNoPuedeCrearse()
 			throws FueraDeMatriz, CeldaOcupada, CeldaSinRecurso, CeldaEspacial,
-			RazaNoTieneConstruccion, RecursosInsuficientes,
+			 RecursosInsuficientes,
 			NoTieneEdificiosPrevios, CeldaInvalida, CeldaNoVisible {
 		Juego juego = new Juego();
 		CentroDeMineral construccion = new CentroDeMineral(new Posicion(1, 1));
@@ -67,7 +66,7 @@ public class CentroMineralTest {
 	@Test
 	public void testSeEncargaDeReunirElMineral() throws FueraDeMatriz,
 			CeldaOcupada, CeldaSinRecurso, CeldaEspacial,
-			RazaNoTieneConstruccion, RecursosInsuficientes,
+			 RecursosInsuficientes,
 			NoTieneEdificiosPrevios, CeldaInvalida, CeldaNoVisible {
 
 		Juego juego = new Juego();

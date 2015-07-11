@@ -4,14 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fiuba.algo3.modelo.complementos.Posicion;
-import fiuba.algo3.modelo.excepciones.CeldaEspacial;
-import fiuba.algo3.modelo.excepciones.CeldaOcupada;
-import fiuba.algo3.modelo.excepciones.NoTieneEdificiosPrevios;
-import fiuba.algo3.modelo.excepciones.PoblacionInsuficiente;
-import fiuba.algo3.modelo.excepciones.RazaNoTieneUnidad;
-import fiuba.algo3.modelo.excepciones.RecursosInsuficientes;
-import fiuba.algo3.modelo.juego.Juego;
-import fiuba.algo3.modelo.unidades.AltoTemplario;
 import fiuba.algo3.modelo.unidades.Unidad;
 
 public class ArchivoTemplario extends Construccion {
@@ -33,12 +25,7 @@ public class ArchivoTemplario extends Construccion {
 		this.unidadesHabilitadas = new ArrayList<String>();
 		this.unidadesHabilitadas.add("ALTO_TEMPLARIO");
 	}
-/*
-	public void crearAltoTemplario(Juego juego) throws CeldaOcupada, CeldaEspacial, RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente, NoTieneEdificiosPrevios{
-		
-		AltoTemplario unidad = new AltoTemplario();
-		juego.agregarUnidad(unidad, this.ubicacion);
-	}*/
+
 	
 	@Override
 	public boolean tieneEdificiosPrevios(List<Construccion> construcciones) {

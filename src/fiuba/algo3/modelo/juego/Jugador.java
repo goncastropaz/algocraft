@@ -11,8 +11,6 @@ import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
 import fiuba.algo3.modelo.excepciones.NoTieneEdificiosPrevios;
 import fiuba.algo3.modelo.excepciones.NombreConMenosDe4Caracteres;
 import fiuba.algo3.modelo.excepciones.PoblacionInsuficiente;
-import fiuba.algo3.modelo.excepciones.RazaNoTieneConstruccion;
-import fiuba.algo3.modelo.excepciones.RazaNoTieneUnidad;
 import fiuba.algo3.modelo.excepciones.RecursosInsuficientes;
 import fiuba.algo3.modelo.razas.Raza;
 import fiuba.algo3.modelo.unidades.Unidad;
@@ -117,10 +115,9 @@ public class Jugador {
 
 	public void puedeCrearUnidad(Unidad unidad) throws RecursosInsuficientes, PoblacionInsuficiente {
 		if(!unidad.copia){
-			//if(!this.raza.getListaDeUnidadesValidas().contains(unidad.getNombre())) throw new RazaNoTieneUnidad();
+			
 			if(!unidad.getCostoDeRecursos().tieneSuficientesRecursos(this.recursos.getMineral(),this.recursos.getGas())) throw new RecursosInsuficientes();
 			if(!(this.poblacion.getPoblacionDisponible() > unidad.getSuministro())) throw new PoblacionInsuficiente();
-			//if(!unidad.tieneEdificiosPrevios(this.getConstruccionesList())) throw new NoTieneEdificiosPrevios();
 		}
 	}
 

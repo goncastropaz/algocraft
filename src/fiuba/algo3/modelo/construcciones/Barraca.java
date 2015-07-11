@@ -4,14 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fiuba.algo3.modelo.complementos.Posicion;
-import fiuba.algo3.modelo.excepciones.CeldaEspacial;
-import fiuba.algo3.modelo.excepciones.CeldaOcupada;
-import fiuba.algo3.modelo.excepciones.NoTieneEdificiosPrevios;
-import fiuba.algo3.modelo.excepciones.PoblacionInsuficiente;
-import fiuba.algo3.modelo.excepciones.RazaNoTieneUnidad;
-import fiuba.algo3.modelo.excepciones.RecursosInsuficientes;
-import fiuba.algo3.modelo.juego.Juego;
-import fiuba.algo3.modelo.unidades.Marine;
 import fiuba.algo3.modelo.unidades.Unidad;
 
 
@@ -30,12 +22,7 @@ public class Barraca extends Construccion {
 		this.unidadesHabilitadas = new ArrayList<String>();
 		this.unidadesHabilitadas.add("MARINE");
 	}
-	/*
-	public void crearMarine(Juego juego) throws CeldaOcupada, CeldaEspacial, RazaNoTieneUnidad, RecursosInsuficientes, PoblacionInsuficiente, NoTieneEdificiosPrevios{
-			
-		Marine marine = new Marine();
-		juego.agregarUnidad(marine, this.ubicacion);
-	}*/
+
 
 	@Override
 	public boolean tieneEdificiosPrevios(List<Construccion> construcciones) {

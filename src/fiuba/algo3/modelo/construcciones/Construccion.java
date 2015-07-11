@@ -72,13 +72,9 @@ public abstract class Construccion implements Daniable{
 	}
 
 	public void setVida( Integer vida) {
-		if(vida<=0){
-			this.destruir();
-		}else{
-			this.health.setVidaActual(vida);
-		}
+		this.health.setVidaActual(vida);
 	}
-
+	
 	public Escudo getShield() {
 		return shield;
 	}
@@ -91,10 +87,7 @@ public abstract class Construccion implements Daniable{
 		this.constructionTime.actualizarTiempo();
 	}
 	
-	private void destruir() {
-// hablarlo porque no puedo tener ubicacion ni jugador
-	}
-	
+
 	public void recibirAtaque(Juego juego, Unidad unidad) throws FueraDeRango{
 		boolean rangoValido = false;
 		List<Celda> celdas = juego.getMapaDeJuego().devolverCeldasRadio(unidad.getUbicacion(), unidad.getRango().getRangoTierra());
@@ -116,7 +109,6 @@ public abstract class Construccion implements Daniable{
 			this.shield.setEscudoActual(0);
 			this.health.setVidaActual(this.health.getVidaActual()-(danio-escudoActual));
 		}
-		//actualizar poblacion y destruir
 	}
 	
 	public boolean esProductorMineral() {

@@ -7,7 +7,6 @@ import fiuba.algo3.modelo.excepciones.CeldaSinConstruccion;
 import fiuba.algo3.modelo.excepciones.EdificioNoPuedeCrearUnidad;
 import fiuba.algo3.modelo.excepciones.NoTieneEdificiosPrevios;
 import fiuba.algo3.modelo.excepciones.PoblacionInsuficiente;
-import fiuba.algo3.modelo.excepciones.RazaNoTieneUnidad;
 import fiuba.algo3.modelo.excepciones.RecursosInsuficientes;
 import fiuba.algo3.modelo.juego.Juego;
 import fiuba.algo3.modelo.unidades.Zealot;
