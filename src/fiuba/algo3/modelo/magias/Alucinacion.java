@@ -21,6 +21,7 @@ public class Alucinacion extends Magia {
 	private static Integer energiaRequerida =100;
 	
 	public Alucinacion(Energia energiaDeUnidad) throws EnergiaInsuficiente{
+		this.energiaDeNave = energiaDeUnidad;
 		if(energiaDeNave.esMenor(energiaRequerida)) throw new EnergiaInsuficiente();
 		else{
 			energiaDeUnidad.reducirEnergia(energiaRequerida);

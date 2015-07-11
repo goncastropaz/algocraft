@@ -28,8 +28,7 @@ public class Abajo extends Movimiento {
 		if(unidad == null) throw new NoHayUnidadParaMoverEnCelda();
 		if(!juego.getActualJugador().tieneDaniable(unidad.getUbicacion())) throw new UnidadAtacanteInvalida();
 		if(!unidad.terminado()) throw new UnidadNoTerminada();
-		
-		
+				
 		Celda celdaActual = mapa.devolverCelda(posActual);
 		Posicion posNueva = posActual.getPosicionAbajo();
 		Celda celdaNueva = mapa.devolverCelda(posNueva);
