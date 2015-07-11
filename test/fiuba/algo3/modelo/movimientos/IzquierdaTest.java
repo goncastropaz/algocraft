@@ -8,141 +8,183 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import fiuba.algo3.modelo.complementos.Posicion;
-/*
+import fiuba.algo3.modelo.complementos.TiempoDeConstruccion;
+import fiuba.algo3.modelo.excepciones.CeldaEspacial;
+import fiuba.algo3.modelo.excepciones.CeldaOcupada;
+import fiuba.algo3.modelo.excepciones.CeldaSinConstruccion;
+import fiuba.algo3.modelo.excepciones.EdificioNoPuedeCrearUnidad;
+import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
+import fiuba.algo3.modelo.excepciones.NoHayUnidadParaMoverEnCelda;
+import fiuba.algo3.modelo.excepciones.PoblacionInsuficiente;
+import fiuba.algo3.modelo.excepciones.RecursosInsuficientes;
+import fiuba.algo3.modelo.excepciones.UnidadAtacanteInvalida;
+import fiuba.algo3.modelo.excepciones.UnidadNoTerminada;
+import fiuba.algo3.modelo.juego.Juego;
+import fiuba.algo3.modelo.juego.Mapa;
+import fiuba.algo3.modelo.unidades.Marine;
+import fiuba.algo3.modelo.unidades.NaveCiencia;
+
 public class IzquierdaTest {
 	
 	
 	@Test
-	public void testmoverIzquierdaDeberiaMoverLaUnidadALaCeldaDeLaIzquierda() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido, CeldaOcupada{
-		Juego nuevoJuego = Juego.getInstance();
-		nuevoJuego.empezarJuego();
-		Movimiento izquierda = new Izquierda();
-		Mapa mapa = Mapa.getInstance();
-		Marine unidad = new Marine(new Posicion(1,1));
-		unidad.setNuevaUbicacion(mapa.getCelda(2, 2));
-		izquierda.mover(unidad);
+	public void testmoverIzquierdaDeberiaMoverLaUnidadALaCeldaDeLaIzquierda()throws FueraDeMatriz, CeldaOcupada, RecursosInsuficientes, PoblacionInsuficiente, CeldaSinConstruccion, EdificioNoPuedeCrearUnidad, NoHayUnidadParaMoverEnCelda, CeldaEspacial, UnidadNoTerminada, UnidadAtacanteInvalida {
+		Juego nuevoJuego = new Juego();
+		Mapa mapa = nuevoJuego.getMapaDeJuego();
+		Movimiento izq = new Izquierda(nuevoJuego);
+		Marine marine = new Marine();
+		marine.setTiempoDeConstruccion(new TiempoDeConstruccion(0));
+		Posicion posMarine = new Posicion(2,2);
+		marine.setUbicacion(posMarine);
+		mapa.devolverCelda(posMarine).setUnidad(marine);
+		nuevoJuego.getActualJugador().agregarUnidad(marine);
+		izq.mover(posMarine);
 		
-		assertEquals(unidad.getUbicacion().getPosicion().getFila(),2);
-		assertEquals(unidad.getUbicacion().getPosicion().getColumna(),1);
+		assertEquals(marine.getUbicacion().getFila(),2);
+		assertEquals(marine.getUbicacion().getColumna(),1);
 		
-	}
-	
-	@Test
-	public void testmoverIzquierdaDeberiaRemoverLaUnidadDeLaViejaCelda() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido, CeldaOcupada{
-		Juego nuevoJuego = Juego.getInstance();
-		nuevoJuego.empezarJuego();
-		Movimiento izquierda = new Izquierda();
-		Mapa mapa = Mapa.getInstance();
-		Marine unidad = new Marine(new Posicion(1,1));
-		unidad.setNuevaUbicacion(mapa.getCelda(2, 2));
-		izquierda.mover(unidad);
-		
-		assertNull(mapa.getCelda(2,2).getUnidad());
 		
 	}
 	
 	@Test
-	public void testmoverIzquierdaDeberiaAgregarLaUnidadALaNuevaCelda() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido, CeldaOcupada{
-		Juego nuevoJuego = Juego.getInstance();
-		nuevoJuego.empezarJuego();
-		Movimiento izquierda = new Izquierda();
-		Mapa mapa = Mapa.getInstance();
-		Marine unidad = new Marine(new Posicion(1,1));
+	public void testmoverIzquierdaDeberiaRemoverLaUnidadDeLaViejaCelda()  throws FueraDeMatriz, CeldaOcupada, NoHayUnidadParaMoverEnCelda, CeldaEspacial, UnidadNoTerminada, UnidadAtacanteInvalida {
+		Juego nuevoJuego = new Juego();
+		Mapa mapa = nuevoJuego.getMapaDeJuego();
+		Movimiento izq = new Izquierda(nuevoJuego);
+		Marine marine = new Marine();
+		marine.setTiempoDeConstruccion(new TiempoDeConstruccion(0));
+		Posicion posMarine = new Posicion(2,2);
+		marine.setUbicacion(posMarine);
+		mapa.devolverCelda(posMarine).setUnidad(marine);
+		nuevoJuego.getActualJugador().agregarUnidad(marine);
+		izq.mover(posMarine);
 
-		unidad.setNuevaUbicacion(mapa.getCelda(2, 2));
-		izquierda.mover(unidad);
+		assertNull(nuevoJuego.getMapaDeJuego().devolverCelda(posMarine).getUnidad());
+	
 		
-		assertEquals(mapa.getCelda(2,1).getUnidad(),unidad);
+	}
+	
+	@Test
+	public void testmoverIzquierdaDeberiaAgregarLaUnidadALaNuevaCelda() throws CeldaOcupada, FueraDeMatriz, NoHayUnidadParaMoverEnCelda, CeldaEspacial, UnidadNoTerminada, UnidadAtacanteInvalida {
+		Juego nuevoJuego = new Juego();
+		Mapa mapa = nuevoJuego.getMapaDeJuego();
+		Movimiento izq = new Izquierda(nuevoJuego);
+		Marine marine = new Marine();
+		marine.setTiempoDeConstruccion(new TiempoDeConstruccion(0));
+		Posicion posMarine = new Posicion(2,2);
+		marine.setUbicacion(posMarine);
+		mapa.devolverCelda(posMarine).setUnidad(marine);
+		nuevoJuego.getActualJugador().agregarUnidad(marine);
+		izq.mover(posMarine);
+		
+		assertEquals(nuevoJuego.getMapaDeJuego().devolverCelda(new Posicion(2,1)).getUnidad(),marine);
+	
 		
 	}
 	
 	@Test (expected = FueraDeMatriz.class)
-	public void testmoverIzquierdaDeberiaLanzarErrorSiEstaEnElBordeIzquierdoDelMapa() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido, CeldaOcupada{
-		Juego nuevoJuego = Juego.getInstance();
-		nuevoJuego.empezarJuego();
-		Movimiento izquierda = new Izquierda();
-		Mapa mapa = Mapa.getInstance();
-		Marine unidad = new Marine(new Posicion(1,1));
-
-		unidad.setNuevaUbicacion(mapa.getCelda(2, 0));
-		izquierda.mover(unidad);
+	public void testmoverIzquierdaDeberiaLanzarErrorSiEstaEnElBordeIzquierdoDelMapa() throws FueraDeMatriz, CeldaOcupada, NoHayUnidadParaMoverEnCelda, CeldaEspacial, UnidadNoTerminada, UnidadAtacanteInvalida {
+		Juego nuevoJuego = new Juego();
+		Mapa mapa = nuevoJuego.getMapaDeJuego();
+		Movimiento izq = new Izquierda(nuevoJuego);
+		Marine marine = new Marine();
+		marine.setTiempoDeConstruccion(new TiempoDeConstruccion(0));
+		Posicion posMarine = new Posicion(2,0);
+		marine.setUbicacion(posMarine);
+		mapa.devolverCelda(posMarine).setUnidad(marine);
+		nuevoJuego.getActualJugador().agregarUnidad(marine);
+		izq.mover(posMarine);
 	}
 	
 
 	@Test 
-	public void testmoverIzquierdaUnaUnidadDeTierraEnAreaDeTierraDeberiaMoverLaUnidadUnaCeldaALaIzquierda() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido, CeldaOcupada{
-		Juego nuevoJuego = Juego.getInstance();
-		nuevoJuego.empezarJuego();
-		Movimiento izquierda = new Izquierda();
-		Mapa mapa = Mapa.getInstance();
-		Marine unidadDeTierra = new Marine(new Posicion(2,2));
-		izquierda.mover(unidadDeTierra);
+	public void testmoverIzquierdaUnaUnidadDeTierraEnAreaDeTierraDeberiaMoverLaUnidadUnaCeldaALaIzquierda()  throws FueraDeMatriz, CeldaOcupada, NoHayUnidadParaMoverEnCelda, CeldaEspacial, UnidadNoTerminada, UnidadAtacanteInvalida{
+		Juego nuevoJuego = new Juego();
+		Mapa mapa = nuevoJuego.getMapaDeJuego();
+		Movimiento izq = new Izquierda(nuevoJuego);
+		Marine marine = new Marine();
+		marine.setTiempoDeConstruccion(new TiempoDeConstruccion(0));
+		Posicion posMarine = new Posicion(2,2);
+		marine.setUbicacion(posMarine);
+		mapa.devolverCelda(posMarine).setUnidad(marine);
+		nuevoJuego.getActualJugador().agregarUnidad(marine);
+		izq.mover(posMarine);
 		
-		assertEquals(unidadDeTierra.getUbicacion().getPosicion().getFila(),2);
-		assertEquals(unidadDeTierra.getUbicacion().getPosicion().getColumna(),1);
+		
+		assertEquals(marine.getUbicacion().getFila(),2);
+		assertEquals(marine.getUbicacion().getColumna(),1);
+		
 	}
 	
 	@Test 
-	public void testmoverIzquierdaUnaUnidadAereaEnAreaDeTierraDeberiaMoverLaUnidadUnaCeldaALaIzquierda() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido, CeldaOcupada{
-		Juego nuevoJuego = Juego.getInstance();
-		nuevoJuego.empezarJuego();
-		Movimiento izquierda = new Izquierda();
-		Mapa mapa = Mapa.getInstance();
-		Unidad unidadAerea = new NaveCiencia(new Posicion(2,2));
-		izquierda.mover(unidadAerea);
+	public void testmoverIzquierdaUnaUnidadAereaEnAreaDeTierraDeberiaMoverLaUnidadUnaCeldaALaIzquierda() throws FueraDeMatriz, CeldaOcupada, RecursosInsuficientes, PoblacionInsuficiente, CeldaSinConstruccion, EdificioNoPuedeCrearUnidad, NoHayUnidadParaMoverEnCelda, CeldaEspacial, UnidadNoTerminada, UnidadAtacanteInvalida {
+		Juego nuevoJuego = new Juego();
+		Mapa mapa = nuevoJuego.getMapaDeJuego();
+		Movimiento izq = new Izquierda(nuevoJuego);
+		NaveCiencia unidad = new NaveCiencia();
+		unidad.setTiempoDeConstruccion(new TiempoDeConstruccion(0));
+		Posicion posMarine = new Posicion(2,2);
+		unidad.setUbicacion(posMarine);
+		mapa.devolverCelda(posMarine).setUnidad(unidad);
+		nuevoJuego.getActualJugador().agregarUnidad(unidad);
+		izq.mover(posMarine);
 		
-		assertEquals(unidadAerea.getUbicacion().getPosicion().getFila(),2);
-		assertEquals(unidadAerea.getUbicacion().getPosicion().getColumna(),1);
+		assertEquals(unidad.getUbicacion().getFila(),2);
+		assertEquals(unidad.getUbicacion().getColumna(),1);
+		
+	
 	}
 	
 	@Test 
-	public void testmoverIzquierdaUnaUnidadAereaEnAreaAereaDeberiaMoverLaUnidadUnaCeldaALaIzquierda() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido, CeldaOcupada{
-		Juego nuevoJuego = Juego.getInstance();
-		nuevoJuego.empezarJuego();
-		Movimiento izquierda = new Izquierda();
-		Mapa mapa = Mapa.getInstance();
-		Unidad unidadAerea = new NaveCiencia(new Posicion(20,20));
-		izquierda.mover(unidadAerea);
+	public void testmoverIzquierdaUnaUnidadAereaEnAreaAereaDeberiaMoverLaUnidadUnaCeldaALaIzquierda()throws CeldaOcupada, RecursosInsuficientes, PoblacionInsuficiente, CeldaSinConstruccion, EdificioNoPuedeCrearUnidad, FueraDeMatriz, NoHayUnidadParaMoverEnCelda, CeldaEspacial, UnidadNoTerminada, UnidadAtacanteInvalida {
+		Juego nuevoJuego = new Juego();
+		Mapa mapa = nuevoJuego.getMapaDeJuego();
+		Movimiento izq = new Izquierda(nuevoJuego);
+		NaveCiencia unidad = new NaveCiencia();
+		unidad.setTiempoDeConstruccion(new TiempoDeConstruccion(0));
+		Posicion posMarine = new Posicion(20,20);
+		unidad.setUbicacion(posMarine);
+		mapa.devolverCelda(posMarine).setUnidad(unidad);
+		nuevoJuego.getActualJugador().agregarUnidad(unidad);
+		izq.mover(posMarine);
 		
-		assertEquals(unidadAerea.getUbicacion().getPosicion().getFila(),20);
-		assertEquals(unidadAerea.getUbicacion().getPosicion().getColumna(),19);
+		
+		assertEquals(unidad.getUbicacion().getFila(),20);
+		assertEquals(unidad.getUbicacion().getColumna(),19);
+		
 	}
 	
-	@Test (expected = UnidadTerrestreEnAreaEspacial.class)
-	public void testmoverDerechaUnaUnidadDeTierraEnAreaAereaDeberiaLanzarError() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, JugadorInvalido, CeldaOcupada{
-		Juego nuevoJuego = Juego.getInstance();
-		nuevoJuego.empezarJuego();
-		Movimiento izquierda = new Izquierda();
-		Mapa mapa = Mapa.getInstance();
-		Marine unidadDeTierra = new Marine(new Posicion(20,31));
-		izquierda.mover(unidadDeTierra);
-
+	@Test (expected = CeldaEspacial.class)
+	public void testmoverDerechaUnaUnidadDeTierraEnAreaAereaDeberiaLanzarError() throws FueraDeMatriz, CeldaOcupada, RecursosInsuficientes, PoblacionInsuficiente, CeldaSinConstruccion, EdificioNoPuedeCrearUnidad, NoHayUnidadParaMoverEnCelda, CeldaEspacial, UnidadNoTerminada, UnidadAtacanteInvalida {
+		Juego nuevoJuego = new Juego();
+		Mapa mapa = nuevoJuego.getMapaDeJuego();
+		Movimiento izq = new Izquierda(nuevoJuego);
+		Marine marine = new Marine();
+		marine.setTiempoDeConstruccion(new TiempoDeConstruccion(0));
+		Posicion posMarine = new Posicion(20,31);
+		marine.setUbicacion(posMarine);
+		mapa.devolverCelda(posMarine).setUnidad(marine);
+		nuevoJuego.getActualJugador().agregarUnidad(marine);
+		izq.mover(posMarine);
 	}
 	
 	@Test
-	public void testmoverDerechaUnaUnidadDeberiaActualizarLaVisionDelJugadorDeAcuerdoConLaVisionDeLaUnidad() throws FueraDeMatriz, JugadorInvalido, UnidadTerrestreEnAreaEspacial, CeldaOcupada{
-		Juego nuevoJuego = Juego.getInstance();
-		nuevoJuego.empezarJuego();
-		Juego juego = Juego.getInstance();
-		Marine unMarine = new Marine(new Posicion(9,9));
-		Movimiento izq = new Izquierda();
-		izq.mover(unMarine);
+	public void testmoverDerechaUnaUnidadDeberiaActualizarLaVisionDelJugadorDeAcuerdoConLaVisionDeLaUnidad() throws FueraDeMatriz, CeldaOcupada, RecursosInsuficientes, PoblacionInsuficiente, CeldaSinConstruccion, EdificioNoPuedeCrearUnidad, NoHayUnidadParaMoverEnCelda, CeldaEspacial, UnidadNoTerminada, UnidadAtacanteInvalida{
+		Juego nuevoJuego = new Juego();
+		Mapa mapa = nuevoJuego.getMapaDeJuego();
+		Movimiento izq = new Izquierda(nuevoJuego);
+		Marine marine = new Marine();
+		marine.setTiempoDeConstruccion(new TiempoDeConstruccion(0));
+		Posicion posMarine = new Posicion(9,9);
+		marine.setUbicacion(posMarine);
+		mapa.devolverCelda(posMarine).setUnidad(marine);
+		nuevoJuego.getActualJugador().agregarUnidad(marine);
+		izq.mover(posMarine);
 		
-		assertTrue(juego.getJugador(1).getVision().estaDescubierto(new Posicion(16,15)));
-		assertTrue(juego.getJugador(1).getVision().estaDescubierto(new Posicion(16,2)));
+		assertTrue(nuevoJuego.getActualJugador().getVision().estaDescubierto(new Posicion(16,15)));
+		assertTrue(nuevoJuego.getActualJugador().getVision().estaDescubierto(new Posicion(16,2)));
+
 		
 	}
 	 
 }
-*/import fiuba.algo3.modelo.excepciones.CeldaOcupada;
-import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
-import fiuba.algo3.modelo.excepciones.JugadorInvalido;
-import fiuba.algo3.modelo.excepciones.UnidadTerrestreEnAreaEspacial;
-import fiuba.algo3.modelo.juego.Juego;
-import fiuba.algo3.modelo.juego.Mapa;
-import fiuba.algo3.modelo.movimientos.Izquierda;
-import fiuba.algo3.modelo.movimientos.Movimiento;
-import fiuba.algo3.modelo.unidades.Marine;
-import fiuba.algo3.modelo.unidades.NaveCiencia;
-import fiuba.algo3.modelo.unidades.Unidad;
-
