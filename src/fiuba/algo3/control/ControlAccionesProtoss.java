@@ -17,6 +17,7 @@ import fiuba.algo3.modelo.acciones.creacionUnidades.CrearScout;
 import fiuba.algo3.modelo.acciones.creacionUnidades.CrearUnidad;
 import fiuba.algo3.modelo.acciones.creacionUnidades.CrearZealot;
 import fiuba.algo3.modelo.complementos.Posicion;
+import fiuba.algo3.modelo.excepciones.CapacidadInsuficiente;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaInvalida;
 import fiuba.algo3.modelo.excepciones.CeldaNoVisible;
@@ -30,6 +31,7 @@ import fiuba.algo3.modelo.excepciones.EnergiaInsuficiente;
 import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
 import fiuba.algo3.modelo.excepciones.FueraDeRango;
 import fiuba.algo3.modelo.excepciones.MagiaDesconocida;
+import fiuba.algo3.modelo.excepciones.NaveVacia;
 import fiuba.algo3.modelo.excepciones.NoHayUnidadParaMoverEnCelda;
 import fiuba.algo3.modelo.excepciones.NoTieneEdificiosPrevios;
 import fiuba.algo3.modelo.excepciones.ObjetivoInvalido;
@@ -37,8 +39,11 @@ import fiuba.algo3.modelo.excepciones.PoblacionInsuficiente;
 import fiuba.algo3.modelo.excepciones.RazaNoTieneConstruccion;
 import fiuba.algo3.modelo.excepciones.RazaNoTieneUnidad;
 import fiuba.algo3.modelo.excepciones.RecursosInsuficientes;
+import fiuba.algo3.modelo.excepciones.UnidadAereaNoSePuedeCargar;
 import fiuba.algo3.modelo.excepciones.UnidadAtacadaInvalida;
 import fiuba.algo3.modelo.excepciones.UnidadAtacanteInvalida;
+import fiuba.algo3.modelo.excepciones.UnidadNoPerteneceAJugador;
+import fiuba.algo3.modelo.excepciones.UnidadNoPuedeTransportar;
 import fiuba.algo3.modelo.excepciones.UnidadNoTerminada;
 import fiuba.algo3.modelo.excepciones.UnidadNoTieneMagia;
 import fiuba.algo3.modelo.excepciones.UnidadTerrestreEnAreaEspacial;
@@ -117,5 +122,15 @@ public class ControlAccionesProtoss implements ControlAcciones{
 	public void magia(Posicion unidadAtacante, Posicion unidadAtacada,int id) throws UnidadNoTieneMagia, EnergiaInsuficiente, CopiaNoCausaDanio, CeldaOcupada, CeldaEspacial, RecursosInsuficientes, PoblacionInsuficiente, CeldaSinConstruccion, EdificioNoPuedeCrearUnidad, CeldaSinUnidad, UnidadNoTerminada {
 		this.juego.usarMagia(unidadAtacante, this.magias.get(id), unidadAtacada);
 
+	}
+	@Override
+	public void cargarEnNave(Posicion primeraPosicion, Posicion ultimaPosicion) throws CapacidadInsuficiente, UnidadAereaNoSePuedeCargar, UnidadNoPerteneceAJugador, FueraDeRango, CeldaSinUnidad, UnidadNoPuedeTransportar, UnidadNoTerminada {
+		this.juego.cargarUnidad(ultimaPosicion, primeraPosicion);
+	}
+	
+	@Override
+	public void descargarEnNave(Posicion ultimaPosicion) throws UnidadNoPuedeTransportar, UnidadNoPerteneceAJugador, CeldaOcupada, NaveVacia, UnidadNoTerminada, CeldaSinUnidad {
+		this.juego.descargarUnidades(ultimaPosicion);
+		
 	}
 }

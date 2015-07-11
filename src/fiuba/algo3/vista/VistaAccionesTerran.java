@@ -14,6 +14,7 @@ import fiuba.algo3.control.ControlAcciones;
 import fiuba.algo3.control.ControlAccionesProtoss;
 import fiuba.algo3.control.ControlAccionesTerran;
 import fiuba.algo3.control.ControlJuego;
+import fiuba.algo3.modelo.excepciones.CapacidadInsuficiente;
 import fiuba.algo3.modelo.excepciones.CeldaEspacial;
 import fiuba.algo3.modelo.excepciones.CeldaInvalida;
 import fiuba.algo3.modelo.excepciones.CeldaNoVisible;
@@ -26,6 +27,7 @@ import fiuba.algo3.modelo.excepciones.EdificioNoPuedeCrearUnidad;
 import fiuba.algo3.modelo.excepciones.EnergiaInsuficiente;
 import fiuba.algo3.modelo.excepciones.FueraDeMatriz;
 import fiuba.algo3.modelo.excepciones.FueraDeRango;
+import fiuba.algo3.modelo.excepciones.NaveVacia;
 import fiuba.algo3.modelo.excepciones.NoHayUnidadParaMoverEnCelda;
 import fiuba.algo3.modelo.excepciones.NoTieneEdificiosPrevios;
 import fiuba.algo3.modelo.excepciones.ObjetivoInvalido;
@@ -33,8 +35,11 @@ import fiuba.algo3.modelo.excepciones.PoblacionInsuficiente;
 import fiuba.algo3.modelo.excepciones.RazaNoTieneConstruccion;
 import fiuba.algo3.modelo.excepciones.RazaNoTieneUnidad;
 import fiuba.algo3.modelo.excepciones.RecursosInsuficientes;
+import fiuba.algo3.modelo.excepciones.UnidadAereaNoSePuedeCargar;
 import fiuba.algo3.modelo.excepciones.UnidadAtacadaInvalida;
 import fiuba.algo3.modelo.excepciones.UnidadAtacanteInvalida;
+import fiuba.algo3.modelo.excepciones.UnidadNoPerteneceAJugador;
+import fiuba.algo3.modelo.excepciones.UnidadNoPuedeTransportar;
 import fiuba.algo3.modelo.excepciones.UnidadNoTerminada;
 import fiuba.algo3.modelo.excepciones.UnidadNoTieneMagia;
 import fiuba.algo3.modelo.excepciones.UnidadTerrestreEnAreaEspacial;
@@ -273,14 +278,58 @@ public class VistaAccionesTerran extends JPanel {
 		});
 		add(btnMoverDerecha);
 	
-		JButton btnCargar =   new JButton("<html>"+"Cargar en"+"<br>"+"Nave"+"<br>"+"Transporte"+"</html>");
-		btnCargar.setBounds(280, 446, 100, 110);
+		JButton btnCargar =   new JButton("<html>"+"Cargar "+"<br>"+"Unidades"+"<br>"+"en Nave"+"</html>");
+		btnCargar.setBounds(280, 446, 100, 50);
 		btnCargar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-		
+				try {
+					controlAccionesTerran.cargarEnNave(controlJuego.getPrimeraPosicion(),controlJuego.getUltimaPosicion());
+					controlJuego.actualizarVista();
+				} catch (CapacidadInsuficiente e1) {
+					controlJuego.mostrarMensajeError("Capacidad insuficiente.");
+				} catch (UnidadAereaNoSePuedeCargar e1) {
+					controlJuego.mostrarMensajeError("No se puede cargar unidades aereas.");
+				} catch (UnidadNoPerteneceAJugador e1) {
+					controlJuego.mostrarMensajeError("La unidad no pertenece al jugador.");
+				} catch (FueraDeRango e1) {
+					controlJuego.mostrarMensajeError("Fuera de rango de la Unidad.");
+				} catch (CeldaSinUnidad e1) {
+					controlJuego.mostrarMensajeError("La celda seleccionada no posee una unidad.");
+				} catch (UnidadNoPuedeTransportar e1) {
+					controlJuego.mostrarMensajeError("La unidad seleccionada no puede transportar otras unidades.");
+				} catch (UnidadNoTerminada e1) {
+					controlJuego.mostrarMensajeError("La unidad no se ha terminado de construir.");
+				}
+				
 			}
 		});
 		add(btnCargar);
+		
+		JButton btnDescargar =   new JButton("<html>"+"Descargar "+"<br>"+"Unidades"+"<br>"+"de Nave"+"</html>");
+		btnDescargar.setBounds(280, 510, 100, 50);
+		btnDescargar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					controlAccionesTerran.descargarEnNave(controlJuego.getUltimaPosicion());
+					controlJuego.actualizarVista();
+				} catch (UnidadNoPuedeTransportar e1) {
+					controlJuego.mostrarMensajeError("La unidad seleccionada no puede transportar otras unidades.");
+				} catch (UnidadNoPerteneceAJugador e1) {
+					controlJuego.mostrarMensajeError("La unidad no pertenece al jugador.");
+				} catch (CeldaOcupada e1) {
+					controlJuego.mostrarMensajeError("Celdas ocupadas para la descarga de unidades.");
+				} catch (NaveVacia e1) {
+					controlJuego.mostrarMensajeError("La nave esta vacia.");
+				} catch (UnidadNoTerminada e1) {
+					controlJuego.mostrarMensajeError("La unidad no se ha terminado de construir.");
+				} catch (CeldaSinUnidad e1) {
+					controlJuego.mostrarMensajeError("La celda seleccionada no posee una unidad.");
+				}
+				
+			
+			}
+		});
+		add(btnDescargar);
 		
 		JButton btnNewButton_5 = new JButton("Atacar");
 		btnNewButton_5.setBounds(12, 574, 117, 25);
