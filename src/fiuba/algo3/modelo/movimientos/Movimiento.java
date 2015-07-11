@@ -8,7 +8,6 @@ import fiuba.algo3.modelo.excepciones.JugadorInvalido;
 import fiuba.algo3.modelo.excepciones.NoHayUnidadParaMoverEnCelda;
 import fiuba.algo3.modelo.excepciones.UnidadAtacanteInvalida;
 import fiuba.algo3.modelo.excepciones.UnidadNoTerminada;
-import fiuba.algo3.modelo.excepciones.UnidadTerrestreEnAreaEspacial;
 import fiuba.algo3.modelo.juego.Juego;
 import fiuba.algo3.modelo.unidades.Unidad;
 

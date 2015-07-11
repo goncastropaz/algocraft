@@ -40,7 +40,7 @@ import fiuba.algo3.modelo.excepciones.UnidadNoPerteneceAJugador;
 import fiuba.algo3.modelo.excepciones.UnidadNoPuedeTransportar;
 import fiuba.algo3.modelo.excepciones.UnidadNoTerminada;
 import fiuba.algo3.modelo.excepciones.UnidadNoTieneMagia;
-import fiuba.algo3.modelo.excepciones.UnidadTerrestreEnAreaEspacial;
+
 
 public class VistaAccionesProtoss extends JPanel{
 

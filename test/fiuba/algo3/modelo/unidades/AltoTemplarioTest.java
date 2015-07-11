@@ -26,14 +26,13 @@ import fiuba.algo3.modelo.excepciones.NombreConMenosDe4Caracteres;
 import fiuba.algo3.modelo.excepciones.NombreYaExiste;
 import fiuba.algo3.modelo.excepciones.PoblacionInsuficiente;
 import fiuba.algo3.modelo.excepciones.RecursosInsuficientes;
-import fiuba.algo3.modelo.excepciones.UnidadTerrestreEnAreaEspacial;
 import fiuba.algo3.modelo.juego.Juego;
 import fiuba.algo3.modelo.unidades.AltoTemplario;
 
 public class AltoTemplarioTest {
 
 	@Test
-	public void testCrearUnAltoTemplarioCarga15DeEnergiaPorTurno() throws FueraDeMatriz, UnidadTerrestreEnAreaEspacial, CeldaOcupada, RecursosInsuficientes, PoblacionInsuficiente, CeldaSinConstruccion, EdificioNoPuedeCrearUnidad, CeldaSinRecurso, CeldaEspacial, NoTieneEdificiosPrevios, CeldaInvalida, NombreYaExiste, JugadorInvalido, NombreConMenosDe4Caracteres, CeldaNoVisible{
+	public void testCrearUnAltoTemplarioCarga15DeEnergiaPorTurno() throws FueraDeMatriz, CeldaOcupada, RecursosInsuficientes, PoblacionInsuficiente, CeldaSinConstruccion, EdificioNoPuedeCrearUnidad, CeldaSinRecurso, CeldaEspacial, NoTieneEdificiosPrevios, CeldaInvalida, NombreYaExiste, JugadorInvalido, NombreConMenosDe4Caracteres, CeldaNoVisible{
 		
 		Juego juego = new Juego();
 		
@@ -60,27 +59,6 @@ public class AltoTemplarioTest {
 		assertTrue(unAltoTemplario.getEnergia() == 65);
 	}
 	
-//	@Test
-//	public void testTormentaPsionicaInflinge100DanioATodasLasUnidadesQueEstenDebajoPorDosTurnos() throws NombreYaExiste, JugadorInvalido, NombreConMenosDe4Caracteres, CeldaOcupada, CeldaSinRecurso, CeldaEspacial, RecursosInsuficientes, NoTieneEdificiosPrevios, CeldaInvalida, FueraDeMatriz, PoblacionInsuficiente, CeldaSinConstruccion, EdificioNoPuedeCrearUnidad{
-//		
-//		Juego juego = new Juego();
-//		
-//		// Se recolectan los recursos necesarios para crear las construcciones.
-//		juego.agregarConstruccion(new NexoMineral(new Posicion(4, 4)), new Posicion(4, 4));
-//		juego.agregarConstruccion(new Asimilador(new Posicion(5, 5)), new Posicion(5, 5));
-//		for (int i = 0; i < 100; i++)juego.cambiarTurnoJugador();
-//		juego.agregarConstruccion(new Pilon(new Posicion(14, 14)), new Posicion(14, 14));
-//		for (int i = 0; i < 10; i++)juego.cambiarTurnoJugador();
-//		juego.agregarConstruccion(new Acceso(new Posicion(9, 9)), new Posicion(9, 9));
-//		juego.agregarConstruccion(new PuertoEstelarProtoss(new Posicion(10, 10)), new Posicion(10, 10));
-//		juego.agregarConstruccion(new ArchivoTemplario(new Posicion(11, 11)), new Posicion(11, 11));
-//		for (int i = 0; i < 20; i++)juego.cambiarTurnoJugador();
-//		
-//		juego.agregarUnidad(new AltoTemplario(), new Posicion(11, 11));
-//		
-//		
-//		
-//		
-//	}
+
 }
 
